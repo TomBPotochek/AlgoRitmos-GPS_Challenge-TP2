@@ -6,7 +6,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Franco Pomi** - [FPomi](https://github.com/FPomi)
+* **Integrante 1** - [Franco Pomi](https://github.com/FPomi)
 * **Integrante 2** - [integrante2](https://github.com/integrante2)
 * **Tomas Benitez Potochek** - [TomBPotochek](https://github.com/TomBPotochek)
 * **Integrante 4** - [Mario Santiago Adris](https://github.com/marioax)
