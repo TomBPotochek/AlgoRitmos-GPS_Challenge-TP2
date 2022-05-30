@@ -6,10 +6,10 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 ## Grupo {N}
 
-* **Franco Pomi** - [FPomi](https://github.com/FPomi)
-* **Lucas Franciulli** - [LucasFranciulli](https://github.com/Chuleeta)
-* **Integrante 3** - [integrante3](https://github.com/integrante3)
-* **Integrante 4** - [integrante4](https://github.com/integrante4)
+* **Integrante 1** - [Franco Pomi](https://github.com/FPomi)
+* **Integrante 2** - [LucasFranciulli](https://github.com/Chuleeta)
+* **Tomas Benitez Potochek** - [TomBPotochek](https://github.com/TomBPotochek)
+* **Integrante 4** - [Mario Santiago Adris](https://github.com/marioax)
 * **Integrante 5** - [Agustín Cáceres](https://github.com/agustin28-oss)
 
 Corrector: **{Corrector}**
