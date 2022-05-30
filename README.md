@@ -8,7 +8,7 @@ Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUB
 
 * **Integrante 1** - [Franco Pomi](https://github.com/FPomi)
 * **Integrante 2** - [LucasFranciulli](https://github.com/Chuleeta)
-* **Tomas Benitez Potochek** - [TomBPotochek](https://github.com/TomBPotochek)
+* **Integrante 3** - [TomBPotochek](https://github.com/TomBPotochek)
 * **Integrante 4** - [Mario Santiago Adris](https://github.com/marioax)
 * **Integrante 5** - [Agustín Cáceres](https://github.com/agustin28-oss)
 
