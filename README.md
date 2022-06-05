@@ -5,7 +5,7 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
-## Grupo {N}
+## Grupo 19
 
 * **Integrante 1** - [Franco Pomi](https://github.com/FPomi)
 * **Integrante 2** - [LucasFranciulli](https://github.com/Chuleeta)
