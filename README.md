@@ -1,4 +1,5 @@
-![tp2](https://github.com/fiuba/algo3_proyecto_base_tp2/actions/workflows/build.yml/badge.svg) [![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![build](https://github.com/TomBPotochek/AlgoRitmos-GPS_Challenge-TP2/actions/workflows/build.yml/badge.svg)](https://github.com/TomBPotochek/AlgoRitmos-GPS_Challenge-TP2/actions/workflows/build.yml)
+[![codecov](https://codecov.io/gh/TomBPotochek/AlgoRitmos-GPS_Challenge-TP2/branch/master/graph/badge.svg?token=0EUMVP4L0S)](https://codecov.io/gh/TomBPotochek/AlgoRitmos-GPS_Challenge-TP2)
 
 # TP2 Algoritmos 3: {nombre} 
 
