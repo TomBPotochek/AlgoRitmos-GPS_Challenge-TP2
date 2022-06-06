@@ -1,9 +1,9 @@
 package movimientos;
 
 public class MovArriba implements Movimiento {
-    private int cantMovimientos;
-    public MovArriba(int cantidad) {
-        this.cantMovimientos = cantidad;
+    private final int cantMovimientos;
+    public MovArriba() {
+        this.cantMovimientos = 1;
     }
 
     @Override

@@ -1,9 +1,9 @@
 package movimientos;
 
 public class MovDerecha implements Movimiento {
-    private int cantMovimientos;
-    public MovDerecha(int cantidad) {
-        this.cantMovimientos = cantidad;
+    private final int cantMovimientos;
+    public MovDerecha() {
+        this.cantMovimientos = 1;
     }
     @Override
     public int moverColumna(int columna) {
