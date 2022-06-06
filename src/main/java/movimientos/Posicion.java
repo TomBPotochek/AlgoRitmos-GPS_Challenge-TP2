@@ -2,6 +2,9 @@ package movimientos;
 import movimientos.MovFactory;
 import movimientos.Movimiento;
 
+// Para el hash
+import java.util.Objects;
+
 public class Posicion {
     private int fil;
     private int col;
@@ -19,10 +22,10 @@ public class Posicion {
         return (this.col);
     }
 
-    public boolean compararPosicion(Posicion posicion1, Posicion posicion2){
-        return((posicion1.getColumna() == posicion2.getColumna()) && 
-        (posicion1.getFila() == posicion2.getFila()));
-    }
+    // public boolean compararPosicion(Posicion posicion1, Posicion posicion2){
+    //     return((posicion1.getColumna() == posicion2.getColumna()) && 
+    //     (posicion1.getFila() == posicion2.getFila()));
+    // }
     
     public void actualizarPosicion(String direccion) {
         Movimiento movimiento = MovFactory.MovimientoConstruir(direccion, 1);
@@ -31,9 +34,26 @@ public class Posicion {
         this.fil = movimiento.moverFila(this.fil);
     }
 
-    public void calcularPosicion(String direccion) {
+    public Posicion calcularPosicion(String direccion) {
         Movimiento movimiento = MovFactory.MovimientoConstruir(direccion, 1);
         return (new Posicion(movimiento.moverColumna(this.col), 
-        movimiento.moverFila(this.fil))); //Posicion posicionNueva =
+                             movimiento.moverFila(this.fil))
+                );
     }
+
+    @Override
+    public boolean equals(Object objeto){
+        if (this == objeto)
+    		return true;
+    	if (objeto == null || (this.getClass() != objeto.getClass()))
+    		return false;
+        Posicion p = (Posicion) objeto;
+        return (this.fil == p.getFila()) && (this.col == p.getColumna());
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(this.fil, this.col);
+    }
+
 }

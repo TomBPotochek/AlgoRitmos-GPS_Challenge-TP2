@@ -1,7 +1,7 @@
 package vehiculos;
 
-import edu.fiuba.algo3.Mapa;
+import casillero.Mapa;
 
 public interface Vehiculo {
-    void mover(String direccion, int cantMovimientos);
+    void mover(String direccion, Mapa mapa);
 }
