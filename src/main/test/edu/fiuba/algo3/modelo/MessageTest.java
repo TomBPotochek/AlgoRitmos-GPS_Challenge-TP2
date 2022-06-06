@@ -1,21 +1,20 @@
-package edu.fiuba.algo3.modelo;
+// package edu.fiuba.algo3.modelo;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+// import org.junit.jupiter.api.Test;
+// import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MessageTest {
-   @Test
-    public void messageGreeting() {
-        Message message = new Message("Hola Mundo!", "Hello world!");
+// public class MessageTest {
+//     @Test
+//     public void messageGreeting() {
+//         Message message = new Message("Hola Mundo!", "Hello world!");
 
-        assertEquals("Hello world!", message.greet("us"));
-    }
+//         assertEquals("Hello world!", message.greet("us"));
+//     }
 
-    @Test
-    public void messageGreetingDefaultLanguage() {
-        Message message = new Message("Hola Mundo!", "Hello world!");
+//     @Test
+//     public void messageGreetingDefaultLanguage() {
+//         Message message = new Message("Hola Mundo!", "Hello world!");
 
-        assertEquals("Hola Mundo!", message.greet());
-    }
-
-}
+//         assertEquals("Hola Mundo!", message.greet());
+//     }
+// }

@@ -19,7 +19,7 @@ public class MotoTest {
         
         mapa.asignarCasillero(c, posicionFinal);
 
-        moto.mover("Arriba", mapa);
+        moto.mover("Derecha", mapa);
         
         assertEquals(moto.getPosicion(), posicionFinal);
     }
@@ -35,7 +35,7 @@ public class MotoTest {
 
         mapa.asignarCasillero(pozo, posicionFinal);
 
-        moto.mover("Arriba", mapa);
+        moto.mover("Derecha", mapa);
 
         assertEquals(moto.getCantidadMovimientos(), 4);
     }
