@@ -8,10 +8,10 @@ public class MovArriba implements Movimiento {
 
     @Override
     public int moverColumna(int columna) {
-        return columna - this.cantMovimientos;
+        return columna;
     }
     @Override
     public int moverFila(int fila){
-        return fila;
+        return fila - this.cantMovimientos;
     }
 }

@@ -7,10 +7,10 @@ public class MovDerecha implements Movimiento {
     }
     @Override
     public int moverColumna(int columna) {
-        return columna;
+        return columna + this.cantMovimientos;
     }
     @Override
     public int moverFila(int fila){
-        return fila + this.cantMovimientos;
+        return fila;
     }
 }
