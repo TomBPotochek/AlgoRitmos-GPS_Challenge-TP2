@@ -28,16 +28,16 @@ public class Posicion {
     // }
     
     public void actualizarPosicion(String direccion) {
-        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion, 1);
+        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
         //tenemos q cambiar lo de cantidad de movimientos en movfactory
         this.col = movimiento.moverColumna(this.col);
         this.fil = movimiento.moverFila(this.fil);
     }
 
     public Posicion calcularPosicion(String direccion) {
-        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion, 1);
-        return (new Posicion(movimiento.moverColumna(this.col), 
-                             movimiento.moverFila(this.fil))
+        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
+        return (new Posicion(movimiento.moverFila(this.fil),
+                             movimiento.moverColumna(this.col))
                 );
     }
 
