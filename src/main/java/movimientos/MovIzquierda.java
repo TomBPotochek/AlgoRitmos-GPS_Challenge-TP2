@@ -2,8 +2,8 @@ package movimientos;
 
 public class MovIzquierda implements Movimiento{
     private int cantMovimientos;
-    public MovIzquierda(int cantidad){
-        this.cantMovimientos = cantidad;
+    public MovIzquierda(){
+        this.cantMovimientos = 1;
     }
 
     @Override

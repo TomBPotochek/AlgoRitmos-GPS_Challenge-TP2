@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo;
+package modelo;
 
 public class Localize {
     protected final String esContent;

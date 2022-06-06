@@ -2,16 +2,16 @@ package movimientos;
 
 public class MovFactory{
 
-    public static Movimiento MovimientoConstruir(String direccion, int cantidad){
+    public static Movimiento MovimientoConstruir(String direccion){
         switch (direccion){
             case "Arriba":
-                return new MovArriba(cantidad);
+                return new MovArriba();
             case "Abajo":
-                return new MovAbajo(cantidad);
+                return new MovAbajo();
             case "Derecha":
-                return new MovDerecha(cantidad);
+                return new MovDerecha();
             case "Izquierda":
-                return new MovIzquierda(cantidad);
+                return new MovIzquierda();
             default:
                 return null;
         }

@@ -2,10 +2,10 @@ package movimientos;
 
 public class MovAbajo implements Movimiento {
     private int cantMovimientos;
-    public MovAbajo(int cantidad) {
-        this.cantMovimientos = cantidad;
-    }
 
+    public MovAbajo(){
+        this.cantMovimientos = 1;
+    }
     @Override
     public int moverColumna(int columna) {
         return columna + this.cantMovimientos;
