@@ -6,6 +6,6 @@ public class Mapa {
     private Casilla[][] tablero;
 
     public Mapa(int dimension){
-        this.tablero
+        
     }
 }

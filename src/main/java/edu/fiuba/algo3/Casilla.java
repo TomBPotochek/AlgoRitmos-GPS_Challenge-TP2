@@ -4,5 +4,5 @@ import movimientos.Posicion;
 import vehiculos.Vehiculo;
 
 public interface Casilla {
-    public int aplicarEfecto(int cantMovimeintos, int efecto)
+    public int aplicarEfecto(int cantMovimeintos, int efecto);
 }
