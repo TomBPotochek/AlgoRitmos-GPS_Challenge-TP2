@@ -1,7 +1,7 @@
 package movimientos;
 
 public class MovIzquierda implements Movimiento{
-    private final int cantMovimientos;
+    private int cantMovimientos;
     public MovIzquierda(){
         this.cantMovimientos = 1;
     }

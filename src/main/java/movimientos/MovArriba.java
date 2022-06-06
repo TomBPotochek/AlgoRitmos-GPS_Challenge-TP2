@@ -1,7 +1,7 @@
 package movimientos;
 
 public class MovArriba implements Movimiento {
-    private final int cantMovimientos;
+    private int cantMovimientos;
     public MovArriba() {
         this.cantMovimientos = 1;
     }
