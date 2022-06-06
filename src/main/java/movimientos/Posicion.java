@@ -10,8 +10,8 @@ public class Posicion {
         this.fil = fila;
         this.col = columna;
     }
-    public void moverEnDireccion(String direccion, int cantMovimientos) {
-        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion,cantMovimientos);
+    public void moverEnDireccion(String direccion) {
+        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
         this.col = movimiento.moverColumna(this.col);
         this.fil = movimiento.moverFila(this.fil);
     }
