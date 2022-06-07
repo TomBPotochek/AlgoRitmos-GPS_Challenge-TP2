@@ -39,4 +39,19 @@ public class AutoTest {
 
         assertEquals(auto.getCantidadMovimientos(), 4);
     }
+/*
+    @Test
+    public void testAutoQuiereAtravezarPiqueteYSeQuedaEnLaMismaPosicion(){
+        Auto auto = new Auto(1, 1);
+        Mapa mapa = new Mapa(3);
+        
+        Posicion posicionFinal = new Posicion(1,2);
+        Casillero piquete = new Piquete();
+
+        mapa.asignarCasillero(piquete, posicionFinal);
+
+        auto.mover("Derecha", mapa);
+
+        assertEquals(auto.getCantidadMovimientos(), 1);
+    }*/
 }

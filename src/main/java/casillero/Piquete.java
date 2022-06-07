@@ -2,20 +2,19 @@ package casillero;
 
 import vehiculos.*;
 
-public class Pozo implements Casillero {
-    
+public class Piquete implements Casillero{
     @Override
     public void aplicarMovimientosExtra(Moto moto){
-        moto.aplicarMovs(3);
+        moto.aplicarMovs(2);
     }
 
     @Override
     public void aplicarMovimientosExtra(Auto auto){
-       auto.aplicarMovs(3);
+       return;
     }
 
     @Override
     public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro){
-        cuatroPorCuatro.aplicarMovsPozo(2);
+        return;
     }
 }

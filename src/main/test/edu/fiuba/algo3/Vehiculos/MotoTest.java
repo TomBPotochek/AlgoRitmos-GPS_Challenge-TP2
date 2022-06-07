@@ -39,4 +39,19 @@ public class MotoTest {
 
         assertEquals(moto.getCantidadMovimientos(), 4);
     }
+
+    @Test
+    public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
+        Moto moto = new Moto(1, 1);
+        Mapa mapa = new Mapa(3);
+        
+        Posicion posicionFinal = new Posicion(1,2);
+        Casillero piquete = new Piquete();
+
+        mapa.asignarCasillero(piquete, posicionFinal);
+
+        moto.mover("Derecha", mapa);
+
+        assertEquals(moto.getCantidadMovimientos(), 3);
+    }
 }

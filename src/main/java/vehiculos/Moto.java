@@ -14,7 +14,5 @@ public class Moto extends Vehiculo {
     @Override
     void atravesarCasilla(Casillero c) {
         c.aplicarMovimientosExtra(this);
-    }
-
-    
+    }   
 }
