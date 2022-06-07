@@ -30,6 +30,7 @@ class Mapa{
     dimension : int
     asignarCasillero(Casillero casillero, Posicion pos)
     Casillero obetenerCasilla(Posicion posicion)
+    verificarPosicionValida(Posicion pos)
 }
 
 class Pozo implements Casillero{
