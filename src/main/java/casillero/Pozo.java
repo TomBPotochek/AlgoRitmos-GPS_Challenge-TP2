@@ -10,17 +10,17 @@ public class Pozo implements Casillero {
     // }
     
     @Override
-    public int calcularCostoDeMovimientos(Moto moto){
-        return 3;
-    }
-
-    /*@Override
-    public int calcularCostoDeMovimientos(Auto auto){
-        
+    public void aplicarMovimientosExtra(Moto moto){
+        moto.aplicarMovs(3);
     }
 
     @Override
-    public int calcularCostoDeMovimientos(CuatroPorCuatro cuatroPorCuatro){
-        
-    }*/
+    public void aplicarMovimientosExtra(Auto auto){
+       auto.aplicarMovs(3); 
+    }
+
+    @Override
+    public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro){
+        cuatroPorCuatro.aplicarMovsPozo(2);
+    }
 }

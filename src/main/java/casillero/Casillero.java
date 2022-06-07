@@ -5,9 +5,9 @@ import vehiculos.*;
 public interface Casillero {
     // public int calcularCostoDeMovimientos(Vehiculo v);
 
-    public int calcularCostoDeMovimientos(Moto moto);
+    public void aplicarMovimientosExtra(Moto moto);
 
-    /*public int calcularCostoDeMovimientos(Auto auto);
+    public void aplicarMovimientosExtra(Auto auto);
 
-    public int calcularCostoDeMovimientos(CuatroPorCuatro cuatroPorCuatro);*/
+    public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro);
 }
