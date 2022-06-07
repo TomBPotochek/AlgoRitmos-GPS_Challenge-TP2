@@ -1,52 +1,52 @@
 @startuml
 'https://plantuml.com/class-diagram'
 abstract class Vehiculo{
-    {abstract} void atravesarCasilla(Casillero c)
-    void mover(String direccion, Mapa mapa)
-    void aplicarMovs(int penalizacion)
+    {abstract}atravesarCasilla(Casillero c)
+    mover(String direccion, Mapa mapa)
+    aplicarMovs(int penalizacion)
 }
 class CuatroPorCuatro{
      atravesarCasilla(Casillero c)
-     void aplicarMovsPozo(int penalizacion)
+     aplicarMovsPozo(int penalizacion)
 }
 class Moto{
-     void atravesarCasilla(Casillero c) {
+     atravesarCasilla(Casillero c) {
 }
 class Auto{
-void atravesarCasilla(Casillero c)
+    atravesarCasilla(Casillero c)
 }
 class Posicion{
     fila : int
     columna : int
-    void actualizarPosicion(String direccion)
-    Posicion calcularPosicion(String direccion)
+    actualizarPosicion(String direccion)
+    calcularPosicion(String direccion)
 }
 
 interface Casillero{
-    void aplicarMovimientosExtra(Vehiculo vehiculo)
+    aplicarMovimientosExtra(Vehiculo vehiculo)
 }
 class Mapa{
     tablero : Casillero
     dimension : int
     asignarCasillero(Casillero casillero, Posicion pos)
-    Casillero obetenerCasilla(Posicion posicion)
+    obetenerCasilla(Posicion posicion)
     verificarPosicionValida(Posicion pos)
 }
 
 class Pozo implements Casillero{
-    void aplicarMovimientosExtra(Vehiculo vehiculo))
+    aplicarMovimientosExtra(Vehiculo vehiculo))
 }
 class SinObstaculo implements Casillero{
-    void aplicarMovimientosExtra((Vehiculo vehiculo)
+    aplicarMovimientosExtra((Vehiculo vehiculo)
 }
 
 class MovFactory{
-    {static}Movimiento MovimientoConstruir(String direccion)
+    {static}MovimientoConstruir(String direccion)
 }
 
 interface Movimiento{
-    int moverFila(int columna)
-    int moverColumna(int fila)
+    moverFila(int columna)
+    moverColumna(int fila)
 }
 class MovArriba implements Movimiento{
     int : cantMovimientos
