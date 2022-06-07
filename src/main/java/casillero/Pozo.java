@@ -16,7 +16,7 @@ public class Pozo implements Casillero {
 
     @Override
     public void aplicarMovimientosExtra(Auto auto){
-       auto.aplicarMovs(3); 
+       auto.aplicarMovs(3);
     }
 
     @Override

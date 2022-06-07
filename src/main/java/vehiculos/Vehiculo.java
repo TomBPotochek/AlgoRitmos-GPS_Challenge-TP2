@@ -26,9 +26,12 @@ public abstract class Vehiculo {
         //     costeDeMovimiento = mapa.moverVehiculo(this.posicion.calcularPosicion(direccion), this);
         // }catch(ErrorMovimientoInvalido){
         //     return;
-        //     //en un futuro puede poner otra cosa
+        //     //en un futuro puede poner otra cosa   
         // }
         Posicion posSiguiente = this.posicion.calcularPosicion(direccion);
+        if((mapa.verificarPosicionValida(posSiguiente) == false)){
+            return;
+        }
         Casillero c = mapa.obetenerCasilla(posSiguiente);
         // costeDeMovimiento = c.calcularCostoDeMovimientos(this);
 
