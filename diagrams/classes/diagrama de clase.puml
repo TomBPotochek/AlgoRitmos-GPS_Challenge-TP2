@@ -1,0 +1,49 @@
+@startuml
+'https://plantuml.com/class-diagram
+abstract class Vehiculo
+
+class CuatroPorCuatro{}
+class Moto{}
+class Auto{}
+class Posicion{
+    fila : int
+    columna : int
+    void actualizarPosicion(String direccion)
+    Posicion calcularPosicion(String direccion)
+}
+
+interface Casillero{
+    void aplicarMovimientosExtra(Vehiculo vehiculo)
+}
+class Mapa{
+    tablero : Casillero
+    dimension : int
+    asignarCasillero(Casillero casillero, Posicion pos)
+    Casillero obetenerCasilla(Posicion posicion)
+}
+
+class Pozo implements Casillero
+class SinObstaculo implements Casillero
+
+class MovFactory{
+    {static}Movimiento MovimientoConstruir(String direccion)
+}
+
+interface Movimiento{}
+class MovArriba implements Movimiento{}
+class MovAbajo implements Movimiento{}
+class MovDerecha implements Movimiento{}
+class MovIzquierda implements Movimiento{}
+
+Mapa "1" *-- "*" Casillero
+Moto --|> Vehiculo
+Auto --|> Vehiculo
+CuatroPorCuatro --|> Vehiculo
+Vehiculo ..> Mapa
+Vehiculo *--Posicion
+
+MovFactory ..> Movimiento
+
+Posicion "utiliza"..> MovFactory
+
+@enduml
