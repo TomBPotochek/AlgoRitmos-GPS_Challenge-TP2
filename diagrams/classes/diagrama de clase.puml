@@ -1,10 +1,20 @@
 @startuml
-'https://plantuml.com/class-diagram
-abstract class Vehiculo
-
-class CuatroPorCuatro{}
-class Moto{}
-class Auto{}
+'https://plantuml.com/class-diagram'
+abstract class Vehiculo{
+    {abstract} void atravesarCasilla(Casillero c)
+    void mover(String direccion, Mapa mapa)
+    void aplicarMovs(int penalizacion)
+}
+class CuatroPorCuatro{
+     atravesarCasilla(Casillero c)
+     void aplicarMovsPozo(int penalizacion)
+}
+class Moto{
+     void atravesarCasilla(Casillero c) {
+}
+class Auto{
+void atravesarCasilla(Casillero c)
+}
 class Posicion{
     fila : int
     columna : int
@@ -22,27 +32,50 @@ class Mapa{
     Casillero obetenerCasilla(Posicion posicion)
 }
 
-class Pozo implements Casillero
-class SinObstaculo implements Casillero
+class Pozo implements Casillero{
+    void aplicarMovimientosExtra(Vehiculo vehiculo))
+}
+class SinObstaculo implements Casillero{
+    void aplicarMovimientosExtra((Vehiculo vehiculo)
+}
 
 class MovFactory{
     {static}Movimiento MovimientoConstruir(String direccion)
 }
 
-interface Movimiento{}
-class MovArriba implements Movimiento{}
-class MovAbajo implements Movimiento{}
-class MovDerecha implements Movimiento{}
-class MovIzquierda implements Movimiento{}
+interface Movimiento{
+    int moverFila(int columna)
+    int moverColumna(int fila)
+}
+class MovArriba implements Movimiento{
+    int : cantMovimientos
+    int moverColumna(int columna)
+    int moverFila(int columna)
+}
+class MovAbajo implements Movimiento{
+    int : cantMovimientos
+    int moverColumna(int columna)
+    int moverFila(int columna)
+}
+class MovDerecha implements Movimiento{
+    int : cantMovimientos
+    int moverColumna(int columna)
+    int moverFila(int columna)
+}
+class MovIzquierda implements Movimiento{
+    int : cantMovimientos
+    int moverColumna(int columna)
+    int moverFila(int columna)
+}
 
-Mapa "1" *-- "*" Casillero
+Mapa *-- "*" Casillero
 Moto --|> Vehiculo
 Auto --|> Vehiculo
 CuatroPorCuatro --|> Vehiculo
 Vehiculo ..> Mapa
 Vehiculo *--Posicion
 
-MovFactory ..> Movimiento
+MovFactory "crea"..> Movimiento
 
 Posicion "utiliza"..> MovFactory
 
