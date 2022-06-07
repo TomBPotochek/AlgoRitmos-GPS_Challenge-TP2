@@ -5,16 +5,14 @@ import casillero.Mapa;
 import movimientos.Posicion;
 import vehiculos.Vehiculo;
 
-public class Moto extends Vehiculo {
+public class Auto extends Vehiculo {
 
-    public Moto(int fila, int columna){
+    public Auto(int fila, int columna){
         super(fila, columna);
     }
 
     @Override
-    void atravesarCasilla(Casillero c) {
+    public void atravesarCasilla(Casillero c){
         c.aplicarMovimientosExtra(this);
     }
-
-    
 }
