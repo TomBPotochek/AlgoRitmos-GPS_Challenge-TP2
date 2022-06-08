@@ -24,12 +24,14 @@ public abstract class Vehiculo {
         }
         Casillero c = mapa.obetenerCasilla(posSiguiente);
 
-        int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
+        //int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
+        try {
+            this.atravesarCasilla(c); //esto deberia lanzar excepcion
+                                      //si impide al vehiculo moverse
+            this.posicion.actualizarPosicion(direccion);
+            } catch (RuntimeException e) { }
+                                    
         this.cantidadDeMovimientos +=  1;//1 movimiento + los movs extra penalizados
-        this.atravesarCasilla(c); //esto deberia lanzar excepcion
-                                //si impide al vehiculo moverse
-        
-        this.posicion.actualizarPosicion(direccion);
     }
 
 
