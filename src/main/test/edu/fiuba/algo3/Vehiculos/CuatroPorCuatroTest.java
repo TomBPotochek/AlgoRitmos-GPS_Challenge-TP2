@@ -77,8 +77,6 @@ public class CuatroPorCuatroTest {
         una4x4.mover("Abajo", mapa);
         Posicion posicionFinal = new Posicion(1,1);
 		
-		System.out.println("Cantmov");
-		System.out.println(una4x4.getCantidadMovimientos());
         assertEquals(una4x4.getCantidadMovimientos(), 1);
         assertEquals(una4x4.getPosicion(), posicionFinal);
     }
