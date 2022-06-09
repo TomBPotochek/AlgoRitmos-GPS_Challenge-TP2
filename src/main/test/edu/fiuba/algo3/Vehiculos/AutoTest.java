@@ -45,10 +45,10 @@ public class AutoTest {
         Auto auto = new Auto(1, 1);
         Mapa mapa = new Mapa(3);
         
-        Posicion posicionFinal = new Posicion(1,2);
+        Posicion posicionPiquete = new Posicion(1,2);
         Casillero piquete = new Piquete();
 
-        mapa.asignarCasillero(piquete, posicionFinal);
+        mapa.asignarCasillero(piquete, posicionPiquete);
 
         auto.mover("Derecha", mapa);
 
