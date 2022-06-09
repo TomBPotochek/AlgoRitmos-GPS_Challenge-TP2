@@ -10,12 +10,11 @@ public class Piquete implements Casillero{
 
     @Override
     public void aplicarMovimientosExtra(Auto auto){
-    //    return;
         throw new RuntimeException("piquete impide auto");
     }
 
     @Override
     public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro){
-        return;
+        throw new RuntimeException("piquete impide 4x4");
     }
 }

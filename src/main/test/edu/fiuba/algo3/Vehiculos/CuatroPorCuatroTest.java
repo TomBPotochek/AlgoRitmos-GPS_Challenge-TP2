@@ -63,4 +63,23 @@ public class CuatroPorCuatroTest {
         assertEquals(cuatrox4.getCantidadMovimientos(), 5);
         //5 = 2 movs + 1 mov + 2 mov de penalizacion
     }
+
+	@Test
+    public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
+        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+        Mapa mapa = new Mapa(3);
+        
+        Posicion posicionPiquete = new Posicion(2,1);
+        Casillero piquete = new Piquete();
+		
+        mapa.asignarCasillero(piquete, posicionPiquete);
+		
+        una4x4.mover("Abajo", mapa);
+        Posicion posicionFinal = new Posicion(1,1);
+		
+		System.out.println("Cantmov");
+		System.out.println(una4x4.getCantidadMovimientos());
+        assertEquals(una4x4.getCantidadMovimientos(), 1);
+        assertEquals(una4x4.getPosicion(), posicionFinal);
+    }
 }

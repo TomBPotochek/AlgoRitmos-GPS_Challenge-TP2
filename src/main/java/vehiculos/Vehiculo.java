@@ -10,7 +10,7 @@ public abstract class Vehiculo {
     protected int cantidadDeMovimientos;
 
     public Vehiculo(int fila, int columna){
-        this.posicion = new Posicion(fila,columna);
+        this.posicion = new Posicion(fila, columna);
         this.cantidadDeMovimientos = 0;
     }
     
@@ -26,12 +26,11 @@ public abstract class Vehiculo {
 
         //int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
         try {
-            this.atravesarCasilla(c); //esto deberia lanzar excepcion
-                                      //si impide al vehiculo moverse
+            this.atravesarCasilla(c); //esto deberia lanzar excepcion si impide al vehiculo moverse
             this.posicion.actualizarPosicion(direccion);
-            } catch (RuntimeException e) { }
+        } catch (RuntimeException e) { }
                                     
-        this.cantidadDeMovimientos +=  1;//1 movimiento + los movs extra penalizados
+        this.cantidadDeMovimientos += 1; //1 movimiento + los movs extra penalizados
     }
 
 
