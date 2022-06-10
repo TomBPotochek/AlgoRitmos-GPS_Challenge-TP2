@@ -29,7 +29,6 @@ public class Posicion {
     
     public void actualizarPosicion(String direccion) {
         Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
-        //tenemos q cambiar lo de cantidad de movimientos en movfactory
         this.col = movimiento.moverColumna(this.col);
         this.fil = movimiento.moverFila(this.fil);
     }

@@ -17,14 +17,16 @@ public abstract class Vehiculo {
 
     abstract void atravesarCasilla(Casillero c);
 
-    public void mover(String direccion, Mapa mapa){
+    public void mover(String direccion){
+        Mapa mapa = Mapa.getMapa(0,0);
         Posicion posSiguiente = this.posicion.calcularPosicion(direccion);
-        if((mapa.verificarPosicionValida(posSiguiente) == false)){
+        if(!mapa.verificarPosicionValida(posSiguiente)){
             return;
         }
+
         Casillero c = mapa.obetenerCasilla(posSiguiente);
 
-        //int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
+        int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
         try {
             this.atravesarCasilla(c); //esto deberia lanzar excepcion si impide al vehiculo moverse
             this.posicion.actualizarPosicion(direccion);

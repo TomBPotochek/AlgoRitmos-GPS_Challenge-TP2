@@ -11,15 +11,15 @@ public class MotoTest {
     @Test
     public void testMotoPuedeMoverseSinObstaculos(){
         Moto moto = new Moto(1, 1);
-        Mapa mapa = new Mapa(3);
-        
+        //Mapa mapa = new Mapa(3);
+        Mapa mapa = Mapa.getMapa(3,3);
         Posicion posicionFinal = new Posicion(1,2);
         Casillero c = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
         mapa.asignarCasillero(c, posicionFinal);
 
-        moto.mover("Derecha", mapa);
+        moto.mover("Derecha");
         
         assertEquals(moto.getPosicion(), posicionFinal);
     }
@@ -28,14 +28,14 @@ public class MotoTest {
     @Test
     public void testMotoAtraviezaPozoEsPenalizadoCon3Movimientos(){
         Moto moto = new Moto(1, 1);
-        Mapa mapa = new Mapa(3);
-        
+        //Mapa mapa = new Mapa(3);
+        Mapa mapa = Mapa.getMapa(3,3);
         Posicion posicionFinal = new Posicion(1,2);
         Casillero pozo = new Pozo();
 
         mapa.asignarCasillero(pozo, posicionFinal);
 
-        moto.mover("Derecha", mapa);
+        moto.mover("Derecha");
 
         assertEquals(moto.getCantidadMovimientos(), 4);
     }
@@ -43,14 +43,14 @@ public class MotoTest {
     @Test
     public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
         Moto moto = new Moto(1, 1);
-        Mapa mapa = new Mapa(3);
-        
+        //Mapa mapa = new Mapa(3);
+        Mapa mapa = Mapa.getMapa(3,3);
         Posicion posicionFinal = new Posicion(1,2);
         Casillero piquete = new Piquete();
 
         mapa.asignarCasillero(piquete, posicionFinal);
 
-        moto.mover("Derecha", mapa);
+        moto.mover("Derecha");
 
         assertEquals(moto.getCantidadMovimientos(), 3);
     }
