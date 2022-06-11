@@ -10,14 +10,14 @@ import movimientos.Posicion;
 public class CuatroPorCuatroTest {
     @Test
     public void test4x4PuedeMoverseSinObstaculos(){
-        CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero c = new SinObstaculo();
+        Casillero casillero = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
-        mapa.asignarCasillero(c, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         cuatrox4.mover("Derecha", mapa);
         
@@ -26,7 +26,7 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void test4x4AtraviezaPozo2VecesNoEsPenalizado(){
-        CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
         Mapa mapa = new Mapa(5);
         
         Posicion posicion1 = new Posicion(1,2);
@@ -45,7 +45,7 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void test4x4AtraviezaPozo3VecesSePenalizaCon2Movimientos(){
-        CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
         Mapa mapa = new Mapa(5);
         
         Posicion posicion1 = new Posicion(1,2);
@@ -66,7 +66,7 @@ public class CuatroPorCuatroTest {
 
 	@Test
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
-        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+        Vehiculo una4x4 = new CuatroPorCuatro(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionPiquete = new Posicion(2,1);

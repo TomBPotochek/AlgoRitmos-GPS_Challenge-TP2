@@ -10,14 +10,14 @@ import movimientos.Posicion;
 public class AutoTest {
     @Test
     public void testAutoPuedeMoverseSinObstaculos(){
-        Auto auto = new Auto(1, 1);
+        Vehiculo auto = new Auto(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero c = new SinObstaculo();
+        Casillero casillero = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
-        mapa.asignarCasillero(c, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         auto.mover("Derecha", mapa);
         
@@ -27,7 +27,7 @@ public class AutoTest {
 
     @Test
     public void testAutoAtraviezaPozoEsPenalizadoCon3Movimientos(){
-        Auto auto = new Auto(1, 1);
+        Vehiculo auto = new Auto(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
@@ -42,7 +42,7 @@ public class AutoTest {
 
     @Test
     public void testAutoQuiereAtravezarPiqueteYSeQuedaEnLaMismaPosicion(){
-        Auto auto = new Auto(1, 1);
+        Vehiculo auto = new Auto(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionPiquete = new Posicion(1,2);

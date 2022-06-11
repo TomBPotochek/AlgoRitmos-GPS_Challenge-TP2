@@ -10,14 +10,14 @@ import movimientos.Posicion;
 public class MotoTest {
     @Test
     public void testMotoPuedeMoverseSinObstaculos(){
-        Moto moto = new Moto(1, 1);
+        Vehiculo moto = new Moto(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero c = new SinObstaculo();
+        Casillero casillero = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
-        mapa.asignarCasillero(c, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         moto.mover("Derecha", mapa);
         
@@ -27,7 +27,7 @@ public class MotoTest {
 
     @Test
     public void testMotoAtraviezaPozoEsPenalizadoCon3Movimientos(){
-        Moto moto = new Moto(1, 1);
+        Vehiculo moto = new Moto(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
@@ -42,7 +42,7 @@ public class MotoTest {
 
     @Test
     public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
-        Moto moto = new Moto(1, 1);
+        Vehiculo moto = new Moto(1, 1);
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
