@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Vehiculos;
 
 import modelo.casillero.*;
 import modelo.vehiculos.Moto;
+import modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
