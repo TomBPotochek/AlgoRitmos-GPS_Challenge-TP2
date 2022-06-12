@@ -1,6 +1,5 @@
-package casillero;
-import movimientos.Posicion;
-import vehiculos.Vehiculo;
+package modelo.casillero;
+import modelo.movimientos.Posicion;
 
 import java.util.HashMap;
 
@@ -8,15 +7,15 @@ public class Mapa {
     private int alto; //asumimos q el tablero es cuadrado
     private int ancho;
     private static Mapa unMapa;
-    private Mapa(int ancho, int largo){
-        this.ancho = ancho;
-        this.alto = largo;
+    private Mapa(){
+        this.ancho = 1;
+        this.alto = 1;
     }
     private HashMap<Posicion,Casillero> tablero = new HashMap<Posicion, Casillero>();
 
-    public static Mapa getMapa(int ancho, int alto){
+    public static Mapa getMapa(){
         if(unMapa == null) {
-            unMapa = new Mapa(ancho, alto);
+            unMapa = new Mapa();
         }
         return unMapa;
     }
@@ -36,7 +35,7 @@ public class Mapa {
     public void setAncho(int ancho) {
         this.ancho = ancho;
     }
-    public void setLargo(int largo){
-        this.alto = largo;
+    public void setAlto(int alto){
+        this.alto = alto;
     }
 }
