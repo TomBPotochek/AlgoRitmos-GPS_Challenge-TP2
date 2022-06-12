@@ -12,16 +12,17 @@ import modelo.movimientos.Posicion;
 public class CuatroPorCuatroTest {
     @Test
     public void test4x4PuedeMoverseSinObstaculos(){
-        CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(3);
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(1);
+
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero c = new SinObstaculo();
+        Casillero casillero = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
-        mapa.asignarCasillero(c, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         cuatrox4.mover("Derecha");
         
@@ -30,12 +31,12 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void test4x4AtraviezaPozo2VecesNoEsPenalizado(){
-        CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(5);
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
         mapa.setAlto(1);
-
+        
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
         Casillero pozo = new Pozo();
@@ -52,7 +53,8 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void test4x4AtraviezaPozo3VecesSePenalizaCon2Movimientos(){
-        CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
+
+        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(5);
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
@@ -76,11 +78,13 @@ public class CuatroPorCuatroTest {
 
 	@Test
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
-        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
+
+        Vehiculo una4x4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(3);
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
+ 
         Posicion posicionPiquete = new Posicion(2,1);
         Casillero piquete = new Piquete();
 		
@@ -89,8 +93,6 @@ public class CuatroPorCuatroTest {
         una4x4.mover("Abajo");
         Posicion posicionFinal = new Posicion(1,1);
 		
-		System.out.println("Cantmov");
-		System.out.println(una4x4.getCantidadMovimientos());
         assertEquals(una4x4.getCantidadMovimientos(), 1);
         assertEquals(una4x4.getPosicion(), posicionFinal);
     }
