@@ -2,7 +2,6 @@ package edu.fiuba.algo3.Vehiculos;
 
 import modelo.casillero.*;
 import modelo.vehiculos.CuatroPorCuatro;
-import modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -77,7 +76,7 @@ public class CuatroPorCuatroTest {
 
 	@Test
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
-        Vehiculo una4x4 = new CuatroPorCuatro(1, 1);
+        CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(3);
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
