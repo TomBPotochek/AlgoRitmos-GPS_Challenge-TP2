@@ -1,8 +1,8 @@
-package vehiculos;
+package modelo.vehiculos;
 
-import casillero.Casillero;
-import casillero.Mapa;
-import movimientos.Posicion;
+import modelo.casillero.Casillero;
+import modelo.casillero.Mapa;
+import modelo.movimientos.Posicion;
 
 public abstract class Vehiculo {
 
@@ -18,7 +18,7 @@ public abstract class Vehiculo {
     abstract void atravesarCasilla(Casillero c);
 
     public void mover(String direccion){
-        Mapa mapa = Mapa.getMapa(0,0);
+        Mapa mapa = Mapa.getMapa();
         Posicion posSiguiente = this.posicion.calcularPosicion(direccion);
         if(!mapa.verificarPosicionValida(posSiguiente)){
             return;

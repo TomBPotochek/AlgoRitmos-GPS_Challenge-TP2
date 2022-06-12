@@ -1,18 +1,22 @@
 package edu.fiuba.algo3.Vehiculos;
 
+import modelo.casillero.*;
+import modelo.vehiculos.CuatroPorCuatro;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import vehiculos.*;
-import casillero.*;
-import movimientos.Posicion;
+//import vehiculos.*;
+//import casillero.*;
+import modelo.movimientos.Posicion;
 
 public class CuatroPorCuatroTest {
     @Test
     public void test4x4PuedeMoverseSinObstaculos(){
         CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(3);
-        Mapa mapa = Mapa.getMapa(3,1);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(1);
         Posicion posicionFinal = new Posicion(1,2);
         Casillero c = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
@@ -28,7 +32,10 @@ public class CuatroPorCuatroTest {
     public void test4x4AtraviezaPozo2VecesNoEsPenalizado(){
         CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(5);
-        Mapa mapa = Mapa.getMapa(5,1);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(5);
+        mapa.setAlto(1);
+
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
         Casillero pozo = new Pozo();
@@ -47,7 +54,10 @@ public class CuatroPorCuatroTest {
     public void test4x4AtraviezaPozo3VecesSePenalizaCon2Movimientos(){
         CuatroPorCuatro cuatrox4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(5);
-        Mapa mapa = Mapa.getMapa(5,5);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(5);
+        mapa.setAlto(5);
+
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
         Posicion posicion3 = new Posicion(1,4);
@@ -68,7 +78,9 @@ public class CuatroPorCuatroTest {
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
         CuatroPorCuatro una4x4 = new CuatroPorCuatro(1, 1);
         //Mapa mapa = new Mapa(3);
-        Mapa mapa = Mapa.getMapa(3,3);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
         Posicion posicionPiquete = new Posicion(2,1);
         Casillero piquete = new Piquete();
 		

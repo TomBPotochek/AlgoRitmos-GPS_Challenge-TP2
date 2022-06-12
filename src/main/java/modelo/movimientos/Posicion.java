@@ -1,6 +1,4 @@
-package movimientos;
-import movimientos.MovFactory;
-import movimientos.Movimiento;
+package modelo.movimientos;
 
 // Para el hash
 import java.util.Objects;

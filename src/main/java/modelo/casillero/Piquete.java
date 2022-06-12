@@ -1,6 +1,9 @@
-package casillero;
+package modelo.casillero;
 
-import vehiculos.*;
+import modelo.vehiculos.Auto;
+import modelo.vehiculos.CuatroPorCuatro;
+import modelo.vehiculos.Moto;
+//import vehiculos.*;
 
 public class Piquete implements Casillero{
     @Override

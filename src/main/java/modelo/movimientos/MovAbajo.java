@@ -1,4 +1,4 @@
-package movimientos;
+package modelo.movimientos;
 
 public class MovAbajo implements Movimiento {
     private int cantMovimientos;

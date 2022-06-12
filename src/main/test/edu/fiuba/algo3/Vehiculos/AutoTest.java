@@ -1,20 +1,22 @@
 package edu.fiuba.algo3.Vehiculos;
 
+import modelo.casillero.*;
+import modelo.vehiculos.Auto;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import vehiculos.*;
-import casillero.*;
-import movimientos.Posicion;
-
-import java.util.Map;
+//import vehiculos.*;
+//import casillero.*;
+import modelo.movimientos.Posicion;
 
 public class AutoTest {
     @Test
     public void testAutoPuedeMoverseSinObstaculos(){
         Auto auto = new Auto(1, 1);
         //Mapa mapa = new Mapa(3);
-        Mapa mapa = Mapa.getMapa(3,3);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
         Posicion posicionFinal = new Posicion(1,2);
         Casillero c = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
@@ -31,7 +33,9 @@ public class AutoTest {
     public void testAutoAtraviezaPozoEsPenalizadoCon3Movimientos(){
         Auto auto = new Auto(1, 1);
         //Mapa mapa = new Mapa(3);
-        Mapa mapa = Mapa.getMapa(3,3);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
         Posicion posicionFinal = new Posicion(1,2);
         Casillero pozo = new Pozo();
 
@@ -46,7 +50,9 @@ public class AutoTest {
     public void testAutoQuiereAtravezarPiqueteYSeQuedaEnLaMismaPosicion(){
         Auto auto = new Auto(1, 1);
         //Mapa mapa = new Mapa(3);
-        Mapa mapa = Mapa.getMapa(3,3);
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
 
         Posicion posicionPiquete = new Posicion(1,2);
         Casillero piquete = new Piquete();
