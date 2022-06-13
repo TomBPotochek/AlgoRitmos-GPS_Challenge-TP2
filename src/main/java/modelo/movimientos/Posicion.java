@@ -33,19 +33,20 @@ public class Posicion {
 
     public Posicion calcularPosicion(String direccion) {
         Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
-        return (new Posicion(movimiento.moverFila(this.fil),
-                             movimiento.moverColumna(this.col))
-                );
+        return new Posicion(movimiento.moverFila(this.fil), movimiento.moverColumna(this.col));
     }
 
     @Override
     public boolean equals(Object objeto){
-        if (this == objeto)
+        if (this == objeto) {
     		return true;
-    	if (objeto == null || (this.getClass() != objeto.getClass()))
+		}
+
+    	if (objeto == null || this.getClass() != objeto.getClass()) {
     		return false;
-        Posicion p = (Posicion) objeto;
-        return (this.fil == p.getFila()) && (this.col == p.getColumna());
+		}
+		Posicion p = (Posicion) objeto;
+        return this.fil == p.getFila() && this.col == p.getColumna();
     }
 
     @Override
