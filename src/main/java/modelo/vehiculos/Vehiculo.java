@@ -48,4 +48,11 @@ public abstract class Vehiculo {
         this.cantidadDeMovimientos += penalizacion;
     }
 
+	public void aplicarPorcentajeMovs(int porcentaje) {
+		/*
+		 * Aplica una reduccion (porcentaje negativo) o aumento (porcentaje positivo)
+		 * porcentual de la cantidad de movimientos. 
+		 */
+		this.cantidadDeMovimientos *= 1 + (porcentaje / 100); 
+	}
 }
