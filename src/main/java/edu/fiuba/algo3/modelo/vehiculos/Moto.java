@@ -1,6 +1,6 @@
-package modelo.vehiculos;
+package edu.fiuba.algo3.modelo.vehiculos;
 
-import modelo.casillero.Casillero;
+import edu.fiuba.algo3.modelo.casillero.Casillero;
 
 public class Moto extends Vehiculo {
 

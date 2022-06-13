@@ -1,7 +1,6 @@
-package modelo.juego;
+package edu.fiuba.algo3.modelo.juego;
 
-import modelo.casillero.Mapa;
-import modelo.vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 
 public class Jugador {
     //podria tener un nombre

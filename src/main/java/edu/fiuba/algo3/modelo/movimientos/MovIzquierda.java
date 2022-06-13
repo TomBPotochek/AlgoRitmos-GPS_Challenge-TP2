@@ -1,4 +1,4 @@
-package modelo.movimientos;
+package edu.fiuba.algo3.modelo.movimientos;
 
 public class MovIzquierda implements Movimiento{
     private int cantMovimientos;

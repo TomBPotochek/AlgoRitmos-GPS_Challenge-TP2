@@ -1,8 +1,8 @@
-package modelo.casillero;
+package edu.fiuba.algo3.modelo.casillero;
 
-import modelo.vehiculos.Auto;
-import modelo.vehiculos.CuatroPorCuatro;
-import modelo.vehiculos.Moto;
+import edu.fiuba.algo3.modelo.vehiculos.Auto;
+import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculos.Moto;
 //import vehiculos.*;
 
 public class Piquete implements Casillero{

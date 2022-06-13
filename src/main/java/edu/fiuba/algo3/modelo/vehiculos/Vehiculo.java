@@ -1,8 +1,8 @@
-package modelo.vehiculos;
+package edu.fiuba.algo3.modelo.vehiculos;
 
-import modelo.casillero.Casillero;
-import modelo.casillero.Mapa;
-import modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.casillero.Casillero;
+import edu.fiuba.algo3.modelo.casillero.Mapa;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public abstract class Vehiculo {
 

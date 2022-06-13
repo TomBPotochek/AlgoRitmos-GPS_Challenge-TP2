@@ -1,12 +1,12 @@
 package edu.fiuba.algo3.Vehiculos;
 
-import modelo.casillero.*;
-import modelo.vehiculos.CuatroPorCuatro;
-import modelo.vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.casillero.*;
+import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class CuatroPorCuatroTest {
     @Test

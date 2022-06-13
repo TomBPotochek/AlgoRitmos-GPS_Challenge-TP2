@@ -1,5 +1,5 @@
-package modelo.casillero;
-import modelo.movimientos.Posicion;
+package edu.fiuba.algo3.modelo.casillero;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 import java.util.HashMap;
 

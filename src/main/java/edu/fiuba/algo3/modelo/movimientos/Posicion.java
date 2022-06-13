@@ -1,4 +1,4 @@
-package modelo.movimientos;
+package edu.fiuba.algo3.modelo.movimientos;
 
 // Para el hash
 import java.util.Objects;
