@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.casillero;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
-//import vehiculos.*;
+import edu.fiuba.algo3.modelo.excepciones.*;
 
 public class Piquete implements Casillero{
     @Override
