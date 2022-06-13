@@ -2,6 +2,7 @@ package vehiculos;
 
 import casillero.Casillero;
 import casillero.Mapa;
+import excepciones.NoPuedeAtravesarObstaculoError;
 import movimientos.Posicion;
 
 public abstract class Vehiculo {
@@ -28,7 +29,7 @@ public abstract class Vehiculo {
         try {
             this.atravesarCasilla(c); //esto deberia lanzar excepcion si impide al vehiculo moverse
             this.posicion.actualizarPosicion(direccion);
-        } catch (RuntimeException e) { }
+        } catch (NoPuedeAtravesarObstaculoError e) { }
                                     
         this.cantidadDeMovimientos += 1; //1 movimiento + los movs extra penalizados
     }
