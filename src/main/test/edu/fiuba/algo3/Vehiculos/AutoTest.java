@@ -14,15 +14,15 @@ public class AutoTest {
     @Test
     public void testAutoPuedeMoverseSinObstaculos(){
         Vehiculo auto = new Auto(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero c = new SinObstaculo();
+        Casillero casilleroVacio = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
 
-        mapa.asignarCasillero(c, posicionFinal);
+        mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
         auto.mover("Derecha");
 
@@ -33,7 +33,7 @@ public class AutoTest {
     @Test
     public void testAutoAtraviezaPozoEsPenalizadoCon3Movimientos(){
         Vehiculo auto = new Auto(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
@@ -50,7 +50,7 @@ public class AutoTest {
     @Test
     public void testAutoQuiereAtravezarPiqueteYSeQuedaEnLaMismaPosicion(){
         Vehiculo auto = new Auto(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);

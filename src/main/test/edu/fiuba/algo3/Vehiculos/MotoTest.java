@@ -15,16 +15,16 @@ public class MotoTest {
     public void testMotoPuedeMoverseSinObstaculos(){
 
         Vehiculo moto = new Moto(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
       
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casillero = new SinObstaculo();
+        Casillero casilleroVacio = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
-        mapa.asignarCasillero(casillero, posicionFinal);
+        mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
         moto.mover("Derecha");
         
@@ -36,7 +36,7 @@ public class MotoTest {
     public void testMotoAtraviezaPozoEsPenalizadoCon3Movimientos(){
 
         Vehiculo moto = new Moto(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
@@ -55,7 +55,7 @@ public class MotoTest {
     public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
 
         Vehiculo moto = new Moto(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);

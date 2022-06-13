@@ -12,15 +12,15 @@ public class CuatroPorCuatroTest {
     @Test
     public void test4x4PuedeMoverseSinObstaculos(){
         Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(1);
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero c = new SinObstaculo();
+        Casillero casilleroVacio = new SinObstaculo();
         // interfaz antes de obstaculo q sea geneerica para items
         
-        mapa.asignarCasillero(c, posicionFinal);
+        mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
         cuatrox4.mover("Derecha");
         
@@ -30,7 +30,7 @@ public class CuatroPorCuatroTest {
     @Test
     public void test4x4AtraviezaPozo2VecesNoEsPenalizado(){
         Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
-        //Mapa mapa = new Mapa(5);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
         mapa.setAlto(1);
@@ -52,7 +52,7 @@ public class CuatroPorCuatroTest {
     @Test
     public void test4x4AtraviezaPozo3VecesSePenalizaCon2Movimientos(){
         Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
-        //Mapa mapa = new Mapa(5);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
         mapa.setAlto(5);
@@ -76,7 +76,7 @@ public class CuatroPorCuatroTest {
 	@Test
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
         Vehiculo una4x4 = new CuatroPorCuatro(1, 1);
-        //Mapa mapa = new Mapa(3);
+
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
