@@ -1,5 +1,7 @@
 package casillero;
 
+import excepciones.AutoNoAtraviezaPiqueteError;
+import excepciones.CuatroPorCuatroNoAtraviezaPiqueteError;
 import vehiculos.*;
 
 public class Piquete implements Casillero{
@@ -10,11 +12,11 @@ public class Piquete implements Casillero{
 
     @Override
     public void aplicarMovimientosExtra(Auto auto){
-        throw new RuntimeException("piquete impide auto");
+		throw new AutoNoAtraviezaPiqueteError();
     }
-
+	
     @Override
     public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro){
-        throw new RuntimeException("piquete impide 4x4");
-    }
+		throw new CuatroPorCuatroNoAtraviezaPiqueteError();
+	}
 }
