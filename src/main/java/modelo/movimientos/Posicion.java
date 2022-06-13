@@ -1,6 +1,4 @@
-package movimientos;
-import movimientos.MovFactory;
-import movimientos.Movimiento;
+package modelo.movimientos;
 
 // Para el hash
 import java.util.Objects;
@@ -29,26 +27,26 @@ public class Posicion {
     
     public void actualizarPosicion(String direccion) {
         Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
-        //tenemos q cambiar lo de cantidad de movimientos en movfactory
         this.col = movimiento.moverColumna(this.col);
         this.fil = movimiento.moverFila(this.fil);
     }
 
     public Posicion calcularPosicion(String direccion) {
         Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
-        return (new Posicion(movimiento.moverFila(this.fil),
-                             movimiento.moverColumna(this.col))
-                );
+        return new Posicion(movimiento.moverFila(this.fil), movimiento.moverColumna(this.col));
     }
 
     @Override
     public boolean equals(Object objeto){
-        if (this == objeto)
+        if (this == objeto) {
     		return true;
-    	if (objeto == null || (this.getClass() != objeto.getClass()))
+		}
+
+    	if (objeto == null || this.getClass() != objeto.getClass()) {
     		return false;
-        Posicion p = (Posicion) objeto;
-        return (this.fil == p.getFila()) && (this.col == p.getColumna());
+		}
+		Posicion p = (Posicion) objeto;
+        return this.fil == p.getFila() && this.col == p.getColumna();
     }
 
     @Override

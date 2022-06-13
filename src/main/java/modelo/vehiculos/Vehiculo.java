@@ -1,8 +1,8 @@
-package vehiculos;
+package modelo.vehiculos;
 
-import casillero.Casillero;
-import casillero.Mapa;
-import movimientos.Posicion;
+import modelo.casillero.Casillero;
+import modelo.casillero.Mapa;
+import modelo.movimientos.Posicion;
 
 public abstract class Vehiculo {
 
@@ -17,16 +17,18 @@ public abstract class Vehiculo {
 
     abstract void atravesarCasilla(Casillero c);
 
-    public void mover(String direccion, Mapa mapa){
+    public void mover(String direccion){
+        Mapa mapa = Mapa.getMapa();
         Posicion posSiguiente = this.posicion.calcularPosicion(direccion);
-        if((mapa.verificarPosicionValida(posSiguiente) == false)){
+        if(!mapa.verificarPosicionValida(posSiguiente)){
             return;
         }
-        Casillero c = mapa.obetenerCasilla(posSiguiente);
 
-        //int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
+        Casillero casilleroObtenido = mapa.obetenerCasilla(posSiguiente);
+
+        int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
         try {
-            this.atravesarCasilla(c); //esto deberia lanzar excepcion si impide al vehiculo moverse
+            this.atravesarCasilla(casilleroObtenido); //esto deberia lanzar excepcion si impide al vehiculo moverse
             this.posicion.actualizarPosicion(direccion);
         } catch (RuntimeException e) { }
                                     

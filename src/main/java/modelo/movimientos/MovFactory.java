@@ -1,4 +1,4 @@
-package movimientos;
+package modelo.movimientos;
 
 public class MovFactory{
 
@@ -13,7 +13,7 @@ public class MovFactory{
             case "Izquierda":
                 return new MovIzquierda();
             default:
-                return null;
+                return null;//acá podría lanzar una excepción
         }
     }
 }

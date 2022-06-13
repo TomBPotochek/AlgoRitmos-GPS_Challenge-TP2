@@ -1,8 +1,11 @@
-package casillero;
+package modelo.casillero;
 
 import excepciones.AutoNoAtraviezaPiqueteError;
 import excepciones.CuatroPorCuatroNoAtraviezaPiqueteError;
-import vehiculos.*;
+import modelo.vehiculos.Auto;
+import modelo.vehiculos.CuatroPorCuatro;
+import modelo.vehiculos.Moto;
+
 
 public class Piquete implements Casillero{
     @Override

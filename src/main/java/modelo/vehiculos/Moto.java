@@ -1,9 +1,6 @@
-package vehiculos;
+package modelo.vehiculos;
 
-import casillero.Casillero;
-import casillero.Mapa;
-import movimientos.Posicion;
-import vehiculos.Vehiculo;
+import modelo.casillero.Casillero;
 
 public class Moto extends Vehiculo {
 
