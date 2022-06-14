@@ -50,10 +50,10 @@ public class CuatroPorCuatroTest {
         mapa.asignarCasillero(casillero, posicion2);
 
         conductor.moverDerecha();
-        assertEquals(conductor.cantidadDeMovimientosEs(1));
+        asserTrue(conductor.cantidadDeMovimientosEs(1));
         
         conductor.moverDerecha();
-        assertEquals(conductor.cantidadDeMovimientosEs(2));
+        asserTrue(conductor.cantidadDeMovimientosEs(2));
     }
 
     @Test
