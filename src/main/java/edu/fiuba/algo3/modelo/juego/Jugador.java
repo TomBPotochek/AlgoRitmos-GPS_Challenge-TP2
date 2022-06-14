@@ -18,6 +18,9 @@ public class Jugador {
 		return this.vehiculo.estaEnPosicion(unaPosicion);
 	}
 
+    //TODO: metodo para chequar si cambio el vehiculo
+    // public boolean vehiculoEsDeTipo()
+
 	public boolean cantidadDeMovimientosEs(int unEntero) {
 		return this.cantidadDeMovimientos == unEntero;
 	}

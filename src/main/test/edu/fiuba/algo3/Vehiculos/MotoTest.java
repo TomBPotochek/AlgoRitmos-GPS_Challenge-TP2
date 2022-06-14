@@ -73,4 +73,67 @@ public class MotoTest {
 
         assertTrue(conductor.cantidadDeMovimientosEs(3));
     }
+
+    @Test
+    public void testMotoAtraviesaSorpresaFavorable(){
+        Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
+
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
+
+        Posicion posicionFinal = new Posicion(1,2);
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new SorpresaFavorable());
+
+        mapa.asignarCasillero(casillero, posicionFinal);
+
+        conductor.moverDerecha();
+
+        assertTrue(conductor.cantidadDeMovimientosEs((int) Math.round(1*0.8)));
+    }
+
+    @Test
+    public void testMotoAtraviesaSorpresaDesfavorable(){
+        Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
+
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
+
+        Posicion posicionFinal = new Posicion(1,2);
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new SorpresaDesfavorable());
+
+        mapa.asignarCasillero(casillero, posicionFinal);
+
+        conductor.moverDerecha();
+
+        assertTrue(conductor.cantidadDeMovimientosEs((int) Math.round(1*1.25)));
+    }
+
+    @Test
+    public void testMotoAtraviesaSorpresaCambiaVehiculo(){
+        Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
+
+        Mapa mapa = Mapa.getMapa();
+        mapa.setAncho(3);
+        mapa.setAlto(3);
+
+        Posicion posicionFinal = new Posicion(1,2);
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new SorpresaCambioVehiculo());
+
+        mapa.asignarCasillero(casillero, posicionFinal);
+
+        conductor.moverDerecha();
+
+       //TODO: assert?????
+    }
 }
