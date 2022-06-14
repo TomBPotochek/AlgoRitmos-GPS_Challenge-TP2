@@ -1,11 +1,14 @@
 package edu.fiuba.algo3.Movimientos;
 
 import org.junit.jupiter.api.Test;
+
+import edu.fiuba.algo3.modelo.casillero.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import vehiculos.*;
-import casillero.*;
-import movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.*;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
+
 
 public class MovimientosTest {
     @Test

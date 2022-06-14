@@ -1,11 +1,13 @@
 package edu.fiuba.algo3.Vehiculos;
 
 import org.junit.jupiter.api.Test;
+
+import edu.fiuba.algo3.modelo.casillero.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import vehiculos.*;
-import casillero.*;
-import movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.*;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class AutoTest {
     @Test
@@ -14,7 +16,7 @@ public class AutoTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casillero = new SinObstaculo();
+        Casillero casillero = new Casillero();
         // interfaz antes de obstaculo q sea geneerica para items
         
         mapa.asignarCasillero(casillero, posicionFinal);
@@ -31,9 +33,10 @@ public class AutoTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         auto.mover("Derecha", mapa);
 
@@ -46,9 +49,11 @@ public class AutoTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionPiquete = new Posicion(1,2);
-        Casillero piquete = new Piquete();
+        Casillero casillero = new Casillero();
 
-        mapa.asignarCasillero(piquete, posicionPiquete);
+        casillero.agregarElemento(new Piquete());
+
+        mapa.asignarCasillero(casillero, posicionPiquete);
 
         auto.mover("Derecha", mapa);
 
