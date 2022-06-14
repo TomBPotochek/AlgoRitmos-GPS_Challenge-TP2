@@ -34,7 +34,7 @@ public class Posicion {
         return new Posicion(movimiento.moverFila(this.fil), movimiento.moverColumna(this.col));
     }
 
-	public boolean estaEnRango(int maxCol, int maxFil) {
+	public boolean fueraDeRango(int maxCol, int maxFil) {
 		return this.fil > maxFil || this.col > maxCol;
 	}
 

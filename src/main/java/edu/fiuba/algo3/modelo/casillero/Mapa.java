@@ -26,7 +26,7 @@ public class Mapa {
     }
 
     public Casillero obetenerCasilla(Posicion posicion) {
-		if (!posicion.estaEnRango(this.ancho, this.alto)) {
+		if (posicion.fueraDeRango(this.ancho, this.alto)) {
 			throw new PosicionInvalidaError();
 		}
         return this.grilla.get(posicion);
