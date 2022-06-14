@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.Vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.*;
+import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,7 @@ public class MotoTest {
     public void testMotoPuedeMoverseSinObstaculos(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -25,8 +27,7 @@ public class MotoTest {
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        moto.mover("Derecha");
-        
+        conductor.moverDerecha();
         assertTrue(moto.estaEnPosicion(posicionFinal));
     }
 
@@ -35,6 +36,7 @@ public class MotoTest {
     public void testMotoAtraviezaPozoEsPenalizadoCon3Movimientos(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -46,15 +48,16 @@ public class MotoTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        moto.mover("Derecha");
+        conductor.moverDerecha();
 
-        assertEquals(moto.getCantidadMovimientos(), 4);
+        assertTrue(conductor.cantidadDeMovimientosEs(4));
     }
 
     @Test
     public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -66,8 +69,8 @@ public class MotoTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        moto.mover("Derecha");
+        conductor.moverDerecha();
 
-        assertEquals(moto.getCantidadMovimientos(), 3);
+        assertTrue(conductor.cantidadDeMovimientosEs(3));
     }
 }

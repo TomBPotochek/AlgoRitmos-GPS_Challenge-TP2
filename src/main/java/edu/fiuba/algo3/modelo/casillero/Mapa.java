@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.casillero;
+import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 import java.util.HashMap;
@@ -19,16 +20,15 @@ public class Mapa {
         }
         return unMapa;
     }
-    public boolean verificarPosicionValida(Posicion pos){
-        return(((pos.getColumna() <= this.ancho) && (pos.getColumna() >= 1)) &&
-        ((pos.getFila() <= this.alto) && (pos.getFila() >= 1)));
-    }
 
-    public void asignarCasillero(Casillero casillero, Posicion pos){
+	public void asignarCasillero(Casillero casillero, Posicion pos){
         this.grilla.put(pos, casillero);
     }
 
     public Casillero obetenerCasilla(Posicion posicion) {
+		if (!posicion.estaEnRango(this.ancho, this.alto)) {
+			throw new PosicionInvalidaError();
+		}
         return this.grilla.get(posicion);
     }
 

@@ -7,48 +7,37 @@ import edu.fiuba.algo3.modelo.casillero.Efecto;
 import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
+import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.movimientos.Movimiento;
 
 public abstract class Vehiculo {
 
     protected Posicion posicion;
-    protected int cantidadDeMovimientos;
 
     public Vehiculo(Posicion posicionDada){
         this.posicion = posicionDada;
-        this.cantidadDeMovimientos = 0;
     }
 
-    public void mover(String direccion){
+    public ArrayList<Efecto> mover(Movimiento movimiento){
         Mapa mapa = Mapa.getMapa();
-        Posicion posSiguiente = this.posicion.calcularPosicion(direccion);
-        if(!mapa.verificarPosicionValida(posSiguiente)){
-            return;
-        }
-        Casillero casillero = mapa.obetenerCasilla(posSiguiente);
+        Posicion posSiguiente = this.posicion.calcularPosicion(movimiento);
+		ArrayList<Efecto> efectos = new ArrayList<Efecto>();
 
         try {
-            ArrayList<Efecto> efectos = casillero.atravesar(this);
-            for (Efecto efecto: efectos){
-                this.cantidadDeMovimientos = efecto.actualizar(this.cantidadDeMovimientos);
-            }
-            this.posicion.actualizarPosicion(direccion);
-        } catch (NoPuedeAtravesarObstaculoError e) { }
+			Casillero casillero = mapa.obetenerCasilla(posSiguiente);
+			efectos = casillero.atravesar(this);
+            this.posicion.actualizarPosicion(movimiento);
+        }
+		catch (NoPuedeAtravesarObstaculoError e) { }
+		catch (PosicionInvalidaError e) { }
               
-        this.cantidadDeMovimientos += 1; //1 movimiento + los movs extra penalizados
+        return efectos; //1 movimiento + los movs extra penalizados
     }
-
-    public int getCantidadMovimientos(){
-        return this.cantidadDeMovimientos;
-    }
-
-    public Posicion getPosicion(){
-        return this.posicion;
-    }
-
-    public abstract Efecto aceptar(ElementoTablero elemento);
 
     public boolean estaEnPosicion(Posicion posicionAComparar){
-        return (this.posicion.equals(posicionAComparar));
+		return this.posicion.equals(posicionAComparar);
     }
+
+	public abstract Efecto aceptar(ElementoTablero elemento);
 }

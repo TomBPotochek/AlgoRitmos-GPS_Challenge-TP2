@@ -25,16 +25,18 @@ public class Posicion {
     //     (posicion1.getFila() == posicion2.getFila()));
     // }
     
-    public void actualizarPosicion(String direccion) {
-        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
+    public void actualizarPosicion(Movimiento movimiento) {
         this.col = movimiento.moverColumna(this.col);
         this.fil = movimiento.moverFila(this.fil);
     }
 
-    public Posicion calcularPosicion(String direccion) {
-        Movimiento movimiento = MovFactory.MovimientoConstruir(direccion);
+    public Posicion calcularPosicion(Movimiento movimiento) {
         return new Posicion(movimiento.moverFila(this.fil), movimiento.moverColumna(this.col));
     }
+
+	public boolean estaEnRango(int maxCol, int maxFil) {
+		return this.fil > maxFil || this.col > maxCol;
+	}
 
     @Override
     public boolean equals(Object objeto){
