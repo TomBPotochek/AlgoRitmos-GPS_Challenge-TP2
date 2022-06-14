@@ -24,17 +24,17 @@ public class Jugador {
 
 	public void moverArriba() {
 		Movimiento movimiento = new MovArriba();
-		this.vehiculo.mover(movimiento);
+		this.mover(movimiento);
 	}
 	
 	public void moverAbajo() {
 		Movimiento movimiento = new MovAbajo();
-		this.vehiculo.mover(movimiento);
+		this.mover(movimiento);
 	}
 
 	public void moverDerecha() {
 		Movimiento movimiento = new MovDerecha();
-		this.vehiculo.mover(movimiento);
+		this.mover(movimiento);
 	}
 
 	public void moverIzquierda() {

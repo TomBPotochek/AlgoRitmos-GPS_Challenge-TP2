@@ -67,7 +67,6 @@ public class AutoTest {
         casillero.agregarElemento(new Piquete());
         mapa.asignarCasillero(casillero, posicionPiquete);
         conductor.moverDerecha();
-		
         assertTrue(conductor.cantidadDeMovimientosEs(1));
         assertTrue(auto.estaEnPosicion(new Posicion(1, 1)));
     }
