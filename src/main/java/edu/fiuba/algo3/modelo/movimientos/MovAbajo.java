@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.movimientos;
 
 public class MovAbajo implements Movimiento {
-    private int cantMovimientos;
+    private final int cantMovimientos;
 
     public MovAbajo(){
         this.cantMovimientos = 1;

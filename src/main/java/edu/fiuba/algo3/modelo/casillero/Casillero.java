@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 
 public class Casillero {
-    private ArrayList<ElementoTablero> elementos = new ArrayList<ElementoTablero>();
+    private final ArrayList<ElementoTablero> elementos = new ArrayList<ElementoTablero>();
 
     public ArrayList<Efecto> atravesar(Vehiculo vehiculo){
         Efecto efecto;
