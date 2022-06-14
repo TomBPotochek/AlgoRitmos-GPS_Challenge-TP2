@@ -16,7 +16,6 @@ public class ControlPolicial implements ElementoTablero {
         return new Efecto(
             (movimientos) ->  movimientos + 0,
             moto);
-        
     }
 
     @Override
