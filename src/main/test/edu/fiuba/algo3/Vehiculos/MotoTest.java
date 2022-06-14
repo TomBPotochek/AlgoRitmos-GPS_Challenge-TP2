@@ -14,7 +14,8 @@ public class MotoTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casillero = new SinObstaculo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new ObstaculoNulo());
         // interfaz antes de obstaculo q sea geneerica para items
         
         mapa.asignarCasillero(casillero, posicionFinal);
@@ -31,9 +32,10 @@ public class MotoTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         moto.mover("Derecha", mapa);
 
@@ -46,9 +48,10 @@ public class MotoTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero piquete = new Piquete();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Piquete());
 
-        mapa.asignarCasillero(piquete, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         moto.mover("Derecha", mapa);
 

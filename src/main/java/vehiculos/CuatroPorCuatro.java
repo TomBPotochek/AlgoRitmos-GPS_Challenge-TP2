@@ -1,6 +1,8 @@
 package vehiculos;
 
 import casillero.Casillero;
+import casillero.Efecto;
+import casillero.ElementoTablero;
 import casillero.Mapa;
 import movimientos.Posicion;
 
@@ -14,15 +16,21 @@ public class CuatroPorCuatro extends Vehiculo {
     }
 
 
-    public void aplicarMovsPozo(int penalizacion){
+    public void pisarPozo(){
         this.cantidadDePozosAtravesados += 1;
-        if ((this.cantidadDePozosAtravesados % 3) == 0) {
-            this.aplicarMovs(penalizacion);
-        }
     }
 
+    public boolean pisoMasDeTresPozos() {
+        return this.cantidadDePozosAtravesados >= 3;
+    }
+
+    // @Override
+    // public void atravesarCasilla(Casillero c){
+    //   c.aplicarMovimientosExtra(this);
+    // }
+
     @Override
-    public void atravesarCasilla(Casillero c){
-      c.aplicarMovimientosExtra(this);
+    public Efecto aceptar(ElementoTablero elemento) {
+        return elemento.interactuar(this);
     }
 }

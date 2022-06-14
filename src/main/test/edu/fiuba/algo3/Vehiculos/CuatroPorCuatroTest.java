@@ -14,7 +14,8 @@ public class CuatroPorCuatroTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casillero = new SinObstaculo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new ObstaculoNulo());
         // interfaz antes de obstaculo q sea geneerica para items
         
         mapa.asignarCasillero(casillero, posicionFinal);
@@ -31,10 +32,11 @@ public class CuatroPorCuatroTest {
         
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicion1);
-        mapa.asignarCasillero(pozo, posicion2);
+        mapa.asignarCasillero(casillero, posicion1);
+        mapa.asignarCasillero(casillero, posicion2);
 
         cuatrox4.mover("Derecha", mapa);
         assertEquals(cuatrox4.getCantidadMovimientos(), 1);
@@ -51,11 +53,12 @@ public class CuatroPorCuatroTest {
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
         Posicion posicion3 = new Posicion(1,4);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicion1);
-        mapa.asignarCasillero(pozo, posicion2);
-        mapa.asignarCasillero(pozo, posicion3);
+        mapa.asignarCasillero(casillero, posicion1);
+        mapa.asignarCasillero(casillero, posicion2);
+        mapa.asignarCasillero(casillero, posicion3);
 
         cuatrox4.mover("Derecha", mapa);
         cuatrox4.mover("Derecha", mapa);
@@ -70,9 +73,10 @@ public class CuatroPorCuatroTest {
         Mapa mapa = new Mapa(3);
         
         Posicion posicionPiquete = new Posicion(2,1);
-        Casillero piquete = new Piquete();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Piquete());
 		
-        mapa.asignarCasillero(piquete, posicionPiquete);
+        mapa.asignarCasillero(casillero, posicionPiquete);
 		
         una4x4.mover("Abajo", mapa);
         Posicion posicionFinal = new Posicion(1,1);

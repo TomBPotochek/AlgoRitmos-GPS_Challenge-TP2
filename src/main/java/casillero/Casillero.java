@@ -1,13 +1,23 @@
 package casillero;
 
+import java.util.ArrayList;
+
 import vehiculos.*;
 
-public interface Casillero {
-    // public int calcularCostoDeMovimientos(Vehiculo v);
-	
-    public void aplicarMovimientosExtra(Moto moto);
+public class Casillero {
+    private ArrayList<ElementoTablero> elementos = new ArrayList<ElementoTablero>();
 
-    public void aplicarMovimientosExtra(Auto auto);
+    public ArrayList<Efecto> atravesar(Vehiculo vehiculo){
+        Efecto efecto;
+        ArrayList<Efecto> efectos = new ArrayList<Efecto>();
+        for (ElementoTablero elemento : elementos){
+            efecto = vehiculo.aceptar(elemento);
+            efectos.add(efecto);
+        }
+        return efectos;
+    }
 
-    public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro);
+    public void agregarElemento(ElementoTablero elemento){
+        this.elementos.add(elemento);
+    }
 }

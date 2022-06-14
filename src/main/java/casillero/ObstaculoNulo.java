@@ -2,28 +2,27 @@ package casillero;
 
 import vehiculos.*;
 
-public class Pozo implements ElementoTablero {
+public class ObstaculoNulo implements ElementoTablero {
 
     @Override
     public Efecto interactuar(Moto moto) {
         return new Efecto(
-            (movimientos) ->  movimientos + 3,
+            (movimientos) ->  movimientos,
             moto);
     }
 
     @Override
     public Efecto interactuar(Auto auto) {
         return new Efecto(
-            (movimientos) -> movimientos + 3,
+            (movimientos) ->  movimientos,
             auto);
     }
 
     @Override
     public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
-        cuatroPorCuatro.pisarPozo();
-        boolean aplicaTresPozos = cuatroPorCuatro.pisoMasDeTresPozos();
         return new Efecto(
-            (movimientos) -> aplicaTresPozos ? movimientos + 2 : movimientos,
+            (movimientos) ->  movimientos,
             cuatroPorCuatro);
     }
+ 
 }

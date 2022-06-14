@@ -1,6 +1,8 @@
 package vehiculos;
 
 import casillero.Casillero;
+import casillero.Efecto;
+import casillero.ElementoTablero;
 import casillero.Mapa;
 import movimientos.Posicion;
 import vehiculos.Vehiculo;
@@ -11,8 +13,15 @@ public class Moto extends Vehiculo {
         super(fila, columna);
     }
 
+    // @Override
+    // void atravesarCasilla(Casillero c) {
+    //     c.aplicarMovimientosExtra(this);
+    // }
+
     @Override
-    void atravesarCasilla(Casillero c) {
-        c.aplicarMovimientosExtra(this);
+    public Efecto aceptar(ElementoTablero elemento) {
+        return elemento.interactuar(this);
     }   
+
+    
 }
