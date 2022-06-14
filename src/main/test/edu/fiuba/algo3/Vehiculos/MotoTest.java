@@ -23,9 +23,7 @@ public class MotoTest {
         mapa.setAlto(3);
       
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casillero = new Casillero();
-        casillero.agregarElemento(new ObstaculoNulo());
-        // interfaz antes de obstaculo q sea geneerica para items
+        Casillero casilleroVacio = new Casillero();
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 

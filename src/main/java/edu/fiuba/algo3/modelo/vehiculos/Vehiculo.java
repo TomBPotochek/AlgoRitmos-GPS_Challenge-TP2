@@ -28,7 +28,7 @@ public abstract class Vehiculo {
         if(!mapa.verificarPosicionValida(posSiguiente)){
             return;
         }
-
+        Casillero c = mapa.obetenerCasilla(posSiguiente);
         // int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
         try {
             // this.atravesarCasilla(c); //esto deberia lanzar excepcion si impide al vehiculo moverse
