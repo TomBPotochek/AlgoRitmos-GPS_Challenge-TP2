@@ -3,8 +3,8 @@ package edu.fiuba.algo3.modelo.casillero;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 
 public class Efecto {
-    private AplicadorDeMovimientos aplicador;
-    private Vehiculo vehiculo;
+    private final AplicadorDeMovimientos aplicador;
+    private final Vehiculo vehiculo;
 
     public Efecto(AplicadorDeMovimientos aplicador, Vehiculo vehiculoNuevo){
         this.aplicador = aplicador;

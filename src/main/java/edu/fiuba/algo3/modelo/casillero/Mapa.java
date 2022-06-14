@@ -11,7 +11,7 @@ public class Mapa {
         this.ancho = 1;
         this.alto = 1;
     }
-    private HashMap<Posicion,Casillero> tablero = new HashMap<Posicion, Casillero>();
+    private final HashMap<Posicion,Casillero> grilla = new HashMap<Posicion, Casillero>();
 
     public static Mapa getMapa(){
         if(unMapa == null) {
@@ -25,11 +25,11 @@ public class Mapa {
     }
 
     public void asignarCasillero(Casillero casillero, Posicion pos){
-        this.tablero.put(pos, casillero);
+        this.grilla.put(pos, casillero);
     }
 
     public Casillero obetenerCasilla(Posicion posicion) {
-        return this.tablero.get(posicion);
+        return this.grilla.get(posicion);
     }
 
     public void setAncho(int ancho) {
