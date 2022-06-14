@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import java.util.Random;
+
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class ControlPolicial implements ElementoTablero {
