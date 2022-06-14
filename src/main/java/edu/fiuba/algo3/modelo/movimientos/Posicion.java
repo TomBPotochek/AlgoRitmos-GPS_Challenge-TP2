@@ -35,7 +35,7 @@ public class Posicion {
     }
 
 	public boolean fueraDeRango(int maxCol, int maxFil) {
-		return this.fil > maxFil || this.col > maxCol;
+		return this.fil > maxFil || this.fil < 1 || this.col > maxCol || this.col < 1;
 	}
 
     @Override

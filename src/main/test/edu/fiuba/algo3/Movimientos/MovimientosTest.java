@@ -22,7 +22,6 @@ public class MovimientosTest {
         Posicion posicionFinal = new Posicion(1,1);
         conductor.moverArriba();
 
-		System.out.println(moto.estaEnPosicion(posicionMoto));
         assertTrue(moto.estaEnPosicion(posicionMoto));
     }
 }
