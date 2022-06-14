@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import java.util.HashMap;
 
 public class Mapa {
-    private int alto; //asumimos q el tablero es cuadrado
+    private int alto;
     private int ancho;
     private static Mapa unMapa;
     private Mapa(){
