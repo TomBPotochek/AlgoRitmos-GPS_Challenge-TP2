@@ -4,8 +4,12 @@ import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
+
+import edu.fiuba.algo3.modelo.casillero.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo.vehiculos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class CuatroPorCuatroTest {
@@ -17,7 +21,8 @@ public class CuatroPorCuatroTest {
         mapa.setAncho(3);
         mapa.setAlto(1);
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casilleroVacio = new SinObstaculo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new ObstaculoNulo());
         // interfaz antes de obstaculo q sea geneerica para items
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
@@ -37,10 +42,11 @@ public class CuatroPorCuatroTest {
 
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicion1);
-        mapa.asignarCasillero(pozo, posicion2);
+        mapa.asignarCasillero(casillero, posicion1);
+        mapa.asignarCasillero(casillero, posicion2);
 
         cuatrox4.mover("Derecha");
         assertEquals(cuatrox4.getCantidadMovimientos(), 1);
@@ -60,11 +66,12 @@ public class CuatroPorCuatroTest {
         Posicion posicion1 = new Posicion(1,2);
         Posicion posicion2 = new Posicion(1,3);
         Posicion posicion3 = new Posicion(1,4);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicion1);
-        mapa.asignarCasillero(pozo, posicion2);
-        mapa.asignarCasillero(pozo, posicion3);
+        mapa.asignarCasillero(casillero, posicion1);
+        mapa.asignarCasillero(casillero, posicion2);
+        mapa.asignarCasillero(casillero, posicion3);
 
         cuatrox4.mover("Derecha");
         cuatrox4.mover("Derecha");
@@ -81,9 +88,10 @@ public class CuatroPorCuatroTest {
         mapa.setAncho(3);
         mapa.setAlto(3);
         Posicion posicionPiquete = new Posicion(2,1);
-        Casillero piquete = new Piquete();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Piquete());
 		
-        mapa.asignarCasillero(piquete, posicionPiquete);
+        mapa.asignarCasillero(casillero, posicionPiquete);
 		
         una4x4.mover("Abajo");
         Posicion posicionFinal = new Posicion(1,1);

@@ -1,16 +1,23 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.vehiculos.Auto;
-import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculos.Moto;
-//import vehiculos.*;
+import java.util.ArrayList;
 
-public interface Casillero {
-    // public int calcularCostoDeMovimientos(Vehiculo v);
-	
-    public void aplicarMovimientosExtra(Moto moto);
+import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 
-    public void aplicarMovimientosExtra(Auto auto);
+public class Casillero {
+    private ArrayList<ElementoTablero> elementos = new ArrayList<ElementoTablero>();
 
-    public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro);
+    public ArrayList<Efecto> atravesar(Vehiculo vehiculo){
+        Efecto efecto;
+        ArrayList<Efecto> efectos = new ArrayList<Efecto>();
+        for (ElementoTablero elemento : elementos){
+            efecto = vehiculo.aceptar(elemento);
+            efectos.add(efecto);
+        }
+        return efectos;
+    }
+
+    public void agregarElemento(ElementoTablero elemento){
+        this.elementos.add(elemento);
+    }
 }

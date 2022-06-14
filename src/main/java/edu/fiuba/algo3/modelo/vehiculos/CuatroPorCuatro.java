@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
-import edu.fiuba.algo3.modelo.casillero.Casillero;
+import edu.fiuba.algo3.modelo.casillero.Efecto;
+import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
 
 public class CuatroPorCuatro extends Vehiculo {
 
@@ -12,15 +13,16 @@ public class CuatroPorCuatro extends Vehiculo {
     }
 
 
-    public void aplicarMovsPozo(int penalizacion){
+    public void pisarPozo(){
         this.cantidadDePozosAtravesados += 1;
-        if ((this.cantidadDePozosAtravesados % 3) == 0) {
-            this.aplicarMovs(penalizacion);
-        }
+    }
+
+    public boolean pisoMasDeTresPozos() {
+        return this.cantidadDePozosAtravesados >= 3;
     }
 
     @Override
-    public void atravesarCasilla(Casillero c){
-      c.aplicarMovimientosExtra(this);
+    public Efecto aceptar(ElementoTablero elemento) {
+        return elemento.interactuar(this);
     }
 }

@@ -1,24 +1,29 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.vehiculos.Auto;
-import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculos.Moto;
-//import vehiculos.*;
+import edu.fiuba.algo3.modelo.vehiculos.*;
 
-public class Pozo implements Casillero {
-    
+public class Pozo implements ElementoTablero {
+
     @Override
-    public void aplicarMovimientosExtra(Moto moto){
-        moto.aplicarMovs(3);
+    public Efecto interactuar(Moto moto) {
+        return new Efecto(
+            (movimientos) ->  movimientos + 3,
+            moto);
     }
 
     @Override
-    public void aplicarMovimientosExtra(Auto auto){
-       auto.aplicarMovs(3);
+    public Efecto interactuar(Auto auto) {
+        return new Efecto(
+            (movimientos) -> movimientos + 3,
+            auto);
     }
 
     @Override
-    public void aplicarMovimientosExtra(CuatroPorCuatro cuatroPorCuatro){
-        cuatroPorCuatro.aplicarMovsPozo(2);
+    public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
+        cuatroPorCuatro.pisarPozo();
+        boolean aplicaTresPozos = cuatroPorCuatro.pisoMasDeTresPozos();
+        return new Efecto(
+            (movimientos) -> aplicaTresPozos ? movimientos + 2 : movimientos,
+            cuatroPorCuatro);
     }
 }

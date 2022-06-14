@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
-import edu.fiuba.algo3.modelo.casillero.Casillero;
+import edu.fiuba.algo3.modelo.casillero.Efecto;
+import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
 
 public class Moto extends Vehiculo {
 
@@ -9,7 +10,7 @@ public class Moto extends Vehiculo {
     }
 
     @Override
-    void atravesarCasilla(Casillero c) {
-        c.aplicarMovimientosExtra(this);
-    }   
+    public Efecto aceptar(ElementoTablero elemento) {
+        return elemento.interactuar(this);
+    }
 }

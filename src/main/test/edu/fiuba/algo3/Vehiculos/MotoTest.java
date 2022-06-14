@@ -4,10 +4,12 @@ import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
+
+import edu.fiuba.algo3.modelo.casillero.*;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-//import vehiculos.*;
-//import casillero.*;
+import edu.fiuba.algo3.modelo.vehiculos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class MotoTest {
@@ -21,7 +23,8 @@ public class MotoTest {
         mapa.setAlto(3);
       
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casilleroVacio = new SinObstaculo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new ObstaculoNulo());
         // interfaz antes de obstaculo q sea geneerica para items
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
@@ -42,9 +45,10 @@ public class MotoTest {
         mapa.setAlto(3);
 
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero pozo = new Pozo();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Pozo());
 
-        mapa.asignarCasillero(pozo, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         moto.mover("Derecha");
 
@@ -61,9 +65,10 @@ public class MotoTest {
         mapa.setAlto(3);
 
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero piquete = new Piquete();
+        Casillero casillero = new Casillero();
+        casillero.agregarElemento(new Piquete());
 
-        mapa.asignarCasillero(piquete, posicionFinal);
+        mapa.asignarCasillero(casillero, posicionFinal);
 
         moto.mover("Derecha");
 

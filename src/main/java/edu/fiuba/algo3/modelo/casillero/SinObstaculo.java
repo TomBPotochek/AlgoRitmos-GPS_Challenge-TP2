@@ -3,19 +3,19 @@ package edu.fiuba.algo3.modelo.casillero;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
-//import vehiculos.*;
+import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
 
-public class SinObstaculo implements Casillero {
+public class SinObstaculo implements ElementoTablero {
     
-    public void aplicarMovimientosExtra(Moto moto) {
+    public Efecto interactuar(Moto moto) {
         return;
     }
 
-    public void aplicarMovimientosExtra(Auto auto) {
+    public Efecto interactuar(Auto auto) {
         return;
     }
 
-    public void aplicarMovimientosExtra(CuatroPorCuatro cuatrox4) {
+    public Efecto interactuar(CuatroPorCuatro cuatrox4) {
         return;
     }
 

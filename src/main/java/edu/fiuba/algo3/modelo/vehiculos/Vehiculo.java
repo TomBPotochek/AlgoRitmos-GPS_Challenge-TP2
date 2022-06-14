@@ -1,9 +1,13 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
+import java.util.ArrayList;
+
 import edu.fiuba.algo3.modelo.casillero.Casillero;
+import edu.fiuba.algo3.modelo.casillero.Efecto;
+import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
+import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
-import edu.fiuba.algo3.modelo.excepciones.*;
 
 public abstract class Vehiculo {
 
@@ -16,7 +20,7 @@ public abstract class Vehiculo {
     }
     
 
-    abstract void atravesarCasilla(Casillero c);
+    // abstract void atravesarCasilla(Casillero c);
 
     public void mover(String direccion){
         Mapa mapa = Mapa.getMapa();
@@ -25,17 +29,18 @@ public abstract class Vehiculo {
             return;
         }
 
-        Casillero casilleroObtenido = mapa.obetenerCasilla(posSiguiente);
-
-        int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
+        // int cantidadDeMovimientosPrevios = this.cantidadDeMovimientos;
         try {
-            this.atravesarCasilla(casilleroObtenido); //esto deberia lanzar excepcion si impide al vehiculo moverse
+            // this.atravesarCasilla(c); //esto deberia lanzar excepcion si impide al vehiculo moverse
+            ArrayList<Efecto> efectos = c.atravesar(this);
+            for (Efecto efecto: efectos){
+                this.cantidadDeMovimientos = efecto.actualizar(this.cantidadDeMovimientos);
+            }
             this.posicion.actualizarPosicion(direccion);
-        } catch (RuntimeException e) { }
+        } catch (NoPuedeAtravesarObstaculoError e) { }
                                     
         this.cantidadDeMovimientos += 1; //1 movimiento + los movs extra penalizados
     }
-
 
     public int getCantidadMovimientos(){
         return this.cantidadDeMovimientos;
@@ -45,8 +50,5 @@ public abstract class Vehiculo {
         return this.posicion;
     }
 
-    public void aplicarMovs(int penalizacion){
-        this.cantidadDeMovimientos += penalizacion;
-    }
-
+    public abstract Efecto aceptar(ElementoTablero elemento);
 }

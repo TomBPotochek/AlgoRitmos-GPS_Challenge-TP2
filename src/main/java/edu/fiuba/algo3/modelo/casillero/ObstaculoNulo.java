@@ -1,24 +1,28 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
-public class Piquete implements ElementoTablero {
+public class ObstaculoNulo implements ElementoTablero {
 
     @Override
     public Efecto interactuar(Moto moto) {
         return new Efecto(
-            (movimientos) -> movimientos + 2,
+            (movimientos) ->  movimientos,
             moto);
     }
 
     @Override
     public Efecto interactuar(Auto auto) {
-        throw new NoPuedeAtravesarObstaculoError();
+        return new Efecto(
+            (movimientos) ->  movimientos,
+            auto);
     }
 
     @Override
     public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
-        throw new NoPuedeAtravesarObstaculoError();
+        return new Efecto(
+            (movimientos) ->  movimientos,
+            cuatroPorCuatro);
     }
+ 
 }
