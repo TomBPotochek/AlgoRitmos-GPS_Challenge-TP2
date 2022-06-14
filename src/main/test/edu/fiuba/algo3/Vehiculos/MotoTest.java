@@ -5,18 +5,16 @@ import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.casillero.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import edu.fiuba.algo3.modelo.vehiculos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class MotoTest {
     @Test
     public void testMotoPuedeMoverseSinObstaculos(){
-
-        Vehiculo moto = new Moto(1, 1);
+        Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -29,14 +27,14 @@ public class MotoTest {
 
         moto.mover("Derecha");
         
-        assertEquals(moto.getPosicion(), posicionFinal);
+        assertTrue(moto.estaEnPosicion(posicionFinal));
     }
 
 
     @Test
     public void testMotoAtraviezaPozoEsPenalizadoCon3Movimientos(){
-
-        Vehiculo moto = new Moto(1, 1);
+        Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -55,8 +53,8 @@ public class MotoTest {
 
     @Test
     public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
-
-        Vehiculo moto = new Moto(1, 1);
+        Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);

@@ -5,17 +5,16 @@ import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.casillero.*;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import edu.fiuba.algo3.modelo.vehiculos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class CuatroPorCuatroTest {
     @Test
     public void test4x4PuedeMoverseSinObstaculos(){
-        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
+        Posicion posicion4x4 = new Posicion(1,1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -26,13 +25,14 @@ public class CuatroPorCuatroTest {
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
         cuatrox4.mover("Derecha");
-        
-        assertEquals(cuatrox4.getPosicion(), posicionFinal);
+
+        assertTrue(cuatrox4.estaEnPosicion(posicionFinal));
     }
 
     @Test
     public void test4x4AtraviezaPozo2VecesNoEsPenalizado(){
-        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
+        Posicion posicion4x4 = new Posicion(1,1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
@@ -55,7 +55,8 @@ public class CuatroPorCuatroTest {
 
     @Test
     public void test4x4AtraviezaPozo3VecesSePenalizaCon2Movimientos(){
-        Vehiculo cuatrox4 = new CuatroPorCuatro(1, 1);
+        Posicion posicion4x4 = new Posicion(1,1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
@@ -80,7 +81,8 @@ public class CuatroPorCuatroTest {
 
 	@Test
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
-        Vehiculo una4x4 = new CuatroPorCuatro(1, 1);
+        Posicion posicion4x4 = new Posicion(1,1);
+        Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -91,12 +93,12 @@ public class CuatroPorCuatroTest {
 		
         mapa.asignarCasillero(casillero, posicionPiquete);
 		
-        una4x4.mover("Abajo");
+        cuatrox4.mover("Abajo");
         Posicion posicionFinal = new Posicion(1,1);
 		
 		System.out.println("Cantmov");
-		System.out.println(una4x4.getCantidadMovimientos());
-        assertEquals(una4x4.getCantidadMovimientos(), 1);
-        assertEquals(una4x4.getPosicion(), posicionFinal);
+		System.out.println(cuatrox4.getCantidadMovimientos());
+        assertEquals(cuatrox4.getCantidadMovimientos(), 1);
+        assertTrue(cuatrox4.estaEnPosicion(posicionFinal));
     }
 }

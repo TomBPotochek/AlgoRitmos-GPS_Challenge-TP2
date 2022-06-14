@@ -6,13 +6,15 @@ import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import edu.fiuba.algo3.modelo.vehiculos.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class AutoTest {
     @Test
     public void testAutoPuedeMoverseSinObstaculos(){
-        Vehiculo auto = new Auto(1, 1);
+        Posicion posicionAuto = new Posicion(1,1);
+        Vehiculo auto = new Auto(posicionAuto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -24,13 +26,14 @@ public class AutoTest {
 
         auto.mover("Derecha");
 
-        assertEquals(auto.getPosicion(), posicionFinal);
+        assertTrue(auto.estaEnPosicion(posicionFinal));
     }
 
 
     @Test
     public void testAutoAtraviezaPozoEsPenalizadoCon3Movimientos(){
-        Vehiculo auto = new Auto(1, 1);
+        Posicion posicionAuto = new Posicion(1,1);
+        Vehiculo auto = new Auto(posicionAuto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -48,7 +51,8 @@ public class AutoTest {
 
     @Test
     public void testAutoQuiereAtravezarPiqueteYSeQuedaEnLaMismaPosicion(){
-        Vehiculo auto = new Auto(1, 1);
+        Posicion posicionAuto = new Posicion(1,1);
+        Vehiculo auto = new Auto(posicionAuto);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -64,6 +68,6 @@ public class AutoTest {
         auto.mover("Derecha");
 
         assertEquals(auto.getCantidadMovimientos(), 1);
-        assertEquals(auto.getPosicion(), new Posicion(1, 1));
+        assertTrue(auto.estaEnPosicion(new Posicion(1, 1)));
     }
 }

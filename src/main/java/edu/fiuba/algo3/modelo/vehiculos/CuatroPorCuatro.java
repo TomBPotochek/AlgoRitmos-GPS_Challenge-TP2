@@ -2,13 +2,14 @@ package edu.fiuba.algo3.modelo.vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.Efecto;
 import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class CuatroPorCuatro extends Vehiculo {
 
     private int cantidadDePozosAtravesados;
 
-    public CuatroPorCuatro(int fila, int columna){
-        super(fila, columna);
+    public CuatroPorCuatro(Posicion posicionDada){
+        super(posicionDada);
         this.cantidadDePozosAtravesados = 0;
     }
 
