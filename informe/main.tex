@@ -1,5 +1,27 @@
 \documentclass[titlepage,a4paper]{article}
+\usepackage{listings}
+\usepackage{color}
 
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+    language=Java,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\small\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dkgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+}
 \usepackage{a4wide}
 \usepackage[colorlinks=true,linkcolor=black,urlcolor=blue,bookmarksopen=true]{hyperref}
 \usepackage{bookmark}
@@ -73,17 +95,29 @@
     Para el diseño del mapa decidimos hacer uso de un HashMap el cual nos facilitará almacenar las casillas de todo el tablero. Para poder saber dónde guardarlo se hace uso de la función de Hash a la posición del casillero. De esta forma cuando queramos acceder a este casillero simplemente necesitaremos tener la posición.
     Aunque esto nos trae muchos beneficios también necesitamos saber cuándo el vehículo quiere moverse fuera del tablero para poder negarle esa acción. La forma en la que lo representamos fue asumiendo que sus dimensiones son cuadradas (es decir alto y ancho tienen el mismo valor). Nosotros pensamos el tablero con la posición (1,1) siendo la esquina superior izquierda y si se quiere mover el vehículo para abajo este debe cambiar su posición aumentándole uno a su fila quedando: (2, 1). Entonces a través de un método de mapa simplemente verifica si la posición en la que se quiere mover el vehículo esta dentro de las dimensiones del tablero.
 
+    Para la implementación del mapa aplicamos el patrón singleton poniendo el constructo del mismo en privado, y con una variable estática que guarda una referencia a la única instancia del mapa.Para obtener la única instancia del mapa se hará uso del método estático getMapa que en el caso de que no exista todavía una referencia al mapa este método entonces devolverá una nueva instancia
+
+    \begin{lstlisting}
+    public static Mapa getMapa(){
+        if(unMapa == null) {
+            unMapa = new Mapa();
+        }
+        return unMapa;
+    }
+
+	public void asignarCasillero(Casillero casillero, Posicion pos){
+        this.grilla.put(pos, casillero);
+    }
+    \end{lstlisting}
 
 
     \section{Excepciones}\label{sec:excepciones}
 % Explicación de cada una de las excepciones creadas y con qué fin fueron creadas.
 
     \begin{description}
-        \item[Exception]
-        \item[Excepcion]
-        \item[Excepcion]
-        \item[Excepcion]
-        \item[Excepcion]
+        \item[NoPuedeAtravesarObstaculoError] Se lanzará en el caso de que un vehículo no pueda atravesar un obstaculo determinado.
+        \item[PosicionInvalida] Esta excepción se lanzará en caso de que el vehículo quiera moverse en una dirección en la cual no hay una casilla.
+
     \end{description}
 
     \section{Diagramas de secuencia}\label{sec:diagramasdesecuencia}

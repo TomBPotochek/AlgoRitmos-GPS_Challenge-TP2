@@ -1,50 +1,76 @@
 @startuml
 'https://plantuml.com/class-diagram'
 abstract class Vehiculo{
+    # posicion : Posicion
     {abstract}atravesarCasilla(Casillero c)
-    mover(String direccion, Mapa mapa)
-    aplicarMovs(int penalizacion)
+    mover(Movimiento movimiento)
+    estaEnPosicion(Posicion posicionAComparar)
+    {abstract}}Efecto aceptar(ElementoTablero elemento)
 }
 class CuatroPorCuatro{
-     atravesarCasilla(Casillero c)
-     aplicarMovsPozo(int penalizacion)
+    Efecto aceptar(ElementoTablero elemento)
 }
 class Moto{
-     atravesarCasilla(Casillero c) {
+    Efecto aceptar(ElementoTablero elemento)
 }
 class Auto{
-    atravesarCasilla(Casillero c)
+    Efecto aceptar(ElementoTablero elemento)
 }
 class Posicion{
-    fila : int
-    columna : int
+    - fila : int
+    - columna : int
     actualizarPosicion(String direccion)
     calcularPosicion(String direccion)
 }
 
-interface Casillero{
-    aplicarMovimientosExtra(Vehiculo vehiculo)
+class Casillero{
+    - elementos : ElementoTablero
+    atravesar(Vehiculo vehiculo)
+    agregarElemento(ElementoTablero elemento)
 }
+
+class Efecto{
+    - AplicadorDeMovimientos : aplicador
+    - Vehiculo : vehiculo
+    actualizar(int movimientosActuales)
+    Vehiculo cambiar()
+}
+
 class Mapa{
-    tablero : Casillero
-    dimension : int
+    - grilla : Casillero
+    - alto : int
+    - ancho : int
     asignarCasillero(Casillero casillero, Posicion pos)
     obetenerCasilla(Posicion posicion)
     verificarPosicionValida(Posicion pos)
 }
 
-class Pozo implements Casillero{
-    aplicarMovimientosExtra(Vehiculo vehiculo))
-}
-class SinObstaculo implements Casillero{
-    aplicarMovimientosExtra((Vehiculo vehiculo)
+interface ElementoTablero{
+    Efecto interactuar(Moto moto);
+    Efecto interactuar(Auto auto);
+    Efecto interactuar(Cuatroporcuatro cuatroporcuatro);
 }
 
-class MovFactory{
-    {static}MovimientoConstruir(String direccion)
+class Pozo implements ElementoTablero{
+    Efecto interactuar(Auto auto)
+    Efecto interactuar(Moto moto)
+    Efecto interactuar(Cuatroporcuatro cuatroporcuatro)
+}
+class Piquete implements ElementoTablero{
+    Efecto interactuar(Auto auto)
+    Efecto interactuar(Moto moto)
+    Efecto interactuar(Cuatroporcuatro cuatroporcuatro)
+}
+
+class SorpresaFavorable implements ElementoTablero{
+}
+class SorpresaDesfavorable implements ElementoTablero{
+}
+class SorpresaCambioVehiculo implements ElementoTablero{
 }
 
 interface Movimiento{
+    - cantMovimientos : int
     moverFila(int columna)
     moverColumna(int fila)
 }
@@ -69,15 +95,25 @@ class MovIzquierda implements Movimiento{
     int moverFila(int columna)
 }
 
-Mapa *-- "*" Casillero
+class Jugador{
+    vehiculo : Vehiculo
+    cantMovimientos : int
+    estaEnPosicion(Posicion unaPosicion)
+    cantidadDeMovimientosEs(int unEntero)
+    mover(Movimiento movimiento)
+}
+
+Mapa *--"*" Casillero
 Moto --|> Vehiculo
 Auto --|> Vehiculo
 CuatroPorCuatro --|> Vehiculo
 Vehiculo ..> Mapa
 Vehiculo *--Posicion
 
-MovFactory "crea"..> Movimiento
+Jugador "crea"..> Movimiento
 
-Posicion "utiliza"..> MovFactory
-
+Casillero o--> ElementoTablero
+Jugador *-->"1" Vehiculo
+Jugador "utiliza"..> Efecto
+Vehiculo "utiliza"..->Efecto
 @enduml
