@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.Efecto;
-import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
+import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class CuatroPorCuatro extends Vehiculo {
@@ -23,7 +23,7 @@ public class CuatroPorCuatro extends Vehiculo {
     }
 
     @Override
-    public Efecto aceptar(ElementoTablero elemento) {
+    public Efecto aceptar(ElementoMapa elemento) {
         return elemento.interactuar(this);
     }
 }

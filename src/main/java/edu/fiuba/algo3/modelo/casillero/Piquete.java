@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.casillero;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
-public class Piquete implements ElementoTablero {
+public class Piquete implements ElementoMapa {
 
     @Override
     public Efecto interactuar(Moto moto) {

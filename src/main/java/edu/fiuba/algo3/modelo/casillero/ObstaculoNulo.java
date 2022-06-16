@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.casillero;
 
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
-public class ObstaculoNulo implements ElementoTablero {
+public class ObstaculoNulo implements ElementoMapa {
 
     @Override
     public Efecto interactuar(Moto moto) {

@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 
-public class SorpresaCambioVehiculo implements ElementoTablero {
+public class SorpresaCambioVehiculo implements ElementoMapa {
     
     @Override
     public Efecto interactuar(Moto moto) {

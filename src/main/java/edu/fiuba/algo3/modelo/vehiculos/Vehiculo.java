@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import edu.fiuba.algo3.modelo.casillero.Casillero;
 import edu.fiuba.algo3.modelo.casillero.Efecto;
-import edu.fiuba.algo3.modelo.casillero.ElementoTablero;
+import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
@@ -39,5 +39,5 @@ public abstract class Vehiculo {
 		return this.posicion.equals(posicionAComparar);
     }
 
-	public abstract Efecto aceptar(ElementoTablero elemento);
+	public abstract Efecto aceptar(ElementoMapa elemento);
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
-public class ControlPolicial implements ElementoTablero {
+public class ControlPolicial implements ElementoMapa {
 
     @Override
     public Efecto interactuar(Moto moto) {

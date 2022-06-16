@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.casillero;
 
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
-public class SorpresaFavorable implements ElementoTablero {
+public class SorpresaFavorable implements ElementoMapa {
 
     private Efecto favorable(Vehiculo vehiculo){
         return new Efecto(
