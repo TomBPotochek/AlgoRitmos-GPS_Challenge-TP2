@@ -8,7 +8,7 @@ public class Posicion {
     private int col;
 
     public Posicion(int fila, int columna){
-        this.fil = fila;
+		this.fil = fila;
         this.col = columna;
     }
     

@@ -134,6 +134,6 @@ public class JugadorTest {
 
         conductor.moverDerecha();
 
-       assertTrue(conductor.vehiculoEsDeTipo(new Auto()));
+       	assertTrue(conductor.vehiculoEsDeTipo(new Auto()));
     }
 }
