@@ -8,6 +8,10 @@ public class CuatroPorCuatro extends Vehiculo {
 
     private int cantidadDePozosAtravesados;
 
+    public CuatroPorCuatro(){
+        super();
+    }
+
     public CuatroPorCuatro(Posicion posicionDada){
         super(posicionDada);
         this.cantidadDePozosAtravesados = 0;

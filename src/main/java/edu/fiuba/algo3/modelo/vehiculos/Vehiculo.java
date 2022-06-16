@@ -15,6 +15,10 @@ public abstract class Vehiculo {
 
     protected Posicion posicion;
 
+    public Vehiculo(){
+        this.posicion = new Posicion(1,1);
+    }
+
     public Vehiculo(Posicion posicionDada){
         this.posicion = posicionDada;
     }
@@ -40,4 +44,16 @@ public abstract class Vehiculo {
     }
 
 	public abstract Efecto aceptar(ElementoMapa elemento);
+
+    public boolean esDeTipoDeVehiculo(Object obj){
+        if (this == obj) {
+    		return true;
+		}
+
+    	if (this.getClass() == obj.getClass()) {
+    		return true;
+		}
+
+        return false;
+    }
 }

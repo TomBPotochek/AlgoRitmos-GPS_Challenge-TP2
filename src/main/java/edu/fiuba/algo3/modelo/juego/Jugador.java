@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.juego;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import edu.fiuba.algo3.modelo.movimientos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
+
 import edu.fiuba.algo3.modelo.casillero.Efecto;
 
 public class Jugador {
@@ -17,9 +18,6 @@ public class Jugador {
 	public boolean estaEnPosicion(Posicion unaPosicion) {
 		return this.vehiculo.estaEnPosicion(unaPosicion);
 	}
-
-    //TODO: metodo para chequar si cambio el vehiculo
-    // public boolean vehiculoEsDeTipo()
 
 	public boolean cantidadDeMovimientosEs(int unEntero) {
 		return this.cantidadDeMovimientos == unEntero;
@@ -53,4 +51,8 @@ public class Jugador {
 			this.vehiculo = efecto.cambiar();
 		}
 	}
+
+    public boolean vehiculoEsDeTipo(Vehiculo vehiculo) {
+        return this.vehiculo.esDeTipoDeVehiculo(vehiculo);
+    }
 }
