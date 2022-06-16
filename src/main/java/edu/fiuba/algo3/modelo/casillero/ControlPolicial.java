@@ -1,44 +1,49 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import java.util.Random;
-
+import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class ControlPolicial implements ElementoMapa {
 
+    private ProveedorDatosAzar azar;
+
+    public ControlPolicial(ProveedorDatosAzar proveedor){
+        this.azar = proveedor;
+    }
+
     @Override
     public Efecto interactuar(Moto moto) {
-        if((new Random().nextDouble()) <= 0.8){// devuelve un numero de 0.00 a 1.00
-            return new Efecto(
-            (movimientos) ->  movimientos + 3,
-            moto);
+        AplicadorDeMovimientos aplicador;
+        boolean aplicaControl = this.azar.eventoConProbabilidad(0.8);
+        if (aplicaControl) {
+            aplicador = (movimientos) -> movimientos + 3;
+        } else {
+            aplicador = (movimientos) -> movimientos;
         }
-        return new Efecto(
-            (movimientos) ->  movimientos + 0,
-            moto);
+        return new Efecto(aplicador, moto);
     }
 
     @Override
     public Efecto interactuar(Auto auto) {
-        if((new Random().nextDouble()) <= 0.5){// devuelve un numero de 0.00 a 1.00
-            return new Efecto(
-            (movimientos) ->  movimientos + 3,
-            auto);
+        AplicadorDeMovimientos aplicador;
+        boolean aplicaControl = this.azar.eventoConProbabilidad(0.5);
+        if (aplicaControl) {
+            aplicador = (movimientos) -> movimientos + 3;
+        } else {
+            aplicador = (movimientos) -> movimientos;
         }
-        return new Efecto(
-            (movimientos) ->  movimientos + 0,
-            auto);
+        return new Efecto(aplicador, auto);
     }
 
     @Override
     public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
-        if((new Random().nextDouble()) <= 0.3){// devuelve un numero de 0.00 a 1.00
-            return new Efecto(
-            (movimientos) -> movimientos + 3,
-            cuatroPorCuatro);
+        AplicadorDeMovimientos aplicador;
+        boolean aplicaControl = this.azar.eventoConProbabilidad(0.3);
+        if (aplicaControl) {
+            aplicador = (movimientos) -> movimientos + 3;
+        } else {
+            aplicador = (movimientos) -> movimientos;
         }
-        return new Efecto(
-            (movimientos) -> movimientos + 0,
-            cuatroPorCuatro);
+        return new Efecto(aplicador, cuatroPorCuatro);
     }
 }
