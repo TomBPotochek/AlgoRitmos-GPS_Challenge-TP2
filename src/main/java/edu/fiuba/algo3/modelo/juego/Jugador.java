@@ -23,25 +23,25 @@ public class Jugador {
 		return this.cantidadDeMovimientos == unEntero;
 	}
 
-	public void moverArriba() {
-		Movimiento movimiento = new MovArriba();
-		this.mover(movimiento);
-	}
+	// public void moverArriba() {
+	// 	Movimiento movimiento = new MovArriba();
+	// 	this.mover(movimiento);
+	// }
 	
-	public void moverAbajo() {
-		Movimiento movimiento = new MovAbajo();
-		this.mover(movimiento);
-	}
+	// public void moverAbajo() {
+	// 	Movimiento movimiento = new MovAbajo();
+	// 	this.mover(movimiento);
+	// }
 
-	public void moverDerecha() {
-		Movimiento movimiento = new MovDerecha();
-		this.mover(movimiento);
-	}
+	// public void moverDerecha() {
+	// 	Movimiento movimiento = new MovDerecha();
+	// 	this.mover(movimiento);
+	// }
 
-	public void moverIzquierda() {
-		Movimiento movimiento = new MovIzquierda();
-		this.mover(movimiento);
-	}
+	// public void moverIzquierda() {
+	// 	Movimiento movimiento = new MovIzquierda();
+	// 	this.mover(movimiento);
+	// }
 
 	private void mover(Movimiento movimiento) {
 		this.cantidadDeMovimientos += 1;
