@@ -43,7 +43,7 @@ public class Jugador {
 	// 	this.mover(movimiento);
 	// }
 
-	private void mover(Movimiento movimiento) {
+	public void mover(Movimiento movimiento) {
 		this.cantidadDeMovimientos += 1;
 
 		for (Efecto efecto: this.vehiculo.mover(movimiento)){
