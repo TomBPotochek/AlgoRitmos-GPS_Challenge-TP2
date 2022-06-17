@@ -33,9 +33,8 @@ public abstract class Vehiculo {
 			efectos = casillero.atravesar(this);
             this.posicion.actualizarPosicion(movimiento);
         }
-		catch (NoPuedeAtravesarObstaculoError e) { }
-		catch (PosicionInvalidaError e) { }
-              
+		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
+
         return efectos; //1 movimiento + los movs extra penalizados
     }
 
@@ -55,5 +54,8 @@ public abstract class Vehiculo {
 		}
 
         return false;
+    }
+    public Posicion copiarPosicion(Vehiculo unVehiculo, Vehiculo nuevoVehiculo){
+        return null;
     }
 }
