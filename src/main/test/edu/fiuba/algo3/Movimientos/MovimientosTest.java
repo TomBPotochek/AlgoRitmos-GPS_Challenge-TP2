@@ -2,6 +2,7 @@ package edu.fiuba.algo3.Movimientos;
 
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
+import edu.fiuba.algo3.modelo.movimientos.MovArriba;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,7 @@ public class MovimientosTest {
 
         Mapa mapa = Mapa.getMapa();
         Posicion posicionFinal = new Posicion(1,1);
-        conductor.moverArriba();
+        conductor.mover(new MovArriba());
 
         assertTrue(moto.estaEnPosicion(posicionMoto));
     }

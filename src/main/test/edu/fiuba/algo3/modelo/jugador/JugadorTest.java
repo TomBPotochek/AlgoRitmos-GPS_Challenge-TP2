@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.jugador;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.casillero.*;
@@ -27,7 +28,7 @@ public class JugadorTest {
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        conductor.moverDerecha();
+        conductor.mover(new MovDerecha());
         assertTrue(moto.estaEnPosicion(posicionFinal));
     }
 
@@ -48,7 +49,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.moverDerecha();
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs(4));
     }
@@ -69,7 +70,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.moverDerecha();
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs(3));
     }
@@ -90,7 +91,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.moverDerecha();
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs((int) Math.round(1*0.8)));
     }
@@ -111,7 +112,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.moverDerecha();
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs((int) Math.round(1*1.25)));
     }
@@ -132,7 +133,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.moverDerecha();
+        conductor.mover(new MovDerecha());
 
        	assertTrue(conductor.vehiculoEsDeTipo(new Auto()));
     }
