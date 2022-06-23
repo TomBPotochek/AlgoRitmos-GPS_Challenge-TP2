@@ -41,6 +41,15 @@ public class Mapa {
 		}
 	}
 
+    public void generarGrillaVacia(int alto, int ancho){
+        this.alto = alto;
+        this.ancho = ancho;
+        for (int i = 0; i < alto; i++) {
+            for (int j = 0; j < ancho; j++) {
+                this.asignarCasillero(new Casillero(), new Posicion(i,j));
+            }
+        }
+    }
     public void setAncho(int ancho) {
         this.ancho = ancho;
     }
