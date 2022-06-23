@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.movimientos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
-
-import edu.fiuba.algo3.modelo.casillero.Efecto;
 
 public class Jugador {
 	Vehiculo vehiculo;

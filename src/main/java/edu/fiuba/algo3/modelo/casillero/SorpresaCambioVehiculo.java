@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.casillero;
 
 import org.junit.jupiter.api.Test;
 
+import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
