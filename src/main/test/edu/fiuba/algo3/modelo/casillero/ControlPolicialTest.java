@@ -23,7 +23,7 @@ public class ControlPolicialTest {
         Efecto efecto = controlPolicial.interactuar(motoMock);
 
         for (int i = 0; i < 11; i++){
-            assertEquals(efecto.actualizar(i), i+3);
+            assertEquals(efecto.actualizarMovimientos(i), i+3);
         }       
     }
 
@@ -38,7 +38,7 @@ public class ControlPolicialTest {
         Efecto efecto = controlPolicial.interactuar(motoMock);
     
         for (int i = 0; i < 11; i++){
-            assertEquals(efecto.actualizar(i), i);
+            assertEquals(efecto.actualizarMovimientos(i), i);
         }       
     }
     
@@ -53,7 +53,7 @@ public class ControlPolicialTest {
         Efecto efecto = controlPolicial.interactuar(motoMock);
     
         for (int i = 0; i < 11; i++){
-            assertEquals(efecto.actualizar(i), i+3);
+            assertEquals(efecto.actualizarMovimientos(i), i+3);
         }       
     }
 

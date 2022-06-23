@@ -12,7 +12,7 @@ public class EfectoMultiplica extends Efecto {
 	}
 
 	@Override
-	public int actualizar(int movimientosActuales) {
+	public int actualizarMovimientos(int movimientosActuales) {
 		return (int) Math.round(factor*movimientosActuales);
 	}
 	

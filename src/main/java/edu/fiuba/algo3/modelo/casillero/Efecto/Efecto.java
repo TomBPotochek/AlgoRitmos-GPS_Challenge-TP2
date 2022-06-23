@@ -10,9 +10,9 @@ public abstract class Efecto {
         this.vehiculo = vehiculoNuevo;
     }
 
-    public abstract int actualizar(int movimientosActuales);
+    public abstract int actualizarMovimientos(int movimientosActuales);
 
-    public Vehiculo cambiar(){
+    public Vehiculo cambiarVehiculo(){
         return this.vehiculo;
     }
 }

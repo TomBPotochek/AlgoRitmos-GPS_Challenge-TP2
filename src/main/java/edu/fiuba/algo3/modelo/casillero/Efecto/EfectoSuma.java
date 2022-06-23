@@ -12,7 +12,7 @@ public class EfectoSuma extends Efecto {
 	}
 
 	@Override
-	public int actualizar(int movimientosActuales) {
+	public int actualizarMovimientos(int movimientosActuales) {
 		return movsExtra + movimientosActuales;
 	}
 	

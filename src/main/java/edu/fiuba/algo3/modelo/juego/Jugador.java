@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
+
+import java.util.ArrayList;
+
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.movimientos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
@@ -42,13 +45,16 @@ public class Jugador {
 	// 	this.mover(movimiento);
 	// }
 
+	private void aplicarEfectos(ArrayList<Efecto> efectos){
+		for (Efecto efecto: efectos) {
+			this.cantidadDeMovimientos = efecto.actualizarMovimientos(this.cantidadDeMovimientos);
+			this.vehiculo = efecto.cambiarVehiculo();
+		}
+	}
+
 	public void mover(Movimiento movimiento) {
 		this.cantidadDeMovimientos += 1;
-
-		for (Efecto efecto: this.vehiculo.mover(movimiento)) {
-			this.cantidadDeMovimientos = efecto.actualizar(this.cantidadDeMovimientos);
-			this.vehiculo = efecto.cambiar();
-		}
+		aplicarEfectos(this.vehiculo.mover(movimiento));
 	}
 
 	public int verCantMovs() {
