@@ -6,7 +6,7 @@ import com.tngtech.archunit.lang.ArchRule;
 import org.junit.jupiter.api.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
-import static org.mockito.Mockito.*;
+
 public class ModelDependenciesTest {
     private final String MODEL = "..modelo..";
     private final String JAVA_LANG = "java..";
