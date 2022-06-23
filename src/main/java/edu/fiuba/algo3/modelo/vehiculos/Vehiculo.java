@@ -19,9 +19,11 @@ public abstract class Vehiculo {
         this.posicion = new Posicion(1,1);
     }
 
+
     public Vehiculo(Posicion posicionDada){
         this.posicion = posicionDada;
     }
+
 
     public ArrayList<Efecto> mover(Movimiento movimiento){
         Mapa mapa = Mapa.getMapa();
@@ -38,24 +40,21 @@ public abstract class Vehiculo {
         return efectos; //1 movimiento + los movs extra penalizados
     }
 
+
     public boolean estaEnPosicion(Posicion posicionAComparar){
 		return this.posicion.equals(posicionAComparar);
     }
+	
+	
+	public void copiarPosicionA(Vehiculo vehiculo) {
+		vehiculo.setPosicion(this.posicion);
+	}
+	
+
+	protected void setPosicion(Posicion unaPosicion) {
+		this.posicion = unaPosicion;
+	}
+
 
 	public abstract Efecto aceptar(ElementoMapa elemento);
-
-    public boolean esDeTipoDeVehiculo(Object obj){
-        if (this == obj) {
-    		return true;
-		}
-
-    	if (this.getClass() == obj.getClass()) {
-    		return true;
-		}
-
-        return false;
-    }
-    public Posicion copiarPosicion(Vehiculo unVehiculo, Vehiculo nuevoVehiculo){
-        return null;
-    }
 }

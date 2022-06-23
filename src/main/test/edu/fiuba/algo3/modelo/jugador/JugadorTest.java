@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.jugador;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
+import edu.fiuba.algo3.modelo.movimientos.*;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.casillero.*;
@@ -27,9 +27,9 @@ public class JugadorTest {
         Casillero casilleroVacio = new Casillero();
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
-
         conductor.mover(new MovDerecha());
-        assertTrue(moto.estaEnPosicion(posicionFinal));
+        
+		assertTrue(moto.estaEnPosicion(posicionFinal));
     }
 
 
@@ -119,22 +119,55 @@ public class JugadorTest {
 
     @Test
     public void testMotoAtraviesaSorpresaCambiaVehiculo(){
-        Posicion posicionMoto = new Posicion(1,1);
-        Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
-
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
         mapa.setAlto(3);
-
+		mapa.limpiar();
+		
+		Posicion posicionMoto = new Posicion(1,1);
+        Vehiculo moto = new Moto(posicionMoto);
+        Jugador conductor = new Jugador(moto);
+		
         Posicion posicionFinal = new Posicion(1,2);
         Casillero casillero = new Casillero();
         casillero.agregarElemento(new SorpresaCambioVehiculo());
 
         mapa.asignarCasillero(casillero, posicionFinal);
-
         conductor.mover(new MovDerecha());
 
-       	assertTrue(conductor.vehiculoEsDeTipo(new Auto()));
-    }
+		assertTrue(conductor.estaEnPosicion(posicionFinal));
+		assertTrue(conductor.cantidadDeMovimientosEs(1));
+		
+		// Testeo el comportamiento para comprobar que sea un Auto.
+        
+		// 1. Sin obstaculos se puede mover
+        posicionFinal = new Posicion(1,3);
+		casillero = new Casillero();
+		mapa.asignarCasillero(casillero, posicionFinal);
+		
+		conductor.mover(new MovDerecha());
+		
+		assertTrue(conductor.estaEnPosicion(posicionFinal));
+		assertTrue(conductor.cantidadDeMovimientosEs(2));
+		
+		// 2. Atravieza un pozo y es penalizado con 3 mov + 1 por el movimiento.
+        posicionFinal = new Posicion(2,3);
+		casillero = new Casillero();
+		casillero.agregarElemento(new Pozo());
+        mapa.asignarCasillero(casillero, posicionFinal);
+		conductor.mover(new MovAbajo());
+		
+        assertTrue(conductor.cantidadDeMovimientosEs(6));
+		assertTrue(conductor.estaEnPosicion(posicionFinal));
+		
+		// 3. No puede atravezar piquete.
+		Posicion posicionPiquete = new Posicion(3,3);
+		casillero = new Casillero();
+		casillero.agregarElemento(new Piquete());
+		mapa.asignarCasillero(casillero, posicionPiquete);
+		conductor.mover(new MovAbajo());
+		
+		assertTrue(conductor.cantidadDeMovimientosEs(7));
+        assertTrue(conductor.estaEnPosicion(new Posicion(2, 3)));
+	}
 }

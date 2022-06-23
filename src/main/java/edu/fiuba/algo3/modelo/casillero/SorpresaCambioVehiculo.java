@@ -9,20 +9,23 @@ public class SorpresaCambioVehiculo implements ElementoMapa {
     
     @Override
     public Efecto interactuar(Moto moto) {
-        return new Efecto( (movimientos) -> movimientos,
-                          new Auto());
+        Auto auto = new Auto();
+		moto.copiarPosicionA(auto);
+		return new Efecto((movimientos) -> movimientos, auto);
     }
 
     @Override
     public Efecto interactuar(Auto auto) {
-        return new Efecto( (movimientos) -> movimientos,
-                          new CuatroPorCuatro());
+        CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro();
+		auto.copiarPosicionA(cuatroPorCuatro);
+		return new Efecto((movimientos) -> movimientos, cuatroPorCuatro);
     }
 
     @Override
     public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
-        return new Efecto( (movimientos) -> movimientos,
-                          new Moto());
+		Moto moto = new Moto();
+		cuatroPorCuatro.copiarPosicionA(moto);
+		return new Efecto((movimientos) -> movimientos, moto);
     }
     
 }
