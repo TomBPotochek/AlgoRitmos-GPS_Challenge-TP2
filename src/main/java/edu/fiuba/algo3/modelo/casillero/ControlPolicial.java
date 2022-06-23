@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.casillero;
 
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
@@ -14,37 +15,22 @@ public class ControlPolicial implements ElementoMapa {
 
     @Override
     public Efecto interactuar(Moto moto) {
-        AplicadorDeMovimientos aplicador;
         boolean aplicaControl = this.azar.eventoConProbabilidad(0.8);
-        if (aplicaControl) {
-            aplicador = (movimientos) -> movimientos + 3;
-        } else {
-            aplicador = (movimientos) -> movimientos;
-        }
-        return new Efecto(aplicador, moto);
+        int movimientosExtra = aplicaControl ? 3 : 0;
+        return new  EfectoSuma(movimientosExtra, moto);
     }
 
     @Override
     public Efecto interactuar(Auto auto) {
-        AplicadorDeMovimientos aplicador;
         boolean aplicaControl = this.azar.eventoConProbabilidad(0.5);
-        if (aplicaControl) {
-            aplicador = (movimientos) -> movimientos + 3;
-        } else {
-            aplicador = (movimientos) -> movimientos;
-        }
-        return new Efecto(aplicador, auto);
+        int movimientosExtra = aplicaControl ? 3 : 0;
+        return new  EfectoSuma(movimientosExtra, auto);
     }
 
     @Override
     public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
-        AplicadorDeMovimientos aplicador;
         boolean aplicaControl = this.azar.eventoConProbabilidad(0.3);
-        if (aplicaControl) {
-            aplicador = (movimientos) -> movimientos + 3;
-        } else {
-            aplicador = (movimientos) -> movimientos;
-        }
-        return new Efecto(aplicador, cuatroPorCuatro);
+        int movimientosExtra = aplicaControl ? 3 : 0;
+        return new  EfectoSuma(movimientosExtra, cuatroPorCuatro);
     }
 }

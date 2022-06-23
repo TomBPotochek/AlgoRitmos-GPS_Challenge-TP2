@@ -6,7 +6,7 @@ public class EfectoSuma extends Efecto {
 
 	private int movsExtra;
 
-	EfectoSuma(int MovimientosExtra, Vehiculo vehiculo){
+	public EfectoSuma(int MovimientosExtra, Vehiculo vehiculo){
 		super(vehiculo);
 		movsExtra = MovimientosExtra;
 	}

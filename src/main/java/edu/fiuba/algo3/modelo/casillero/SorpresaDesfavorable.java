@@ -1,13 +1,14 @@
 package edu.fiuba.algo3.modelo.casillero;
 
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoMultiplica;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class SorpresaDesfavorable implements ElementoMapa {
 
     private Efecto desfavorable(Vehiculo vehiculo){
-        return new Efecto(
-                          (movimientos) -> (int) Math.round(movimientos*1.25),
+        return new EfectoMultiplica(
+                          1.25,
                           vehiculo);
     }
 
