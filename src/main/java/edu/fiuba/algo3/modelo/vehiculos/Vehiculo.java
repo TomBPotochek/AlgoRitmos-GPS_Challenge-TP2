@@ -51,7 +51,7 @@ public abstract class Vehiculo {
 	}
 	
 
-	protected void setPosicion(Posicion unaPosicion) {
+	private void setPosicion(Posicion unaPosicion) {
 		this.posicion = unaPosicion;
 	}
 
