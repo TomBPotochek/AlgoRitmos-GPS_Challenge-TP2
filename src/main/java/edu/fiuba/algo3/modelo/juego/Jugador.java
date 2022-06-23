@@ -11,8 +11,8 @@ public class Jugador {
 	int cantidadDeMovimientos;
 
 	public Jugador(Vehiculo unVehiculo) {
-		cantidadDeMovimientos = 0;
-		vehiculo = unVehiculo;
+		this.cantidadDeMovimientos = 0;
+		this.vehiculo = unVehiculo;
 	}	
 
 	public boolean estaEnPosicion(Posicion unaPosicion) {
@@ -46,13 +46,13 @@ public class Jugador {
 	public void mover(Movimiento movimiento) {
 		this.cantidadDeMovimientos += 1;
 
-		for (Efecto efecto: this.vehiculo.mover(movimiento)){
+		for (Efecto efecto: this.vehiculo.mover(movimiento)) {
 			this.cantidadDeMovimientos = efecto.actualizar(this.cantidadDeMovimientos);
 			this.vehiculo = efecto.cambiar();
 		}
 	}
 
-    public boolean vehiculoEsDeTipo(Vehiculo vehiculo) {
-        return this.vehiculo.esDeTipoDeVehiculo(vehiculo);
-    }
+	public int verCantMovs() {
+		return this.cantidadDeMovimientos;
+	}
 }

@@ -20,4 +20,8 @@ public class Casillero {
     public void agregarElemento(ElementoMapa elemento){
         this.elementos.add(elemento);
     }
+
+	public void vaciar() {
+		elementos.clear();
+	}
 }

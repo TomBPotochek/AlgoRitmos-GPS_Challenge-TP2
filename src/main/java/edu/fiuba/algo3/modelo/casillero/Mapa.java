@@ -8,14 +8,16 @@ public class Mapa {
     private int alto;
     private int ancho;
     private static Mapa unMapa;
-    private Mapa(){
+	private HashMap<Posicion,Casillero> grilla;
+    
+	private Mapa(){
         this.ancho = 1;
         this.alto = 1;
-    }
-    private final HashMap<Posicion,Casillero> grilla = new HashMap<Posicion, Casillero>();
+		this.grilla = new HashMap<Posicion, Casillero>();
+	}
 
     public static Mapa getMapa(){
-        if(unMapa == null) {
+        if (unMapa == null) {
             unMapa = new Mapa();
         }
         return unMapa;
@@ -32,9 +34,17 @@ public class Mapa {
         return this.grilla.get(posicion);
     }
 
+
+	public void limpiar() {
+		for (Posicion posicion: this.grilla.keySet()) {
+			this.grilla.get(posicion).vaciar();
+		}
+	}
+
     public void setAncho(int ancho) {
         this.ancho = ancho;
     }
+
     public void setAlto(int alto){
         this.alto = alto;
     }
