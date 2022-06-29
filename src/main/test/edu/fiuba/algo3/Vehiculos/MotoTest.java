@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.Vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.*;
-import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
-import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
@@ -33,6 +30,5 @@ public class MotoTest {
 
         assertTrue(moto.estaEnPosicion(posicionFinal));
     }
-
 
 }

@@ -1,32 +1,36 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
-import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma;
-import edu.fiuba.algo3.modelo.vehiculos.Auto;
-import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculos.Moto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
+import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCambioDeVehiculo;
+import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class SorpresaCambioVehiculo implements ElementoMapa {
+
+    private BaseEfectoDecorador generarEfecto(Vehiculo vehiculo){
+        EfectoCambioDeVehiculo efecto = new EfectoCambioDeVehiculo();
+        efecto.setVehiculo(vehiculo);
+        return efecto;
+    }
     
     @Override
-    public Efecto interactuar(Moto moto) {
+    public BaseEfectoDecorador interactuar(Moto moto) {
         Auto auto = new Auto();
 		moto.copiarPosicionA(auto);
-		return new EfectoSuma(0, auto);
+		return this.generarEfecto(auto);
     }
 
     @Override
-    public Efecto interactuar(Auto auto) {
+    public BaseEfectoDecorador interactuar(Auto auto) {
         CuatroPorCuatro cuatroPorCuatro = new CuatroPorCuatro();
 		auto.copiarPosicionA(cuatroPorCuatro);
-		return new  EfectoSuma(0, cuatroPorCuatro);
+		return this.generarEfecto(cuatroPorCuatro);
     }
 
     @Override
-    public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
+    public BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro) {
 		Moto moto = new Moto();
 		cuatroPorCuatro.copiarPosicionA(moto);
-		return new  EfectoSuma(0, moto);
+		return this.generarEfecto(moto);
     }
     
 }

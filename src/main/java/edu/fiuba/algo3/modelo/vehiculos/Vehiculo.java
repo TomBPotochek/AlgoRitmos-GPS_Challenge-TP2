@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
-import java.util.ArrayList;
-
 import edu.fiuba.algo3.modelo.casillero.Casillero;
 import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
+import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
@@ -25,19 +25,19 @@ public abstract class Vehiculo {
     }
 
 
-    public ArrayList<Efecto> mover(Movimiento movimiento){
+    public Efecto mover(Movimiento movimiento){
         Mapa mapa = Mapa.getMapa();
         Posicion posSiguiente = this.posicion.calcularPosicion(movimiento);
-		ArrayList<Efecto> efectos = new ArrayList<Efecto>();
+		Efecto efecto = new EfectoNulo();
 
         try {
 			Casillero casillero = mapa.obetenerCasilla(posSiguiente);
-			efectos = casillero.atravesar(this);
+			efecto = casillero.atravesar(this);
             this.posicion.actualizarPosicion(movimiento);
         }
 		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
 
-        return efectos; //1 movimiento + los movs extra penalizados
+        return efecto; //1 movimiento + los movs extra penalizados
     }
 
 
@@ -56,5 +56,5 @@ public abstract class Vehiculo {
 	}
 
 
-	public abstract Efecto aceptar(ElementoMapa elemento);
+	public abstract BaseEfectoDecorador aceptar(ElementoMapa elemento);
 }

@@ -1,32 +1,32 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class Pozo implements ElementoMapa {
 
-    @Override
-    public Efecto interactuar(Moto moto) {
-        return new  EfectoSuma(
-			3,
-            moto);
+    private BaseEfectoDecorador generarEfecto(int movimientos){
+        EfectoSuma efecto = new EfectoSuma();
+        efecto.setMovimientosExtra(movimientos);
+        return efecto;
     }
 
     @Override
-    public Efecto interactuar(Auto auto) {
-        return new  EfectoSuma(
-			3,
-            auto);
+    public BaseEfectoDecorador interactuar(Moto moto) {
+        return this.generarEfecto(3);
     }
 
     @Override
-    public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
+    public BaseEfectoDecorador interactuar(Auto auto) {
+        return this.generarEfecto(3);
+    }
+
+    @Override
+    public BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro) {
         cuatroPorCuatro.pisarPozo();
         boolean aplicaTresPozos = cuatroPorCuatro.pisoMasDeTresPozos();
 		int movimientosExtra = aplicaTresPozos ? 2 : 0;
-        return new  EfectoSuma(
-			movimientosExtra,
-            cuatroPorCuatro);
+        return this.generarEfecto(movimientosExtra);
     }
 }
