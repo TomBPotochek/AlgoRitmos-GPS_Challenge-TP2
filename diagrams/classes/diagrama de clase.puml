@@ -2,19 +2,21 @@
 'https://plantuml.com/class-diagram'
 abstract class Vehiculo{
     # posicion : Posicion
-    {abstract}atravesarCasilla(Casillero c)
+    {abstract} atravesarCasilla(Casillero c)
+    {abstract} BaseEfectoDecorador aceptar(ElementoMapa elemento)
     mover(Movimiento movimiento)
     estaEnPosicion(Posicion posicionAComparar)
-    {abstract}}Efecto aceptar(ElementoTablero elemento)
+    copiarPosicionA(Vehiculo vehiculo)
 }
 class CuatroPorCuatro{
-    Efecto aceptar(ElementoTablero elemento)
+    - pozosAtravesados : int
+    +aceptar(ElementoMapa elemento)
+    +pisarPozo()
+    +pisoMasDeTresPozos()
 }
-class Moto{
-    Efecto aceptar(ElementoTablero elemento)
-}
+
 class Auto{
-    Efecto aceptar(ElementoTablero elemento)
+ aceptar(ElementoMapa elemento)
 }
 class Posicion{
     - fila : int
@@ -23,17 +25,11 @@ class Posicion{
     calcularPosicion(String direccion)
 }
 
-class Casillero{
-    - elementos : ElementoTablero
-    atravesar(Vehiculo vehiculo)
-    agregarElemento(ElementoTablero elemento)
-}
-
-class Efecto{
+interface Efecto{
     - AplicadorDeMovimientos : aplicador
     - Vehiculo : vehiculo
-    actualizar(int movimientosActuales)
-    Vehiculo cambiar()
+    +actualizar(int movimientosActuales)
+    +Vehiculo cambiar()
 }
 
 class Mapa{
@@ -45,75 +41,142 @@ class Mapa{
     verificarPosicionValida(Posicion pos)
 }
 
-interface ElementoTablero{
-    Efecto interactuar(Moto moto);
-    Efecto interactuar(Auto auto);
-    Efecto interactuar(Cuatroporcuatro cuatroporcuatro);
-}
-
-class Pozo implements ElementoTablero{
-    Efecto interactuar(Auto auto)
-    Efecto interactuar(Moto moto)
-    Efecto interactuar(Cuatroporcuatro cuatroporcuatro)
-}
-class Piquete implements ElementoTablero{
-    Efecto interactuar(Auto auto)
-    Efecto interactuar(Moto moto)
-    Efecto interactuar(Cuatroporcuatro cuatroporcuatro)
-}
-
-class SorpresaFavorable implements ElementoTablero{
-}
-class SorpresaDesfavorable implements ElementoTablero{
-}
-class SorpresaCambioVehiculo implements ElementoTablero{
-}
-
 interface Movimiento{
     - cantMovimientos : int
-    moverFila(int columna)
-    moverColumna(int fila)
+    +moverFila(int columna)
+    +moverColumna(int fila)
 }
 class MovArriba implements Movimiento{
-    int : cantMovimientos
-    int moverColumna(int columna)
-    int moverFila(int columna)
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
 }
 class MovAbajo implements Movimiento{
-    int : cantMovimientos
-    int moverColumna(int columna)
-    int moverFila(int columna)
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
 }
 class MovDerecha implements Movimiento{
-    int : cantMovimientos
-    int moverColumna(int columna)
-    int moverFila(int columna)
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
 }
 class MovIzquierda implements Movimiento{
-    int : cantMovimientos
-    int moverColumna(int columna)
-    int moverFila(int columna)
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
 }
 
 class Jugador{
-    vehiculo : Vehiculo
-    cantMovimientos : int
-    estaEnPosicion(Posicion unaPosicion)
-    cantidadDeMovimientosEs(int unEntero)
-    mover(Movimiento movimiento)
+    - cantMovimientos : int
+    + estaEnPosicion(Posicion unaPosicion)
+    + cantidadDeMovimientosEs(int unEntero)
+    + mover(Movimiento movimiento)
+    - alcanzoMeta : Bool
 }
 
-Mapa *--"*" Casillero
-Moto --|> Vehiculo
-Auto --|> Vehiculo
+class Juego{
+    - nombre : Nombre
+    + mover(Movimiento movimiento)
+    + estaFinalizado()
+    + obtenerNombre()
+    + obtenerPuntaje()
+}
+
+class Turno{
+    - juegoFinalizado : bool
+    - jugadores : Jugador
+    - colaJugadores : Jugador
+    - turnoSiguiente()
+    - jugadorActual()
+    + mover((Movimiento movimiento)
+    + todosfinalizados()
+    + finalizarTurnosJugador()
+    + obtenerPuntajeGanador()
+}
+
+interface Casillero{
+ +atravesar(Vehiculo vehiculo)
+}
+interface ElementoMapa{
+        BaseEfectoDecorador interactuar(Moto moto);
+        BaseEfectoDecorador interactuar(Auto auto);
+        BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro);
+}
+
+interface Efecto{
+    aplicarseSobre(Jugador jugador)
+}
+
+class EfectoCambioDeVehiculo implements Efecto{
++aplicarseSobre(Jugador jugador)
+}
+class EfectoCruzarMeta implements Efecto{
++aplicarseSobre(Jugador jugador)
+}
+class EfectoNulo implements Efecto{
++aplicarseSobre(Jugador jugador)
+}
+class EfectoSuma implements Efecto{
++aplicarseSobre(Jugador jugador)
+}
+class EfectoMultiplica implements Efecto{
++aplicarseSobre(Jugador jugador)
+}
+
+
+class CasilleroCalle implements Casillero{
++atravesar(Vehiculo vehiculo)
++agregarElemento(ElementoMapa elemento)
+}
+class CasilleroDecoratorMeta implements Casillero{}
+
+class BaseEfectoDecorador implements Efecto{
+    +aplicarseSobre(Jugador jugador)
+}
+class CasilleroDecoratorMeta{
++atravesar(Vehiculo vehiculo)
++agregarElemento(ElementoMapa elemento)
+}
+
+class Piquete implements ElementoMapa{
+aplicarseSobre(Jugador jugador)
+}
+class Pozo implements ElementoMapa{
+aplicarseSobre(Jugador jugador)
+}
+
+class SorpresaFavorable implements ElementoMapa{
+aplicarseSobre(Jugador jugador)
+}
+class SorpresaCambioVehiculo implements ElementoMapa{
+aplicarseSobre(Jugador jugador)
+}
+
+class Moto extends Vehiculo{
+    aceptar(ElementoMapa elemento)
+}
+class Auto extends Vehiculo{
+    aceptar(ElementoMapa elemento)
+}
+
+Juego --> Turno
+
 CuatroPorCuatro --|> Vehiculo
-Vehiculo ..> Mapa
+
 Vehiculo *--Posicion
 
-Jugador "crea"..> Movimiento
+Jugador <.. Movimiento
 
-Casillero o--> ElementoTablero
-Jugador *-->"1" Vehiculo
-Jugador "utiliza"..> Efecto
-Vehiculo "utiliza"..->Efecto
+Jugador *--"1" Vehiculo
+Jugador <.. "aplica" Efecto
+CasilleroDecoratorMeta o-- Casillero
+
+ElementoMapa ..> Vehiculo
+
+Mapa --> Casillero
+Turno "tiene"--> Jugador
+
+CasilleroCalle --> ElementoMapa
+CasilleroCalle <.. Efecto
 @enduml

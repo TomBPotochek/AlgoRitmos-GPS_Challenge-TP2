@@ -57,12 +57,12 @@ public class JugadorVista {
     }
 
     public void moverAbajo(){
-        this.juego.mover(new MovAbajo());
-        this.posicionY = this.posicionY + 50;
-        // try{
-        // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
+		this.posicionY = this.posicionY + 50;
+        try{
+			this.juego.mover(new MovAbajo());
+        } catch(JuegoFinalizadoException e){
             
-        // }
+        }
     }
 
     public void moverArriba(){
