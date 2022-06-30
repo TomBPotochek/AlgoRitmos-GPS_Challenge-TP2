@@ -1,0 +1,57 @@
+@startuml
+'https://plantuml.com/class-diagram'
+
+class Mapa{
+    - grilla : Casillero
+    - alto : int
+    - ancho : int
+    + asignarCasillero(Casillero casillero, Posicion pos)
+    + obetenerCasilla(Posicion posicion)
+    + verificarPosicionValida(Posicion pos)
+}
+
+interface Casillero{
+ + atravesar(Vehiculo vehiculo)
+}
+interface ElementoMapa{
+        + BaseEfectoDecorador interactuar(Moto moto);
+        + BaseEfectoDecorador interactuar(Auto auto);
+        + BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro);
+}
+
+interface Efecto{
+    + aplicarseSobre(Jugador jugador)
+}
+
+class CasilleroCalle implements Casillero{
++atravesar(Vehiculo vehiculo)
++agregarElemento(ElementoMapa elemento)
+}
+
+class CasilleroDecoratorMeta implements Casillero{
+atravesar(Vehiculo vehiculo)
+}
+
+class Piquete implements ElementoMapa{
++aplicarseSobre(Jugador jugador)
+}
+class Pozo implements ElementoMapa{
++aplicarseSobre(Jugador jugador)
+}
+
+class SorpresaFavorable implements ElementoMapa{
++aplicarseSobre(Jugador jugador)
+}
+class SorpresaCambioVehiculo implements ElementoMapa{
++aplicarseSobre(Jugador jugador)
+}
+
+
+CasilleroDecoratorMeta o-- Casillero
+
+
+Mapa --> Casillero
+CasilleroCalle --> ElementoMapa
+CasilleroCalle <.. Efecto
+
+@enduml

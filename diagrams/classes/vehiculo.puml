@@ -1,0 +1,76 @@
+@startuml
+@startuml
+'https://plantuml.com/class-diagram'
+abstract class Vehiculo{
+    # posicion : Posicion
+    +{abstract} BaseEfectoDecorador aceptar(ElementoMapa elemento)
+    + mover(Movimiento movimiento)
+    + estaEnPosicion(Posicion posicionAComparar)
+    + copiarPosicionA(Vehiculo vehiculo)
+}
+class CuatroPorCuatro{
+    - pozosAtravesados : int
+    +aceptar(ElementoMapa elemento)
+    +pisarPozo()
+    +pisoMasDeTresPozos()
+}
+
+class Auto{
+ + aceptar(ElementoMapa elemento)
+}
+class Posicion{
+    - fila : int
+    - columna : int
+    +actualizarPosicion(String direccion)
+    +calcularPosicion(String direccion)
+    +fueraDeRango(int maxCol, int maxFil)
+}
+class Jugador{
+    - cantMovimientos : int
+    + estaEnPosicion(Posicion unaPosicion)
+    + cantidadDeMovimientosEs(int unEntero)
+    + mover(Movimiento movimiento)
+    - alcanzoMeta : Bool
+}
+
+class Juego{
+    - nombre : Nombre
+    + mover(Movimiento movimiento)
+    + estaFinalizado()
+    + obtenerNombre()
+    + obtenerPuntaje()
+}
+
+class Turno{
+        - juegoFinalizado : bool
+        - jugadores : Jugador
+        - colaJugadores : Jugador
+        - turnoSiguiente()
+        - jugadorActual()
+        + mover((Movimiento movimiento)
+        + todosfinalizados()
+        + finalizarTurnosJugador()
+        + obtenerPuntajeGanador()
+}
+
+
+
+
+class Moto extends Vehiculo{
+    +aceptar(ElementoMapa elemento)
+}
+class Auto extends Vehiculo{
+    +aceptar(ElementoMapa elemento)
+}
+
+Juego --> Turno
+
+CuatroPorCuatro --|> Vehiculo
+
+Vehiculo *--Posicion
+
+Jugador *--"1" Vehiculo
+
+Turno "tiene"--> Jugador
+
+@enduml

@@ -1,0 +1,100 @@
+@startuml
+'https://plantuml.com/class-diagram'
+abstract class Vehiculo{
+    # posicion : Posicion
+    +{abstract} BaseEfectoDecorador aceptar(ElementoMapa elemento)
+    + mover(Movimiento movimiento)
+    + estaEnPosicion(Posicion posicionAComparar)
+    + copiarPosicionA(Vehiculo vehiculo)
+}
+class CuatroPorCuatro{
+    - pozosAtravesados : int
+    +aceptar(ElementoMapa elemento)
+    +pisarPozo()
+    +pisoMasDeTresPozos()
+}
+
+class Auto{
+ aceptar(ElementoMapa elemento)
+}
+class Posicion{
+    - fila : int
+    - columna : int
+    actualizarPosicion(String direccion)
+    calcularPosicion(String direccion)
+}
+
+interface Movimiento{
+    - cantMovimientos : int
+    +moverFila(int columna)
+    +moverColumna(int fila)
+}
+class MovArriba implements Movimiento{
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
+}
+class MovAbajo implements Movimiento{
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
+}
+class MovDerecha implements Movimiento{
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
+}
+class MovIzquierda implements Movimiento{
+    -int : cantMovimientos
+    +int moverColumna(int columna)
+    +int moverFila(int columna)
+}
+
+class Jugador{
+    - cantMovimientos : int
+    + estaEnPosicion(Posicion unaPosicion)
+    + cantidadDeMovimientosEs(int unEntero)
+    + mover(Movimiento movimiento)
+    - alcanzoMeta : Bool
+}
+
+class Juego{
+    - nombre : Nombre
+    + mover(Movimiento movimiento)
+    + estaFinalizado()
+    + obtenerNombre()
+    + obtenerPuntaje()
+}
+
+class Turno{
+        - juegoFinalizado : bool
+        - jugadores : Jugador
+        - colaJugadores : Jugador
+        - turnoSiguiente()
+        - jugadorActual()
+        + mover((Movimiento movimiento)
+        + todosfinalizados()
+        + finalizarTurnosJugador()
+        + obtenerPuntajeGanador()
+}
+
+
+class Moto extends Vehiculo{
+    +aceptar(ElementoMapa elemento)
+}
+class Auto extends Vehiculo{
+    +aceptar(ElementoMapa elemento)
+}
+
+Juego --> Turno
+
+CuatroPorCuatro --|> Vehiculo
+
+Vehiculo *--Posicion
+
+Jugador <.. Movimiento
+
+Jugador *--"1" Vehiculo
+
+Turno "tiene"--> Jugador
+@enduml
