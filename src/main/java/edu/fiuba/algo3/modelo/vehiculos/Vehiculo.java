@@ -32,7 +32,7 @@ public abstract class Vehiculo {
 
         try {
 			Casillero casillero = mapa.obetenerCasilla(posSiguiente);
-			System.out.println("DEBUG");
+			// System.out.println("DEBUG");
 			efecto = casillero.atravesar(this);
             this.posicion.actualizarPosicion(movimiento);
         }
