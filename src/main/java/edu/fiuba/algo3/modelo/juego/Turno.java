@@ -8,6 +8,7 @@ import java.util.Queue;
 import edu.fiuba.algo3.modelo.excepciones.JuegoEnCursoException;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.movimientos.Movimiento;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class Turno {
     private Queue<Jugador> colaJugadores;

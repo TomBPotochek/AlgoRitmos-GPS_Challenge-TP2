@@ -1,5 +1,7 @@
 package edu.fiuba.algo3;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -15,10 +17,16 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import edu.fiuba.algo3.modelo.casillero.azar.Azar;
+import edu.fiuba.algo3.modelo.juego.Juego;
+
+import edu.fiuba.algo3.MoverseALaDerechaEventHandler;
 
 public class JuegoVista extends Group{
     static String respuesta;
     static Scene juegoVista;
+
+    static Juego juego;
 
     public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
         this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador);
@@ -29,7 +37,7 @@ public class JuegoVista extends Group{
     private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
         HBox encabezado = new HBox();
         encabezado.setAlignment(Pos.CENTER_LEFT);
-        encabezado.setSpacing(150);
+        encabezado.setSpacing(130);
 
         //BOTON SIGUIENTE
         Button salir = new Button("Salir");
@@ -57,10 +65,76 @@ public class JuegoVista extends Group{
         encabezado.getChildren().add(nombreDelJugador);
         encabezado.getChildren().add(puntajeActual);
         
-        this.getChildren().add(encabezado);
+        //this.getChildren().add(encabezado);
         this.insertarCuadras(ancho, alto);
+        
+        juego = new Juego(nombreJugador, new Azar());
+        //aca van los sets de mapa
+        JugadorVista jugadorVista = new JugadorVista(juego);
+        juego.setAltoMapa(7);
+        juego.setAnchoMapa(11);
 
+        this.getChildren().add(jugadorVista.getDibujo());
+
+        //Boton DERECHA
+        Button moverseDerecha = new Button("Derecha");
+        //moverseDerecha.setPadding(new Insets(100, 50, 50, 50));
+        moverseDerecha.setFont(Font.font("Visage Bold", 10));
+        moverseDerecha.setStyle("-fx-border-width: 2px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
+        
+        Button moverseAbajo = new Button("Abajo");
+        moverseAbajo.setFont(Font.font("Visage Bold", 10));
+        moverseAbajo.setStyle("-fx-border-width: 2px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
+
+        Button moverseIzquierda = new Button("Izquierda");
+        moverseIzquierda.setFont(Font.font("Visage Bold", 10));
+        moverseIzquierda.setStyle("-fx-border-width: 2px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
+
+        Button moverseArriba = new Button("Arriba");
+        moverseArriba.setFont(Font.font("Visage Bold", 10));
+        moverseArriba.setStyle("-fx-border-width: 2px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
+
+        VBox botonesMovimiento = new VBox();
+        botonesMovimiento.setAlignment(Pos.CENTER);
+        botonesMovimiento.setSpacing(15);
+        botonesMovimiento.setStyle("-fx-padding: 400 0 200 210;");
+        //botonesMovimiento.setStyle("-fx-alignment: ;");
+        
+        MoverseALaDerechaEventHandler moverseDerechaHandler = new MoverseALaDerechaEventHandler(jugadorVista);
+        moverseDerecha.setOnAction(moverseDerechaHandler);
+
+        MoverseALaIzquierdaEventHandler moverseIzquierdaHandler = new MoverseALaIzquierdaEventHandler(jugadorVista);
+        moverseIzquierda.setOnAction(moverseIzquierdaHandler);
+        
+        MoverseAbajoEventHandler moverseAbajoHandler = new MoverseAbajoEventHandler(jugadorVista);
+        moverseAbajo.setOnAction(moverseAbajoHandler);
+        
+        MoverseArribaEventHandler moverseArribaHandler = new MoverseArribaEventHandler(jugadorVista);
+        moverseArriba.setOnAction(moverseArribaHandler);
+
+        botonesMovimiento.getChildren().add(moverseArriba);
+
+        HBox botonesID = new HBox();
+        botonesID.getChildren().add(moverseIzquierda);
+        botonesID.getChildren().add(moverseDerecha);
+        botonesID.setSpacing(5);
+
+        //botonesMovimiento.getChildren().add(moverseDerecha);
+        //botonesMovimiento.getChildren().add(moverseIzquierda);
+        botonesMovimiento.getChildren().add(botonesID);
+        botonesMovimiento.getChildren().add(moverseAbajo);
+        
+        this.getChildren().add(botonesMovimiento);
+        this.getChildren().add(encabezado);
+        // moverseDerecha.setOnAction(e-> {
+        //     String a = volverAlMenu(stage);
+        //     if(a =="Volver"){
+        //         stage.setScene(pantallaDeInicio);
+        //     }
+        // });
+        
         juegoVista = new Scene(this,640, 580, Color.rgb(38, 121, 142));
+
     }
 
     private void insertarCuadras(int ancho, int alto){
@@ -122,6 +196,7 @@ public class JuegoVista extends Group{
         Scene  escenaVolver = new Scene(menuVolver , 480 , 300);
         ventanaVolver.setScene(escenaVolver);
         ventanaVolver.showAndWait();
+
         return(respuesta);
     }
 }

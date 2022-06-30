@@ -14,7 +14,7 @@ public class Jugador {
 	public Jugador(Vehiculo unVehiculo) {
 		this.cantidadDeMovimientos = 0;
 		this.vehiculo = unVehiculo;
-	}	
+	}
 
 	public boolean estaEnPosicion(Posicion unaPosicion) {
 		return this.vehiculo.estaEnPosicion(unaPosicion);
