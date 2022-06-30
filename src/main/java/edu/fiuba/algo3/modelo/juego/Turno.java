@@ -8,6 +8,7 @@ import java.util.Queue;
 import edu.fiuba.algo3.modelo.excepciones.JuegoEnCursoException;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.movimientos.Movimiento;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class Turno {
     private Queue<Jugador> colaJugadores;
@@ -69,9 +70,19 @@ public class Turno {
     //     return ganador;
     // }
 
-    public int obtenerPuntajeGanador() {
-        if (! todosfinalizados()) throw new JuegoEnCursoException();
-        return jugadores.get(0).calcularPuntaje();
+    public Jugador obtenerGanador() {
+        if (!todosfinalizados()) throw new JuegoEnCursoException();
+		Jugador ganador = jugadores.get(0);
+        int min = ganador.calcularPuntaje();
+		
+		// Si empata gana el primero q estaba en la lista.
+		for (Jugador jugador : jugadores) {
+			if (jugador.calcularPuntaje() < min) {
+				min = jugador.calcularPuntaje();
+				ganador = jugador;
+			}
+		}
+		return ganador;
     }
 
 }

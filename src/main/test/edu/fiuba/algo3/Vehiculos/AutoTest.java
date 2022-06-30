@@ -18,7 +18,7 @@ public class AutoTest {
     public void testAutoPuedeMoverseSinObstaculos(){
         Posicion posicionAuto = new Posicion(1,1);
 		Vehiculo auto = new Auto(posicionAuto);
-        Jugador conductor = new Jugador(auto);
+        Jugador conductor = new Jugador("Pepe", auto);
         Turno turno = mock(Turno.class);
 
 
@@ -40,7 +40,7 @@ public class AutoTest {
     public void testAutoAtraviezaPozoEsPenalizadoCon3Movimientos(){
         Posicion posicionAuto = new Posicion(1,1);
         Vehiculo auto = new Auto(posicionAuto);
-        Jugador conductor = new Jugador(auto);
+        Jugador conductor = new Jugador("LaCinthia", auto);
         Turno turno = mock(Turno.class);
 
 
@@ -61,7 +61,7 @@ public class AutoTest {
     public void testAutoQuiereAtravezarPiqueteYSeQuedaEnLaMismaPosicion(){
         Posicion posicionAuto = new Posicion(1,1);
         Vehiculo auto = new Auto(posicionAuto);
-        Jugador conductor = new Jugador(auto);
+        Jugador conductor = new Jugador("Migens", auto);
         Turno turno = mock(Turno.class);
 
 

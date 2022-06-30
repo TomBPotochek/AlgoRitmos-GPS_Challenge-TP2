@@ -32,11 +32,12 @@ public abstract class Vehiculo {
 
         try {
 			Casillero casillero = mapa.obetenerCasilla(posSiguiente);
+			// System.out.println("DEBUG");
 			efecto = casillero.atravesar(this);
             this.posicion.actualizarPosicion(movimiento);
         }
 		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
-
+        //catch (NoPuedeAtravesarObstaculoError e) { }
         return efecto; //1 movimiento + los movs extra penalizados
     }
 

@@ -10,10 +10,12 @@ public class Jugador {
 	private Vehiculo vehiculo;
 	private int cantidadDeMovimientos;
     private boolean alcanzoMeta = false;
+	private String nombre;
 
-	public Jugador(Vehiculo unVehiculo) {
+	public Jugador(String unNombre, Vehiculo unVehiculo) {
 		this.cantidadDeMovimientos = 0;
 		this.vehiculo = unVehiculo;
+		this.nombre = unNombre;
 	}	
 
 	public boolean estaEnPosicion(Posicion unaPosicion) {
@@ -44,11 +46,6 @@ public class Jugador {
         this.alcanzoMeta = true;
     }
 
-    //TODO: ver si es necesario este metodo
-    public boolean esGanador(){
-        return false;
-    }
-
 	public int verCantMovs() {
 		return this.cantidadDeMovimientos;
 	}
@@ -60,4 +57,8 @@ public class Jugador {
     public int calcularPuntaje() {
         return this.verCantMovs();
     }
+
+	public String obtenerNombre() {
+		return this.nombre;
+	}
 }

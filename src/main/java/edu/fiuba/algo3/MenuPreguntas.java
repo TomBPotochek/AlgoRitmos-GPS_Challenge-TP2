@@ -15,8 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import edu.fiuba.algo3.JuegoVista;
-
 public class MenuPreguntas extends Group{
 
     static Scene preguntaDatos;
@@ -68,26 +66,26 @@ public class MenuPreguntas extends Group{
         nombreDelJugador.setStyle("-fx-border-width: 1px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 3em; -fx-text-fill: #FFC172");
         
         //PREGUNTA ANCHO DEL MAPA
-        Label preguntaAnchoDelMapa = new Label("Ancho del Mapa");
-        preguntaAnchoDelMapa.setFont(Font.font("Visage Bold", 20));
-        preguntaAnchoDelMapa.setStyle("-fx-border-width: 0px; -fx-border-color: #26798E; -fx-background-color: #26798E; -fx-font-size: 25px; -fx-text-fill: #FFC172");
+        // Label preguntaAnchoDelMapa = new Label("Ancho del Mapa");
+        // preguntaAnchoDelMapa.setFont(Font.font("Visage Bold", 20));
+        // preguntaAnchoDelMapa.setStyle("-fx-border-width: 0px; -fx-border-color: #26798E; -fx-background-color: #26798E; -fx-font-size: 25px; -fx-text-fill: #FFC172");
     
-        ////PREGUNTA ALTO DEL MAPA
-        Label preguntaAltoDelMapa = new Label("Altura del Mapa");
-        preguntaAltoDelMapa.setFont(Font.font("Visage Bold", 20));
-        preguntaAltoDelMapa.setStyle("-fx-border-width: 0px; -fx-border-color: #26798E; -fx-background-color: #26798E; -fx-font-size: 25px; -fx-text-fill: #FFC172");
+        // ////PREGUNTA ALTO DEL MAPA
+        // Label preguntaAltoDelMapa = new Label("Altura del Mapa");
+        // preguntaAltoDelMapa.setFont(Font.font("Visage Bold", 20));
+        // preguntaAltoDelMapa.setStyle("-fx-border-width: 0px; -fx-border-color: #26798E; -fx-background-color: #26798E; -fx-font-size: 25px; -fx-text-fill: #FFC172");
     
         //INPUT ANCHO DEL MAPA
-        TextField anchoDelMapa = new TextField();
-        anchoDelMapa.setAlignment(Pos.CENTER);
-        anchoDelMapa.setPromptText("Ancho");
-        anchoDelMapa.setStyle("-fx-border-width: 1px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
+        // TextField anchoDelMapa = new TextField();
+        // anchoDelMapa.setAlignment(Pos.CENTER);
+        // anchoDelMapa.setPromptText("Ancho");
+        // anchoDelMapa.setStyle("-fx-border-width: 1px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
         
         //INPUT ALTO DEL MAPA
-        TextField altoDelMapa = new TextField();
-        altoDelMapa.setAlignment(Pos.CENTER);
-        altoDelMapa.setPromptText("Alto");
-        altoDelMapa.setStyle("-fx-border-width: 1px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
+        // TextField altoDelMapa = new TextField();
+        // altoDelMapa.setAlignment(Pos.CENTER);
+        // altoDelMapa.setPromptText("Alto");
+        // altoDelMapa.setStyle("-fx-border-width: 1px; -fx-border-color: #FFC172; -fx-background-color: #26798E; -fx-font-size: 2em; -fx-text-fill: #FFC172");
     
     
         //BOTON SIGUIENTE
@@ -99,10 +97,12 @@ public class MenuPreguntas extends Group{
         //mapaDelJuego = new Scene(grupoMapa,640, 580, Color.rgb(38, 121, 142));
         
         siguiente.setOnAction(e-> {
-            if(this.verificarDatos(anchoDelMapa.getText(), altoDelMapa.getText(), nombreDelJugador.getText())){
-                JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,Integer.parseInt(anchoDelMapa.getText()), Integer.parseInt(altoDelMapa.getText()), nombreDelJugador.getText());
-                stage.setScene(juegoVista.getJuegoVista());
-            }
+            //if(this.verificarDatos(11, 7, nombreDelJugador.getText())){
+                //anchoDelMapa.getText()
+                //Integer.parseInt(altoDelMapa.getText())
+            //}
+            JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,11, 7, nombreDelJugador.getText());
+            stage.setScene(juegoVista.getJuegoVista());
         });
     
         //MAPA DEL JUEGO
@@ -111,11 +111,13 @@ public class MenuPreguntas extends Group{
         
         preguntas.getChildren().add(preguntaNombre);
         preguntas.getChildren().add(nombreDelJugador);
-        preguntas.getChildren().add(preguntaAnchoDelMapa);
-        preguntas.getChildren().add(anchoDelMapa);
-        preguntas.getChildren().add(preguntaAltoDelMapa);
-        preguntas.getChildren().add(altoDelMapa);
+        // preguntas.getChildren().add(preguntaAnchoDelMapa);
+        // preguntas.getChildren().add(anchoDelMapa);
+        // preguntas.getChildren().add(preguntaAltoDelMapa);
+        // preguntas.getChildren().add(altoDelMapa);
         preguntas.getChildren().add(siguiente);
+
+        preguntas.setSpacing(30);
         
         this.getChildren().add(preguntas);
         this.getChildren().add(parteSuperior);
@@ -169,7 +171,7 @@ public class MenuPreguntas extends Group{
     }
 
     private boolean verificarDatos(String ancho, String alto, String nombre){
-        try{
+        try{ // ancho 11 alto 7
             Integer.parseInt(ancho);
             Integer.parseInt(alto);
             if(preguntarDatosCorrectos(ancho, alto, nombre)){

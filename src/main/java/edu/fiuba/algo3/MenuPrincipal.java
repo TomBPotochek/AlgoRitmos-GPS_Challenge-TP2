@@ -13,10 +13,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import edu.fiuba.algo3.MenuPreguntas;
-import edu.fiuba.algo3.MenuPreguntas;
-import edu.fiuba.algo3.TablaDePosiciones;
-
 public class MenuPrincipal extends Group{
     static Scene pantallaDeInicio;
     static String respuesta;
