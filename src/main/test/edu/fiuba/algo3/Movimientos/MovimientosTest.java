@@ -19,7 +19,7 @@ public class MovimientosTest {
     public void testMotoIntentaMoverseFueraDelMapaYVuelveALaMismaPosicion(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("Pizzero", moto);
         Turno turno = mock(Turno.class);
 
 

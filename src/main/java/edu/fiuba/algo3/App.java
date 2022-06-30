@@ -23,7 +23,9 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-/**
+import edu.fiuba.algo3.MenuPrincipal;
+
+/*
  * JavaFX App
  */
 public class App extends Application {
@@ -40,7 +42,7 @@ public class App extends Application {
         stage.setTitle("GPS Challenge");
         stage.setResizable(false);
 
-        MenuPrincipal menuPrincipal = new MenuPrincipal (stage);
+        MenuPrincipal menuPrincipal = new MenuPrincipal(stage);
     
         //color crema ---> 255, 227, 179
         //color azul oscuro marino---> 38, 121, 142

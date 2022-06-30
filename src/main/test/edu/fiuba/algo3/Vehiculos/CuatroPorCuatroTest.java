@@ -19,7 +19,7 @@ public class CuatroPorCuatroTest {
     public void test4x4PuedeMoverseSinObstaculos(){
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
-        Jugador conductor = new Jugador(cuatrox4);
+        Jugador conductor = new Jugador("LaMona", cuatrox4);
         Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
@@ -39,7 +39,7 @@ public class CuatroPorCuatroTest {
     public void test4x4AtraviezaPozo2VecesNoEsPenalizado(){
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
-        Jugador conductor = new Jugador(cuatrox4);
+        Jugador conductor = new Jugador("Milazzo", cuatrox4);
         Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
@@ -65,7 +65,7 @@ public class CuatroPorCuatroTest {
     public void test4x4AtraviezaPozo3VecesSePenalizaCon2Movimientos(){
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
-        Jugador conductor = new Jugador(cuatrox4);
+        Jugador conductor = new Jugador("Avestruz", cuatrox4);
         Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
@@ -93,7 +93,7 @@ public class CuatroPorCuatroTest {
     public void test4x4AvanzaParaAtravezarPiqueteYPegaLaVuelta(){
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
-        Jugador conductor = new Jugador(cuatrox4);
+        Jugador conductor = new Jugador("Yubarta", cuatrox4);
         Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();

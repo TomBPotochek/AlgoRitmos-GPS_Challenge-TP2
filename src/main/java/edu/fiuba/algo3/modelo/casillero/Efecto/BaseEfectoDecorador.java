@@ -10,7 +10,7 @@ public class BaseEfectoDecorador implements Efecto {
     }
 
     @Override
-    public  void aplicarseSobre(Jugador jugador){
+    public void aplicarseSobre(Jugador jugador){
         this.efectoDecorado.aplicarseSobre(jugador);
     }
 }

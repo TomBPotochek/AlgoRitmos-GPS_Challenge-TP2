@@ -60,7 +60,7 @@ public class Mapa {
         this.ancho = ancho;
         for (int i = 0; i < alto; i++) {
             for (int j = 0; j < ancho; j++) {
-                this.asignarCasillero(new CasilleroCalle(), new Posicion(i,j));
+                this.asignarCasillero(new CasilleroCalle(), new Posicion(i, j));
             }
         }
     }
