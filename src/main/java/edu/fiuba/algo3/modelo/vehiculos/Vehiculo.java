@@ -36,6 +36,7 @@ public abstract class Vehiculo {
             this.posicion.actualizarPosicion(movimiento);
         }
 		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
+        //catch (NoPuedeAtravesarObstaculoError e) { }
         return efecto; //1 movimiento + los movs extra penalizados
     }
 
