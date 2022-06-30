@@ -58,8 +58,8 @@ public class Mapa {
     public void generarGrillaVacia(int alto, int ancho){
         this.alto = alto;
         this.ancho = ancho;
-        for (int i = 0; i < alto; i++) {
-            for (int j = 0; j < ancho; j++) {
+        for (int i = 1; i <= alto; i++) {
+            for (int j = 1; j <= ancho; j++) {
                 this.asignarCasillero(new CasilleroCalle(), new Posicion(i, j));
             }
         }
@@ -73,8 +73,8 @@ public class Mapa {
         boolean sorpresaDesfavorable;
         boolean sorpresaCambioVehiculo;
 
-        for (int i = 0; i < alto; i++){
-            for (int j = 0; j < ancho; j++){
+        for (int i = 1; i <= alto; i++){
+            for (int j = 1; j <= ancho; j++){
                 obstaculoPozo = azar.eventoConProbabilidad(0.05);
                 obstaculoPiquete = azar.eventoConProbabilidad(0.008);
                 obstaculoControl = azar.eventoConProbabilidad(0.02);
