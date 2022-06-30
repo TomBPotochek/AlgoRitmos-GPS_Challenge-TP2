@@ -26,7 +26,7 @@ public class ControlPolicialTest {
         BaseEfectoDecorador efecto = controlPolicial.interactuar(motoMock);
         efecto.decorar(efectoADecorarMock);
 
-        Jugador jugadorMock = spy(new Jugador(mock(Vehiculo.class)));
+        Jugador jugadorMock = spy(new Jugador("Wes", mock(Vehiculo.class)));
         
         for (int i = 0; i < 11; i++){
             doReturn(i).when(jugadorMock).verCantMovs();
@@ -48,7 +48,7 @@ public class ControlPolicialTest {
         BaseEfectoDecorador efecto = controlPolicial.interactuar(motoMock);
         efecto.decorar(efectoADecorarMock);
 
-        Jugador jugadorMock = spy(new Jugador(mock(Vehiculo.class)));
+        Jugador jugadorMock = spy(new Jugador("Sgt. Pepper", mock(Vehiculo.class)));
         
         for (int i = 0; i < 11; i++){
             doReturn(i).when(jugadorMock).verCantMovs();
@@ -70,7 +70,7 @@ public class ControlPolicialTest {
         BaseEfectoDecorador efecto = controlPolicial.interactuar(autoMock);
         efecto.decorar(efectoADecorarMock);
 
-        Jugador jugadorMock = spy(new Jugador(mock(Vehiculo.class)));
+        Jugador jugadorMock = spy(new Jugador("motochorro", mock(Vehiculo.class)));
         
         for (int i = 0; i < 11; i++){
             doReturn(i).when(jugadorMock).verCantMovs();

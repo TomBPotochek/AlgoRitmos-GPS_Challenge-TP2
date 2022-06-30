@@ -11,24 +11,24 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
-public class MotoTest {
-    @Test
-    public void testMotoPuedeMoverseSinObstaculos(){
-        Posicion posicionMoto = new Posicion(1,1);
-        Vehiculo moto = new Moto(posicionMoto);
+// public class MotoTest {
+//     @Test
+//     public void testMotoPuedeMoverseSinObstaculos(){
+//         Posicion posicionMoto = new Posicion(1,1);
+//         Vehiculo moto = new Moto(posicionMoto);
 
-        Mapa mapa = Mapa.getMapa();
-        mapa.setAncho(3);
-        mapa.setAlto(3);
+//         Mapa mapa = Mapa.getMapa();
+//         mapa.setAncho(3);
+//         mapa.setAlto(3);
       
-        Posicion posicionFinal = new Posicion(1,2);
-        CasilleroCalle casilleroVacio = new CasilleroCalle();
+//         Posicion posicionFinal = new Posicion(1,2);
+//         CasilleroCalle casilleroVacio = new CasilleroCalle();
         
-        mapa.asignarCasillero(casilleroVacio, posicionFinal);
+//         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        assertDoesNotThrow(() -> moto.mover(new MovDerecha()));
+//         assertDoesNotThrow(() -> moto.mover(new MovDerecha()));
 
-        assertTrue(moto.estaEnPosicion(posicionFinal));
-    }
+//         assertTrue(moto.estaEnPosicion(posicionFinal));
+//     }
 
-}
+// }

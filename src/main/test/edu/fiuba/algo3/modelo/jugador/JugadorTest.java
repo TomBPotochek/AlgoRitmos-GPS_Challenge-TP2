@@ -18,7 +18,7 @@ public class JugadorTest {
     public void testMotoPuedeMoverseSinObstaculos(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("Enrique", moto);
         Turno turno = mock(Turno.class);
 
 
@@ -40,11 +40,12 @@ public class JugadorTest {
     public void testMotoAtraviezaPozoEsPenalizadoCon3Movimientos(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("mequedesinnombres", moto);
         Turno turno = mock(Turno.class);
 
 
         Mapa mapa = Mapa.getMapa();
+		mapa.limpiar();
         mapa.setAncho(3);
         mapa.setAlto(3);
 
@@ -63,12 +64,13 @@ public class JugadorTest {
     public void testMotoAtraviezaPiqueteEsPenalizadoCon2Movimientos(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("Juliana", moto);
         Turno turno = mock(Turno.class);
 
 
         Mapa mapa = Mapa.getMapa();
-        mapa.setAncho(3);
+        mapa.limpiar();
+		mapa.setAncho(3);
         mapa.setAlto(3);
 
         Posicion posicionFinal = new Posicion(1,2);
@@ -86,7 +88,7 @@ public class JugadorTest {
     public void testMotoAtraviesaSorpresaFavorable(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("Montgomery", moto);
         Turno turno = mock(Turno.class);
 
 
@@ -109,7 +111,7 @@ public class JugadorTest {
     public void testMotoAtraviesaSorpresaDesfavorable(){
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("Carmen", moto);
         Turno turno = mock(Turno.class);
 
 
@@ -137,7 +139,7 @@ public class JugadorTest {
 		
 		Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
-        Jugador conductor = new Jugador(moto);
+        Jugador conductor = new Jugador("Repartidor", moto);
         Turno turno = mock(Turno.class);
 
 		
