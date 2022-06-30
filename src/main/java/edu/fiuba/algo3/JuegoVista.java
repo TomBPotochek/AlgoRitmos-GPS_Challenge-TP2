@@ -73,8 +73,7 @@ public class JuegoVista extends Group{
         juego = new Juego(new ArrayList<String>(Arrays.asList(nombreJugador)) , new Azar());
         //aca van los sets de mapa
         JugadorVista jugadorVista = new JugadorVista(juego);
-        juego.setAltoMapa(7);
-        juego.setAnchoMapa(11);
+        juego.setDimensionesMapa(7, 11);
 
         this.getChildren().add(jugadorVista.getDibujo());
 

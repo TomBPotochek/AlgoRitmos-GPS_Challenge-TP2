@@ -12,6 +12,7 @@ import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class Juego {
@@ -57,16 +58,14 @@ public class Juego {
     }
 
     //setters innecesarios?
-    public void setAnchoMapa(int ancho){
+    public void setDimensionesMapa(int ancho, int alto){
         Mapa mapa = Mapa.getMapa();
+		mapa.limpiar();
         mapa.setAncho(ancho);
+        mapa.setAlto(alto);
+		mapa.generarGrillaConElementosAlAzar(new Azar());
     }
     
-    public void setAltoMapa(int alto){
-        Mapa mapa = Mapa.getMapa();
-        mapa.setAlto(alto);
-    }
-
     public void mover(Movimiento movimiento) throws JuegoFinalizadoException {
         this.turnoActual.mover(movimiento);
     }
