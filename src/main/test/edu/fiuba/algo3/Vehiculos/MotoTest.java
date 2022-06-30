@@ -1,14 +1,11 @@
 package edu.fiuba.algo3.Vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.*;
-import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
-import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
@@ -25,7 +22,7 @@ public class MotoTest {
         mapa.setAlto(3);
       
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casilleroVacio = new Casillero();
+        CasilleroCalle casilleroVacio = new CasilleroCalle();
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
@@ -33,6 +30,5 @@ public class MotoTest {
 
         assertTrue(moto.estaEnPosicion(posicionFinal));
     }
-
 
 }

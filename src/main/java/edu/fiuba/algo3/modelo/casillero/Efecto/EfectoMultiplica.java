@@ -1,19 +1,27 @@
 package edu.fiuba.algo3.modelo.casillero.Efecto;
 
-import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.juego.Jugador;
 
-public class EfectoMultiplica extends Efecto {
+public class EfectoMultiplica extends BaseEfectoDecorador {
 
-	private double factor;
+	private double factor = 1.0;
 
-	public EfectoMultiplica(double factor, Vehiculo vehiculoNuevo) {
-		super(vehiculoNuevo);
-		this.factor = factor;
-	}
+    public void setFactor(double factor){
+        this.factor = factor;
+    }
 
-	@Override
-	public int actualizarMovimientos(int movimientosActuales) {
+	
+	private int multiplicar(int movimientosActuales) {
 		return (int) Math.round(factor*movimientosActuales);
 	}
+
+    @Override
+    public void aplicarseSobre(Jugador jugador) {
+        super.aplicarseSobre(jugador);
+
+        int movimientos = jugador.verCantMovs();
+        movimientos = this.multiplicar(movimientos);
+        jugador.setMovimientos(movimientos);
+    }
 	
 }

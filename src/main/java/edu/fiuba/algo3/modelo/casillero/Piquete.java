@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.vehiculos.*;
@@ -8,19 +8,19 @@ import edu.fiuba.algo3.modelo.vehiculos.*;
 public class Piquete implements ElementoMapa {
 
     @Override
-    public Efecto interactuar(Moto moto) {
-        return new EfectoSuma(
-            2,
-            moto);
+    public BaseEfectoDecorador interactuar(Moto moto) {
+        EfectoSuma efecto = new EfectoSuma();
+        efecto.setMovimientosExtra(2);
+        return efecto;
     }
 
     @Override
-    public Efecto interactuar(Auto auto) {
+    public BaseEfectoDecorador interactuar(Auto auto) {
         throw new NoPuedeAtravesarObstaculoError();
     }
 
     @Override
-    public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
+    public BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro) {
         throw new NoPuedeAtravesarObstaculoError();
     }
 }

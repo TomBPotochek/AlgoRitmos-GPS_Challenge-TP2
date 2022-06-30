@@ -1,19 +1,26 @@
 package edu.fiuba.algo3.modelo.casillero.Efecto;
 
-import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
+import edu.fiuba.algo3.modelo.juego.Jugador;
 
-public class EfectoSuma extends Efecto {
+public class EfectoSuma extends BaseEfectoDecorador {
 
-	private int movsExtra;
+    private int movsExtra = 0;
 
-	public EfectoSuma(int MovimientosExtra, Vehiculo vehiculo){
-		super(vehiculo);
-		movsExtra = MovimientosExtra;
-	}
+    public void setMovimientosExtra(int movsExtra){
+        this.movsExtra = movsExtra;
+    }
 
-	@Override
-	public int actualizarMovimientos(int movimientosActuales) {
-		return movsExtra + movimientosActuales;
-	}
-	
+    private int sumar(int movimientosActuales) {
+        return movsExtra + movimientosActuales;
+    }
+
+    @Override
+    public void aplicarseSobre(Jugador jugador) {
+        super.aplicarseSobre(jugador);
+
+        int movimientos = jugador.verCantMovs();
+        movimientos = this.sumar(movimientos);
+        jugador.setMovimientos(movimientos);
+    }
+    
 }

@@ -12,4 +12,10 @@ public class Azar implements ProveedorDatosAzar {
         if (this.random.nextDouble() <= probabilidad) return true;
         return false;
     }
+
+
+    @Override
+    public int enteroAzarEnRango(int min, int max) {
+        return random.nextInt((max - min) + 1) + min;
+    }
 }

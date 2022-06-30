@@ -1,29 +1,29 @@
 package edu.fiuba.algo3.modelo.casillero;
 
-import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
+import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoMultiplica;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class SorpresaDesfavorable implements ElementoMapa {
 
-    private Efecto desfavorable(Vehiculo vehiculo){
-        return new EfectoMultiplica(
-                          1.25,
-                          vehiculo);
+    private BaseEfectoDecorador desfavorable(Vehiculo vehiculo){
+        EfectoMultiplica efecto = new EfectoMultiplica();
+        efecto.setFactor(1.25);
+        return efecto;
     }
 
     @Override
-    public Efecto interactuar(Moto moto) {
+    public BaseEfectoDecorador interactuar(Moto moto) {
         return desfavorable(moto);
     }
 
     @Override
-    public Efecto interactuar(Auto auto) {
+    public BaseEfectoDecorador interactuar(Auto auto) {
         return desfavorable(auto);
     }
 
     @Override
-    public Efecto interactuar(CuatroPorCuatro cuatroPorCuatro) {
+    public BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro) {
         return desfavorable(cuatroPorCuatro);
     }
     
