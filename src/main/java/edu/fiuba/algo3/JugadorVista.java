@@ -39,39 +39,39 @@ public class JugadorVista {
     }
 
     public void moverDerecha(){
-        try{
-            this.juego.mover(new MovDerecha());
-            this.posicionX = this.posicionX + 50;
-        } catch(JuegoFinalizadoException | PosicionInvalidaError e){
+        this.juego.mover(new MovDerecha());
+        this.posicionX = this.posicionX + 50;
+        // try{
+        // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
 
-        }
+        // }
     }
 
     public void moverIzquierda(){
-        try{
-            this.juego.mover(new MovIzquierda());
-            this.posicionX = this.posicionX - 50;
-        } catch(JuegoFinalizadoException | PosicionInvalidaError e){
+        this.juego.mover(new MovIzquierda());
+        this.posicionX = this.posicionX - 50;
+        // try{
+        // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
             
-        }
+        // }
     }
 
     public void moverAbajo(){
-        try{
-            this.juego.mover(new MovAbajo());
-            this.posicionY = this.posicionY + 50;
-        } catch(JuegoFinalizadoException | PosicionInvalidaError e){
+        this.juego.mover(new MovAbajo());
+        this.posicionY = this.posicionY + 50;
+        // try{
+        // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
             
-        }
+        // }
     }
 
     public void moverArriba(){
-        try{
-            this.juego.mover(new MovArriba());
-            this.posicionY = this.posicionY - 50;
-        } catch(JuegoFinalizadoException | PosicionInvalidaError e){
+        this.juego.mover(new MovArriba());
+        this.posicionY = this.posicionY - 50;
+        // try{
+        // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
             
-        }
+        // }
     }
 
     private void dibujarFormas() {

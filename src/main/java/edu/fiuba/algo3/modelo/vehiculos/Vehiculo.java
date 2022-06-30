@@ -35,8 +35,8 @@ public abstract class Vehiculo {
 			efecto = casillero.atravesar(this);
             this.posicion.actualizarPosicion(movimiento);
         }
-		//catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
-        catch (NoPuedeAtravesarObstaculoError e) { }
+		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
+        //catch (NoPuedeAtravesarObstaculoError e) { }
         return efecto; //1 movimiento + los movs extra penalizados
     }
 

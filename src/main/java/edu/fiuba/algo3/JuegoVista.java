@@ -20,6 +20,9 @@ import javafx.stage.Stage;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.juego.Juego;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import edu.fiuba.algo3.MoverseALaDerechaEventHandler;
 
 public class JuegoVista extends Group{
@@ -67,8 +70,7 @@ public class JuegoVista extends Group{
         
         //this.getChildren().add(encabezado);
         this.insertarCuadras(ancho, alto);
-        
-        juego = new Juego(nombreJugador, new Azar());
+        juego = new Juego(new ArrayList<String>(Arrays.asList(nombreJugador)) , new Azar());
         //aca van los sets de mapa
         JugadorVista jugadorVista = new JugadorVista(juego);
         juego.setAltoMapa(7);
