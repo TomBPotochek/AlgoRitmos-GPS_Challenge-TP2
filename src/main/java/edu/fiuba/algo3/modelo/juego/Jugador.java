@@ -7,8 +7,9 @@ import edu.fiuba.algo3.modelo.movimientos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class Jugador {
-	Vehiculo vehiculo;
-	int cantidadDeMovimientos;
+	private Vehiculo vehiculo;
+	private int cantidadDeMovimientos;
+    private boolean alcanzoMeta = false;
 
 	public Jugador(Vehiculo unVehiculo) {
 		this.cantidadDeMovimientos = 0;
@@ -33,10 +34,20 @@ public class Jugador {
 		this.cantidadDeMovimientos = movimientos;
 	}
 
-	public void mover(Movimiento movimiento) {
+	public void mover(Movimiento movimiento, Turno turnoActual) {
 		this.cantidadDeMovimientos += 1;
 		aplicarEfecto(this.vehiculo.mover(movimiento));
+        if (this.alcanzoMeta) turnoActual.finalizarTurnosJugador();
 	}
+
+    public void marcarFinalizado(){
+        this.alcanzoMeta = true;
+    }
+
+    //TODO: ver si es necesario este metodo
+    public boolean esGanador(){
+        return false;
+    }
 
 	public int verCantMovs() {
 		return this.cantidadDeMovimientos;
@@ -44,5 +55,9 @@ public class Jugador {
 
     public void cambiarVehiculoA(Vehiculo vehiculoNuevo) {
         this.vehiculo = vehiculoNuevo;
+    }
+
+    public int calcularPuntaje() {
+        return this.verCantMovs();
     }
 }

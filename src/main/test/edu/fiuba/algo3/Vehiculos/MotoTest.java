@@ -22,7 +22,7 @@ public class MotoTest {
         mapa.setAlto(3);
       
         Posicion posicionFinal = new Posicion(1,2);
-        Casillero casilleroVacio = new Casillero();
+        CasilleroCalle casilleroVacio = new CasilleroCalle();
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
