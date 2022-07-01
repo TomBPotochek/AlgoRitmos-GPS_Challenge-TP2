@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.juego;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
@@ -19,7 +20,7 @@ public class Juego {
     
     private Turno turnoActual;
     // private String nombre;
-
+    private Ranking ranking;
     public Juego(ArrayList<String> nombreJugadores, ProveedorDatosAzar proveedorDatosAzar){
 
 		// Vehiculo vehiculoJugador1, vehiculoJugador2;
@@ -83,4 +84,5 @@ public class Juego {
 		Jugador ganador = this.turnoActual.obtenerGanador();
 		return ganador.obtenerNombre();
 	}
+
 }
