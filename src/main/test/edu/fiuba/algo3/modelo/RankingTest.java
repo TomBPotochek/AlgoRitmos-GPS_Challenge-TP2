@@ -13,24 +13,20 @@ public class RankingTest {
 
     @Test
     public void puedoRegistrarJugadores(){
-        String jugador = "Raul";
-        int puntajeRaul = 10;
-        String otroJugador = "Roberto";
-        int puntajeRoberto = 35;
-        String ricardo = "Ricardo";
-        int puntajeRicardo = 100;
+
 
         Ranking ranking = new Ranking();
-        ranking.registrarJugador(jugador, puntajeRaul);
-        ranking.registrarJugador(otroJugador, puntajeRoberto);
-        ranking.registrarJugador(ricardo, puntajeRicardo);
+        ranking.registrarJugador("Roberto", 100);
+        ranking.registrarJugador("Ricardo", 90);
+        ranking.registrarJugador("Raul", 80);
+        ranking.registrarJugador("Roberto", 70);
 
         Collection<String> lista = ranking.obtenerRanking();
         Iterator<String> it = lista.iterator();
 
-        assertEquals("Ricardo",it.next());
         assertEquals("Roberto", it.next());
+        assertEquals("Ricardo",it.next());
         assertEquals("Raul",it.next());
-
+        assertEquals("Roberto", it.next());
     }
 }
