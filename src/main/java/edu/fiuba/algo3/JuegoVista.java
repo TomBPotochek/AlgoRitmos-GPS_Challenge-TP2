@@ -136,24 +136,21 @@ public class JuegoVista extends Group{
         // });
 
         juegoVista = new Scene(this,640, 580, Color.rgb(38, 121, 142));
-        juegoVista.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                EventHandler<KeyEvent> mov;
-                switch(keyEvent.getCode()){
-                    case W: mov = new MovArribaEventHandlerKey(jugadorVista);
-                            mov.handle(keyEvent);
-                            break;
-                    case S: mov = new MovAbajoEventHandlerKey(jugadorVista);
-                            mov.handle(keyEvent);
-                            break;
-                    case D: mov = new MovDerechaEventHandlerKey(jugadorVista);
-                            mov.handle(keyEvent);
-                            break;
-                    case A: mov = new MovIzquierdaEventHandlerKey(jugadorVista);
-                            mov.handle(keyEvent);
-                            break;
-                }
+        juegoVista.setOnKeyPressed(keyEvent -> {
+            EventHandler<KeyEvent> mov;
+            switch(keyEvent.getCode()){
+                case W: mov = new MovArribaEventHandlerKey(jugadorVista);
+                        mov.handle(keyEvent);
+                        break;
+                case S: mov = new MovAbajoEventHandlerKey(jugadorVista);
+                        mov.handle(keyEvent);
+                        break;
+                case D: mov = new MovDerechaEventHandlerKey(jugadorVista);
+                        mov.handle(keyEvent);
+                        break;
+                case A: mov = new MovIzquierdaEventHandlerKey(jugadorVista);
+                        mov.handle(keyEvent);
+                        break;
             }
         });
 
