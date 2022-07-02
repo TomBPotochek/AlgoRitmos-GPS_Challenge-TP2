@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -133,8 +134,29 @@ public class JuegoVista extends Group{
         //         stage.setScene(pantallaDeInicio);
         //     }
         // });
-        
+
         juegoVista = new Scene(this,640, 580, Color.rgb(38, 121, 142));
+        juegoVista.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                EventHandler<KeyEvent> mov;
+                switch(keyEvent.getCode()){
+                    case W: mov = new MovArribaEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                    case S: mov = new MovAbajoEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                    case D: mov = new MovDerechaEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                    case A: mov = new MovIzquierdaEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                }
+            }
+        });
+
 
     }
 
