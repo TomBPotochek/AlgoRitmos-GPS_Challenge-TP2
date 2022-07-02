@@ -19,6 +19,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -37,13 +38,24 @@ public class App extends Application {
     Scene mapaDelJuego;
     Scene tablaDePosicionesHistorial;
 
+    String botonAntesDeSerPresionado = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    String botonNormal = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #2F343A; -fx-text-fill: #80CEB9";
+
     @Override
     public void start(Stage stage) {
         stage.setTitle("GPS Challenge");
-        stage.setResizable(false);
+        stage.setResizable(true);
+        stage.setMaximized(true);
+        //stage.setFullScreen(true);
+        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
+        stage.getIcons().add(logo);
 
         MenuPrincipal menuPrincipal = new MenuPrincipal(stage);
-    
+        
+
+        //color violeta oscuro: #1b004b
+        //color violeta claro: #7f00b2
+
         //color crema ---> 255, 227, 179
         //color azul oscuro marino---> 38, 121, 142
         //color verde claro----> 99, 202, 167 
@@ -71,26 +83,26 @@ public class App extends Application {
         ventanaSalir.setTitle("Salir del Juego");
         
         Button botonSalir = new Button("SI");
-        botonSalir.setFont(Font.font("Visage Bold", 15));
-        botonSalir.setStyle("-fx-border-width: 2px; -fx-border-color: #FFC172; -fx-font-size: 20px; -fx-background-color: #26798E; -fx-text-fill: #FFC172");
+        botonSalir.setStyle(botonNormal);
+        botonSalir.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
+        botonSalir.setOnMouseEntered(e -> botonSalir.setStyle(botonAntesDeSerPresionado));
+        botonSalir.setOnMouseExited(e -> botonSalir.setStyle(botonNormal));
         
         Button botonQuedarse = new Button("NO");
-        botonQuedarse.setFont(Font.font("Visage Bold", 15));
-        botonQuedarse.setStyle("-fx-border-width: 2px; -fx-border-color: #FFC172; -fx-font-size: 20px; -fx-background-color: #26798E; -fx-text-fill: #FFC172");
+        botonQuedarse.setStyle(botonNormal);
+        botonQuedarse.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
+        botonQuedarse.setOnMouseEntered(e -> botonQuedarse.setStyle(botonAntesDeSerPresionado));
+        botonQuedarse.setOnMouseExited(e -> botonQuedarse.setStyle(botonNormal));
         
         VBox menuSalir = new VBox(20);
         
         Label preguntaSalir = new Label("¿Estás seguro que querés salir?");
-        preguntaSalir.setFont(Font.font("Visage Bold", 20));
-        preguntaSalir.setStyle("-fx-border-width: 0px; -fx-border-color: #26798E; -fx-background-color: #26798E; -fx-font-size: 20px; -fx-text-fill: #FFC172");
-        
-        
-        ventanaSalir.setMinWidth(280);
-        ventanaSalir.initModality(Modality.APPLICATION_MODAL);
+        preguntaSalir.setStyle(botonNormal);
+        preguntaSalir.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         
         menuSalir.getChildren().addAll(preguntaSalir , botonSalir ,botonQuedarse);
         menuSalir.setAlignment(Pos.CENTER);
-        menuSalir.setStyle("-fx-border-color: #26798E; -fx-background-color: #26798E");
+        menuSalir.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
         
         botonSalir.setOnAction(e-> {
             respuesta = "Salir";
@@ -102,7 +114,9 @@ public class App extends Application {
             ventanaSalir.close();
         });
 
-        Scene  escenaSalir = new Scene(menuSalir , 280 , 200);
+        Scene  escenaSalir = new Scene(menuSalir , 370 , 200);
+        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
+        ventanaSalir.getIcons().add(logo);
         ventanaSalir.setScene(escenaSalir);
         ventanaSalir.showAndWait();
         return(respuesta);
