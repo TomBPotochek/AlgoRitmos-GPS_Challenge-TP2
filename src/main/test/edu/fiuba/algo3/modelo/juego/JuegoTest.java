@@ -95,4 +95,8 @@ public class JuegoTest {
 
 
 	}
+
+    public void testJugadorTerminaElJuegoYQuedaRegistradoEnElRanking(){
+
+    }
 }
