@@ -45,7 +45,7 @@ public class App extends Application {
     public void start(Stage stage) {
         stage.setTitle("GPS Challenge");
         stage.setResizable(true);
-        stage.setMaximized(true);
+        //stage.setMaximized(true);
         //stage.setFullScreen(true);
         Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
         stage.getIcons().add(logo);

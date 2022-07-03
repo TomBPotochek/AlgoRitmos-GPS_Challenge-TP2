@@ -4,6 +4,7 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,6 +25,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class MenuPrincipal extends FlowPane{
@@ -35,13 +37,16 @@ public class MenuPrincipal extends FlowPane{
 
     public MenuPrincipal (Stage stage) {
         this.setMenu(stage);
+        stage.setMaximized(true);
         this.setOrientation(Orientation.VERTICAL);
         this.setStyle(" -fx-padding: 70 100 20 70");
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps.png");
-        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     }
     private void setMenu(Stage stage){
+        Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
+
         Image tituloFoto = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/titulo-gps.png");
         ImageView nombreDelJuego = new ImageView(tituloFoto);
         nombreDelJuego.setFitHeight(210);
@@ -105,6 +110,7 @@ public class MenuPrincipal extends FlowPane{
         acercaDe.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         acercaDe.setOnMouseEntered(e -> acercaDe.setStyle(botonAntesDeSerPresionado));
         acercaDe.setOnMouseExited(e -> acercaDe.setStyle(botonNormal));
+        acercaDe.setOnAction(e -> acercaDe());
 
         parteInferior.getChildren().add(pantallaCompleta);
         parteInferior.getChildren().add(comoJugar);
@@ -118,7 +124,7 @@ public class MenuPrincipal extends FlowPane{
         this.getChildren().add(salir);
         this.getChildren().add(parteInferior);
         
-        pantallaDeInicio = new Scene(this, 1366, 768);
+        pantallaDeInicio = new Scene(this, screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
         
         //BOTON DE TABLA DE POSICIONES FUNCION
         TablaDePosiciones tablaDePosiciones = new TablaDePosiciones(stage, pantallaDeInicio);
@@ -133,6 +139,38 @@ public class MenuPrincipal extends FlowPane{
     
     public Scene getMenu(){
         return pantallaDeInicio;
+    }
+
+    private void acercaDe(){
+        Stage ventanaAcercaDe = new Stage();
+        ventanaAcercaDe.setResizable(false);
+        ventanaAcercaDe.setTitle("Acerca De");
+        
+        Button botonOK = new Button("OK");
+        botonOK.setStyle(botonNormal);
+        botonOK.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
+        botonOK.setOnMouseEntered(e -> botonOK.setStyle(botonAntesDeSerPresionado));
+        botonOK.setOnMouseExited(e -> botonOK.setStyle(botonNormal));
+        
+        VBox menuSalir = new VBox(20);
+        
+        Label instrucciones = new Label("aca deberia haber un texto q de info nuestra\n y el link al github, aparte no debe ser un label");
+        instrucciones.setStyle(botonNormal);
+        instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
+        
+        menuSalir.getChildren().addAll(instrucciones , botonOK);
+        menuSalir.setAlignment(Pos.CENTER);
+        menuSalir.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
+        
+        botonOK.setOnAction(e-> {
+            ventanaAcercaDe.close();
+        });
+
+        Scene  escenaSalir = new Scene(menuSalir , 600 , 400);
+        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
+        ventanaAcercaDe.getIcons().add(logo);
+        ventanaAcercaDe.setScene(escenaSalir);
+        ventanaAcercaDe.showAndWait();
     }
 
     private void comoJugar(){
@@ -157,7 +195,6 @@ public class MenuPrincipal extends FlowPane{
         menuSalir.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
         
         botonOK.setOnAction(e-> {
-            respuesta = "Salir";
             ventanaComoSalir.close();
         });
 
