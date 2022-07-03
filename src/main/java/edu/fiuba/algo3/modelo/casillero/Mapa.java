@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.casillero;
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
@@ -27,13 +28,18 @@ public class Mapa {
 
 	public void asignarCasillero(CasilleroCalle casillero, Posicion pos){
         this.grilla.put(pos, casillero);
+        Logger.log(String.format("agregado de casillero #%s en posicion (%d, %d)", 
+                    Integer.toHexString(casillero.hashCode()),
+                    pos.getColumna(), pos.getFila()));
     }
 
     public void asignarPosicionMeta(Posicion pos){
         this.posicionMeta = pos;
+        Logger.log(String.format("meta asignada en posicion (%d, %d)", 
+                    pos.getColumna(), pos.getFila())); 
     }
 
-    public Casillero obetenerCasilla(Posicion posicion) {
+    public Casillero obtenerCasilla(Posicion posicion) {
 		if (posicion.fueraDeRango(this.ancho, this.alto)) {
 			throw new PosicionInvalidaError();
 		}
@@ -41,6 +47,7 @@ public class Mapa {
         
         if (posicion.equals(this.posicionMeta)){
             casillero = new CasilleroDecoratorMeta(casillero);
+            Logger.log("se llega a la meta");
         }
         return casillero;
     }
@@ -93,13 +100,16 @@ public class Mapa {
                 this.asignarCasillero(casillero, new Posicion(i, j));
             }
         }
+        this.asignarPosicionMeta(new Posicion(this.alto, this.ancho));
     }
 
     public void setAncho(int ancho) {
         this.ancho = ancho;
+        Logger.log(String.format("ancho de mapa seteado en %d", ancho));
     }
 
     public void setAlto(int alto){
         this.alto = alto;
+        Logger.log(String.format("alto de mapa seteado en %d", alto));
     }
 }

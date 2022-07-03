@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.vehiculos;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Casillero;
 import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
@@ -31,12 +32,22 @@ public abstract class Vehiculo {
 		Efecto efecto = new EfectoNulo();
 
         try {
-			Casillero casillero = mapa.obetenerCasilla(posSiguiente);
-			// System.out.println("DEBUG");
-			efecto = casillero.atravesar(this);
+			Casillero casillero = mapa.obtenerCasilla(posSiguiente);
+			
+            Logger.log(String.format("%s intenta moverse a casilla %s", 
+                        casillero.getClass().getSimpleName(), Integer.toHexString(this.hashCode())));
+			
+                        efecto = casillero.atravesar(this);
             this.posicion.actualizarPosicion(movimiento);
+            
+            Logger.log(String.format("%s ahora esta en posicion (%d, %d)",
+                            this.getClass().getSimpleName(), 
+                            this.posicion.getFila(), this.posicion.getColumna())); 
         }
-		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) { }
+		catch (NoPuedeAtravesarObstaculoError | PosicionInvalidaError e) {
+            Logger.log(String.format("moverse a casilla fallo. motivo: %s", 
+                        e.toString()));
+         }
         //catch (NoPuedeAtravesarObstaculoError e) { }
         return efecto; //1 movimiento + los movs extra penalizados
     }

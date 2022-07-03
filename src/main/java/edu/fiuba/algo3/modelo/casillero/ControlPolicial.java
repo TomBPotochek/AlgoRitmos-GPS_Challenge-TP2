@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
@@ -23,6 +24,8 @@ public class ControlPolicial implements ElementoMapa {
     public BaseEfectoDecorador interactuar(Moto moto) {
         boolean aplicaControl = this.azar.eventoConProbabilidad(0.8);
         int movimientosExtra = aplicaControl ? 3 : 0;
+        Logger.log(String.format("vehiculo (moto) se topa con control policial. suma %d movimientos", 
+                    movimientosExtra)); 
         return this.generarEfecto(movimientosExtra);
     }
 
@@ -30,6 +33,8 @@ public class ControlPolicial implements ElementoMapa {
     public BaseEfectoDecorador interactuar(Auto auto) {
         boolean aplicaControl = this.azar.eventoConProbabilidad(0.5);
         int movimientosExtra = aplicaControl ? 3 : 0;
+        Logger.log(String.format("vehiculo (auto) se topa con control policial. suma %d movimientos", 
+                    movimientosExtra));
         return this.generarEfecto(movimientosExtra);
     }
 
@@ -37,6 +42,8 @@ public class ControlPolicial implements ElementoMapa {
     public BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro) {
         boolean aplicaControl = this.azar.eventoConProbabilidad(0.3);
         int movimientosExtra = aplicaControl ? 3 : 0;
+        Logger.log(String.format("vehiculo (cuatroPorCuatro) se topa con control policial. suma %d movimientos", 
+                    movimientosExtra));
         return this.generarEfecto(movimientosExtra);
     }
 }

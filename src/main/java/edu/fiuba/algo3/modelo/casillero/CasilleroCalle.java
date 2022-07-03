@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo.casillero;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo;
@@ -24,6 +25,9 @@ public class CasilleroCalle implements Casillero {
 
     public void agregarElemento(ElementoMapa elemento){
         this.elementos.add(elemento);
+        Logger.log(String.format("agregado de %s a casillero #%s",
+                     elemento.getClass().getSimpleName(),
+                      Integer.toHexString(this.hashCode())));
     }
 
 	public void vaciar() {

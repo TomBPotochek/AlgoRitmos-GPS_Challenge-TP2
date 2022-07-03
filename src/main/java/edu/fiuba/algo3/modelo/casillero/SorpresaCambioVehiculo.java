@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCambioDeVehiculo;
 import edu.fiuba.algo3.modelo.vehiculos.*;
@@ -9,6 +10,7 @@ public class SorpresaCambioVehiculo implements ElementoMapa {
     private BaseEfectoDecorador generarEfecto(Vehiculo vehiculo){
         EfectoCambioDeVehiculo efecto = new EfectoCambioDeVehiculo();
         efecto.setVehiculo(vehiculo);
+        Logger.log("vehiculo se topa con sopresa: cambio de vehiculo");
         return efecto;
     }
     

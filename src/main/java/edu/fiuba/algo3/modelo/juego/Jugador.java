@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.juego;
 
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
-
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.movimientos.*;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
@@ -33,17 +33,26 @@ public class Jugador {
 // para evitar que las distintas implementaciones de efectos
 // se acoplen con jugador 
 	public void setMovimientos(int movimientos){
+        Logger.log(String.format("cantidad de movimientos se actualiza: %d -> %d", 
+                    this.cantidadDeMovimientos, movimientos));
 		this.cantidadDeMovimientos = movimientos;
 	}
 
+    private void incrementarMovimientos(){
+        Logger.log(String.format("movimientos incrementa en 1: %d -> %d", 
+                this.cantidadDeMovimientos, this.cantidadDeMovimientos+1));
+        this.cantidadDeMovimientos += 1;
+    }
+
 	public void mover(Movimiento movimiento, Turno turnoActual) {
-		this.cantidadDeMovimientos += 1;
+		this.incrementarMovimientos();
 		aplicarEfecto(this.vehiculo.mover(movimiento));
         if (this.alcanzoMeta) turnoActual.finalizarTurnosJugador();
 	}
 
     public void marcarFinalizado(){
         this.alcanzoMeta = true;
+        Logger.log("jugador cruzo la meta");
     }
 
 	public int verCantMovs() {

@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma;
 import edu.fiuba.algo3.modelo.vehiculos.*;
@@ -14,11 +15,13 @@ public class Pozo implements ElementoMapa {
 
     @Override
     public BaseEfectoDecorador interactuar(Moto moto) {
+        Logger.log("vehiculo (moto) pasa un pozo: suma 3 movimientos");
         return this.generarEfecto(3);
     }
 
     @Override
     public BaseEfectoDecorador interactuar(Auto auto) {
+        Logger.log("vehiculo (auto) pasa un pozo: suma 3 movimientos");
         return this.generarEfecto(3);
     }
 
@@ -27,6 +30,7 @@ public class Pozo implements ElementoMapa {
         cuatroPorCuatro.pisarPozo();
         boolean aplicaTresPozos = cuatroPorCuatro.pisoMasDeTresPozos();
 		int movimientosExtra = aplicaTresPozos ? 2 : 0;
+        Logger.log(String.format("vehiculo (cuatroPorCuatro) pasa un pozo: suma %d movimientos", movimientosExtra));
         return this.generarEfecto(movimientosExtra);
     }
 }

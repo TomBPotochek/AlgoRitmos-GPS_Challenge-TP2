@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
+import edu.fiuba.algo3.modelo.Logging.LoggerConsola;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.JuegoEnCursoException;
@@ -23,6 +25,8 @@ public class Juego {
     private Ranking ranking;
     public Juego(ArrayList<String> nombreJugadores, ProveedorDatosAzar proveedorDatosAzar){
 
+        Logger.setLogger(new LoggerConsola());
+        Logger.enableLogging(true);
 		// Vehiculo vehiculoJugador1, vehiculoJugador2;
         ArrayList<Vehiculo> vehiculos = new ArrayList<Vehiculo>(
 			Arrays.asList(new Moto(), new Auto(), new CuatroPorCuatro()));
