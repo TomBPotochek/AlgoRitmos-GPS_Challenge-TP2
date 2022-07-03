@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
+import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,9 +38,9 @@ public class JuegoTest {
         
         //comenzamos a mover a los jugadores por el mapa
         //movemos la moto atravez del piquete y el auto no
-        juego.mover(new MovAbajo());  //moto +1
-        juego.mover(new MovDerecha());//moto +1. pozo +3.
-        juego.mover(new MovDerecha());//moto +1. llego a la meta.
+        juego.mover(Direccion.abajo());  //moto +1
+        juego.mover(Direccion.derecha());//moto +1. pozo +3.
+        juego.mover(Direccion.derecha());//moto +1. llego a la meta.
 
         //assert juego se finalizo
         //assertTrue(juego.estaFinalizado());
@@ -75,12 +76,12 @@ public class JuegoTest {
 		Juego juego = new Juego(jugadores, azarMock);
 
 		// Ambos atraviezan el mapa en linea recta y cruzan un Pozo.
-        juego.mover(new MovDerecha());  // Bob esta en: (1, 2) - suma 1 + 3 movimientos (Pozo).
-        juego.mover(new MovDerecha());	// Alice esta en: (1, 2) - suma 1 movimientos (Pozo). 
-        juego.mover(new MovDerecha());	// Bob esta en: (1, 3) - suma 1 movimiento. 
-        juego.mover(new MovDerecha());	// Alice esta en: (1, 3) - suma 1 movimiento.
-        juego.mover(new MovDerecha());	// Bob esta en: (1, 4) - suma 1 movimiento; meta. 
-        juego.mover(new MovDerecha());	// Alice esta en: (1, 4) - suma 1 movimiento; meta.
+        juego.mover(Direccion.derecha());  // Bob esta en: (1, 2) - suma 1 + 3 movimientos (Pozo).
+        juego.mover(Direccion.derecha());	// Alice esta en: (1, 2) - suma 1 movimientos (Pozo).
+        juego.mover(Direccion.derecha());	// Bob esta en: (1, 3) - suma 1 movimiento.
+        juego.mover(Direccion.derecha());	// Alice esta en: (1, 3) - suma 1 movimiento.
+        juego.mover(Direccion.derecha());	// Bob esta en: (1, 4) - suma 1 movimiento; meta.
+        juego.mover(Direccion.derecha());	// Alice esta en: (1, 4) - suma 1 movimiento; meta.
 
 		assertTrue(juego.estaFinalizado());
         
@@ -90,7 +91,7 @@ public class JuegoTest {
 
         //assert no se puede seguir jugando
         assertThrows(JuegoFinalizadoException.class,
-                     () -> {juego.mover(new MovIzquierda());}
+                     () -> {juego.mover(Direccion.izquierda());}
                      );
 
 

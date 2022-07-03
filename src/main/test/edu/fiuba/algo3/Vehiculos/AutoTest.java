@@ -3,6 +3,7 @@ package edu.fiuba.algo3.Vehiculos;
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
+import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
@@ -30,7 +31,7 @@ public class AutoTest {
 
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
 
         assertTrue(auto.estaEnPosicion(posicionFinal));
     }
@@ -52,7 +53,7 @@ public class AutoTest {
         casillero.agregarElemento(new Pozo());
 
         mapa.asignarCasillero(casillero, posicionFinal);
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
 
         assertTrue(conductor.cantidadDeMovimientosEs(4));
     }
@@ -74,7 +75,7 @@ public class AutoTest {
 
         casillero.agregarElemento(new Piquete());
         mapa.asignarCasillero(casillero, posicionPiquete);
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
         assertTrue(conductor.cantidadDeMovimientosEs(1));
         assertTrue(auto.estaEnPosicion(new Posicion(1, 1)));
     }

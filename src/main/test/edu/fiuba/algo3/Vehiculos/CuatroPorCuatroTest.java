@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.juego.Turno;
 import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
@@ -30,7 +31,7 @@ public class CuatroPorCuatroTest {
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
 
         assertTrue(cuatrox4.estaEnPosicion(posicionFinal));
     }
@@ -54,10 +55,10 @@ public class CuatroPorCuatroTest {
         mapa.asignarCasillero(casillero, posicion1);
         mapa.asignarCasillero(casillero, posicion2);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
         assertTrue(conductor.cantidadDeMovimientosEs(1));
         
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
         assertTrue(conductor.cantidadDeMovimientosEs(2));
     }
 
@@ -82,9 +83,9 @@ public class CuatroPorCuatroTest {
         mapa.asignarCasillero(casillero, posicion2);
         mapa.asignarCasillero(casillero, posicion3);
 
-        conductor.mover(new MovDerecha(), turno);
-        conductor.mover(new MovDerecha(), turno);
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha(), turno);
         assertTrue(conductor.cantidadDeMovimientosEs(5));
         //5 = 2 movs + 1 mov + 2 mov de penalizacion
     }
@@ -105,7 +106,7 @@ public class CuatroPorCuatroTest {
 		
         mapa.asignarCasillero(casillero, posicionPiquete);
 		
-		conductor.mover(new MovAbajo(), turno);
+		conductor.mover(Direccion.abajo(), turno);
 		Posicion posicionFinal = new Posicion(1,1);
 		
         assertTrue(conductor.cantidadDeMovimientosEs(1));

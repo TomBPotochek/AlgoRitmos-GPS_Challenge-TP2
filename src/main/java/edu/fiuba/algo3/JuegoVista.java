@@ -6,10 +6,14 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -26,14 +30,24 @@ import java.util.Arrays;
 
 import edu.fiuba.algo3.MoverseALaDerechaEventHandler;
 
-public class JuegoVista extends Group{
+public class JuegoVista extends BorderPane {
     static String respuesta;
     static Scene juegoVista;
-
+    static ToolBar barra;
     static Juego juego;
-
+    static VBox contenedorCentral;
+    static GridPane grilla;
     public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
         this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador);
+        this.setCentro();
+    }
+    public void setCentro(){
+        Canvas grilla = new Canvas(460,220);
+        contenedorCentral = new VBox(grilla);
+        contenedorCentral.setAlignment(Pos.CENTER);
+        contenedorCentral.setSpacing(20);
+        contenedorCentral.setPadding(new Insets(25));
+        this.setCenter(contenedorCentral);
     }
     public Scene getJuegoVista(){
         return juegoVista;
@@ -68,16 +82,17 @@ public class JuegoVista extends Group{
         encabezado.getChildren().add(salir);
         encabezado.getChildren().add(nombreDelJugador);
         encabezado.getChildren().add(puntajeActual);
-        
+
         //this.getChildren().add(encabezado);
-        this.insertarCuadras(ancho, alto);
+        //this.insertarCuadras(ancho, alto);
+
         juego = new Juego(new ArrayList<String>(Arrays.asList(nombreJugador)) , new Azar());
         //aca van los sets de mapa
         JugadorVista jugadorVista = new JugadorVista(juego);
         juego.setDimensionesMapa(7, 11);
 
         this.getChildren().add(jugadorVista.getDibujo());
-
+/*
         //Boton DERECHA
         Button moverseDerecha = new Button("Derecha");
         //moverseDerecha.setPadding(new Insets(100, 50, 50, 50));
@@ -134,23 +149,27 @@ public class JuegoVista extends Group{
         //         stage.setScene(pantallaDeInicio);
         //     }
         // });
+*/
 
         juegoVista = new Scene(this,640, 580, Color.rgb(38, 121, 142));
-        juegoVista.setOnKeyPressed(keyEvent -> {
-            EventHandler<KeyEvent> mov;
-            switch(keyEvent.getCode()){
-                case W: mov = new MovArribaEventHandlerKey(jugadorVista);
-                        mov.handle(keyEvent);
-                        break;
-                case S: mov = new MovAbajoEventHandlerKey(jugadorVista);
-                        mov.handle(keyEvent);
-                        break;
-                case D: mov = new MovDerechaEventHandlerKey(jugadorVista);
-                        mov.handle(keyEvent);
-                        break;
-                case A: mov = new MovIzquierdaEventHandlerKey(jugadorVista);
-                        mov.handle(keyEvent);
-                        break;
+        juegoVista.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                EventHandler<KeyEvent> mov;
+                switch(keyEvent.getCode()){
+                    case W: mov = new MovArribaEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                    case S: mov = new MovAbajoEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                    case D: mov = new MovDerechaEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                    case A: mov = new MovIzquierdaEventHandlerKey(jugadorVista);
+                            mov.handle(keyEvent);
+                            break;
+                }
             }
         });
 
