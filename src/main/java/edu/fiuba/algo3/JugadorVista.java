@@ -18,16 +18,22 @@ public class JugadorVista {
     private Juego juego;
     Rectangle jugadorFigura;
 
+    Canvas canvas;
+
     int posicionX;
     int posicionY;
 
-    public JugadorVista(Juego juegoDado) {
+    public JugadorVista(Juego juegoDado, Canvas canvasDado) {
+        this.canvas = canvasDado;
         this.juego = juegoDado;
         this.jugadorFigura = new Rectangle(10, 10, Color.RED);
-        this.posicionX = 300; //40
-        this.posicionY = 300; //45
+        this.posicionX = 0; //0 --> minimo | 850 ---> maximo
+        this.posicionY = 0; //0 --> minimo | 600 --> maximo
         this.jugadorFigura.setX(posicionX);
         this.jugadorFigura.setY(posicionY);
+
+        canvas.getGraphicsContext2D().setFill(Color.RED);
+        canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
     }
 
     public Rectangle getDibujo(){
@@ -40,7 +46,9 @@ public class JugadorVista {
 
     public void moverDerecha(){
         this.juego.mover(new MovDerecha());
-        this.posicionX = this.posicionX + 50;
+        if(this.posicionJugadorValida(posicionX + 50, posicionY)){
+            this.posicionX = this.posicionX + 50;
+        }
         // try{
         // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
 
@@ -49,7 +57,9 @@ public class JugadorVista {
 
     public void moverIzquierda(){
         this.juego.mover(new MovIzquierda());
-        this.posicionX = this.posicionX - 50;
+        if(this.posicionJugadorValida(posicionX - 50, posicionY)){
+            this.posicionX = this.posicionX - 50;
+        }
         // try{
         // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
             
@@ -57,17 +67,21 @@ public class JugadorVista {
     }
 
     public void moverAbajo(){
-		this.posicionY = this.posicionY + 50;
-        try{
-			this.juego.mover(new MovAbajo());
-        } catch(JuegoFinalizadoException e){
-            
+        this.juego.mover(new MovAbajo());
+        if(this.posicionJugadorValida(posicionX, posicionY + 50)){
+            this.posicionY = this.posicionY + 50;
         }
+        // try{
+        // } catch(JuegoFinalizadoException e){
+            
+        // }
     }
 
     public void moverArriba(){
         this.juego.mover(new MovArriba());
-        this.posicionY = this.posicionY - 50;
+        if(this.posicionJugadorValida(posicionX, posicionY - 50)){
+            this.posicionY = this.posicionY - 50;
+        }
         // try{
         // } catch(JuegoFinalizadoException | PosicionInvalidaError e){
             
@@ -77,13 +91,24 @@ public class JugadorVista {
     private void dibujarFormas() {
         //this.clean();
 
-        this.jugadorFigura.setX(posicionX);
-        this.jugadorFigura.setY(posicionY);
+        //this.jugadorFigura.setX(posicionX);
+        //this.jugadorFigura.setY(posicionY);
+
+        this.clean();
+        canvas.getGraphicsContext2D().setFill(Color.RED);
+        canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
         
         //this.getChildren().add(cuadra);
 
         //canvas.getGraphicsContext2D().setFill(Color.RED);
         //canvas.getGraphicsContext2D().fillOval(jugador.getPosicion().getFila() + 230, jugador.getPosicion().getColumna() + 110, 20, 20);
+    }
+
+    public void clean() {
+        canvas.getGraphicsContext2D().setFill(Color.WHITE);
+        //Color.rgb(47, 52, 58)
+        //tamaño del canvas 900 700
+        canvas.getGraphicsContext2D().fillRect(0, 0, 900, 700);
     }
 
     // public void clean() {
@@ -93,5 +118,12 @@ public class JugadorVista {
 
     public void update() {
         this.dibujar();
+    }
+
+    private Boolean posicionJugadorValida(int posicionDadaX, int posicionDadaY){
+        if((posicionDadaX < 0) || (posicionDadaX > 850) || (posicionDadaY < 0) || (posicionDadaY > 600)){
+            return false;
+        }
+        return true;
     }
 }
