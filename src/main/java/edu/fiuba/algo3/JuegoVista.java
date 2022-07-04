@@ -67,18 +67,21 @@ public class JuegoVista extends BorderPane {
     }
     public void setCentro(){
         //Canvas grilla = new Canvas(460,220);
-        Canvas grilla = new Canvas();
-        contenedorCentral = new VBox(grilla);
-        contenedorCentral.setAlignment(Pos.CENTER);
-        contenedorCentral.setSpacing(20);
-        contenedorCentral.setPadding(new Insets(25));
-        this.setCenter(contenedorCentral);
+        // Canvas grilla = new Canvas();
+        // contenedorCentral = new VBox(grilla);
+        // contenedorCentral.setAlignment(Pos.CENTER);
+        // contenedorCentral.setSpacing(20);
+        // contenedorCentral.setPadding(new Insets(25));
+        // this.setCenter(contenedorCentral);
     }
     public Scene getJuegoVista(){
         return juegoVista;
     }
     private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
         MenuBar barraSuperior = new MenuBar();
+        barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20");
+        //barraSuperior.setOnMouseEntered(e -> barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
+        //barraSuperior.setOnMouseExited(e -> barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
 
         Menu archivo = new Menu("Archivo");
         barraSuperior.getMenus().add(archivo);
@@ -128,10 +131,29 @@ public class JuegoVista extends BorderPane {
 
         juego = new Juego(nombreJugador, new Azar());
         //aca van los sets de mapa
-        JugadorVista jugadorVista = new JugadorVista(juego);
+        //posicion del canvas 900 650
+        Canvas canvasCentral = new Canvas(900, 650);
+        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral);
+        jugadorVista.getDibujo();
+        //this.getChildren().add(jugadorVista.getDibujo());
         juego.setDimensionesMapa(7, 11);
 
-        this.getChildren().add(jugadorVista.getDibujo());
+        //Canvas dibujoJugador = new Canvas();
+        //dibujoJugador.getGraphicsContext2D().fillOval
+        
+        //vistaRobot = new VistaRobot(robot, canvasCentral);
+        //vistaRobot.dibujar();
+
+        contenedorCentral = new VBox(canvasCentral);
+        contenedorCentral.setAlignment(Pos.CENTER);
+        contenedorCentral.setSpacing(20);
+        contenedorCentral.setPadding(new Insets(25));
+        //Image imagen = new Image("file:src/vista/imagenes/fondo-verde.jpg");
+        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        //contenedorCentral.setBackground(new Background(imagenDeFondo));
+
+        this.setCenter(contenedorCentral);
+
         //this.setCenter(jugadorVista.getDibujo());
         //this.
         //VBox dibujoJugador = new VBox();
@@ -194,6 +216,8 @@ public class JuegoVista extends BorderPane {
 
         //this.setCenter(dibujoJugador);
 
+
+        //BORDE IZQUIERDO
         VBox bordeIzquierdo = new VBox();
         bordeIzquierdo.getChildren().addAll(nombreDelJugador, puntajeActual,botonesMovimiento);
         bordeIzquierdo.setSpacing(100);
@@ -229,6 +253,22 @@ public class JuegoVista extends BorderPane {
         bordeDerecho.setPadding(new Insets(50, 80, 50, 00));
         this.setAlignment(bordeDerecho, Pos.CENTER_RIGHT);
         this.setRight(bordeDerecho);
+
+
+        //CONSOLA INFERIOR
+        Label etiqueta = new Label();
+        etiqueta.setText("consola...");
+        etiqueta.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 14));
+        etiqueta.setTextFill(Color.WHITE);
+
+        VBox contenedorConsola = new VBox(etiqueta);
+        contenedorConsola.setSpacing(10);
+        contenedorConsola.setPadding(new Insets(15));
+        contenedorConsola.setStyle("-fx-background-color: black;");
+
+        this.setAlignment(contenedorConsola, Pos.TOP_LEFT);
+        this.setBottom(contenedorConsola);
+
 
 
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
