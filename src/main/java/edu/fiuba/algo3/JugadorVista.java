@@ -29,8 +29,8 @@ public class JugadorVista {
         this.canvas = canvasDado;
         this.juego = juegoDado;
         this.jugadorFigura = new Rectangle(10, 10, Color.RED);
-        this.offsetX = 100;
-        this.offsetY = 100;
+        this.offsetX = 70;
+        this.offsetY = 70;
 		this.posicionX = this.offsetX; //40
         this.posicionY = this.offsetY; //45
         this.jugadorFigura.setX(posicionX);

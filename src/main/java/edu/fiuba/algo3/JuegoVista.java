@@ -131,7 +131,7 @@ public class JuegoVista extends BorderPane {
         JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral);
         jugadorVista.getDibujo();
         //this.getChildren().add(jugadorVista.getDibujo());
-        juego.setDimensionesMapa(7, 11);
+        juego.setDimensionesMapa(16, 11);
 
         //Canvas dibujoJugador = new Canvas();
         //dibujoJugador.getGraphicsContext2D().fillOval
