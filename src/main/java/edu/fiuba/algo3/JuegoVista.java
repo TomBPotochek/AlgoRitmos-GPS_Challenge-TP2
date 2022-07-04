@@ -54,6 +54,8 @@ public class JuegoVista extends BorderPane {
     String botonAntesDeSerPresionado = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
+    String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
+
 
     public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
         this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador);
@@ -67,6 +69,7 @@ public class JuegoVista extends BorderPane {
     public void setCentro(int alto, int ancho, JugadorVista jugadorVista){
         GridPane grilla = new Tablero(alto,ancho,jugadorVista);
         contenedorCentral = new HBox(grilla);
+        contenedorCentral.setAlignment(Pos.CENTER);
         this.setCenter(contenedorCentral);
     }
     public Scene getJuegoVista(){
@@ -115,12 +118,12 @@ public class JuegoVista extends BorderPane {
         //NOMBRE DEL JUGADOR
         Label nombreDelJugador = new Label("Jugador: " + nombreJugador);
         nombreDelJugador.setFont(Font.font("Impact", 40));
-        nombreDelJugador.setStyle(botonNormal);
+        nombreDelJugador.setStyle(formatoTexto);
         
         //Puntuacion
         Label puntajeActual = new Label("Puntaje: 0");
         puntajeActual.setFont(Font.font("Impact", 40));
-        puntajeActual.setStyle(botonNormal);
+        puntajeActual.setStyle(formatoTexto);
 
         //this.insertarCuadras(ancho, alto);
 
@@ -158,30 +161,30 @@ public class JuegoVista extends BorderPane {
         Button moverseDerecha = new Button("");
         moverseDerecha.setFont(Font.font("Impact", 35));
         moverseDerecha.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-derecha.png")));
-        moverseDerecha.setStyle(botonNormal);
+        moverseDerecha.setStyle(formatoTexto);
         moverseDerecha.setOnMouseEntered(e -> moverseDerecha.setStyle(botonAntesDeSerPresionado));
-        moverseDerecha.setOnMouseExited(e -> moverseDerecha.setStyle(botonNormal));
+        moverseDerecha.setOnMouseExited(e -> moverseDerecha.setStyle(formatoTexto));
         
         Button moverseAbajo = new Button("");
         moverseAbajo.setFont(Font.font("Impact", 35));
         moverseAbajo.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-abajo.png")));
-        moverseAbajo.setStyle(botonNormal);
+        moverseAbajo.setStyle(formatoTexto);
         moverseAbajo.setOnMouseEntered(e -> moverseAbajo.setStyle(botonAntesDeSerPresionado));
-        moverseAbajo.setOnMouseExited(e -> moverseAbajo.setStyle(botonNormal));
+        moverseAbajo.setOnMouseExited(e -> moverseAbajo.setStyle(formatoTexto));
         
         Button moverseIzquierda = new Button("");
         moverseIzquierda.setFont(Font.font("Impact", 35));
         moverseIzquierda.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-izqueirda.png")));
-        moverseIzquierda.setStyle(botonNormal);
+        moverseIzquierda.setStyle(formatoTexto);
         moverseIzquierda.setOnMouseEntered(e -> moverseIzquierda.setStyle(botonAntesDeSerPresionado));
-        moverseIzquierda.setOnMouseExited(e -> moverseIzquierda.setStyle(botonNormal));
+        moverseIzquierda.setOnMouseExited(e -> moverseIzquierda.setStyle(formatoTexto));
         
         Button moverseArriba = new Button("");
         moverseArriba.setFont(Font.font("Impact", 35));
         moverseArriba.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-arriba.png")));
-        moverseArriba.setStyle(botonNormal);
+        moverseArriba.setStyle(formatoTexto);
         moverseArriba.setOnMouseEntered(e -> moverseArriba.setStyle(botonAntesDeSerPresionado));
-        moverseArriba.setOnMouseExited(e -> moverseArriba.setStyle(botonNormal));
+        moverseArriba.setOnMouseExited(e -> moverseArriba.setStyle(formatoTexto));
         
         VBox botonesMovimiento = new VBox();
         botonesMovimiento.setAlignment(Pos.CENTER);
@@ -287,7 +290,7 @@ public class JuegoVista extends BorderPane {
         VBox menuSalir = new VBox(20);
         
         Label instrucciones = new Label("aca deberia haber un texto q de info nuestra\n y el link al github, aparte no debe ser un label");
-        instrucciones.setStyle(botonNormal);
+        instrucciones.setStyle(formatoTexto);
         instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         
         menuSalir.getChildren().addAll(instrucciones , botonOK);
@@ -319,7 +322,7 @@ public class JuegoVista extends BorderPane {
         VBox menuSalir = new VBox(20);
         
         Label instrucciones = new Label("aca deberia haber un texto q explique como jugar, \n aparte no debe ser un label");
-        instrucciones.setStyle(botonNormal);
+        instrucciones.setStyle(formatoTexto);
         instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         
         menuSalir.getChildren().addAll(instrucciones , botonOK);
@@ -374,11 +377,11 @@ public class JuegoVista extends BorderPane {
         
         Label preguntaVolver = new Label("¿Estás seguro que querés ir al Menu Principal?");
         preguntaVolver.setFont(Font.font("Impact", 30));
-        preguntaVolver.setStyle(botonNormal);
+        preguntaVolver.setStyle(formatoTexto);
         
         Label advertenciaDatos = new Label("Todo tu progreso se perdera");
         advertenciaDatos.setFont(Font.font("Impact", 30));
-        advertenciaDatos.setStyle(botonNormal);
+        advertenciaDatos.setStyle(formatoTexto);
         
         ventanaVolver.setMinWidth(280);
         ventanaVolver.initModality(Modality.APPLICATION_MODAL);

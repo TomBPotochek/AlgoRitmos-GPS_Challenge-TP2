@@ -35,8 +35,10 @@ public class MenuPreguntas extends BorderPane{
     static String respuesta;
     Boolean confirmacionDatos;
 
-    String botonAntesDeSerPresionado = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
-    String botonNormal = "-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
+    String botonAntesDeSerPresionado = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    String botonNormal = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #292c30; -fx-text-fill: #80CEB9";
+
+    String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     public MenuPreguntas(Stage stage, Scene pantallaDeInicio){
         this.setMenuPreguntas(stage, pantallaDeInicio);
@@ -79,21 +81,21 @@ public class MenuPreguntas extends BorderPane{
         //PREGUNTA DEL NOMBRE
         Label preguntaNombre = new Label("Nombre del Jugador");
         preguntaNombre.setFont(Font.font("Impact", 50));
-        preguntaNombre.setStyle(botonNormal);
+        preguntaNombre.setStyle(formatoTexto);
     
         //INPUT NOMBRE DEL JUGADOR
         TextField nombreDelJugador = new TextField();
         nombreDelJugador.setAlignment(Pos.CENTER);
         nombreDelJugador.setPromptText("Inserte un nombre");
         nombreDelJugador.setFont(Font.font("Impact", 50));
-        nombreDelJugador.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        nombreDelJugador.setStyle(botonNormal);
         nombreDelJugador.setOnMouseEntered(e -> nombreDelJugador.setStyle(botonAntesDeSerPresionado));
-        nombreDelJugador.setOnMouseExited(e -> nombreDelJugador.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C"));
+        nombreDelJugador.setOnMouseExited(e -> nombreDelJugador.setStyle(botonNormal));
 
         //PREGUNTA DEL NOMBRE
         Label seleccioneUnVehiculo = new Label("Seleccione Un Vehiculo");
         seleccioneUnVehiculo.setFont(Font.font("Impact", 50));
-        seleccioneUnVehiculo.setStyle(botonNormal);
+        seleccioneUnVehiculo.setStyle(formatoTexto);
     
         //INPUT NOMBRE DEL JUGADOR
         ChoiceBox<String> seleccionVehiculo = new ChoiceBox();
@@ -113,7 +115,7 @@ public class MenuPreguntas extends BorderPane{
         
         siguiente.setOnAction(e-> {
             if(preguntarDatosCorrectos(nombreDelJugador.getText(), seleccionVehiculo.getValue())){
-                JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,11, 7, nombreDelJugador.getText());
+                JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,20, 14, nombreDelJugador.getText());
                 stage.setScene(juegoVista.getJuegoVista());
             }
         });
@@ -153,11 +155,11 @@ public class MenuPreguntas extends BorderPane{
         
         Label preguntaVolver = new Label("¿Estás seguro que querés ir al Menu Principal?");
         preguntaVolver.setFont(Font.font("Impact", 30));
-        preguntaVolver.setStyle(botonNormal);
+        preguntaVolver.setStyle(formatoTexto);
         
         Label advertenciaDatos = new Label("Todo tu progreso se perdera");
         advertenciaDatos.setFont(Font.font("Impact", 30));
-        advertenciaDatos.setStyle(botonNormal);
+        advertenciaDatos.setStyle(formatoTexto);
         
         ventanaVolver.setMinWidth(280);
         ventanaVolver.initModality(Modality.APPLICATION_MODAL);
@@ -206,7 +208,7 @@ public class MenuPreguntas extends BorderPane{
         
         Label preguntaDatosCorrectos = new Label("¿Mantener Estos Datos?");
         preguntaDatosCorrectos.setFont(Font.font("Impact", 40));
-        preguntaDatosCorrectos.setStyle(botonNormal);
+        preguntaDatosCorrectos.setStyle(formatoTexto);
         
         Label nombreDado = new Label("Nombre: " + nombre);
         nombreDado.setFont(Font.font("Impact", 30));

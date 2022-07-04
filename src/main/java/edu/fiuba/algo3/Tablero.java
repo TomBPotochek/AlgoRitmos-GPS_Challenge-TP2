@@ -12,8 +12,8 @@ public class Tablero extends GridPane {
 
     public Tablero(int alto, int ancho, JugadorVista jugadorVista){
         Image imagen = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/unknown.png");
-        for (int i = 0; i < alto; i++) {
-            for (int j = 0; j < ancho; j++) {
+        for (int i = 0; i < ancho; i++) {
+            for (int j = 0; j < alto; j++) {
                 Rectangle casilla = new Rectangle(40,40, Color.BLUE);
                 ImagePattern imagePattern = new ImagePattern(imagen);
                 casilla.setFill(imagePattern);
