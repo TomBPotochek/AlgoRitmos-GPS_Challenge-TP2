@@ -102,9 +102,9 @@ public class MenuPreguntas extends BorderPane{
         seleccionVehiculo.getItems().addAll("Moto", "Auto", "4 X 4");
         seleccionVehiculo.setMinWidth(200);
         seleccionVehiculo.setMinHeight(100);
-        seleccionVehiculo.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20");
-        seleccionVehiculo.setOnMouseEntered(e -> seleccionVehiculo.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
-        seleccionVehiculo.setOnMouseExited(e -> seleccionVehiculo.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
+        seleccionVehiculo.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 40; -fx-color: #BDB69C");
+        seleccionVehiculo.setOnMouseEntered(e -> seleccionVehiculo.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 40; -fx-color: #BDB69C"));
+        seleccionVehiculo.setOnMouseExited(e -> seleccionVehiculo.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 40; -fx-color: #BDB69C"));
 
         //BOTON SIGUIENTE
         Button siguiente = new Button("Aceptar");

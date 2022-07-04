@@ -51,8 +51,8 @@ public class JuegoVista extends BorderPane {
     static Juego juego;
     static HBox contenedorCentral;
 
-    String botonAntesDeSerPresionado = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
-    String botonNormal = "-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
+    String botonAntesDeSerPresionado = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    String botonNormal = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #292c30; -fx-text-fill: #80CEB9";
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
@@ -289,7 +289,12 @@ public class JuegoVista extends BorderPane {
         
         VBox menuSalir = new VBox(20);
         
-        Label instrucciones = new Label("aca deberia haber un texto q de info nuestra\n y el link al github, aparte no debe ser un label");
+        String parrafoAcercaDe = new String("Somos el grupo 19 de la materia ALGORITMOS Y PROGRAMACION III FIUBA.\n"
+        + "Este es nuestro proyecto para el Trabajo Práctico Nº2\n"+ "\n"
+        + "Si queres ver el codigo de este proyecto podes ir a:\n"+ "\n"
+        + "https://github.com/TomBPotochek/AlgoRitmos-GPS_Challenge-TP2\n");
+
+        Label instrucciones = new Label(parrafoAcercaDe);
         instrucciones.setStyle(formatoTexto);
         instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         
@@ -301,7 +306,7 @@ public class JuegoVista extends BorderPane {
             ventanaAcercaDe.close();
         });
 
-        Scene  escenaSalir = new Scene(menuSalir , 600 , 400);
+        Scene  escenaSalir = new Scene(menuSalir , 800 , 400);
         Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
         ventanaAcercaDe.getIcons().add(logo);
         ventanaAcercaDe.setScene(escenaSalir);
@@ -321,9 +326,28 @@ public class JuegoVista extends BorderPane {
         
         VBox menuSalir = new VBox(20);
         
-        Label instrucciones = new Label("aca deberia haber un texto q explique como jugar, \n aparte no debe ser un label");
+        String parrafoComoJugar = new String("El objetivo del juego es llegar a la meta en la  menor cantidad de movimientos posibles.\n"
+        + "Parece fácil... Pero hay un pequeño detalle: se deberán atravesar numerosos obstáculos\n"
+        + "que pueden favorecer o perjudicar el puntaje. Se puede elegir entre Moto, Auto o 4x4, \n"
+        + "y para mover se puede usar las clásicas W-A-S-D, o los botones en pantalla.\n"
+        + "Obstáculos:\n" + "\n"
+        + "* Pozo                                 --> Suma 3 movimientos a Motos y Autos\n"
+        + "* Piquete                          --> Los Autos y 4x4 no lo pueden atravesar,\n"
+        + "                                                    pero le suma 2 movimientos a las Motos.\n"+ "\n"
+        + "* Control Policial                  --> Suma 3 movimientos con frecuencia: \n"
+        + "                                                                 - el 30% de las veces para las 4x4\n"
+        + "                                                                 - el 50% de las veces para los Autos\n"
+        + "                                                                 - el 80% de las veces para las Motos\n"+ "\n"
+        + " * Sorpresa Favorable                  --> Descuenta un 20% a los movimientos acumulados.\n"+ "\n"
+        + "* Sorpresa Desfavorable             --> Aumenta un 25% a los movimientos acumulados.\n"+ "\n"
+        + " * Sorpresa Cambio de Vehículo   --> Cambia el vehículo a:\n"
+        + "                                             - Moto --> Auto\n"
+        + "                                             - Auto --> 4x4\n"
+        + "                                             - 4x4  --> Moto\n");
+
+        Label instrucciones = new Label(parrafoComoJugar);
         instrucciones.setStyle(formatoTexto);
-        instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
+        instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 20));
         
         menuSalir.getChildren().addAll(instrucciones , botonOK);
         menuSalir.setAlignment(Pos.CENTER);
@@ -333,7 +357,7 @@ public class JuegoVista extends BorderPane {
             ventanaComoSalir.close();
         });
 
-        Scene  escenaSalir = new Scene(menuSalir , 600 , 400);
+        Scene  escenaSalir = new Scene(menuSalir , 800 , 700);
         Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
         ventanaComoSalir.getIcons().add(logo);
         ventanaComoSalir.setScene(escenaSalir);

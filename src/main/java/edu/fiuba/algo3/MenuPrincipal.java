@@ -158,7 +158,12 @@ public class MenuPrincipal extends FlowPane{
         
         VBox menuSalir = new VBox(20);
         
-        Label instrucciones = new Label("aca deberia haber un texto q de info nuestra\n y el link al github, aparte no debe ser un label");
+        String parrafoAcercaDe = new String("Somos el grupo 19 de la materia ALGORITMOS Y PROGRAMACION III FIUBA.\n"
+        + "Este es nuestro proyecto para el Trabajo Práctico Nº2\n"+ "\n"
+        + "Si queres ver el codigo de este proyecto podes ir a:\n"+ "\n"
+        + "https://github.com/TomBPotochek/AlgoRitmos-GPS_Challenge-TP2\n");
+
+        Label instrucciones = new Label(parrafoAcercaDe);
         instrucciones.setStyle(formatoTexto);
         instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         
@@ -170,7 +175,7 @@ public class MenuPrincipal extends FlowPane{
             ventanaAcercaDe.close();
         });
 
-        Scene  escenaSalir = new Scene(menuSalir , 600 , 400);
+        Scene  escenaSalir = new Scene(menuSalir , 800 , 400);
         Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
         ventanaAcercaDe.getIcons().add(logo);
         ventanaAcercaDe.setScene(escenaSalir);
@@ -211,7 +216,7 @@ public class MenuPrincipal extends FlowPane{
 
         Label instrucciones = new Label(parrafoComoJugar);
         instrucciones.setStyle(formatoTexto);
-        instrucciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 20));
+        instrucciones.setFont(Font.font("Impact", FontWeight.LIGHT, 20));
         
         menuSalir.getChildren().addAll(instrucciones , botonOK);
         menuSalir.setAlignment(Pos.CENTER);
