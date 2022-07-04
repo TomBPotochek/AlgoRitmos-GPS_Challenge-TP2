@@ -129,7 +129,7 @@ public class JuegoVista extends BorderPane {
 
         //this.insertarCuadras(ancho, alto);
 
-        juego = new Juego(new ArrayList<String>(Arrays.asList(nombreJugador)) , new Azar());
+        juego = new Juego(nombreJugador, new Azar());
         //aca van los sets de mapa
         //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);

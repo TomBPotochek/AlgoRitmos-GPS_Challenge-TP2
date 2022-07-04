@@ -2,7 +2,6 @@ package edu.fiuba.algo3.Vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Turno;
 import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
@@ -21,7 +20,6 @@ public class CuatroPorCuatroTest {
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
         Jugador conductor = new Jugador("LaMona", cuatrox4);
-        Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -31,7 +29,7 @@ public class CuatroPorCuatroTest {
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
 
         assertTrue(cuatrox4.estaEnPosicion(posicionFinal));
     }
@@ -41,7 +39,6 @@ public class CuatroPorCuatroTest {
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
         Jugador conductor = new Jugador("Milazzo", cuatrox4);
-        Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
@@ -55,10 +52,10 @@ public class CuatroPorCuatroTest {
         mapa.asignarCasillero(casillero, posicion1);
         mapa.asignarCasillero(casillero, posicion2);
 
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
         assertTrue(conductor.cantidadDeMovimientosEs(1));
         
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
         assertTrue(conductor.cantidadDeMovimientosEs(2));
     }
 
@@ -67,7 +64,6 @@ public class CuatroPorCuatroTest {
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
         Jugador conductor = new Jugador("Avestruz", cuatrox4);
-        Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(5);
@@ -83,9 +79,9 @@ public class CuatroPorCuatroTest {
         mapa.asignarCasillero(casillero, posicion2);
         mapa.asignarCasillero(casillero, posicion3);
 
-        conductor.mover(Direccion.derecha(), turno);
-        conductor.mover(Direccion.derecha(), turno);
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
+        conductor.mover(Direccion.derecha());
+        conductor.mover(Direccion.derecha());
         assertTrue(conductor.cantidadDeMovimientosEs(5));
         //5 = 2 movs + 1 mov + 2 mov de penalizacion
     }
@@ -95,7 +91,6 @@ public class CuatroPorCuatroTest {
         Posicion posicion4x4 = new Posicion(1,1);
         Vehiculo cuatrox4 = new CuatroPorCuatro(posicion4x4);
         Jugador conductor = new Jugador("Yubarta", cuatrox4);
-        Turno turno = mock(Turno.class);
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -106,7 +101,7 @@ public class CuatroPorCuatroTest {
 		
         mapa.asignarCasillero(casillero, posicionPiquete);
 		
-		conductor.mover(Direccion.abajo(), turno);
+		conductor.mover(Direccion.abajo());
 		Posicion posicionFinal = new Posicion(1,1);
 		
         assertTrue(conductor.cantidadDeMovimientosEs(1));

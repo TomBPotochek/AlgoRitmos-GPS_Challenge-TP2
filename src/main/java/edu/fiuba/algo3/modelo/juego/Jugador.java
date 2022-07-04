@@ -44,16 +44,19 @@ public class Jugador {
         this.cantidadDeMovimientos += 1;
     }
 
-	public void mover(Movimiento movimiento, Turno turnoActual) {
+	public void mover(Movimiento movimiento) {
 		this.incrementarMovimientos();
 		aplicarEfecto(this.vehiculo.mover(movimiento));
-        if (this.alcanzoMeta) turnoActual.finalizarTurnosJugador();
 	}
-
-    public void marcarFinalizado(){
-        this.alcanzoMeta = true;
+	
+    public void marcarFinalizado() {
+		this.alcanzoMeta = true;
         Logger.log("jugador cruzo la meta");
     }
+
+	public boolean alcanzoMeta() {
+		return alcanzoMeta;
+	}
 
 	public int verCantMovs() {
 		return this.cantidadDeMovimientos;

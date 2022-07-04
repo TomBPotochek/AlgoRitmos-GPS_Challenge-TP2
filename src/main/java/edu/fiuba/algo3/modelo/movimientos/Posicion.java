@@ -12,6 +12,7 @@ public class Posicion {
         this.col = columna;
     }
     
+	//TODO: Cambiar a X e Y
     public int getFila(){
         return (this.fil);
     }

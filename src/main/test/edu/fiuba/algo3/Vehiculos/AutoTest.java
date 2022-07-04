@@ -12,7 +12,7 @@ import static org.mockito.Mockito.mock;
 
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Turno;
+
 
 public class AutoTest {
     @Test
@@ -20,7 +20,6 @@ public class AutoTest {
         Posicion posicionAuto = new Posicion(1,1);
 		Vehiculo auto = new Auto(posicionAuto);
         Jugador conductor = new Jugador("Pepe", auto);
-        Turno turno = mock(Turno.class);
 
 
         Mapa mapa = Mapa.getMapa();
@@ -31,7 +30,7 @@ public class AutoTest {
 
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
 
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
 
         assertTrue(auto.estaEnPosicion(posicionFinal));
     }
@@ -42,7 +41,6 @@ public class AutoTest {
         Posicion posicionAuto = new Posicion(1,1);
         Vehiculo auto = new Auto(posicionAuto);
         Jugador conductor = new Jugador("LaCinthia", auto);
-        Turno turno = mock(Turno.class);
 
 
         Mapa mapa = Mapa.getMapa();
@@ -53,7 +51,7 @@ public class AutoTest {
         casillero.agregarElemento(new Pozo());
 
         mapa.asignarCasillero(casillero, posicionFinal);
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs(4));
     }
@@ -63,8 +61,6 @@ public class AutoTest {
         Posicion posicionAuto = new Posicion(1,1);
         Vehiculo auto = new Auto(posicionAuto);
         Jugador conductor = new Jugador("Migens", auto);
-        Turno turno = mock(Turno.class);
-
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -75,7 +71,7 @@ public class AutoTest {
 
         casillero.agregarElemento(new Piquete());
         mapa.asignarCasillero(casillero, posicionPiquete);
-        conductor.mover(Direccion.derecha(), turno);
+        conductor.mover(Direccion.derecha());
         assertTrue(conductor.cantidadDeMovimientosEs(1));
         assertTrue(auto.estaEnPosicion(new Posicion(1, 1)));
     }

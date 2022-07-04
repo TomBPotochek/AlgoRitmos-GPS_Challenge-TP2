@@ -29,7 +29,12 @@ public class CasilleroCalle implements Casillero {
                      elemento.getClass().getSimpleName(),
                       Integer.toHexString(this.hashCode())));
     }
+	
+	public ArrayList<ElementoMapa> obtenerElementos() {
+		return this.elementos;
+	}
 
+	@Override
 	public void vaciar() {
 		elementos.clear();
 	}

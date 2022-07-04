@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.juego.Turno;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
@@ -19,7 +18,6 @@ public class JugadorTest {
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
         Jugador conductor = new Jugador("Enrique", moto);
-        Turno turno = mock(Turno.class);
 
 
         Mapa mapa = Mapa.getMapa();
@@ -30,7 +28,7 @@ public class JugadorTest {
         CasilleroCalle casilleroVacio = new CasilleroCalle();
         
         mapa.asignarCasillero(casilleroVacio, posicionFinal);
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(new MovDerecha());
         
 		assertTrue(moto.estaEnPosicion(posicionFinal));
     }
@@ -41,7 +39,6 @@ public class JugadorTest {
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
         Jugador conductor = new Jugador("mequedesinnombres", moto);
-        Turno turno = mock(Turno.class);
 
 
         Mapa mapa = Mapa.getMapa();
@@ -55,7 +52,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs(4));
     }
@@ -65,8 +62,6 @@ public class JugadorTest {
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
         Jugador conductor = new Jugador("Juliana", moto);
-        Turno turno = mock(Turno.class);
-
 
         Mapa mapa = Mapa.getMapa();
         mapa.limpiar();
@@ -79,7 +74,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs(3));
     }
@@ -89,8 +84,6 @@ public class JugadorTest {
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
         Jugador conductor = new Jugador("Montgomery", moto);
-        Turno turno = mock(Turno.class);
-
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -102,7 +95,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs((int) Math.round(1*0.8)));
     }
@@ -112,8 +105,6 @@ public class JugadorTest {
         Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
         Jugador conductor = new Jugador("Carmen", moto);
-        Turno turno = mock(Turno.class);
-
 
         Mapa mapa = Mapa.getMapa();
         mapa.setAncho(3);
@@ -125,7 +116,7 @@ public class JugadorTest {
 
         mapa.asignarCasillero(casillero, posicionFinal);
 
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(new MovDerecha());
 
         assertTrue(conductor.cantidadDeMovimientosEs((int) Math.round(1*1.25)));
     }
@@ -140,15 +131,13 @@ public class JugadorTest {
 		Posicion posicionMoto = new Posicion(1,1);
         Vehiculo moto = new Moto(posicionMoto);
         Jugador conductor = new Jugador("Repartidor", moto);
-        Turno turno = mock(Turno.class);
-
 		
         Posicion posicionFinal = new Posicion(1,2);
         CasilleroCalle casillero = new CasilleroCalle();
         casillero.agregarElemento(new SorpresaCambioVehiculo());
 
         mapa.asignarCasillero(casillero, posicionFinal);
-        conductor.mover(new MovDerecha(), turno);
+        conductor.mover(new MovDerecha());
 
 		assertTrue(conductor.estaEnPosicion(posicionFinal));
 		assertTrue(conductor.cantidadDeMovimientosEs(1));
@@ -160,7 +149,7 @@ public class JugadorTest {
 		casillero = new CasilleroCalle();
 		mapa.asignarCasillero(casillero, posicionFinal);
 		
-		conductor.mover(new MovDerecha(), turno);
+		conductor.mover(new MovDerecha());
 		
 		assertTrue(conductor.estaEnPosicion(posicionFinal));
 		assertTrue(conductor.cantidadDeMovimientosEs(2));
@@ -170,7 +159,7 @@ public class JugadorTest {
 		casillero = new CasilleroCalle();
 		casillero.agregarElemento(new Pozo());
         mapa.asignarCasillero(casillero, posicionFinal);
-		conductor.mover(new MovAbajo(), turno);
+		conductor.mover(new MovAbajo());
 		
         assertTrue(conductor.cantidadDeMovimientosEs(6));
 		assertTrue(conductor.estaEnPosicion(posicionFinal));
@@ -180,7 +169,7 @@ public class JugadorTest {
 		casillero = new CasilleroCalle();
 		casillero.agregarElemento(new Piquete());
 		mapa.asignarCasillero(casillero, posicionPiquete);
-		conductor.mover(new MovAbajo(), turno);
+		conductor.mover(new MovAbajo());
 		
 		assertTrue(conductor.cantidadDeMovimientosEs(7));
         assertTrue(conductor.estaEnPosicion(new Posicion(2, 3)));

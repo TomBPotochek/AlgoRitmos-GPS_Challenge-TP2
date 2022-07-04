@@ -1,4 +1,5 @@
 package edu.fiuba.algo3.modelo.casillero;
+
 import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
@@ -10,13 +11,13 @@ public class Mapa {
     private int alto;
     private int ancho;
     private static Mapa unMapa;
-	private HashMap<Posicion,CasilleroCalle> grilla;
-    private Posicion posicionMeta = new Posicion(-10, -10); //meta inalcanzable
+	private HashMap<Posicion, Casillero> grilla;
+    private Posicion posicionMeta = null;
     
 	private Mapa(){
         this.ancho = 1;
         this.alto = 1;
-		this.grilla = new HashMap<Posicion, CasilleroCalle>();
+		this.grilla = new HashMap<Posicion, Casillero>();
 	}
 
     public static Mapa getMapa(){
@@ -28,16 +29,29 @@ public class Mapa {
 
 	public void asignarCasillero(CasilleroCalle casillero, Posicion pos){
         this.grilla.put(pos, casillero);
-        Logger.log(String.format("agregado de casillero #%s en posicion (%d, %d)", 
+
+		Logger.log(String.format("agregado de casillero #%s en posicion (%d, %d)", 
                     Integer.toHexString(casillero.hashCode()),
                     pos.getColumna(), pos.getFila()));
     }
 
-    public void asignarPosicionMeta(Posicion pos){
-        this.posicionMeta = pos;
+
+    public void asignarPosicionMeta(Posicion pos){		
+
+		// Borro la meta creada por defecto en la inicializacion de la grilla.
+		if (posicionMeta != null) {
+			this.grilla.put(posicionMeta, new CasilleroCalle());
+		}
+		
+		// Decoro la casilla con una meta
+		Casillero casilleroMeta = new CasilleroDecoratorMeta(this.grilla.get(pos));
+		this.posicionMeta = pos;
+		this.grilla.put(posicionMeta, casilleroMeta);
+
         Logger.log(String.format("meta asignada en posicion (%d, %d)", 
-                    pos.getColumna(), pos.getFila())); 
+                    pos.getFila(), pos.getColumna())); 
     }
+
 
     public Casillero obtenerCasilla(Posicion posicion) {
 		if (posicion.fueraDeRango(this.ancho, this.alto)) {
@@ -45,10 +59,10 @@ public class Mapa {
 		}
         Casillero casillero = this.grilla.get(posicion);
         
-        if (posicion.equals(this.posicionMeta)){
-            casillero = new CasilleroDecoratorMeta(casillero);
-            Logger.log("se llega a la meta");
-        }
+        // if (posicion.equals(this.posicionMeta)){
+            // casillero = new CasilleroDecoratorMeta(casillero);
+            // Logger.log("se llega a la meta");
+        // }
         return casillero;
     }
 
@@ -70,6 +84,7 @@ public class Mapa {
                 this.asignarCasillero(new CasilleroCalle(), new Posicion(i, j));
             }
         }
+        this.asignarPosicionMeta(new Posicion(this.alto / 2, this.ancho));
     }
 
     public void generarGrillaConElementosAlAzar(ProveedorDatosAzar azar){
@@ -82,7 +97,7 @@ public class Mapa {
 
         for (int i = 1; i <= alto; i++){
             for (int j = 1; j <= ancho; j++){
-                obstaculoPozo = azar.eventoConProbabilidad(0.05);
+				obstaculoPozo = azar.eventoConProbabilidad(0.05);
                 obstaculoPiquete = azar.eventoConProbabilidad(0.008);
                 obstaculoControl = azar.eventoConProbabilidad(0.02);
                 sorpresaFavorable = azar.eventoConProbabilidad(0.08);
@@ -100,7 +115,7 @@ public class Mapa {
                 this.asignarCasillero(casillero, new Posicion(i, j));
             }
         }
-        this.asignarPosicionMeta(new Posicion(this.alto, this.ancho));
+        this.asignarPosicionMeta(new Posicion(this.alto / 2, this.ancho));
     }
 
     public void setAncho(int ancho) {
@@ -112,4 +127,8 @@ public class Mapa {
         this.alto = alto;
         Logger.log(String.format("alto de mapa seteado en %d", alto));
     }
+
+	public Posicion obtenerPosicionMeta() {
+		return this.posicionMeta;
+	}
 }

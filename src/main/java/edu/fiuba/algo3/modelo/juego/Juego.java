@@ -3,9 +3,12 @@ package edu.fiuba.algo3.modelo.juego;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.Logging.LoggerConsola;
+import edu.fiuba.algo3.modelo.casillero.CasilleroCalle;
+import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.JuegoEnCursoException;
@@ -20,46 +23,27 @@ import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class Juego {
     
-    private Turno turnoActual;
-    // private String nombre;
+	private Jugador jugador;
+	private Vehiculo vehiculoJugador;
     private Ranking ranking;
-    public Juego(ArrayList<String> nombreJugadores, ProveedorDatosAzar proveedorDatosAzar){
+
+	public Juego(String nombreJugador, ProveedorDatosAzar proveedorDatosAzar){
 
         Logger.setLogger(new LoggerConsola());
         Logger.enableLogging(true);
-		// Vehiculo vehiculoJugador1, vehiculoJugador2;
-        ArrayList<Vehiculo> vehiculos = new ArrayList<Vehiculo>(
-			Arrays.asList(new Moto(), new Auto(), new CuatroPorCuatro()));
-		ArrayList<Jugador> jugadores = new ArrayList<Jugador>();
-		Vehiculo vehiculoJugador;
-		Jugador jugador;	
-		// vehiculoJugador1 = vehiculos.get(proveedorDatosAzar.enteroAzarEnRango(0, vehiculos.size()));
-		// vehiculoJugador2 = vehiculos.get(proveedorDatosAzar.enteroAzarEnRango(0, vehiculos.size()));
-		
-		for (String nombre : nombreJugadores) {
-			vehiculoJugador = vehiculos.get(proveedorDatosAzar.enteroAzarEnRango(0, vehiculos.size() - 1));
-			jugador = new Jugador(nombre, vehiculoJugador);
-			jugadores.add(jugador);
-		}
-		/*
+
 		switch (proveedorDatosAzar.enteroAzarEnRango(1, 3)){
             case 1:
-                vehiculoJugador1 = new Moto();
+                this.vehiculoJugador = new Moto();
                 break;
             case 2:
-                vehiculoJugador1 = new Auto();
+				this.vehiculoJugador = new Auto();
                 break;
             default:
-                vehiculoJugador1 = new CuatroPorCuatro();
+				this.vehiculoJugador = new CuatroPorCuatro();
         }
-		*/
 
-        // Jugador jugador1 = new Jugador(vehiculoJugador1);
-        // Jugador jugador2 = new Jugador(vehiculoJugador2);
-
-        // jugadores.add(jugador2);
-
-        this.turnoActual = new Turno(jugadores);
+        this.jugador = new Jugador(nombreJugador, this.vehiculoJugador);
     }
 
     //setters innecesarios?
@@ -72,21 +56,36 @@ public class Juego {
     }
     
     public void mover(Movimiento movimiento) throws JuegoFinalizadoException {
-        this.turnoActual.mover(movimiento);
+		if (this.estaFinalizado()) {
+			throw new JuegoFinalizadoException();
+		}
+        this.jugador.mover(movimiento);
     }
 
     public boolean estaFinalizado(){
-        return this.turnoActual.todosfinalizados();
+        return this.jugador.alcanzoMeta();
     }
 
-    public int obtenerPuntajeGanador(){
-		Jugador ganador = this.turnoActual.obtenerGanador();
-        return ganador.calcularPuntaje();
+    public int obtenerPuntaje(){
+        return jugador.calcularPuntaje();
     }
 
-	public Object obtenerNombreGanador() {
-		Jugador ganador = this.turnoActual.obtenerGanador();
-		return ganador.obtenerNombre();
+	public Object obtenerNombre() {
+		return this.jugador.obtenerNombre();
+	}
+	
+	// Getters para posicionar los elementos en la interfaz.
+
+	public Posicion obtenerPosicionVehiculo() {
+		return this.vehiculoJugador.obtenerPosicion();
+	}
+	
+	public Class<? extends Vehiculo> obtenerTipoVehiculo() {
+		return this.vehiculoJugador.getClass();
 	}
 
+	public ArrayList<ElementoMapa> obtenerElementos(Posicion posicion) {
+		Mapa mapa = Mapa.getMapa();
+		return mapa.obtenerCasilla(posicion).obtenerElementos();		
+	}
 }

@@ -8,11 +8,11 @@ import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.juego.Jugador;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
 import edu.fiuba.algo3.modelo.movimientos.MovArriba;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.movimientos.MovIzquierda;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class JugadorVista {
     private Juego juego;
@@ -22,13 +22,17 @@ public class JugadorVista {
 
     int posicionX;
     int posicionY;
+	int offsetX;
+	int offsetY;
 
     public JugadorVista(Juego juegoDado, Canvas canvasDado) {
         this.canvas = canvasDado;
         this.juego = juegoDado;
         this.jugadorFigura = new Rectangle(10, 10, Color.RED);
-        this.posicionX = 0; //0 --> minimo | 850 ---> maximo
-        this.posicionY = 0; //0 --> minimo | 600 --> maximo
+        this.offsetX = 300;
+        this.offsetY = 300;
+		this.posicionX = this.offsetX; //40
+        this.posicionY = this.offsetY; //45
         this.jugadorFigura.setX(posicionX);
         this.jugadorFigura.setY(posicionY);
 
@@ -40,37 +44,50 @@ public class JugadorVista {
         return jugadorFigura;
     }
 
+
     public void dibujar() {
         this.dibujarFormas();
     }
 
+
     public void moverDerecha(){
-        this.juego.mover(new MovDerecha());
-        if(this.posicionJugadorValida(posicionX + 50, posicionY)){
-            this.posicionX = this.posicionX + 50;
-        }
+		try {
+			this.juego.mover(new MovDerecha());
+			this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+
+        } catch(JuegoFinalizadoException e) {
+			// Lanzar un mensaje. Conviene mas atrapar la excepcion en
+			// el switch case de los movimientos?
+		}
     }
+
 
     public void moverIzquierda(){
-        this.juego.mover(new MovIzquierda());
-        if(this.posicionJugadorValida(posicionX - 50, posicionY)){
-            this.posicionX = this.posicionX - 50;
-        }
+		try {
+			this.juego.mover(new MovIzquierda());
+			this.posicionX = this.offsetX - (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+
+        } catch(JuegoFinalizadoException e) {}
     }
+
 
     public void moverAbajo(){
-        this.juego.mover(new MovAbajo());
-        if(this.posicionJugadorValida(posicionX, posicionY + 50)){
-            this.posicionY = this.posicionY + 50;
-        }
+		try {
+			this.juego.mover(new MovAbajo());
+			this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+
+        } catch(JuegoFinalizadoException e) {}
     }
 
+
     public void moverArriba(){
-        this.juego.mover(new MovArriba());
-        if(this.posicionJugadorValida(posicionX, posicionY - 50)){
-            this.posicionY = this.posicionY - 50;
-        }
+		try {
+			this.juego.mover(new MovArriba());
+			this.posicionY = this.offsetY - (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+
+        } catch(JuegoFinalizadoException e) {}
     }
+
 
     private void dibujarFormas() {
         //this.clean();

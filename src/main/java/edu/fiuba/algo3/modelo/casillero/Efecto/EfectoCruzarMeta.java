@@ -7,7 +7,6 @@ public class EfectoCruzarMeta extends BaseEfectoDecorador {
     @Override
     public void aplicarseSobre(Jugador jugador){
         super.aplicarseSobre(jugador);
-        
         jugador.marcarFinalizado();
     }
     
