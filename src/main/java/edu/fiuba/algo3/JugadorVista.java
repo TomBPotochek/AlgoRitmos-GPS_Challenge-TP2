@@ -29,8 +29,8 @@ public class JugadorVista {
         this.canvas = canvasDado;
         this.juego = juegoDado;
         this.jugadorFigura = new Rectangle(10, 10, Color.RED);
-        this.offsetX = 300;
-        this.offsetY = 300;
+        this.offsetX = 100;
+        this.offsetY = 100;
 		this.posicionX = this.offsetX; //40
         this.posicionY = this.offsetY; //45
         this.jugadorFigura.setX(posicionX);
@@ -65,7 +65,7 @@ public class JugadorVista {
     public void moverIzquierda(){
 		try {
 			this.juego.mover(new MovIzquierda());
-			this.posicionX = this.offsetX - (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+			this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
 
         } catch(JuegoFinalizadoException e) {}
     }
@@ -83,7 +83,7 @@ public class JugadorVista {
     public void moverArriba(){
 		try {
 			this.juego.mover(new MovArriba());
-			this.posicionY = this.offsetY - (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+			this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
 
         } catch(JuegoFinalizadoException e) {}
     }
