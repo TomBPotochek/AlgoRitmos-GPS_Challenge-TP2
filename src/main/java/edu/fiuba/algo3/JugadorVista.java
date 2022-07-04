@@ -24,8 +24,8 @@ public class JugadorVista {
     public JugadorVista(Juego juegoDado) {
         this.juego = juegoDado;
         this.jugadorFigura = new Rectangle(10, 10, Color.RED);
-        this.posicionX = 40;
-        this.posicionY = 45;
+        this.posicionX = 300; //40
+        this.posicionY = 300; //45
         this.jugadorFigura.setX(posicionX);
         this.jugadorFigura.setY(posicionY);
     }
