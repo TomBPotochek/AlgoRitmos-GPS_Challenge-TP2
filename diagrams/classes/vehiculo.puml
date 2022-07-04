@@ -62,7 +62,15 @@ class Moto extends Vehiculo{
 class Auto extends Vehiculo{
     +aceptar(ElementoMapa elemento)
 }
+class Ranking{
+    rank : Map
+    jugadores : Ma
+    registrarJugador(String : nombre, int : puntaje)
+    obtenerRanking()
+    obtenerPuntajeJugador(String : nombre)
+}
 
+Juego --> Ranking
 Juego --> Turno
 
 CuatroPorCuatro --|> Vehiculo
