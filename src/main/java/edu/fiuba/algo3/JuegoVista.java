@@ -49,8 +49,7 @@ public class JuegoVista extends BorderPane {
     static Scene juegoVista;
     static ToolBar barra;
     static Juego juego;
-    static VBox contenedorCentral;
-    static GridPane grilla;
+    static HBox contenedorCentral;
 
     String botonAntesDeSerPresionado = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
@@ -58,21 +57,17 @@ public class JuegoVista extends BorderPane {
 
     public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
         this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador);
-        this.setCentro();
+        //this.setCentro(alto,ancho);
         stage.setMaximized(true);
         // Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps.png");
         // BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         // this.setBackground(new Background(imagenDeFondo));
         this.setStyle("-fx-background-color: #2F343A");
     }
-    public void setCentro(){
-        //Canvas grilla = new Canvas(460,220);
-        // Canvas grilla = new Canvas();
-        // contenedorCentral = new VBox(grilla);
-        // contenedorCentral.setAlignment(Pos.CENTER);
-        // contenedorCentral.setSpacing(20);
-        // contenedorCentral.setPadding(new Insets(25));
-        // this.setCenter(contenedorCentral);
+    public void setCentro(int alto, int ancho, JugadorVista jugadorVista){
+        GridPane grilla = new Tablero(alto,ancho,jugadorVista);
+        contenedorCentral = new HBox(grilla);
+        this.setCenter(contenedorCentral);
     }
     public Scene getJuegoVista(){
         return juegoVista;
@@ -144,15 +139,15 @@ public class JuegoVista extends BorderPane {
         //vistaRobot = new VistaRobot(robot, canvasCentral);
         //vistaRobot.dibujar();
 
-        contenedorCentral = new VBox(canvasCentral);
-        contenedorCentral.setAlignment(Pos.CENTER);
-        contenedorCentral.setSpacing(20);
-        contenedorCentral.setPadding(new Insets(25));
+        //contenedorCentral = new VBox(canvasCentral);
+        //contenedorCentral.setAlignment(Pos.CENTER);
+        //contenedorCentral.setSpacing(20);
+        //contenedorCentral.setPadding(new Insets(25));
         //Image imagen = new Image("file:src/vista/imagenes/fondo-verde.jpg");
         //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         //contenedorCentral.setBackground(new Background(imagenDeFondo));
 
-        this.setCenter(contenedorCentral);
+        //this.setCenter(contenedorCentral);
 
         //this.setCenter(jugadorVista.getDibujo());
         //this.
@@ -269,7 +264,7 @@ public class JuegoVista extends BorderPane {
         this.setAlignment(contenedorConsola, Pos.TOP_LEFT);
         this.setBottom(contenedorConsola);
 
-
+        this.setCentro(alto,ancho,jugadorVista);
 
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         juegoVista = new Scene(this,screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
