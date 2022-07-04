@@ -56,7 +56,7 @@ public class Juego {
     }
     
     public void mover(Movimiento movimiento) throws JuegoFinalizadoException {
-		if (this.jugador.alcanzoMeta()) {
+		if (this.estaFinalizado()) {
 			throw new JuegoFinalizadoException();
 		}
         this.jugador.mover(movimiento);
