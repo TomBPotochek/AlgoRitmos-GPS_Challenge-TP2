@@ -38,8 +38,10 @@ public class App extends Application {
     Scene mapaDelJuego;
     Scene tablaDePosicionesHistorial;
 
-    String botonAntesDeSerPresionado = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
-    String botonNormal = "-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #2F343A; -fx-text-fill: #80CEB9";
+    String botonAntesDeSerPresionado = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    String botonNormal = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #292c30; -fx-text-fill: #80CEB9";
+
+    String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     @Override
     public void start(Stage stage) {
@@ -97,7 +99,7 @@ public class App extends Application {
         VBox menuSalir = new VBox(20);
         
         Label preguntaSalir = new Label("¿Estás seguro que querés salir?");
-        preguntaSalir.setStyle(botonNormal);
+        preguntaSalir.setStyle(formatoTexto);
         preguntaSalir.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 25));
         
         menuSalir.getChildren().addAll(preguntaSalir , botonSalir ,botonQuedarse);
