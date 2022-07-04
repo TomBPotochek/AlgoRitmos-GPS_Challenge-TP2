@@ -65,9 +65,10 @@ public class JuegoVista extends BorderPane {
         this.setStyle("-fx-background-color: #2F343A");
     }
     public void setCentro(int alto, int ancho, JugadorVista jugadorVista){
-        GridPane grilla = new Tablero(alto,ancho,jugadorVista);
-        contenedorCentral = new HBox(grilla);
-        this.setCenter(contenedorCentral);
+        // GridPane grilla = new Tablero(alto,ancho,jugadorVista);
+        // contenedorCentral = new HBox(grilla);
+        // contenedorCentral.setAlignment(Pos.CENTER);
+        // this.setCenter(contenedorCentral);
     }
     public Scene getJuegoVista(){
         return juegoVista;
@@ -124,12 +125,17 @@ public class JuegoVista extends BorderPane {
 
         //this.insertarCuadras(ancho, alto);
 
+        Tablero grilla = new Tablero(alto,ancho);
+        contenedorCentral = new HBox(grilla);
+        contenedorCentral.setAlignment(Pos.CENTER);
+        this.setCenter(contenedorCentral);
+
         juego = new Juego(nombreJugador, new Azar());
         //aca van los sets de mapa
         //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);
-        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral);
-        jugadorVista.getDibujo();
+        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla);
+        // grilla.moverJugadorA(0, 0, jugadorVista.getDibujo());
         //this.getChildren().add(jugadorVista.getDibujo());
         juego.setDimensionesMapa(16, 11);
 

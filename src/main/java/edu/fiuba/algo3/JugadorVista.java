@@ -19,14 +19,16 @@ public class JugadorVista {
     Rectangle jugadorFigura;
 
     Canvas canvas;
+    Tablero tablero;
 
     int posicionX;
     int posicionY;
 	int offsetX;
 	int offsetY;
 
-    public JugadorVista(Juego juegoDado, Canvas canvasDado) {
+    public JugadorVista(Juego juegoDado, Canvas canvasDado, Tablero tablero) {
         this.canvas = canvasDado;
+        this.tablero = tablero;
         this.juego = juegoDado;
         this.jugadorFigura = new Rectangle(10, 10, Color.RED);
         this.offsetX = 70;
@@ -49,12 +51,17 @@ public class JugadorVista {
         this.dibujarFormas();
     }
 
+    private void actualizarPosicion(){
+        this.posicionY = this.juego.obtenerPosicionVehiculo().getColumna() - 1;
+        this.posicionX = this.juego.obtenerPosicionVehiculo().getFila() - 1;
+    }
+
 
     public void moverDerecha(){
 		try {
 			this.juego.mover(new MovDerecha());
-			this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
-
+			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+            actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
 			// Lanzar un mensaje. Conviene mas atrapar la excepcion en
 			// el switch case de los movimientos?
@@ -65,8 +72,8 @@ public class JugadorVista {
     public void moverIzquierda(){
 		try {
 			this.juego.mover(new MovIzquierda());
-			this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
-
+			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+            actualizarPosicion();
         } catch(JuegoFinalizadoException e) {}
     }
 
@@ -74,8 +81,8 @@ public class JugadorVista {
     public void moverAbajo(){
 		try {
 			this.juego.mover(new MovAbajo());
-			this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
-
+			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+            actualizarPosicion();
         } catch(JuegoFinalizadoException e) {}
     }
 
@@ -83,8 +90,8 @@ public class JugadorVista {
     public void moverArriba(){
 		try {
 			this.juego.mover(new MovArriba());
-			this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
-
+			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+            actualizarPosicion();
         } catch(JuegoFinalizadoException e) {}
     }
 
@@ -95,9 +102,11 @@ public class JugadorVista {
         //this.jugadorFigura.setX(posicionX);
         //this.jugadorFigura.setY(posicionY);
 
-        this.clean();
-        canvas.getGraphicsContext2D().setFill(Color.RED);
-        canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
+        // this.clean();
+        // canvas.getGraphicsContext2D().setFill(Color.RED);
+        // canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
+
+        tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
     }
 
     public void clean() {
