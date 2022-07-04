@@ -126,7 +126,7 @@ public class JuegoVista extends BorderPane {
 
         //this.insertarCuadras(ancho, alto);
 
-        juego = new Juego(new ArrayList<String>(Arrays.asList(nombreJugador)) , new Azar());
+        juego = new Juego(nombreJugador, new Azar());
         //aca van los sets de mapa
         JugadorVista jugadorVista = new JugadorVista(juego);
         juego.setDimensionesMapa(7, 11);

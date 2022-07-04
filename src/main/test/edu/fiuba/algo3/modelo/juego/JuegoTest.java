@@ -25,16 +25,17 @@ public class JuegoTest {
         //armamos el mapa de 4x4 con un pozo en (2,1) y meta en (2,3)
         Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
-        mapa.asignarPosicionMeta(new Posicion(2,3));
         mapa.generarGrillaVacia(4, 4);
-        CasilleroCalle casilleroConPozo = new CasilleroCalle();
+        mapa.asignarPosicionMeta(new Posicion(2,3));
+        
+		CasilleroCalle casilleroConPozo = new CasilleroCalle();
         casilleroConPozo.agregarElemento(new Pozo());
         mapa.asignarCasillero(casilleroConPozo, new Posicion(2,1));
 
         ProveedorDatosAzar azarMock = mock(ProveedorDatosAzar.class);
-        when(azarMock.enteroAzarEnRango(0, 2)).thenReturn(0);
+        when(azarMock.enteroAzarEnRango(1, 3)).thenReturn(1);
 
-        Juego juego = new Juego(new ArrayList<String>(Arrays.asList("Juan")), azarMock);
+        Juego juego = new Juego("juan", azarMock);
         
         //comenzamos a mover a los jugadores por el mapa
         //movemos la moto atravez del piquete y el auto no
@@ -46,7 +47,7 @@ public class JuegoTest {
         //assertTrue(juego.estaFinalizado());
 
         //assert del ganador
-        assertEquals(6, juego.obtenerPuntajeGanador());
+        assertEquals(6, juego.obtenerPuntaje());
 
         //assert no se puede seguir jugando
         //assertThrows(JuegoFinalizadoException.class,
@@ -68,33 +69,36 @@ public class JuegoTest {
         mapa.asignarCasillero(casilleroConPozo, new Posicion(1,2));
 
 		ProveedorDatosAzar azarMock = mock(ProveedorDatosAzar.class);
-        when(azarMock.enteroAzarEnRango(0, 2)).thenReturn(1, 2);
+        when(azarMock.enteroAzarEnRango(1, 3)).thenReturn(2, 3);
 		
-		// Bob tendra auto y Alice CuatroPorCuatro; empiezan el la posicion (1, 1).
-		ArrayList<String> jugadores;
-		jugadores = new ArrayList<String>(Arrays.asList("Bob", "Alice"));
-		Juego juego = new Juego(jugadores, azarMock);
+		// Bob tendra Auto y Alice CuatroPorCuatro; empiezan el la posicion (1, 1).
+		Juego juegoBob = new Juego("Bob", azarMock);
+		Juego juegoAlice = new Juego("Alice", azarMock);
 
 		// Ambos atraviezan el mapa en linea recta y cruzan un Pozo.
-        juego.mover(Direccion.derecha());  // Bob esta en: (1, 2) - suma 1 + 3 movimientos (Pozo).
-        juego.mover(Direccion.derecha());	// Alice esta en: (1, 2) - suma 1 movimientos (Pozo).
-        juego.mover(Direccion.derecha());	// Bob esta en: (1, 3) - suma 1 movimiento.
-        juego.mover(Direccion.derecha());	// Alice esta en: (1, 3) - suma 1 movimiento.
-        juego.mover(Direccion.derecha());	// Bob esta en: (1, 4) - suma 1 movimiento; meta.
-        juego.mover(Direccion.derecha());	// Alice esta en: (1, 4) - suma 1 movimiento; meta.
+        juegoBob.mover(Direccion.derecha());  	// Bob esta en: (1, 2) - suma 1 + 3 movimientos (Pozo).
+        juegoBob.mover(Direccion.derecha());	// Bob esta en: (1, 3) - suma 1 movimiento.
+        juegoBob.mover(Direccion.derecha());	// Bob esta en: (1, 4) - suma 1 movimiento; meta.
+        
+		juegoAlice.mover(Direccion.derecha());	// Alice esta en: (1, 2) - suma 1 movimientos (Pozo).
+        juegoAlice.mover(Direccion.derecha());	// Alice esta en: (1, 3) - suma 1 movimiento.
+        juegoAlice.mover(Direccion.derecha());	// Alice esta en: (1, 4) - suma 1 movimiento; meta.
 
-		assertTrue(juego.estaFinalizado());
+		assertTrue(juegoBob.estaFinalizado());
+		assertTrue(juegoAlice.estaFinalizado());
         
 		//assert del ganador
-        assertEquals(3, juego.obtenerPuntajeGanador());
-        assertEquals("Alice", juego.obtenerNombreGanador());
+        assertEquals("Alice", juegoAlice.obtenerNombre());
+        assertEquals("Bob", juegoBob.obtenerNombre());
+        assertTrue(juegoAlice.obtenerPuntaje() < juegoBob.obtenerPuntaje());
 
         //assert no se puede seguir jugando
         assertThrows(JuegoFinalizadoException.class,
-                     () -> {juego.mover(Direccion.izquierda());}
-                     );
-
-
+		() -> {juegoBob.mover(Direccion.izquierda());} );
+        
+		assertThrows(JuegoFinalizadoException.class,
+		() -> {juegoAlice.mover(Direccion.izquierda());}
+		);
 	}
 
     public void testJugadorTerminaElJuegoYQuedaRegistradoEnElRanking(){

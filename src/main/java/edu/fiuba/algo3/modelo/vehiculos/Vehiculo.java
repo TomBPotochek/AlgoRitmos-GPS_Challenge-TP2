@@ -69,4 +69,9 @@ public abstract class Vehiculo {
 
 
 	public abstract BaseEfectoDecorador aceptar(ElementoMapa elemento);
+
+
+	public Posicion obtenerPosicion() {
+		return this.posicion;
+	}
 }

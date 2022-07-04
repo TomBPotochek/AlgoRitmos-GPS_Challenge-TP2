@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import java.util.ArrayList;
+
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCruzarMeta;
@@ -20,4 +22,12 @@ public class CasilleroDecoratorMeta implements Casillero {
         efectoMeta.decorar(efectoOriginal);
         return efectoMeta;
     }
+
+	@Override 
+	public ArrayList<ElementoMapa> obtenerElementos() {
+		return null;
+	}
+
+	@Override
+	public void vaciar() {}
 }
