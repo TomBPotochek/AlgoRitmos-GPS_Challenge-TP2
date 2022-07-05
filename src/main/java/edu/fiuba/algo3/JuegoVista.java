@@ -212,12 +212,7 @@ public class JuegoVista extends BorderPane {
 
 
         //CONSOLA INFERIOR
-        Label etiqueta = new Label();
-        etiqueta.setText("consola...");
-        etiqueta.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 14));
-        etiqueta.setTextFill(Color.WHITE);
-
-        VBox contenedorConsola = new VBox(etiqueta);
+        VBox contenedorConsola = new VBox();
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         contenedorConsola.setStyle("-fx-background-color: black;");
