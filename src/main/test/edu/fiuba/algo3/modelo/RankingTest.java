@@ -4,8 +4,9 @@ import edu.fiuba.algo3.modelo.juego.Ranking;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -17,20 +18,18 @@ public class RankingTest {
 
 
         Ranking ranking = new Ranking();
-        ranking.registrarJugador("Roberto", 100);
-        ranking.registrarJugador("Ricardo", 90);
-        ranking.registrarJugador("Raul", 80);
-        ranking.registrarJugador("Roberto", 70);
+        ranking.registrarJugador("Ricardo", 10);
+        ranking.registrarJugador("Roberto", 20);
+        ranking.registrarJugador("Raul", 30);
+        ranking.registrarJugador("Raul", 1000);
+        ranking.registrarJugador("Raul", 2500);
 
-        Collection<ArrayList<String>> lista = ranking.obtenerRanking();
-        Iterator<ArrayList<String>> iter = lista.iterator();
+        List<Map.Entry<String,Integer>> lista = ranking.obtenerRanking();
+        Iterator<Map.Entry<String,Integer>> it = lista.iterator();
 
-		assertEquals("Roberto", iter.next().get(0));
-        assertEquals("Raul",iter.next().get(0));
-        assertEquals("Ricardo",iter.next().get(0));
-
-		assertEquals(70, ranking.obtenerPuntajeJugador("Roberto"));
-		assertEquals(80, ranking.obtenerPuntajeJugador("Raul"));
-		assertEquals(90, ranking.obtenerPuntajeJugador("Ricardo"));
+        assertEquals("Ricardo", it.next().getKey());
+        assertEquals("Roberto", it.next().getKey());
+        assertEquals("Raul",it.next().getKey());
+        assertEquals(3, lista.size());
     }
 }
