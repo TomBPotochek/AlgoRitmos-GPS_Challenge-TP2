@@ -23,7 +23,7 @@ public class Tablero extends GridPane {
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 Group grupoCasilla = new Group();
-                Rectangle casilla = new Rectangle(50,50, Color.BLUE);
+                Rectangle casilla = new Rectangle(40,40, Color.BLUE);
                 ImagePattern imagePattern = new ImagePattern(imagen);
                 casilla.setFill(imagePattern);
                 StackPane stack = new StackPane();

@@ -7,16 +7,7 @@ abstract class Vehiculo{
     + estaEnPosicion(Posicion posicionAComparar)
     + copiarPosicionA(Vehiculo vehiculo)
 }
-class CuatroPorCuatro{
-    - pozosAtravesados : int
-    +aceptar(ElementoMapa elemento)
-    +pisarPozo()
-    +pisoMasDeTresPozos()
-}
 
-class Auto{
- aceptar(ElementoMapa elemento)
-}
 class Posicion{
     - fila : int
     - columna : int
@@ -25,7 +16,6 @@ class Posicion{
 }
 
 interface Movimiento{
-    - cantMovimientos : int
     +moverFila(int columna)
     +moverColumna(int fila)
 }
@@ -78,6 +68,12 @@ class Turno{
         + obtenerPuntajeGanador()
 }
 
+class CuatroPorCuatro{
+    - pozosAtravesados : int
+    +aceptar(ElementoMapa elemento)
+    +pisarPozo()
+    +pisoMasDeTresPozos()
+}
 
 class Moto extends Vehiculo{
     +aceptar(ElementoMapa elemento)
@@ -86,6 +82,15 @@ class Auto extends Vehiculo{
     +aceptar(ElementoMapa elemento)
 }
 
+class Ranking{
+    rank : Map
+    jugadores : Ma
+    registrarJugador(String : nombre, int : puntaje)
+    obtenerRanking()
+    obtenerPuntajeJugador(String : nombre)
+}
+
+Juego --> Ranking
 Juego --> Turno
 
 CuatroPorCuatro --|> Vehiculo
@@ -96,5 +101,7 @@ Jugador <.. Movimiento
 
 Jugador *--"1" Vehiculo
 
-Turno "tiene"--> Jugador
+Turno --> Jugador : Tiene
+
+Posicion ..> Movimiento : Utiliza
 @enduml
