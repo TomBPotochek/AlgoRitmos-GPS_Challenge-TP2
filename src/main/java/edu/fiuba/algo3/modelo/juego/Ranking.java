@@ -4,11 +4,18 @@ public class Ranking {
 
 //    private TreeMap<Integer,String> rank;
     private Map<String,Integer> jugadores;
-
-    public Ranking(){
+    private static Ranking unRanking;
+    private Ranking(){
         //rank = new TreeMap<Integer,String>(Collections.reverseOrder());
         jugadores = new LinkedHashMap<String,Integer>();
 
+    }
+
+    public static Ranking getRanking(){
+        if(unRanking == null){
+           unRanking = new Ranking();
+        }
+        return unRanking;
     }
     public void registrarJugador(String nombre, int puntaje) {
         if(this.jugadores.containsKey(nombre)){

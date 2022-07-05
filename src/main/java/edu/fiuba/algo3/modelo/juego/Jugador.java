@@ -77,4 +77,8 @@ public class Jugador {
 	public String obtenerNombre() {
 		return this.nombre;
 	}
+
+	public int getCantidadDeMovimientos() {
+		return cantidadDeMovimientos;
+	}
 }

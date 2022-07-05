@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.juego.Ranking;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -38,10 +39,11 @@ public class JugadorVista {
 	int offsetX;
 	int offsetY;
 
+    Label marcadorPuntaje;
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
-    public JugadorVista(Juego juegoDado, Canvas canvasDado, Tablero tablero,Stage stage, Scene pantallaInicio) {
+    public JugadorVista(Juego juegoDado, Canvas canvasDado, Tablero tablero,Stage stage, Scene pantallaInicio, Label marcadorPuntaje) {
         this.canvas = canvasDado;
         this.tablero = tablero;
         this.juego = juegoDado;
@@ -56,6 +58,8 @@ public class JugadorVista {
         this.stage = stage;
         //canvas.getGraphicsContext2D().setFill(Color.RED);
         this.ponerFotoVehiculo();
+        this.marcadorPuntaje = marcadorPuntaje;
+        canvas.getGraphicsContext2D().setFill(Color.RED);
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
     }
 
@@ -142,7 +146,8 @@ public class JugadorVista {
         // this.clean();
         // canvas.getGraphicsContext2D().setFill(Color.RED);
         // canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
-
+        int puntaje = juego.getCantMovimientosJugadorActual();
+        this.marcadorPuntaje.setText(String.format("Puntaje : %d",puntaje));
         tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
     }
 
@@ -158,6 +163,10 @@ public class JugadorVista {
     }
 
     private void terminarJuego() {
+        Ranking ranking = Ranking.getRanking();
+        int puntaje = juego.getCantMovimientosJugadorActual();
+        ranking.registrarJugador(juego.obtenerNombre(),puntaje);
+
         Stage ventanaVolver = new Stage();
         ventanaVolver.setResizable(false);
         ventanaVolver.setTitle("Volver al Menu");
