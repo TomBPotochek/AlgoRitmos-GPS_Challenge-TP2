@@ -115,8 +115,12 @@ public class MenuPreguntas extends BorderPane{
         
         siguiente.setOnAction(e-> {
             if(preguntarDatosCorrectos(nombreDelJugador.getText(), seleccionVehiculo.getValue())){
-                JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,20, 14, nombreDelJugador.getText(), seleccionVehiculo.getValue());
-                stage.setScene(juegoVista.getJuegoVista());
+                if(seleccionVehiculo.getValue() != null && !(nombreDelJugador.getText().isBlank())){
+                    JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,20, 14, nombreDelJugador.getText(), seleccionVehiculo.getValue());
+                    stage.setScene(juegoVista.getJuegoVista());
+                }else{
+                    datosIncorrectos();
+                }
             }
         });
     
@@ -132,6 +136,51 @@ public class MenuPreguntas extends BorderPane{
         this.setAlignment(siguiente, Pos.TOP_CENTER);
         this.setBottom(siguiente);
 
+    }
+
+    private void datosIncorrectos(){
+        Stage ventanaDatosIncorrectos = new Stage();
+        ventanaDatosIncorrectos.setResizable(false);
+        ventanaDatosIncorrectos.setTitle("Datos Incorrectos");
+        
+        Button botonVolverAIngresarDatos = new Button("Volver a Ingresar Datos");
+        botonVolverAIngresarDatos.setFont(Font.font("Impact", 30));
+        botonVolverAIngresarDatos.setStyle(botonNormal);
+        botonVolverAIngresarDatos.setOnMouseEntered(e -> botonVolverAIngresarDatos.setStyle(botonAntesDeSerPresionado));
+        botonVolverAIngresarDatos.setOnMouseExited(e -> botonVolverAIngresarDatos.setStyle(botonNormal));
+        
+        VBox menuDatosIngresados = new VBox(20);
+        
+        Label avisoDatos = new Label("Los datos ingresados no son validos, asegurate de:\n");
+        avisoDatos.setFont(Font.font("Impact", 30));
+        avisoDatos.setStyle(formatoTexto);
+        
+        Label avisoVehiculo = new Label("      -Si o si tenés que seleccionar un Vehículo\n");
+        avisoVehiculo.setFont(Font.font("Impact", 25));
+        avisoVehiculo.setStyle(formatoTexto);
+        
+        Label avisoNombre = new Label("      -Tu nombre tiene que tener por lo menos un caracter");
+        avisoNombre.setFont(Font.font("Impact", 25));
+        avisoNombre.setStyle(formatoTexto);
+        
+        ventanaDatosIncorrectos.setMinWidth(280);
+        ventanaDatosIncorrectos.initModality(Modality.APPLICATION_MODAL);
+        
+        menuDatosIngresados.getChildren().addAll(avisoDatos, avisoVehiculo, avisoNombre, botonVolverAIngresarDatos);
+        menuDatosIngresados.setAlignment(Pos.CENTER);
+        menuDatosIngresados.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
+        
+        
+        botonVolverAIngresarDatos.setOnAction(e->{
+            confirmacionDatos = false;
+            ventanaDatosIncorrectos.close();
+        });
+
+        Scene  escenaDatosIngresados = new Scene(menuDatosIngresados , 650 , 400, Color.rgb(47, 52, 58));
+        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
+        ventanaDatosIncorrectos.getIcons().add(logo);
+        ventanaDatosIncorrectos.setScene(escenaDatosIngresados);
+        ventanaDatosIncorrectos.showAndWait();
     }
 
     private String volverAlMenu(Stage stage){
