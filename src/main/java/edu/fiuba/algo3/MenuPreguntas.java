@@ -35,8 +35,8 @@ public class MenuPreguntas extends BorderPane{
     static String respuesta;
     Boolean confirmacionDatos;
 
-    String botonAntesDeSerPresionado = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
-    String botonNormal = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #292c30; -fx-text-fill: #80CEB9";
+    String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
@@ -53,8 +53,8 @@ public class MenuPreguntas extends BorderPane{
         //ESCENA PREGUNTAR DATOS DEL JUGADOR Y LA PARTIDA
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         preguntaDatos = new Scene(this,screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
-        Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps.png");
-        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
+        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     
         //BOTON DE VOLVER A LA PANTALLA DE INICIO

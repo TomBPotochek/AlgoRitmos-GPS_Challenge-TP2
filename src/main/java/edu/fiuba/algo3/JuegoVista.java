@@ -51,8 +51,8 @@ public class JuegoVista extends BorderPane {
     static Juego juego;
     static HBox contenedorCentral;
 
-    String botonAntesDeSerPresionado = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
-    String botonNormal = "-fx-border-width: 1px; -fx-border-color: #80CEB9; -fx-background-color: #292c30; -fx-text-fill: #80CEB9";
+    String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
@@ -61,9 +61,9 @@ public class JuegoVista extends BorderPane {
         this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador);
         //this.setCentro(alto,ancho);
         stage.setMaximized(true);
-        // Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps.png");
-        // BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        // this.setBackground(new Background(imagenDeFondo));
+        Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
+        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenDeFondo));
         this.setStyle("-fx-background-color: #2F343A");
     }
     public void setCentro(int alto, int ancho, JugadorVista jugadorVista){
@@ -162,28 +162,28 @@ public class JuegoVista extends BorderPane {
         moverseDerecha.setFont(Font.font("Impact", 35));
         moverseDerecha.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-derecha.png")));
         moverseDerecha.setStyle(formatoTexto);
-        moverseDerecha.setOnMouseEntered(e -> moverseDerecha.setStyle(botonAntesDeSerPresionado));
+        moverseDerecha.setOnMouseEntered(e -> moverseDerecha.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseDerecha.setOnMouseExited(e -> moverseDerecha.setStyle(formatoTexto));
         
         Button moverseAbajo = new Button("");
         moverseAbajo.setFont(Font.font("Impact", 35));
         moverseAbajo.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-abajo.png")));
         moverseAbajo.setStyle(formatoTexto);
-        moverseAbajo.setOnMouseEntered(e -> moverseAbajo.setStyle(botonAntesDeSerPresionado));
+        moverseAbajo.setOnMouseEntered(e -> moverseAbajo.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseAbajo.setOnMouseExited(e -> moverseAbajo.setStyle(formatoTexto));
         
         Button moverseIzquierda = new Button("");
         moverseIzquierda.setFont(Font.font("Impact", 35));
         moverseIzquierda.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-izqueirda.png")));
         moverseIzquierda.setStyle(formatoTexto);
-        moverseIzquierda.setOnMouseEntered(e -> moverseIzquierda.setStyle(botonAntesDeSerPresionado));
+        moverseIzquierda.setOnMouseEntered(e -> moverseIzquierda.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseIzquierda.setOnMouseExited(e -> moverseIzquierda.setStyle(formatoTexto));
         
         Button moverseArriba = new Button("");
         moverseArriba.setFont(Font.font("Impact", 35));
         moverseArriba.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-arriba.png")));
         moverseArriba.setStyle(formatoTexto);
-        moverseArriba.setOnMouseEntered(e -> moverseArriba.setStyle(botonAntesDeSerPresionado));
+        moverseArriba.setOnMouseEntered(e -> moverseArriba.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseArriba.setOnMouseExited(e -> moverseArriba.setStyle(formatoTexto));
         
         VBox botonesMovimiento = new VBox();
