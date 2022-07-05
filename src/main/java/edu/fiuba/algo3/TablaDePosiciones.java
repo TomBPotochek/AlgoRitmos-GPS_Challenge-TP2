@@ -2,13 +2,9 @@ package edu.fiuba.algo3;
 
 import java.util.Map;
 
-import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.juego.Ranking;
-import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -20,19 +16,16 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 public class TablaDePosiciones extends BorderPane{
-    //stage.setScene(tablaDePosicionesHistorial);
     static String respuesta;
     Scene TablaPosiciones;
 
@@ -41,10 +34,7 @@ public class TablaDePosiciones extends BorderPane{
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
-    
-
     public TablaDePosiciones(Stage stage, Scene pantallaDeInicio){
-        //this.setOrientation(Orientation.VERTICAL);
         this.setTablaDePosiciones(stage, pantallaDeInicio);
         stage.setMaximized(true);
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
@@ -60,8 +50,6 @@ public class TablaDePosiciones extends BorderPane{
     private void actualizarTabla(){
         VBox tabla = new VBox();
         Ranking ranking = Ranking.getRanking();
-        // Logger.log("Se intenta registrar a JOSE");
-        // ranking.registrarJugador("JOSE",1000);
         
         for(Map.Entry<String,Integer> entrada: ranking.obtenerRanking()){
             Label jugadorNuevo = new Label(String.format("%s %d", entrada.getKey(), entrada.getValue()));

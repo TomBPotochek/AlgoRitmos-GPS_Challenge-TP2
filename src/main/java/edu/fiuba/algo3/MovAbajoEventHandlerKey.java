@@ -1,6 +1,5 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
