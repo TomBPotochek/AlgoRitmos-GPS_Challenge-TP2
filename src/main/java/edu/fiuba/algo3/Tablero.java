@@ -62,11 +62,6 @@ public class Tablero extends GridPane {
                 Image fondoCambioVehiculo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
                 vistaElemento.setFill(new ImagePattern(fondoCambioVehiculo));
                 break;
-            case "Salida":
-                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                //Image fondoPozo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png");
-                //vistaElemento.setFill(new ImagePattern(fondoPozo));
-                break;
             default:
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);
         }
@@ -123,7 +118,10 @@ public class Tablero extends GridPane {
         // Logger.log(String.format("obteniendo meta en posicion x,y = %d,%d", meta.getFila()-1, meta.getColumna()-1));
         sp = obtenerPaneCelda(meta.getFila()-1, meta.getColumna()-1);
         HBox elementos = (HBox) sp.getChildren().get(0);
-        elementos.getChildren().add(new Rectangle(10, 10, Color.BLUEVIOLET));
+        Rectangle salida = new Rectangle(25, 25, Color.BLUEVIOLET);
+        Image fondoPozo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-salida.png");
+        salida.setFill(new ImagePattern(fondoPozo));
+        elementos.getChildren().add(salida);
         
         this.setGridLinesVisible(true);
     }
