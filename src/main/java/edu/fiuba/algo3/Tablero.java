@@ -33,6 +33,7 @@ public class Tablero {
     private GridPane grilla;
     private Rectangle mapaOculto;
     private Circle visionJugador;
+    private Circle visionMeta;
     
     public Tablero(int alto, int ancho, Juego juego){
         this.altoTablero = alto;
@@ -75,9 +76,17 @@ public class Tablero {
 
         this.mapaOculto = new Rectangle(900, 650, Color.BLACK);
         this.visionJugador = new Circle(this.tamanioCelda*2);
-        this.visionJugador.relocate(this.tamanioCelda*(-3/2), this.tamanioCelda*(-3/2));
+        this.visionJugador.relocate(this.tamanioCelda*(-1.5), this.tamanioCelda*(-1.5));
         this.visionJugador.setStyle("-fx-background-color: transparent");
         Shape resultadoVision = Rectangle.subtract(mapaOculto, visionJugador);
+
+        //vision meta
+        this.visionMeta = new Circle(tamanioCelda*2);
+        this.visionMeta.relocate(
+                                tamanioCelda*((meta.getColumna()-1)+0.5-2), 
+                                tamanioCelda*((meta.getFila()-1)+0.5-2));
+        visionMeta.setStyle("-fx-background-color: transparent");
+        resultadoVision = Rectangle.subtract(resultadoVision, visionMeta);
         
         // this.setGridLinesVisible(true);
         this.contenedor = new Group(this.grilla, resultadoVision);
@@ -89,8 +98,10 @@ public class Tablero {
 
     private void moverVision(int x, int y){
         this.contenedor.getChildren().remove(1);
-        this.visionJugador.relocate(tamanioCelda*(y+(1/2)-2), tamanioCelda*(x+(1/2)-2));
+        this.visionJugador.relocate(tamanioCelda*(y+0.5-2), tamanioCelda*(x+0.5-2));
+
         Shape resultadoVision = Rectangle.subtract(mapaOculto, visionJugador);
+        resultadoVision = Rectangle.subtract(resultadoVision, this.visionMeta);
         contenedor.getChildren().add(resultadoVision);
 
     }
