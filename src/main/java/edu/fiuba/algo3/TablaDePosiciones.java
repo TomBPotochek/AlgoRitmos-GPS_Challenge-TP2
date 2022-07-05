@@ -53,7 +53,7 @@ public class TablaDePosiciones extends BorderPane{
         
         for(Map.Entry<String,Integer> entrada: ranking.obtenerRanking()){
             Label jugadorNuevo = new Label(String.format("%s %d", entrada.getKey(), entrada.getValue()));
-            jugadorNuevo.setStyle(formatoTexto);
+            jugadorNuevo.setStyle("-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
             jugadorNuevo.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 35));
             tabla.getChildren().add(jugadorNuevo);
         }
