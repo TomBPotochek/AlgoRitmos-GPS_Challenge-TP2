@@ -17,7 +17,7 @@ public class RankingTest {
     public void puedoRegistrarJugadores(){
 
 
-        Ranking ranking = new Ranking();
+        Ranking ranking = Ranking.getRanking();
         ranking.registrarJugador("Ricardo", 10);
         ranking.registrarJugador("Roberto", 20);
         ranking.registrarJugador("Raul", 30);
