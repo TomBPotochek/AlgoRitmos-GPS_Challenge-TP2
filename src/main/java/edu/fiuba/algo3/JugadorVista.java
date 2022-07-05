@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
@@ -47,7 +48,7 @@ public class JugadorVista {
         this.canvas = canvasDado;
         this.tablero = tablero;
         this.juego = juegoDado;
-        this.jugadorFigura = new Rectangle(10, 10, Color.RED);
+        this.jugadorFigura = new Rectangle(10, 10, Color.BLUE);
         this.offsetX = 70;
         this.offsetY = 70;
 		this.posicionX = this.offsetX; //40
@@ -59,7 +60,7 @@ public class JugadorVista {
         //canvas.getGraphicsContext2D().setFill(Color.RED);
         this.ponerFotoVehiculo();
         this.marcadorPuntaje = marcadorPuntaje;
-        canvas.getGraphicsContext2D().setFill(Color.RED);
+        //canvas.getGraphicsContext2D().setFill(Color.RED);
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
     }
 
@@ -70,14 +71,22 @@ public class JugadorVista {
     private void ponerFotoVehiculo(){
         switch(this.juego.obtenerTipoVehiculo().getSimpleName()){
             case "Auto":
-                this.jugadorFigura.setStyle("-fx-background-color: #ff0000");
+                this.jugadorFigura = new Rectangle(30, 30, Color.YELLOW);
+                Image fotoAuto = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-auto.png");
+                jugadorFigura.setFill(new ImagePattern(fotoAuto));
                 break;
             case "Moto":
-                this.jugadorFigura.setStyle("-fx-background-color: #00ff00");
+                this.jugadorFigura = new Rectangle(30, 30, Color.GREEN);
+                Image fotoMoto = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-moto.png");
+                jugadorFigura.setFill(new ImagePattern(fotoMoto));
                 break;
             default:
-                this.jugadorFigura.setStyle("-fx-background-color: #0000ff");
+                this.jugadorFigura = new Rectangle(30, 30, Color.WHITE);
+                Image fotoCuatroPorCuatro = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-cuatro-por-cuatro.png");
+                jugadorFigura.setFill(new ImagePattern(fotoCuatroPorCuatro));
         }
+
+        tablero.moverJugadorA(0, 0, this.getDibujo());
     }
 
     public void dibujar() {
