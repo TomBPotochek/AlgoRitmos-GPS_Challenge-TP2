@@ -8,6 +8,11 @@ import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
@@ -24,25 +29,42 @@ public class Tablero extends GridPane {
     private Rectangle generarElementoMapa(ElementoMapa elemento){
         //ImagePattern
         Rectangle vistaElemento;
-        int tamanio = 8;
+        int tamanio = 20;
         switch (elemento.getClass().getSimpleName()) {
             case "Pozo":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.BROWN);
+                Image fondoPozo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png");
+                vistaElemento.setFill(new ImagePattern(fondoPozo));
                 break;
             case "Piquete":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.RED);
+                Image fondoPiquete = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-piquete.png");
+                vistaElemento.setFill(new ImagePattern(fondoPiquete));
                 break;
             case "ControlPolicial":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.BLUE);
+                Image fondoControlPolicial = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-control-policial.png");
+                vistaElemento.setFill(new ImagePattern(fondoControlPolicial));
                 break;
             case "SorpresaFavorable":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                Image fondoSorpresaFavorable = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
+                vistaElemento.setFill(new ImagePattern(fondoSorpresaFavorable));
                 break;
             case "SorpresaDesfavorable":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                Image fondoSorpresaDesfavorable = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
+                vistaElemento.setFill(new ImagePattern(fondoSorpresaDesfavorable));
                 break;
             case "SorpresaCambioVehiculo":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                Image fondoCambioVehiculo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa-cambio.png");
+                vistaElemento.setFill(new ImagePattern(fondoCambioVehiculo));
+                break;
+            case "Salida":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                //Image fondoPozo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png");
+                //vistaElemento.setFill(new ImagePattern(fondoPozo));
                 break;
             default:
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);

@@ -36,6 +36,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.juego.Juego;
 
@@ -117,7 +118,7 @@ public class JuegoVista extends BorderPane {
 
 
         //NOMBRE DEL JUGADOR
-        Label nombreDelJugador = new Label("Jugador: " + nombreJugador);
+        Label nombreDelJugador = new Label("Jugador: \n" + nombreJugador);
         nombreDelJugador.setFont(Font.font("Impact", 40));
         nombreDelJugador.setStyle(formatoTexto);
         
@@ -233,28 +234,32 @@ public class JuegoVista extends BorderPane {
         Label controlPolical = new Label(": Control Policial");
         controlPolical.setFont(Font.font("Impact", 30));
         controlPolical.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        controlPolical.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-control-policial.png")));
 
         Label pozo = new Label(": Pozo");
         pozo.setFont(Font.font("Impact", 30));
         pozo.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        pozo.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png")));
 
         Label piquete = new Label(": Piquete");
         piquete.setFont(Font.font("Impact", 30));
         piquete.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        piquete.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-piquete.png")));
 
         Label sorpresaFavorable = new Label(": Sorpresa Favorable");
         sorpresaFavorable.setFont(Font.font("Impact", 30));
         sorpresaFavorable.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        sorpresaFavorable.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png")));
 
-        Label sorpresaDesfavorable = new Label(": Sorpresa Desfavorable");
-        sorpresaDesfavorable.setFont(Font.font("Impact", 30));
-        sorpresaDesfavorable.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-
+        Label sorpresaCambio = new Label(": Sorpresa Cambio\n de Vehiculo");
+        sorpresaCambio.setFont(Font.font("Impact", 30));
+        sorpresaCambio.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        sorpresaCambio.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa-cambio.png")));
 
         VBox bordeDerecho = new VBox();
-        bordeDerecho.getChildren().addAll(controlPolical, pozo, piquete, sorpresaFavorable, sorpresaDesfavorable);
+        bordeDerecho.getChildren().addAll(controlPolical, pozo, piquete, sorpresaFavorable, sorpresaCambio);
         bordeDerecho.setSpacing(100);
-        bordeDerecho.setPadding(new Insets(50, 80, 50, 00));
+        bordeDerecho.setPadding(new Insets(10, 0, 0, 30));
         this.setAlignment(bordeDerecho, Pos.CENTER_RIGHT);
         this.setRight(bordeDerecho);
 
