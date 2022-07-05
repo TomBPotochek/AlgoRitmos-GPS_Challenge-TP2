@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo.juego.Ranking;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,12 +22,15 @@ public class RankingTest {
         ranking.registrarJugador("Raul", 80);
         ranking.registrarJugador("Roberto", 70);
 
-        Collection<String> lista = ranking.obtenerRanking();
-        Iterator<String> it = lista.iterator();
+        Collection<ArrayList<String>> lista = ranking.obtenerRanking();
+        Iterator<ArrayList<String>> iter = lista.iterator();
 
-        assertEquals("Roberto", it.next());
-        assertEquals("Ricardo",it.next());
-        assertEquals("Raul",it.next());
-        assertEquals("Roberto", it.next());
+		assertEquals("Roberto", iter.next().get(0));
+        assertEquals("Raul",iter.next().get(0));
+        assertEquals("Ricardo",iter.next().get(0));
+
+		assertEquals(70, ranking.obtenerPuntajeJugador("Roberto"));
+		assertEquals(80, ranking.obtenerPuntajeJugador("Raul"));
+		assertEquals(90, ranking.obtenerPuntajeJugador("Ricardo"));
     }
 }
