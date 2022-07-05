@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.juego.Ranking;
 import edu.fiuba.algo3.modelo.vehiculos.*;
+import javafx.beans.property.IntegerProperty;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -22,9 +23,14 @@ import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
 import edu.fiuba.algo3.modelo.movimientos.MovArriba;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.movimientos.MovIzquierda;
+import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import java.io.File;
+import javafx.scene.media.AudioClip;
+import java.util.ArrayList;
+
 
 public class JugadorVista {
     private Juego juego;
@@ -39,7 +45,7 @@ public class JugadorVista {
     int posicionY;
 	int offsetX;
 	int offsetY;
-
+	AudioClip musicaPrincipal;
     Label marcadorPuntaje;
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
@@ -62,6 +68,10 @@ public class JugadorVista {
         this.marcadorPuntaje = marcadorPuntaje;
         //canvas.getGraphicsContext2D().setFill(Color.RED);
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
+		this.musicaPrincipal = new AudioClip("file:src/main/java/edu/fiuba/algo3/sonidos/mario.mp3");
+		this.musicaPrincipal.setCycleCount(-1); // reproduce en loop
+		this.musicaPrincipal.setVolume(0.3);
+		this.musicaPrincipal.play();
     }
 
     public Rectangle getDibujo(){
@@ -102,6 +112,7 @@ public class JugadorVista {
     public void moverDerecha(){
 		try {
 			this.juego.mover(new MovDerecha());
+			this.reproducirEfectoSonido();
 			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
@@ -113,9 +124,10 @@ public class JugadorVista {
     }
 
 
-    public void moverIzquierda(){
+	public void moverIzquierda(){
 		try {
 			this.juego.mover(new MovIzquierda());
+			this.reproducirEfectoSonido();
 			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
@@ -127,6 +139,7 @@ public class JugadorVista {
     public void moverAbajo(){
 		try {
 			this.juego.mover(new MovAbajo());
+			this.reproducirEfectoSonido();
 			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
@@ -138,12 +151,37 @@ public class JugadorVista {
     public void moverArriba(){
 		try {
 			this.juego.mover(new MovArriba());
+			this.reproducirEfectoSonido();
 			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
         }
     }
+	
+	
+	private void reproducirEfectoSonido() {
+		Posicion posVehiculo = this.juego.obtenerPosicionVehiculo();
+		Posicion posMeta = this.juego.obtenerPosicionMeta();
+		ArrayList<ElementoMapa> efectos = this.juego.obtenerElementos(posVehiculo);
+		String sonidoGanador = "file:src/main/java/edu/fiuba/algo3/sonidos/ganador.mp3";
+		String sonidoObstaculo = "file:src/main/java/edu/fiuba/algo3/sonidos/obstaculo.mp3";
+		
+		if (posVehiculo.equals(posMeta)) {
+			//reproducir ganador
+			AudioClip sonido = new AudioClip(sonidoGanador);
+			this.musicaPrincipal.stop();
+			sonido.play();
+
+		}
+		else if (efectos.size() > 0) {
+			//reproducir efecto
+			AudioClip sonido = new AudioClip(sonidoObstaculo);
+			sonido.play();
+		}
+
+	
+	}
 
 
     private void dibujarFormas() {

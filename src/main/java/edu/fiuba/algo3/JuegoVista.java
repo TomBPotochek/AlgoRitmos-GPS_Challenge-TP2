@@ -42,7 +42,7 @@ import javafx.stage.Stage;
 import edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.juego.Juego;
-
+import javafx.scene.media.AudioClip;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -69,6 +69,7 @@ public class JuegoVista extends BorderPane {
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
         this.setStyle("-fx-background-color: #2F343A");
+
     }
     public void setCentro(int alto, int ancho, JugadorVista jugadorVista){
         // GridPane grilla = new Tablero(alto,ancho,jugadorVista);
