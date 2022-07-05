@@ -72,7 +72,7 @@ public class Tablero {
         // Logger.log(String.format("obteniendo meta en posicion x,y = %d,%d", meta.getFila()-1, meta.getColumna()-1));
         sp = obtenerPaneCelda(meta.getFila()-1, meta.getColumna()-1);
         HBox elementos = (HBox) sp.getChildren().get(0);
-        Rectangle metaForma = new Rectangle(10, 10, Color.BLUEVIOLET);
+        Rectangle metaForma = new Rectangle(20, 20, Color.BLUEVIOLET);
         Image fotoMeta = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-salida.png");
         metaForma.setFill(new ImagePattern(fotoMeta));
         elementos.getChildren().add(metaForma);
