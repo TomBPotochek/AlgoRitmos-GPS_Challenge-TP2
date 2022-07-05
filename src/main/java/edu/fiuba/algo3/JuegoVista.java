@@ -147,7 +147,7 @@ public class JuegoVista extends BorderPane {
 
         //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);
-        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla);
+        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage,pantallaDeInicio);
         // grilla.moverJugadorA(0, 0, jugadorVista.getDibujo());
         //this.getChildren().add(jugadorVista.getDibujo());
 
