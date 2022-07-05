@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
@@ -131,6 +132,7 @@ public class MenuPrincipal extends FlowPane{
         pantallaDeInicio = new Scene(this, screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
         
         //BOTON DE TABLA DE POSICIONES FUNCION
+        //Logger.log("\n\n");
         TablaDePosiciones tablaDePosiciones = new TablaDePosiciones(stage, pantallaDeInicio);
         tablaPosiciones.setOnAction(e-> {
             stage.setScene(tablaDePosiciones.getTablaDePosiciones());

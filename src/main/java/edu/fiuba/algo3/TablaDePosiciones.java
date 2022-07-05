@@ -1,5 +1,9 @@
 package edu.fiuba.algo3;
 
+import java.util.Map;
+
+import edu.fiuba.algo3.modelo.Logging.Logger;
+import edu.fiuba.algo3.modelo.juego.Ranking;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
@@ -15,6 +19,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -26,7 +31,7 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
-public class TablaDePosiciones extends FlowPane{
+public class TablaDePosiciones extends BorderPane{
     //stage.setScene(tablaDePosicionesHistorial);
     static String respuesta;
     Scene TablaPosiciones;
@@ -36,20 +41,39 @@ public class TablaDePosiciones extends FlowPane{
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
+    
 
     public TablaDePosiciones(Stage stage, Scene pantallaDeInicio){
-        this.setOrientation(Orientation.VERTICAL);
+        //this.setOrientation(Orientation.VERTICAL);
         this.setTablaDePosiciones(stage, pantallaDeInicio);
         stage.setMaximized(true);
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     }
-
+    
     public Scene getTablaDePosiciones(){
+        this.actualizarTabla();
         return TablaPosiciones;
     }
+    
+    private void actualizarTabla(){
+        VBox tabla = new VBox();
+        Ranking ranking = Ranking.getRanking();
+        // Logger.log("Se intenta registrar a JOSE");
+        // ranking.registrarJugador("JOSE",1000);
         
+        for(Map.Entry<String,Integer> entrada: ranking.obtenerRanking()){
+            Label jugadorNuevo = new Label(String.format("%s %d", entrada.getKey(), entrada.getValue()));
+            jugadorNuevo.setStyle(formatoTexto);
+            jugadorNuevo.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 35));
+            tabla.getChildren().add(jugadorNuevo);
+        }
+
+        tabla.setAlignment(Pos.TOP_CENTER);
+        this.setCenter(tabla);
+    }
+
     private void setTablaDePosiciones(Stage stage, Scene pantallaDeInicio){
         HBox encabezado = new HBox();
         encabezado.setAlignment(Pos.CENTER_LEFT);
@@ -80,7 +104,8 @@ public class TablaDePosiciones extends FlowPane{
         
         encabezado.getChildren().add(volverMenuPrincipal);
         encabezado.getChildren().add(mejoresPuntajes);
-        this.getChildren().add(encabezado);
+        this.setTop(encabezado);
+
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         TablaPosiciones = new Scene(this, screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
         }

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.juego;
 import java.util.*;
+
+import edu.fiuba.algo3.modelo.Logging.Logger;
 public class Ranking {
 
 //    private TreeMap<Integer,String> rank;
@@ -18,6 +20,7 @@ public class Ranking {
         return unRanking;
     }
     public void registrarJugador(String nombre, int puntaje) {
+        Logger.log(String.format("Se registra nombre: %s Con puntaje: %d", nombre, puntaje));
         if(this.jugadores.containsKey(nombre)){
             int puntajeAnterior = this.jugadores.get(nombre);
             if(puntajeAnterior < puntaje)
