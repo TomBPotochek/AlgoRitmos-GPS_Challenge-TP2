@@ -70,7 +70,7 @@ public class Juego {
         return jugador.calcularPuntaje();
     }
 
-	public Object obtenerNombre() {
+	public String obtenerNombre() {
 		return this.jugador.obtenerNombre();
 	}
 	
@@ -92,5 +92,9 @@ public class Juego {
     public Posicion obtenerPosicionMeta(){
         Mapa mapa = Mapa.getMapa();
         return mapa.obtenerPosicionMeta();
+    }
+
+    public int getCantMovimientosJugadorActual() {
+        return jugador.getCantidadDeMovimientos();
     }
 }

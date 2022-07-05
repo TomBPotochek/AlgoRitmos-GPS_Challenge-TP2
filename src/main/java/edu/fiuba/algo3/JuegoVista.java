@@ -124,16 +124,17 @@ public class JuegoVista extends BorderPane {
         Label nombreDelJugador = new Label("Jugador: \n" + nombreJugador);
         nombreDelJugador.setFont(Font.font("Impact", 40));
         nombreDelJugador.setStyle(formatoTexto);
-        
-        //Puntuacion
-        Label puntajeActual = new Label("Puntaje: 0");
-        puntajeActual.setFont(Font.font("Impact", 40));
-        puntajeActual.setStyle(formatoTexto);
 
         //this.insertarCuadras(ancho, alto);
         juego = new Juego(nombreJugador, new Azar());
         //aca van los sets de mapa
         juego.setDimensionesMapa(ancho, alto);
+
+        //Puntuacion
+        Label puntajeActual = new Label("Puntaje");
+        puntajeActual.setFont(Font.font("Impact", 40));
+        puntajeActual.setStyle(formatoTexto);
+
 
         Tablero grilla = new Tablero(alto,ancho, juego);
         contenedorCentral = new Group(grilla);
@@ -147,7 +148,7 @@ public class JuegoVista extends BorderPane {
 
         //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);
-        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage,pantallaDeInicio);
+        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage,pantallaDeInicio,puntajeActual);
         // grilla.moverJugadorA(0, 0, jugadorVista.getDibujo());
         //this.getChildren().add(jugadorVista.getDibujo());
 
