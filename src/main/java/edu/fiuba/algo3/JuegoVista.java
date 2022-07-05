@@ -246,18 +246,18 @@ public class JuegoVista extends BorderPane {
         piquete.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
         piquete.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-piquete.png")));
 
-        Label sorpresaFavorable = new Label(": Sorpresa Favorable");
+        Label sorpresaFavorable = new Label(": Sorpresa");
         sorpresaFavorable.setFont(Font.font("Impact", 30));
         sorpresaFavorable.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
         sorpresaFavorable.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png")));
 
-        Label sorpresaCambio = new Label(": Sorpresa Cambio\n de Vehiculo");
-        sorpresaCambio.setFont(Font.font("Impact", 30));
-        sorpresaCambio.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-        sorpresaCambio.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa-cambio.png")));
+        // Label sorpresaCambio = new Label(": Sorpresa Cambio\n de Vehiculo");
+        // sorpresaCambio.setFont(Font.font("Impact", 30));
+        // sorpresaCambio.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
+        // sorpresaCambio.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa-cambio.png")));
 
         VBox bordeDerecho = new VBox();
-        bordeDerecho.getChildren().addAll(controlPolical, pozo, piquete, sorpresaFavorable, sorpresaCambio);
+        bordeDerecho.getChildren().addAll(controlPolical, pozo, piquete, sorpresaFavorable);
         bordeDerecho.setSpacing(100);
         bordeDerecho.setPadding(new Insets(10, 0, 0, 30));
         this.setAlignment(bordeDerecho, Pos.CENTER_RIGHT);

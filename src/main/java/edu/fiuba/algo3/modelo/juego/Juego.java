@@ -88,4 +88,9 @@ public class Juego {
 		Mapa mapa = Mapa.getMapa();
 		return mapa.obtenerCasilla(posicion).obtenerElementos();		
 	}
+
+    public Posicion obtenerPosicionMeta(){
+        Mapa mapa = Mapa.getMapa();
+        return mapa.obtenerPosicionMeta();
+    }
 }
