@@ -27,9 +27,12 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -50,7 +53,7 @@ public class JuegoVista extends BorderPane {
     static Scene juegoVista;
     static ToolBar barra;
     static Juego juego;
-    static HBox contenedorCentral;
+    static Group contenedorCentral;
 
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
@@ -133,8 +136,13 @@ public class JuegoVista extends BorderPane {
         juego.setDimensionesMapa(ancho, alto);
 
         Tablero grilla = new Tablero(alto,ancho, juego);
-        contenedorCentral = new HBox(grilla);
-        contenedorCentral.setAlignment(Pos.CENTER);
+        contenedorCentral = new Group(grilla);
+        //contenedorCentral.setAlignment(Pos.CENTER);
+        Rectangle mapaOculto = new Rectangle(900, 650, Color.BLACK);
+        Circle visionJugador = new Circle(100);
+        visionJugador.setStyle("-fx-background-color: transparent");
+        Shape resultadoVision = mapaOculto.subtract(mapaOculto, visionJugador);
+        contenedorCentral.getChildren().add(resultadoVision);
         this.setCenter(contenedorCentral);
 
         //posicion del canvas 900 650
@@ -278,7 +286,7 @@ public class JuegoVista extends BorderPane {
         this.setAlignment(contenedorConsola, Pos.TOP_LEFT);
         this.setBottom(contenedorConsola);
 
-        this.setCentro(alto,ancho,jugadorVista);
+        //this.setCentro(alto, ancho,jugadorVista);
 
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         juegoVista = new Scene(this,screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
