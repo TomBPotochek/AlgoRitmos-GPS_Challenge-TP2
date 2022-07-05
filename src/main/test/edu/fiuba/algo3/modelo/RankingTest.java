@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -16,17 +18,17 @@ public class RankingTest {
 
 
         Ranking ranking = new Ranking();
-        ranking.registrarJugador("Roberto", 100);
-        ranking.registrarJugador("Ricardo", 90);
+        ranking.registrarJugador("Ricardo", 100);
+        ranking.registrarJugador("Roberto", 90);
         ranking.registrarJugador("Raul", 80);
-        ranking.registrarJugador("Roberto", 70);
+        ranking.registrarJugador("Raul", 70);
+        ranking.registrarJugador("Ricardo", 500);
+        List<Map.Entry<String,Integer>> lista = ranking.obtenerRanking();
+        Iterator<Map.Entry<String,Integer>> it = lista.iterator();
 
-        Collection<String> lista = ranking.obtenerRanking();
-        Iterator<String> it = lista.iterator();
-
-        assertEquals("Roberto", it.next());
-        assertEquals("Ricardo",it.next());
-        assertEquals("Raul",it.next());
-        assertEquals("Roberto", it.next());
+        assertEquals(500,it.next().getValue());
+        assertEquals("Roberto", it.next().getKey());
+        assertEquals("Raul",it.next().getKey());
+        assertEquals(3, lista.size());
     }
 }
