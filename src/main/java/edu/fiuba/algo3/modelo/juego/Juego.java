@@ -54,6 +54,21 @@ public class Juego {
         mapa.setAlto(alto);
 		mapa.generarGrillaConElementosAlAzar(new Azar());
     }
+
+    public void setVehiculo(String eleccionVehiculo){
+        switch (eleccionVehiculo){
+            case "Moto":
+                this.vehiculoJugador = new Moto();
+                break;
+            case "Auto":
+				this.vehiculoJugador = new Auto();
+                break;
+            default:
+				this.vehiculoJugador = new CuatroPorCuatro();
+        }
+
+        this.jugador.setVehiculo(this.vehiculoJugador);
+    }
     
     public void mover(Movimiento movimiento) throws JuegoFinalizadoException {
 		if (this.estaFinalizado()) {

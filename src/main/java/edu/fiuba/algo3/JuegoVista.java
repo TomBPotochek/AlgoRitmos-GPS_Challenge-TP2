@@ -61,8 +61,8 @@ public class JuegoVista extends BorderPane {
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
 
-    public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
-        this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador);
+    public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
+        this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador, eleccionVehiculo);
         //this.setCentro(alto,ancho);
         stage.setMaximized(true);
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
@@ -80,7 +80,7 @@ public class JuegoVista extends BorderPane {
     public Scene getJuegoVista(){
         return juegoVista;
     }
-    private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador){
+    private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
         MenuBar barraSuperior = new MenuBar();
         barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20");
         //barraSuperior.setOnMouseEntered(e -> barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
@@ -132,6 +132,8 @@ public class JuegoVista extends BorderPane {
 
         //this.insertarCuadras(ancho, alto);
         juego = new Juego(nombreJugador, new Azar());
+        juego.setVehiculo(eleccionVehiculo);
+        //juego.obtenerTipoVehiculo()
         //aca van los sets de mapa
         juego.setDimensionesMapa(ancho, alto);
 

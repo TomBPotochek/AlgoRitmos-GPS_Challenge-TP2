@@ -48,6 +48,10 @@ public class Jugador {
 		this.incrementarMovimientos();
 		aplicarEfecto(this.vehiculo.mover(movimiento));
 	}
+
+	public void setVehiculo(Vehiculo vehiculoDado){
+		this.vehiculo = vehiculoDado;
+	}
 	
     public void marcarFinalizado() {
 		this.alcanzoMeta = true;

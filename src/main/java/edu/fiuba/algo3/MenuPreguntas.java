@@ -115,7 +115,7 @@ public class MenuPreguntas extends BorderPane{
         
         siguiente.setOnAction(e-> {
             if(preguntarDatosCorrectos(nombreDelJugador.getText(), seleccionVehiculo.getValue())){
-                JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,20, 14, nombreDelJugador.getText());
+                JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,20, 14, nombreDelJugador.getText(), seleccionVehiculo.getValue());
                 stage.setScene(juegoVista.getJuegoVista());
             }
         });

@@ -66,15 +66,18 @@ public class Tablero {
         //jugador posicion inicial en tablero
         StackPane sp = obtenerPaneCelda(0, 0);
         sp.getChildren().add(new Rectangle(10, 10, Color.GREEN));
-    
+        
         //Meta
         Posicion meta = juego.obtenerPosicionMeta();
         // Logger.log(String.format("obteniendo meta en posicion x,y = %d,%d", meta.getFila()-1, meta.getColumna()-1));
         sp = obtenerPaneCelda(meta.getFila()-1, meta.getColumna()-1);
         HBox elementos = (HBox) sp.getChildren().get(0);
-        elementos.getChildren().add(new Rectangle(10, 10, Color.BLUEVIOLET));
+        Rectangle metaForma = new Rectangle(10, 10, Color.BLUEVIOLET);
+        Image fotoMeta = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-salida.png");
+        metaForma.setFill(new ImagePattern(fotoMeta));
+        elementos.getChildren().add(metaForma);
 
-        this.mapaOculto = new Rectangle(900, 650, Color.BLACK);
+        this.mapaOculto = new Rectangle(820, 560, Color.BLACK);
         this.visionJugador = new Circle(this.tamanioCelda*2);
         this.visionJugador.relocate(this.tamanioCelda*(-1.5), this.tamanioCelda*(-1.5));
         this.visionJugador.setStyle("-fx-background-color: transparent");

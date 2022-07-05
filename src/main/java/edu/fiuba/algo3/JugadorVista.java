@@ -54,7 +54,8 @@ public class JugadorVista {
         this.jugadorFigura.setY(posicionY);
         this.pantallaInicio = pantallaInicio;
         this.stage = stage;
-        canvas.getGraphicsContext2D().setFill(Color.RED);
+        //canvas.getGraphicsContext2D().setFill(Color.RED);
+        this.ponerFotoVehiculo();
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
     }
 
@@ -62,6 +63,18 @@ public class JugadorVista {
         return jugadorFigura;
     }
 
+    private void ponerFotoVehiculo(){
+        switch(this.juego.obtenerTipoVehiculo().getSimpleName()){
+            case "Auto":
+                this.jugadorFigura.setStyle("-fx-background-color: #ff0000");
+                break;
+            case "Moto":
+                this.jugadorFigura.setStyle("-fx-background-color: #00ff00");
+                break;
+            default:
+                this.jugadorFigura.setStyle("-fx-background-color: #0000ff");
+        }
+    }
 
     public void dibujar() {
         this.dibujarFormas();
@@ -144,12 +157,6 @@ public class JugadorVista {
         this.dibujar();
     }
 
-    private Boolean posicionJugadorValida(int posicionDadaX, int posicionDadaY){
-        if((posicionDadaX < 0) || (posicionDadaX > 850) || (posicionDadaY < 0) || (posicionDadaY > 600)){
-            return false;
-        }
-        return true;
-    }
     private void terminarJuego() {
         Stage ventanaVolver = new Stage();
         ventanaVolver.setResizable(false);
