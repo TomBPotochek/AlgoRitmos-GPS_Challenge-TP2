@@ -76,10 +76,10 @@ public class TablaDePosiciones extends BorderPane{
         volverMenuPrincipal.setOnMouseExited(e -> volverMenuPrincipal.setStyle(botonNormal));
 
         volverMenuPrincipal.setOnAction(e-> {
-            String a = volverAlMenu(stage);
-            if(a =="Volver"){
-                stage.setScene(pantallaDeInicio);
-            }
+			stage.setScene(pantallaDeInicio);
+            // String a = volverAlMenu(stage);
+            // if(a =="Volver"){
+            // }
         });
     
     

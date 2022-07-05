@@ -59,10 +59,10 @@ public class MenuPreguntas extends BorderPane{
         volverPantallaInicial.setOnMouseExited(e -> volverPantallaInicial.setStyle(botonNormal));
 
         volverPantallaInicial.setOnAction(e-> {
-            String a = this.volverAlMenu(stage);
-            if(a =="Volver"){
-                stage.setScene(pantallaDeInicio);
-            }
+			stage.setScene(pantallaDeInicio);
+            // String a = this.volverAlMenu(stage);
+            // if(a =="Volver"){
+            // }
         });
     
         //JUGADOR INSERTA NOMBRE
