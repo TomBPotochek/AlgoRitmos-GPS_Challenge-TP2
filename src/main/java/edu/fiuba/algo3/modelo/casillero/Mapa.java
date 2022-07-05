@@ -59,10 +59,6 @@ public class Mapa {
 		}
         Casillero casillero = this.grilla.get(posicion);
         
-        // if (posicion.equals(this.posicionMeta)){
-            // casillero = new CasilleroDecoratorMeta(casillero);
-            // Logger.log("se llega a la meta");
-        // }
         return casillero;
     }
 

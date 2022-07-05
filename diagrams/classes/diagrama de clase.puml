@@ -42,7 +42,6 @@ class Mapa{
 }
 
 interface Movimiento{
-    - cantMovimientos : int
     +moverFila(int columna)
     +moverColumna(int fila)
 }

@@ -48,7 +48,7 @@ public abstract class Vehiculo {
             Logger.log(String.format("moverse a casilla fallo. motivo: %s", 
                         e.toString()));
          }
-        //catch (NoPuedeAtravesarObstaculoError e) { }
+
         return efecto; //1 movimiento + los movs extra penalizados
     }
 

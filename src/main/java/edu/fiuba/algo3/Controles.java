@@ -1,16 +1,7 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import javafx.event.EventHandler;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class Controles implements EventHandler<KeyEvent> {
