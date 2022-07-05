@@ -1,5 +1,10 @@
 package edu.fiuba.algo3;
 
+import java.util.ArrayList;
+
+import edu.fiuba.algo3.modelo.casillero.*;
+import edu.fiuba.algo3.modelo.juego.Juego;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -16,20 +21,61 @@ public class Tablero extends GridPane {
     private int posJugadorY = 0;
     private int altoTablero;
 
+    private Rectangle generarElementoMapa(ElementoMapa elemento){
+        //ImagePattern
+        Rectangle vistaElemento;
+        int tamanio = 8;
+        switch (elemento.getClass().getSimpleName()) {
+            case "Pozo":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.BROWN);
+                break;
+            case "Piquete":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.RED);
+                break;
+            case "ControlPolicial":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.BLUE);
+                break;
+            case "SorpresaFavorable":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                break;
+            case "SorpresaDesfavorable":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                break;
+            case "SorpresaCambioVehiculo":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
+                break;
+            default:
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);
+        }
+        return vistaElemento;    
 
-    public Tablero(int alto, int ancho){
+    }
+
+
+    public Tablero(int alto, int ancho, Juego juego){
         this.altoTablero = alto;
         Image imagen = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/unknown.png");
+        int tamanioCelda = 40;
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 Group grupoCasilla = new Group();
-                Rectangle casilla = new Rectangle(40,40, Color.BLUE);
+                Rectangle casilla = new Rectangle(tamanioCelda, tamanioCelda, Color.BLUE);
                 ImagePattern imagePattern = new ImagePattern(imagen);
                 casilla.setFill(imagePattern);
                 StackPane stack = new StackPane();
+                stack.setMinSize(tamanioCelda, tamanioCelda);
                 
-                HBox elementosMapa = new HBox();
-                stack.getChildren().add(elementosMapa);
+                HBox VistaElementosMapa = new HBox();
+                VistaElementosMapa.setAlignment(Pos.CENTER);
+                // Logger.log(String.format("intentando colocar en posicion (f,c) = (%d,%d)", j+1, i+1));
+                ArrayList<ElementoMapa> elementosMapa = juego.obtenerElementos(new Posicion(j+1, i+1));
+                for (ElementoMapa elemento: elementosMapa) {
+                    VistaElementosMapa.getChildren().add(generarElementoMapa(elemento));
+                }
+
+
+
+                stack.getChildren().add(VistaElementosMapa);
 
 
                 grupoCasilla.getChildren().addAll(casilla, stack);

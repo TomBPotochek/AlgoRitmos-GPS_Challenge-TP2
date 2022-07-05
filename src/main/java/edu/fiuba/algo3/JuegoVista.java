@@ -127,20 +127,20 @@ public class JuegoVista extends BorderPane {
         puntajeActual.setStyle(formatoTexto);
 
         //this.insertarCuadras(ancho, alto);
+        juego = new Juego(nombreJugador, new Azar());
+        //aca van los sets de mapa
+        juego.setDimensionesMapa(ancho, alto);
 
-        Tablero grilla = new Tablero(alto,ancho);
+        Tablero grilla = new Tablero(alto,ancho, juego);
         contenedorCentral = new HBox(grilla);
         contenedorCentral.setAlignment(Pos.CENTER);
         this.setCenter(contenedorCentral);
 
-        juego = new Juego(nombreJugador, new Azar());
-        //aca van los sets de mapa
         //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);
         JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla);
         // grilla.moverJugadorA(0, 0, jugadorVista.getDibujo());
         //this.getChildren().add(jugadorVista.getDibujo());
-        juego.setDimensionesMapa(16, 11);
 
         //Canvas dibujoJugador = new Canvas();
         //dibujoJugador.getGraphicsContext2D().fillOval
