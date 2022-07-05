@@ -158,10 +158,9 @@ public class JugadorVista {
 		
 		if (posVehiculo.equals(posMeta)) {
 			//reproducir ganador
-			this.musicaPrincipal.stop();
+			musicaPrincipal.stop();
 			this.musicaPrincipal = new AudioClip(sonidoGanador);
-			musicaPrincipal.play();
-
+			this.musicaPrincipal.play();
 		}
 		else if (efectos.size() > 0) {
 			//reproducir efecto
@@ -187,6 +186,11 @@ public class JugadorVista {
     public void update() {
         this.dibujar();
     }
+
+	public void salirDelJuego() {
+		this.musicaPrincipal.stop();
+		stage.setScene(pantallaInicio);
+	}
 
     private void terminarJuego() {
         Ranking ranking = Ranking.getRanking();

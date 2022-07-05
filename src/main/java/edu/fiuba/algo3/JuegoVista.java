@@ -59,41 +59,7 @@ public class JuegoVista extends BorderPane {
     }
 
     private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
-        MenuBar barraSuperior = new MenuBar();
-        barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20");
-        
-        Menu archivo = new Menu("Archivo");
-        barraSuperior.getMenus().add(archivo);
-        this.setAlignment(barraSuperior, Pos.CENTER);
 
-        Menu ver = new Menu("Ver");
-        barraSuperior.getMenus().add(ver);
-        
-        Menu ayuda = new Menu("Ayuda");
-        barraSuperior.getMenus().add(ayuda);
-
-        MenuItem archivoSalir = new MenuItem("Salir");
-        archivoSalir.setOnAction(e-> {
-            String a = volverAlMenu(stage);
-            if(a =="Volver"){
-                stage.setScene(pantallaDeInicio);
-            }
-        });
-        archivo.getItems().addAll(archivoSalir);
-
-        MenuItem ayudaAcercaDe = new MenuItem("Acerca De");
-        MenuItem ayudaComoJugar = new MenuItem("Como Jugar");
-        ayudaComoJugar.setOnAction(e -> comoJugar());
-        ayudaAcercaDe.setOnAction(e -> acercaDe());
-
-        ayuda.getItems().addAll(ayudaComoJugar, new SeparatorMenuItem(), ayudaAcercaDe);
-
-        MenuItem pantallaCompleta = new MenuItem("Pantalla Completa");
-        pantallaCompleta.setOnAction(e -> stage.setFullScreen(!stage.isFullScreen()));
-        ver.getItems().addAll(pantallaCompleta);
-        
-        
-        this.setTop(barraSuperior);
 
 
         //NOMBRE DEL JUGADOR
@@ -117,6 +83,45 @@ public class JuegoVista extends BorderPane {
 
         Canvas canvasCentral = new Canvas(900, 650);
         JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage,pantallaDeInicio,puntajeActual);
+
+
+		// Menu bar
+        MenuBar barraSuperior = new MenuBar();
+        barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20");
+        
+        Menu archivo = new Menu("Archivo");
+        barraSuperior.getMenus().add(archivo);
+        this.setAlignment(barraSuperior, Pos.CENTER);
+
+        Menu ver = new Menu("Ver");
+        barraSuperior.getMenus().add(ver);
+        
+        Menu ayuda = new Menu("Ayuda");
+        barraSuperior.getMenus().add(ayuda);
+
+        MenuItem archivoSalir = new MenuItem("Salir");
+		archivoSalir.setOnAction(e-> {
+            String a = volverAlMenu(stage);
+            if(a =="Volver"){
+                stage.setScene(pantallaDeInicio);
+				jugadorVista.salirDelJuego();
+            }
+        });
+        archivo.getItems().addAll(archivoSalir);
+
+        MenuItem ayudaAcercaDe = new MenuItem("Acerca De");
+        MenuItem ayudaComoJugar = new MenuItem("Como Jugar");
+        ayudaComoJugar.setOnAction(e -> comoJugar());
+        ayudaAcercaDe.setOnAction(e -> acercaDe());
+
+        ayuda.getItems().addAll(ayudaComoJugar, new SeparatorMenuItem(), ayudaAcercaDe);
+
+        MenuItem pantallaCompleta = new MenuItem("Pantalla Completa");
+        pantallaCompleta.setOnAction(e -> stage.setFullScreen(!stage.isFullScreen()));
+        ver.getItems().addAll(pantallaCompleta);
+        
+        
+        this.setTop(barraSuperior);
 
         //Boton DERECHA
         Button moverseDerecha = new Button("");
