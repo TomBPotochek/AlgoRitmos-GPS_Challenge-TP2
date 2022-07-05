@@ -4,11 +4,9 @@ import java.util.*;
 import edu.fiuba.algo3.modelo.Logging.Logger;
 public class Ranking {
 
-//    private TreeMap<Integer,String> rank;
     private Map<String,Integer> jugadores;
     private static Ranking unRanking;
     private Ranking(){
-        //rank = new TreeMap<Integer,String>(Collections.reverseOrder());
         jugadores = new LinkedHashMap<String,Integer>();
 
     }
