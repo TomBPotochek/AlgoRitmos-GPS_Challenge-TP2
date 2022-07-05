@@ -57,7 +57,7 @@ public class Tablero {
                 for (ElementoMapa elemento: elementosMapa) {
                     Rectangle vistaElem = generarElementoMapa(elemento);
                     vistaElem.maxWidth(tamanioCelda/4.);
-                    vistaElem.widthProperty().bind(Bindings.divide(vistaElementosMapa.widthProperty(),elementosMapa.size()));
+                    vistaElem.widthProperty().bind(Bindings.divide(vistaElementosMapa.widthProperty(),elementosMapa.size()+0.5));
                     vistaElem.heightProperty().bind(vistaElem.widthProperty());
                     vistaElementosMapa.getChildren().add(vistaElem);
                 }
