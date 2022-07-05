@@ -25,9 +25,11 @@ public class CasilleroDecoratorMeta implements Casillero {
 
 	@Override 
 	public ArrayList<ElementoMapa> obtenerElementos() {
-		return null;
+		return casillaDecorada.obtenerElementos();
 	}
 
 	@Override
-	public void vaciar() {}
+	public void vaciar() {
+        casillaDecorada.vaciar();
+    }
 }
