@@ -53,7 +53,6 @@ public class JuegoVista extends BorderPane {
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
-        this.setStyle("-fx-background-color: #2F343A");
     }
 
     public Scene getJuegoVista(){
