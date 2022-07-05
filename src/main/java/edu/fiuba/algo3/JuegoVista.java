@@ -32,15 +32,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.juego.Juego;
-<<<<<<< HEAD
-import javafx.scene.media.AudioClip;
-import java.util.ArrayList;
-import java.util.Arrays;
-
-import edu.fiuba.algo3.MoverseALaDerechaEventHandler;
-=======
-
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
 
 public class JuegoVista extends BorderPane {
     static String respuesta;
@@ -61,11 +52,6 @@ public class JuegoVista extends BorderPane {
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
-<<<<<<< HEAD
-        this.setStyle("-fx-background-color: #2F343A");
-
-=======
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
     }
 
     public Scene getJuegoVista(){

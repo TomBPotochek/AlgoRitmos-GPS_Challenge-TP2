@@ -18,10 +18,10 @@ import edu.fiuba.algo3.modelo.movimientos.MovArriba;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.movimientos.MovIzquierda;
 import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
+import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import java.io.File;
 import javafx.scene.media.AudioClip;
 import java.util.ArrayList;
 
