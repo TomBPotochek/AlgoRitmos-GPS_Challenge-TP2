@@ -18,15 +18,16 @@ public class RankingTest {
 
 
         Ranking ranking = new Ranking();
-        ranking.registrarJugador("Ricardo", 100);
-        ranking.registrarJugador("Roberto", 90);
-        ranking.registrarJugador("Raul", 80);
-        ranking.registrarJugador("Raul", 70);
-        ranking.registrarJugador("Ricardo", 500);
+        ranking.registrarJugador("Ricardo", 10);
+        ranking.registrarJugador("Roberto", 20);
+        ranking.registrarJugador("Raul", 30);
+        ranking.registrarJugador("Raul", 1000);
+        ranking.registrarJugador("Raul", 2500);
+
         List<Map.Entry<String,Integer>> lista = ranking.obtenerRanking();
         Iterator<Map.Entry<String,Integer>> it = lista.iterator();
 
-        assertEquals(500,it.next().getValue());
+        assertEquals("Ricardo", it.next().getKey());
         assertEquals("Roberto", it.next().getKey());
         assertEquals("Raul",it.next().getKey());
         assertEquals(3, lista.size());

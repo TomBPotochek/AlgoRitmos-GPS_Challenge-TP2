@@ -13,7 +13,7 @@ public class Ranking {
     public void registrarJugador(String nombre, int puntaje) {
         if(this.jugadores.containsKey(nombre)){
             int puntajeAnterior = this.jugadores.get(nombre);
-            if(puntajeAnterior > puntaje)
+            if(puntajeAnterior < puntaje)
                 return;
         }
         this.jugadores.put(nombre, puntaje);
@@ -22,7 +22,7 @@ public class Ranking {
     public List<Map.Entry<String,Integer>> obtenerRanking(){
         Set<Map.Entry<String,Integer>> entrySet = jugadores.entrySet();
         List<Map.Entry<String,Integer>> list = new ArrayList<>(entrySet);
-        Collections.sort(list, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        Collections.sort(list, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
         return list;
     }
     public int obtenerPuntajeJugador(String nombre){
