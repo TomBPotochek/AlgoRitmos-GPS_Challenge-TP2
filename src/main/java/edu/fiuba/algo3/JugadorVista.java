@@ -62,7 +62,7 @@ public class JugadorVista {
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
 		this.musicaPrincipal = new AudioClip("file:src/main/java/edu/fiuba/algo3/sonidos/mario.mp3");
 		this.musicaPrincipal.setCycleCount(-1); // reproduce en loop
-		this.musicaPrincipal.setVolume(0.3);
+		this.musicaPrincipal.setVolume(0.25);
 		this.musicaPrincipal.play();
     }
 
@@ -153,14 +153,14 @@ public class JugadorVista {
 		Posicion posVehiculo = this.juego.obtenerPosicionVehiculo();
 		Posicion posMeta = this.juego.obtenerPosicionMeta();
 		ArrayList<ElementoMapa> efectos = this.juego.obtenerElementos(posVehiculo);
-		String sonidoGanador = "file:src/main/java/edu/fiuba/algo3/sonidos/ganador.mp3";
+		String sonidoGanador = "file:src/main/java/edu/fiuba/algo3/sonidos/ganador2.mp3";
 		String sonidoObstaculo = "file:src/main/java/edu/fiuba/algo3/sonidos/obstaculo.mp3";
 		
 		if (posVehiculo.equals(posMeta)) {
 			//reproducir ganador
-			AudioClip sonido = new AudioClip(sonidoGanador);
 			this.musicaPrincipal.stop();
-			sonido.play();
+			this.musicaPrincipal = new AudioClip(sonidoGanador);
+			musicaPrincipal.play();
 
 		}
 		else if (efectos.size() > 0) {
@@ -217,7 +217,8 @@ public class JugadorVista {
         menuVolver.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
 
         botonVolver.setOnAction(e -> {
-            stage.setScene(pantallaInicio);
+            this.musicaPrincipal.stop();
+			stage.setScene(pantallaInicio);
             ventanaVolver.close();
         });
 
