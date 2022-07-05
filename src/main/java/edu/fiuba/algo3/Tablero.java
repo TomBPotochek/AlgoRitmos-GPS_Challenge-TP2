@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import javafx.beans.binding.Bindings;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
@@ -16,6 +17,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -48,15 +50,19 @@ public class Tablero {
                 StackPane stack = new StackPane();
                 stack.setMinSize(tamanioCelda, tamanioCelda);
                 
-                HBox VistaElementosMapa = new HBox();
-                VistaElementosMapa.setAlignment(Pos.CENTER);
+                HBox vistaElementosMapa = new HBox();
+                vistaElementosMapa.setAlignment(Pos.CENTER);
                 // Logger.log(String.format("intentando colocar en posicion (f,c) = (%d,%d)", j+1, i+1));
                 ArrayList<ElementoMapa> elementosMapa = juego.obtenerElementos(new Posicion(j+1, i+1));
                 for (ElementoMapa elemento: elementosMapa) {
-                    VistaElementosMapa.getChildren().add(generarElementoMapa(elemento));
+                    Rectangle vistaElem = generarElementoMapa(elemento);
+                    vistaElem.maxWidth(tamanioCelda/4.);
+                    vistaElem.widthProperty().bind(Bindings.divide(vistaElementosMapa.widthProperty(),elementosMapa.size()));
+                    vistaElem.heightProperty().bind(vistaElem.widthProperty());
+                    vistaElementosMapa.getChildren().add(vistaElem);
                 }
     
-                stack.getChildren().add(VistaElementosMapa);
+                stack.getChildren().add(vistaElementosMapa);
     
                 grupoCasilla.getChildren().addAll(casilla, stack);
                 this.grilla.add(grupoCasilla,i,j);
@@ -77,7 +83,7 @@ public class Tablero {
         metaForma.setFill(new ImagePattern(fotoMeta));
         elementos.getChildren().add(metaForma);
 
-        this.mapaOculto = new Rectangle(820, 560, Color.BLACK);
+        this.mapaOculto = new Rectangle(800, 560, Color.BLACK);
         this.visionJugador = new Circle(this.tamanioCelda*2);
         this.visionJugador.relocate(this.tamanioCelda*(-1.5), this.tamanioCelda*(-1.5));
         this.visionJugador.setStyle("-fx-background-color: transparent");
