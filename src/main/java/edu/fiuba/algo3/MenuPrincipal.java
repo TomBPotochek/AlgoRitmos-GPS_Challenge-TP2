@@ -1,12 +1,9 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.Logging.Logger;
-import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
-import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -21,11 +18,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -121,18 +115,12 @@ public class MenuPrincipal extends FlowPane{
         botonesPrincipales.getChildren().add(parteInferior);
         botonesPrincipales.setSpacing(10);
 
-        // this.getChildren().add(nombreDelJuego);
-        // this.getChildren().add(jugar);
-        // this.getChildren().add(tablaPosiciones);
-        // this.getChildren().add(salir);
-        // this.getChildren().add(parteInferior);
         this.getChildren().add(botonesPrincipales);
 
         
         pantallaDeInicio = new Scene(this, screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
         
         //BOTON DE TABLA DE POSICIONES FUNCION
-        //Logger.log("\n\n");
         TablaDePosiciones tablaDePosiciones = new TablaDePosiciones(stage, pantallaDeInicio);
         tablaPosiciones.setOnAction(e-> {
             stage.setScene(tablaDePosiciones.getTablaDePosiciones());

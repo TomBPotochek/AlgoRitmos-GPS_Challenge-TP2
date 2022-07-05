@@ -1,6 +1,5 @@
 package edu.fiuba.algo3;
 
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 

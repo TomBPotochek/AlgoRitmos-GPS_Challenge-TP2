@@ -1,8 +1,6 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
-
-import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
@@ -10,14 +8,8 @@ import javafx.beans.binding.Bindings;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.image.Image;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
@@ -52,12 +44,11 @@ public class Tablero {
                 
                 HBox vistaElementosMapa = new HBox();
                 vistaElementosMapa.setAlignment(Pos.CENTER);
-                // Logger.log(String.format("intentando colocar en posicion (f,c) = (%d,%d)", j+1, i+1));
                 ArrayList<ElementoMapa> elementosMapa = juego.obtenerElementos(new Posicion(j+1, i+1));
                 for (ElementoMapa elemento: elementosMapa) {
                     Rectangle vistaElem = generarElementoMapa(elemento);
                     vistaElem.maxWidth(tamanioCelda/4.);
-                    vistaElem.widthProperty().bind(Bindings.divide(vistaElementosMapa.widthProperty(),elementosMapa.size()));
+                    vistaElem.widthProperty().bind(Bindings.divide(vistaElementosMapa.widthProperty(),elementosMapa.size()+0.5));
                     vistaElem.heightProperty().bind(vistaElem.widthProperty());
                     vistaElementosMapa.getChildren().add(vistaElem);
                 }
@@ -75,7 +66,6 @@ public class Tablero {
         
         //Meta
         Posicion meta = juego.obtenerPosicionMeta();
-        // Logger.log(String.format("obteniendo meta en posicion x,y = %d,%d", meta.getFila()-1, meta.getColumna()-1));
         sp = obtenerPaneCelda(meta.getFila()-1, meta.getColumna()-1);
         HBox elementos = (HBox) sp.getChildren().get(0);
         Rectangle metaForma = new Rectangle(20, 20, Color.BLUEVIOLET);
@@ -97,7 +87,6 @@ public class Tablero {
         visionMeta.setStyle("-fx-background-color: transparent");
         resultadoVision = Rectangle.subtract(resultadoVision, visionMeta);
         
-        // this.setGridLinesVisible(true);
         this.contenedor = new Group(this.grilla, resultadoVision);
     }
 
@@ -169,9 +158,7 @@ public class Tablero {
     }
 
 
-
     public void moverJugadorA(int x, int y, Rectangle dibujoJugador){
-
         StackPane sp = obtenerPaneCelda(posJugadorX, posJugadorY);
         sp.getChildren().remove(1);
         

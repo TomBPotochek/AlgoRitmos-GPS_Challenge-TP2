@@ -20,11 +20,6 @@ public class Posicion {
     public int getColumna(){
         return (this.col);
     }
-
-    // public boolean compararPosicion(Posicion posicion1, Posicion posicion2){
-    //     return((posicion1.getColumna() == posicion2.getColumna()) && 
-    //     (posicion1.getFila() == posicion2.getFila()));
-    // }
     
     public void actualizarPosicion(Movimiento movimiento) {
         this.col = movimiento.moverColumna(this.col);

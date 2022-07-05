@@ -1,7 +1,5 @@
 package edu.fiuba.algo3;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -14,39 +12,35 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
-import javafx.scene.control.TextField;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.shape.Shape;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.juego.Juego;
+<<<<<<< HEAD
 import javafx.scene.media.AudioClip;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import edu.fiuba.algo3.MoverseALaDerechaEventHandler;
+=======
+
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
 
 public class JuegoVista extends BorderPane {
     static String respuesta;
@@ -63,30 +57,25 @@ public class JuegoVista extends BorderPane {
 
     public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
         this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador, eleccionVehiculo);
-        //this.setCentro(alto,ancho);
         stage.setMaximized(true);
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
+<<<<<<< HEAD
         this.setStyle("-fx-background-color: #2F343A");
 
+=======
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
     }
-    public void setCentro(int alto, int ancho, JugadorVista jugadorVista){
-        // GridPane grilla = new Tablero(alto,ancho,jugadorVista);
-        // contenedorCentral = new HBox(grilla);
-        // contenedorCentral.setAlignment(Pos.CENTER);
-        // this.setCenter(contenedorCentral);
 
-    }
     public Scene getJuegoVista(){
         return juegoVista;
     }
+
     private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
         MenuBar barraSuperior = new MenuBar();
         barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20");
-        //barraSuperior.setOnMouseEntered(e -> barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
-        //barraSuperior.setOnMouseExited(e -> barraSuperior.setStyle("-fx-border-width: 0px; -fx-border-color: #2F343A; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C; -fx-font-family: Impact; -fx-font-size: 20"));
-
+        
         Menu archivo = new Menu("Archivo");
         barraSuperior.getMenus().add(archivo);
         this.setAlignment(barraSuperior, Pos.CENTER);
@@ -126,11 +115,8 @@ public class JuegoVista extends BorderPane {
         nombreDelJugador.setFont(Font.font("Impact", 40));
         nombreDelJugador.setStyle(formatoTexto);
 
-        //this.insertarCuadras(ancho, alto);
         juego = new Juego(nombreJugador, new Azar());
         juego.setVehiculo(eleccionVehiculo);
-        //juego.obtenerTipoVehiculo()
-        //aca van los sets de mapa
         juego.setDimensionesMapa(ancho, alto);
 
         //Puntuacion
@@ -141,45 +127,10 @@ public class JuegoVista extends BorderPane {
 
         Tablero grilla = new Tablero(alto,ancho, juego);
         
-        //contenedorCentral.setAlignment(Pos.CENTER);
-        // Rectangle mapaOculto = new Rectangle(900, 650, Color.BLACK);
-        // Circle visionJugador = new Circle(100);
-        // visionJugador.relocate(0, 0);
-        // visionJugador.setStyle("-fx-background-color: transparent");
-        // Shape resultadoVision = Rectangle.subtract(mapaOculto, visionJugador);
-        // visionJugador.relocate(400, 30);
-        // resultadoVision = Rectangle.subtract(resultadoVision, visionJugador);
-        
-
-        // contenedorCentral.getChildren().remove(resultadoVision);
         this.setCenter(grilla.getContenedor());
 
-        //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);
         JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage,pantallaDeInicio,puntajeActual);
-        // grilla.moverJugadorA(0, 0, jugadorVista.getDibujo());
-        //this.getChildren().add(jugadorVista.getDibujo());
-
-        //Canvas dibujoJugador = new Canvas();
-        //dibujoJugador.getGraphicsContext2D().fillOval
-        
-        //vistaRobot = new VistaRobot(robot, canvasCentral);
-        //vistaRobot.dibujar();
-
-        // contenedorCentral = new VBox(canvasCentral);
-        //contenedorCentral.setAlignment(Pos.CENTER);
-        //contenedorCentral.setSpacing(20);
-        //contenedorCentral.setPadding(new Insets(25));
-        //Image imagen = new Image("file:src/vista/imagenes/fondo-verde.jpg");
-        //BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
-        //contenedorCentral.setBackground(new Background(imagenDeFondo));
-
-        //this.setCenter(contenedorCentral);
-
-        //this.setCenter(jugadorVista.getDibujo());
-        //this.
-        //VBox dibujoJugador = new VBox();
-        //dibujoJugador.getChildren().add(jugadorVista.getDibujo());
 
         //Boton DERECHA
         Button moverseDerecha = new Button("");
@@ -236,9 +187,6 @@ public class JuegoVista extends BorderPane {
         botonesMovimiento.getChildren().add(botonesID);
         botonesMovimiento.getChildren().add(moverseAbajo);
 
-        //this.setCenter(dibujoJugador);
-
-
         //BORDE IZQUIERDO
         VBox bordeIzquierdo = new VBox();
         bordeIzquierdo.getChildren().addAll(nombreDelJugador, puntajeActual,botonesMovimiento);
@@ -268,11 +216,6 @@ public class JuegoVista extends BorderPane {
         sorpresaFavorable.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
         sorpresaFavorable.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png")));
 
-        // Label sorpresaCambio = new Label(": Sorpresa Cambio\n de Vehiculo");
-        // sorpresaCambio.setFont(Font.font("Impact", 30));
-        // sorpresaCambio.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-        // sorpresaCambio.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa-cambio.png")));
-
         VBox bordeDerecho = new VBox();
         bordeDerecho.getChildren().addAll(controlPolical, pozo, piquete, sorpresaFavorable);
         bordeDerecho.setSpacing(100);
@@ -282,20 +225,13 @@ public class JuegoVista extends BorderPane {
 
 
         //CONSOLA INFERIOR
-        Label etiqueta = new Label();
-        etiqueta.setText("consola...");
-        etiqueta.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 14));
-        etiqueta.setTextFill(Color.WHITE);
-
-        VBox contenedorConsola = new VBox(etiqueta);
+        VBox contenedorConsola = new VBox();
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         contenedorConsola.setStyle("-fx-background-color: black;");
 
         this.setAlignment(contenedorConsola, Pos.TOP_LEFT);
         this.setBottom(contenedorConsola);
-
-        //this.setCentro(alto, ancho,jugadorVista);
 
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         juegoVista = new Scene(this,screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
@@ -390,22 +326,6 @@ public class JuegoVista extends BorderPane {
         ventanaComoSalir.getIcons().add(logo);
         ventanaComoSalir.setScene(escenaSalir);
         ventanaComoSalir.showAndWait();
-    }
-
-    private void insertarCuadras(int ancho, int alto){
-        int posicionActualAncho = 50;
-        int posicionActualAlto = 50;
-        for(int i = 0; i<alto; i++){
-            for(int j = 0; j<ancho; j++){
-                Rectangle cuadra = new Rectangle(40, 40, Color.rgb(255, 227, 179));
-                cuadra.setX(posicionActualAncho);
-                cuadra.setY(posicionActualAlto);
-                this.getChildren().add(cuadra);
-                posicionActualAncho = posicionActualAncho + 50;
-            }
-            posicionActualAncho = 50;
-            posicionActualAlto = posicionActualAlto + 50;
-        }
     }
 
     private String volverAlMenu(Stage stage){

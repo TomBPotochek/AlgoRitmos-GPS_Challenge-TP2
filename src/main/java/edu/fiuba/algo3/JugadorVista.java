@@ -1,24 +1,23 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.juego.Ranking;
+<<<<<<< HEAD
 import edu.fiuba.algo3.modelo.vehiculos.*;
 import javafx.beans.property.IntegerProperty;
+=======
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
-import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
 import edu.fiuba.algo3.modelo.juego.Juego;
-import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
 import edu.fiuba.algo3.modelo.movimientos.MovArriba;
 import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
@@ -63,10 +62,8 @@ public class JugadorVista {
         this.jugadorFigura.setY(posicionY);
         this.pantallaInicio = pantallaInicio;
         this.stage = stage;
-        //canvas.getGraphicsContext2D().setFill(Color.RED);
         this.ponerFotoVehiculo();
         this.marcadorPuntaje = marcadorPuntaje;
-        //canvas.getGraphicsContext2D().setFill(Color.RED);
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
 		this.musicaPrincipal = new AudioClip("file:src/main/java/edu/fiuba/algo3/sonidos/mario.mp3");
 		this.musicaPrincipal.setCycleCount(-1); // reproduce en loop
@@ -112,14 +109,14 @@ public class JugadorVista {
     public void moverDerecha(){
 		try {
 			this.juego.mover(new MovDerecha());
+<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+=======
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
-			// Lanzar un mensaje. Conviene mas atrapar la excepcion en
-			// el switch case de los movimientos?---> No sé
-
 		}
     }
 
@@ -127,8 +124,11 @@ public class JugadorVista {
 	public void moverIzquierda(){
 		try {
 			this.juego.mover(new MovIzquierda());
+<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+=======
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
@@ -139,8 +139,11 @@ public class JugadorVista {
     public void moverAbajo(){
 		try {
 			this.juego.mover(new MovAbajo());
+<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+=======
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
@@ -151,8 +154,11 @@ public class JugadorVista {
     public void moverArriba(){
 		try {
 			this.juego.mover(new MovArriba());
+<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
+=======
+>>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
@@ -185,14 +191,6 @@ public class JugadorVista {
 
 
     private void dibujarFormas() {
-        //this.clean();
-
-        //this.jugadorFigura.setX(posicionX);
-        //this.jugadorFigura.setY(posicionY);
-
-        // this.clean();
-        // canvas.getGraphicsContext2D().setFill(Color.RED);
-        // canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
         int puntaje = juego.getCantMovimientosJugadorActual();
         this.marcadorPuntaje.setText(String.format("Puntaje : %d",puntaje));
         tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
@@ -200,8 +198,6 @@ public class JugadorVista {
 
     public void clean() {
         canvas.getGraphicsContext2D().setFill(Color.WHITE);
-        //Color.rgb(47, 52, 58)
-        //tamaño del canvas 900 700
         canvas.getGraphicsContext2D().fillRect(0, 0, 900, 700);
     }
 
@@ -220,7 +216,6 @@ public class JugadorVista {
 
         Label texto = new Label("¡Enhorabuena! Llegaste a la meta.");
         texto.setFont(Font.font("Impact", 25));
-        //texto.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/bandera.png")));
         texto.setStyle(formatoTexto);
 
         Button botonVolver = new Button("Volver al Menu Principal");
