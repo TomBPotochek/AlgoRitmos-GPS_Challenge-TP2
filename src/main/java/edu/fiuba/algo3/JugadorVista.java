@@ -1,11 +1,6 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.juego.Ranking;
-<<<<<<< HEAD
-import edu.fiuba.algo3.modelo.vehiculos.*;
-import javafx.beans.property.IntegerProperty;
-=======
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -109,11 +104,8 @@ public class JugadorVista {
     public void moverDerecha(){
 		try {
 			this.juego.mover(new MovDerecha());
-<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
-=======
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
@@ -124,11 +116,8 @@ public class JugadorVista {
 	public void moverIzquierda(){
 		try {
 			this.juego.mover(new MovIzquierda());
-<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
-=======
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
@@ -139,11 +128,8 @@ public class JugadorVista {
     public void moverAbajo(){
 		try {
 			this.juego.mover(new MovAbajo());
-<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
-=======
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
@@ -154,11 +140,8 @@ public class JugadorVista {
     public void moverArriba(){
 		try {
 			this.juego.mover(new MovArriba());
-<<<<<<< HEAD
 			this.reproducirEfectoSonido();
 			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
-=======
->>>>>>> 8c84b3a95663c5fa9ad16877bb933708cb0203a6
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
