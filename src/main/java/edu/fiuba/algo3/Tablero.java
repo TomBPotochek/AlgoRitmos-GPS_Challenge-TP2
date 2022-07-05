@@ -130,11 +130,6 @@ public class Tablero {
                 Image fondoCambioVehiculo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
                 vistaElemento.setFill(new ImagePattern(fondoCambioVehiculo));
                 break;
-            case "Salida":
-                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                //Image fondoPozo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png");
-                //vistaElemento.setFill(new ImagePattern(fondoPozo));
-                break;
             default:
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);
         }
