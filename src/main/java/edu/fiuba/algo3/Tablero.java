@@ -129,6 +129,9 @@ public class Tablero {
                 Image fondoSorpresaFavorable = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
                 vistaElemento.setFill(new ImagePattern(fondoSorpresaFavorable));
                 break;
+			case "Sorpresata":
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.RED);
+                break;
             case "SorpresaDesfavorable":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
                 Image fondoSorpresaDesfavorable = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");

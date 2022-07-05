@@ -10,21 +10,19 @@ public class Sorpresata implements ElementoMapa {
 
     @Override
     public BaseEfectoDecorador interactuar(Moto moto) {
-        return new EfectoSorpresata(true);
+        return new EfectoSorpresata(true, moto);
     }
     
     @Override
     public BaseEfectoDecorador interactuar(Auto auto) {
         // TODO Auto-generated method stub
-        return new EfectoSorpresata(false);
-        return null;
+        return new EfectoSorpresata(false, auto);
     }
     
     @Override
     public BaseEfectoDecorador interactuar(CuatroPorCuatro cuatroPorCuatro) {
         // TODO Auto-generated method stub
-        return new EfectoSorpresata(false);
-        return null;
+        return new EfectoSorpresata(false, cuatroPorCuatro);
     }
     
 }

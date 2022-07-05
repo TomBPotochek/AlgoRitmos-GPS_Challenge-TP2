@@ -90,6 +90,7 @@ public class Mapa {
         boolean sorpresaFavorable;
         boolean sorpresaDesfavorable;
         boolean sorpresaCambioVehiculo;
+        boolean sorpresata;
 
         for (int i = 1; i <= alto; i++){
             for (int j = 1; j <= ancho; j++){
@@ -99,6 +100,7 @@ public class Mapa {
                 sorpresaFavorable = azar.eventoConProbabilidad(0.08);
                 sorpresaDesfavorable = azar.eventoConProbabilidad(0.06);
                 sorpresaCambioVehiculo = azar.eventoConProbabilidad(0.001);
+                sorpresata = azar.eventoConProbabilidad(0.06);
                 
                 CasilleroCalle casillero = new CasilleroCalle();
                 if (obstaculoPozo) casillero.agregarElemento(new Pozo());
@@ -107,6 +109,7 @@ public class Mapa {
                 if (sorpresaFavorable) casillero.agregarElemento(new SorpresaFavorable());
                 if (sorpresaDesfavorable) casillero.agregarElemento(new SorpresaDesfavorable());
                 if (sorpresaCambioVehiculo) casillero.agregarElemento(new SorpresaCambioVehiculo());
+                if (sorpresata) casillero.agregarElemento(new Sorpresata());
 
                 this.asignarCasillero(casillero, new Posicion(i, j));
             }
