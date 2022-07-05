@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
+import edu.fiuba.algo3.modelo.juego.Jugador;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.movimientos.Movimiento;
 
@@ -26,7 +27,7 @@ public abstract class Vehiculo {
     }
 
 
-    public Efecto mover(Movimiento movimiento){
+    public void mover(Movimiento movimiento, Jugador jugador){
         Mapa mapa = Mapa.getMapa();
         Posicion posSiguiente = this.posicion.calcularPosicion(movimiento);
 		Efecto efecto = new EfectoNulo();
@@ -37,7 +38,9 @@ public abstract class Vehiculo {
             Logger.log(String.format("%s intenta moverse a casilla %s", 
                         casillero.getClass().getSimpleName(), Integer.toHexString(this.hashCode())));
 			
-                        efecto = casillero.atravesar(this);
+            efecto = casillero.atravesar(this);
+
+            jugador.aplicarEfecto(efecto);
             this.posicion.actualizarPosicion(movimiento);
             
             Logger.log(String.format("%s ahora esta en posicion (%d, %d)",
@@ -49,7 +52,7 @@ public abstract class Vehiculo {
                         e.toString()));
          }
 
-        return efecto; //1 movimiento + los movs extra penalizados
+        // return efecto; //1 movimiento + los movs extra penalizados
     }
 
 

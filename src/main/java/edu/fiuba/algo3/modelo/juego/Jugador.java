@@ -26,7 +26,7 @@ public class Jugador {
 		return this.cantidadDeMovimientos == unEntero;
 	}
 
-	private void aplicarEfecto(Efecto efecto){
+	public void aplicarEfecto(Efecto efecto){
 		efecto.aplicarseSobre(this);
 	}
 
@@ -46,8 +46,12 @@ public class Jugador {
 
 	public void mover(Movimiento movimiento) {
 		this.incrementarMovimientos();
-		aplicarEfecto(this.vehiculo.mover(movimiento));
+		this.vehiculo.mover(movimiento, this);
 	}
+
+    public Boolean movimientosEsPar(){
+        return (this.cantidadDeMovimientos % 2) == 0;
+    }
 
 	public void setVehiculo(Vehiculo vehiculoDado){
 		this.vehiculo = vehiculoDado;
