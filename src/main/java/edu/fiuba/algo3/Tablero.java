@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.juego.Juego;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
@@ -58,7 +59,7 @@ public class Tablero extends GridPane {
                 break;
             case "SorpresaCambioVehiculo":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                Image fondoCambioVehiculo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa-cambio.png");
+                Image fondoCambioVehiculo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
                 vistaElemento.setFill(new ImagePattern(fondoCambioVehiculo));
                 break;
             case "Salida":
@@ -71,6 +72,17 @@ public class Tablero extends GridPane {
         }
         return vistaElemento;    
 
+    }
+
+    private Group obtenerCelda(int x, int y){
+        Group celda = (Group) this.getChildren().get(x+altoTablero*y);
+        return celda;
+    }
+
+    private StackPane obtenerPaneCelda(int x, int y){
+        Group celda = obtenerCelda(x, y);
+        StackPane sp = (StackPane) celda.getChildren().get(1);
+        return sp;
     }
 
 
@@ -95,31 +107,36 @@ public class Tablero extends GridPane {
                     VistaElementosMapa.getChildren().add(generarElementoMapa(elemento));
                 }
 
-
-
                 stack.getChildren().add(VistaElementosMapa);
-
 
                 grupoCasilla.getChildren().addAll(casilla, stack);
                 this.add(grupoCasilla,i,j);
             }
         }
-        Group g = (Group)(this.getChildren().get(0));
-        StackPane sp = (StackPane)(g.getChildren().get(1));
+       
+        //jugador posicion inicial en tablero
+        StackPane sp = obtenerPaneCelda(0, 0);
         sp.getChildren().add(new Rectangle(10, 10, Color.GREEN));
+
+        //Meta
+        Posicion meta = juego.obtenerPosicionMeta();
+        // Logger.log(String.format("obteniendo meta en posicion x,y = %d,%d", meta.getFila()-1, meta.getColumna()-1));
+        sp = obtenerPaneCelda(meta.getFila()-1, meta.getColumna()-1);
+        HBox elementos = (HBox) sp.getChildren().get(0);
+        elementos.getChildren().add(new Rectangle(10, 10, Color.BLUEVIOLET));
+        
         this.setGridLinesVisible(true);
     }
 
     public void moverJugadorA(int x, int y, Rectangle dibujoJugador){
-        Group g = (Group)(this.getChildren().get(posJugadorX+altoTablero*posJugadorY));
-        StackPane sp = (StackPane)(g.getChildren().get(1));
+
+        StackPane sp = obtenerPaneCelda(posJugadorX, posJugadorY);
         sp.getChildren().remove(1);
         
         this.posJugadorX = x;
         this.posJugadorY = y;
         
-        g = (Group)(this.getChildren().get(x+altoTablero*y));
-        sp = (StackPane)(g.getChildren().get(1));
+        sp = obtenerPaneCelda(posJugadorX, posJugadorY);
         sp.getChildren().add(dibujoJugador);
 
     }
