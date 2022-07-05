@@ -136,14 +136,19 @@ public class JuegoVista extends BorderPane {
         juego.setDimensionesMapa(ancho, alto);
 
         Tablero grilla = new Tablero(alto,ancho, juego);
-        contenedorCentral = new Group(grilla);
+        
         //contenedorCentral.setAlignment(Pos.CENTER);
-        Rectangle mapaOculto = new Rectangle(900, 650, Color.BLACK);
-        Circle visionJugador = new Circle(100);
-        visionJugador.setStyle("-fx-background-color: transparent");
-        Shape resultadoVision = mapaOculto.subtract(mapaOculto, visionJugador);
-        contenedorCentral.getChildren().add(resultadoVision);
-        this.setCenter(contenedorCentral);
+        // Rectangle mapaOculto = new Rectangle(900, 650, Color.BLACK);
+        // Circle visionJugador = new Circle(100);
+        // visionJugador.relocate(0, 0);
+        // visionJugador.setStyle("-fx-background-color: transparent");
+        // Shape resultadoVision = Rectangle.subtract(mapaOculto, visionJugador);
+        // visionJugador.relocate(400, 30);
+        // resultadoVision = Rectangle.subtract(resultadoVision, visionJugador);
+        
+
+        // contenedorCentral.getChildren().remove(resultadoVision);
+        this.setCenter(grilla.getContenedor());
 
         //posicion del canvas 900 650
         Canvas canvasCentral = new Canvas(900, 650);
@@ -157,7 +162,7 @@ public class JuegoVista extends BorderPane {
         //vistaRobot = new VistaRobot(robot, canvasCentral);
         //vistaRobot.dibujar();
 
-        //contenedorCentral = new VBox(canvasCentral);
+        // contenedorCentral = new VBox(canvasCentral);
         //contenedorCentral.setAlignment(Pos.CENTER);
         //contenedorCentral.setSpacing(20);
         //contenedorCentral.setPadding(new Insets(25));
