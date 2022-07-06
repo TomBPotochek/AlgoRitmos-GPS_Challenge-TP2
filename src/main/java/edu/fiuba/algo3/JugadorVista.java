@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.juego.Ranking;
+import edu.fiuba.algo3.modelo.movimientos.*;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -13,12 +14,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.juego.Juego;
-import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
-import edu.fiuba.algo3.modelo.movimientos.MovArriba;
-import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
-import edu.fiuba.algo3.modelo.movimientos.MovIzquierda;
 import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -100,55 +96,17 @@ public class JugadorVista {
         this.posicionX = this.juego.obtenerPosicionVehiculo().getFila() - 1;
     }
 
-
-    public void moverDerecha(){
-		try {
-			this.juego.mover(new MovDerecha());
-			this.reproducirEfectoSonido();
-			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
-            actualizarPosicion();
-        } catch(JuegoFinalizadoException e) {
-            this.terminarJuego();
-		}
-    }
-
-
-	public void moverIzquierda(){
-		try {
-			this.juego.mover(new MovIzquierda());
-			this.reproducirEfectoSonido();
-			// this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
+    public void mover(Movimiento movimiento){
+        try {
+            this.juego.mover(movimiento);
+            this.reproducirEfectoSonido();
+            // this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
             this.terminarJuego();
         }
     }
 
-
-    public void moverAbajo(){
-		try {
-			this.juego.mover(new MovAbajo());
-			this.reproducirEfectoSonido();
-			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
-            actualizarPosicion();
-        } catch(JuegoFinalizadoException e) {
-            this.terminarJuego();
-        }
-    }
-
-
-    public void moverArriba(){
-		try {
-			this.juego.mover(new MovArriba());
-			this.reproducirEfectoSonido();
-			// this.posicionY = this.offsetY + (this.juego.obtenerPosicionVehiculo().getFila() - 1) * 50;
-            actualizarPosicion();
-        } catch(JuegoFinalizadoException e) {
-            this.terminarJuego();
-        }
-    }
-	
-	
 	private void reproducirEfectoSonido() {
 		Posicion posVehiculo = this.juego.obtenerPosicionVehiculo();
 		Posicion posMeta = this.juego.obtenerPosicionMeta();

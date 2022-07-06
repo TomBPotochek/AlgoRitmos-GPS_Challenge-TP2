@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
@@ -11,7 +12,7 @@ public class MovAbajoEventHandlerKey implements EventHandler<KeyEvent> {
     }
 
     public void handle(KeyEvent event){
-        this.jugadorFigura.moverAbajo();
+        this.jugadorFigura.mover(Direccion.abajo());
         this.jugadorFigura.update();
     }
 }
