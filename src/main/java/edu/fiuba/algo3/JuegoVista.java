@@ -60,8 +60,6 @@ public class JuegoVista extends BorderPane {
 
     private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
 
-
-
         //NOMBRE DEL JUGADOR
         Label nombreDelJugador = new Label("Jugador: \n" + nombreJugador);
         nombreDelJugador.setFont(Font.font("Impact", 40));
@@ -227,8 +225,6 @@ public class JuegoVista extends BorderPane {
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         juegoVista = new Scene(this,screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
         juegoVista.setOnKeyPressed(new Controles(stage,jugadorVista));
-
-
     }
 
     private void acercaDe(){

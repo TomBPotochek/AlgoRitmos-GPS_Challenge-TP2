@@ -36,6 +36,9 @@ public class Controles implements EventHandler<KeyEvent> {
                 mov.handle(keyEvent);
                 break;
         }
+        if(jugadorVista.llegoAlFinal()){
+            jugadorVista.terminarJuego();
+        }
     }
 }
 

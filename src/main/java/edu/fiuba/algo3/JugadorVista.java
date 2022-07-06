@@ -20,6 +20,8 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.media.AudioClip;
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.concurrent.TimeUnit;
 
 
 public class JugadorVista {
@@ -103,7 +105,9 @@ public class JugadorVista {
             // this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
-            this.terminarJuego();
+            //this.terminarJuego();
+            //this.terminarJuego();
+            //this.terminarJuego();
         }
     }
 
@@ -150,7 +154,10 @@ public class JugadorVista {
 		stage.setScene(pantallaInicio);
 	}
 
-    private void terminarJuego() {
+    public boolean llegoAlFinal(){
+        return juego.estaFinalizado();
+    }
+    public void terminarJuego() {
         Ranking ranking = Ranking.getRanking();
         int puntaje = juego.getCantMovimientosJugadorActual();
         ranking.registrarJugador(juego.obtenerNombre(),puntaje);
