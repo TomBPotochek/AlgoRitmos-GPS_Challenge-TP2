@@ -64,8 +64,8 @@ public class TablaDePosiciones extends BorderPane{
 
     private void setTablaDePosiciones(Stage stage, Scene pantallaDeInicio){
         HBox encabezado = new HBox();
-        encabezado.setAlignment(Pos.CENTER_LEFT);
-        encabezado.setSpacing(150);
+        //encabezado.setAlignment(Pos.CENTER_LEFT);
+        encabezado.setSpacing(280);
     
         //BOTON SIGUIENTE
         Button volverMenuPrincipal = new Button("Volver al Menu");
@@ -77,9 +77,6 @@ public class TablaDePosiciones extends BorderPane{
 
         volverMenuPrincipal.setOnAction(e-> {
 			stage.setScene(pantallaDeInicio);
-            // String a = volverAlMenu(stage);
-            // if(a =="Volver"){
-            // }
         });
     
     
