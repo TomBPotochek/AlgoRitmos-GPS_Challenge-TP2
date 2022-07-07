@@ -68,7 +68,7 @@ public class MenuPreguntas extends BorderPane{
         //JUGADOR INSERTA NOMBRE
         VBox preguntas = new VBox();
         preguntas.setAlignment(Pos.CENTER);
-        preguntas.setSpacing(15);
+        preguntas.setSpacing(30);
         preguntas.setStyle("-fx-padding: 100;");
         
         //PREGUNTA DEL NOMBRE
@@ -123,12 +123,10 @@ public class MenuPreguntas extends BorderPane{
         preguntas.getChildren().add(nombreDelJugador);
         preguntas.getChildren().add(seleccioneUnVehiculo);
         preguntas.getChildren().add(seleccionVehiculo);
+        preguntas.getChildren().add(siguiente);
 
         this.setTop(volverPantallaInicial);
         this.setCenter(preguntas);
-        this.setAlignment(siguiente, Pos.TOP_CENTER);
-        this.setBottom(siguiente);
-
     }
 
     private void datosIncorrectos(){
