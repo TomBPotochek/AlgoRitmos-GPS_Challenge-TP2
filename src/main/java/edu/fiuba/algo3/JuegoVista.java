@@ -1,5 +1,8 @@
 package edu.fiuba.algo3;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
@@ -15,14 +18,7 @@ import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -150,25 +146,41 @@ public class JuegoVista extends BorderPane {
         moverseArriba.setOnMouseExited(e -> moverseArriba.setStyle(formatoTexto));
         
         VBox botonesMovimiento = new VBox();
+        HBox ContenedorBotonesSonidos = new HBox();
 
-        HBox sonidos = new HBox();
-        BotonMusica apagarMusica = new BotonMusica("Silenciar",jugadorVista);
+        StackPane stackSonidos = new StackPane();
+        BotonMusica apagarMusica = new BotonMusica("",jugadorVista);
         apagarMusica.setOnAction(((BotonMusica) apagarMusica).silenciar());
         apagarMusica.setStyle(botonNormal);
-        apagarMusica.setFont(Font.font("Impact", 35));
         apagarMusica.setOnMouseEntered(e -> apagarMusica.setStyle(botonAntesDeSerPresionado));
         apagarMusica.setOnMouseExited(e -> apagarMusica.setStyle(botonNormal));
-        sonidos.getChildren().add(apagarMusica);
-        sonidos.setAlignment(Pos.TOP_CENTER);
+        apagarMusica.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/notamusical.png")));
+        apagarMusica.setPrefSize(60, 60);
+        stackSonidos.setAlignment(Pos.TOP_CENTER);
 
-        BotonMusica encenderMusica = new BotonMusica("Encender",jugadorVista);
-        encenderMusica.setOnAction(encenderMusica.reproducir());
+        BotonMusica encenderMusica = new BotonMusica("",jugadorVista);
         encenderMusica.setStyle(botonNormal);
-        encenderMusica.setFont(Font.font("Impact", 35));
         encenderMusica.setOnMouseEntered(e -> encenderMusica.setStyle(botonAntesDeSerPresionado));
         encenderMusica.setOnMouseExited(e -> encenderMusica.setStyle(botonNormal));
-        sonidos.getChildren().add(encenderMusica);
-        //this.setTop(sonidos);
+        encenderMusica.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/notamusicaltachada.png")));
+        stackSonidos.getChildren().add(encenderMusica);
+        stackSonidos.getChildren().add(apagarMusica);
+
+        apagarMusica.setOnAction(actionEvent -> {
+            EventHandler<ActionEvent> evento = apagarMusica.silenciar();
+            evento.handle(actionEvent);
+            stackSonidos.getChildren().remove(apagarMusica);
+        });
+
+        encenderMusica.setOnAction(actionEvent -> {
+            EventHandler<ActionEvent> evento = encenderMusica.reproducir();
+            evento.handle(actionEvent);
+            stackSonidos.getChildren().add(apagarMusica);
+        });
+
+        stackSonidos.setAlignment(Pos.TOP_RIGHT);
+        stackSonidos.setAlignment(Pos.TOP_CENTER);
+        this.setTop(stackSonidos);
 
         MoverseALaDerechaEventHandler moverseDerechaHandler = new MoverseALaDerechaEventHandler(jugadorVista);
         moverseDerecha.setOnAction(moverseDerechaHandler);
@@ -238,7 +250,7 @@ public class JuegoVista extends BorderPane {
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
         //contenedorConsola.setStyle("-fx-background-color: black;");
-        contenedorConsola.getChildren().add(sonidos);
+        contenedorConsola.getChildren().add(stackSonidos);
 
         this.setAlignment(contenedorConsola, Pos.TOP_LEFT);
         this.setBottom(contenedorConsola);
