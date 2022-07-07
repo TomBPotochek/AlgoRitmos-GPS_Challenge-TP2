@@ -24,7 +24,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
@@ -151,8 +150,18 @@ public class JuegoVista extends BorderPane {
         moverseArriba.setOnMouseExited(e -> moverseArriba.setStyle(formatoTexto));
         
         VBox botonesMovimiento = new VBox();
-        botonesMovimiento.setAlignment(Pos.CENTER);
-        
+
+        HBox sonidos = new HBox();
+        BotonMusica apagarMusica = new BotonMusica("Silenciar",jugadorVista);
+        apagarMusica.setOnAction(((BotonMusica) apagarMusica).silenciar());
+        sonidos.getChildren().add(apagarMusica);
+        sonidos.setAlignment(Pos.TOP_RIGHT);
+
+        BotonMusica encenderMusica = new BotonMusica("Encender",jugadorVista);
+        encenderMusica.setOnAction(encenderMusica.reproducir());
+        sonidos.getChildren().add(encenderMusica);
+        this.setTop(sonidos);
+
         MoverseALaDerechaEventHandler moverseDerechaHandler = new MoverseALaDerechaEventHandler(jugadorVista);
         moverseDerecha.setOnAction(moverseDerechaHandler);
         

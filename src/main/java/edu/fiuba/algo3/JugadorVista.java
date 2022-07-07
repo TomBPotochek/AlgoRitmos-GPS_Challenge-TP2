@@ -198,5 +198,13 @@ public class JugadorVista {
         ventanaVolver.showAndWait();
 
     }
+
+    public void silenciarMusica() {
+        this.musicaPrincipal.stop();
+    }
+
+    public void encenderMusica() {
+        this.musicaPrincipal.play();
+    }
 }
 
