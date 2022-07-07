@@ -19,6 +19,9 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.concurrent.TimeUnit;
@@ -37,7 +40,7 @@ public class JugadorVista {
     int posicionY;
 	int offsetX;
 	int offsetY;
-	AudioClip musicaPrincipal;
+	MediaPlayer musicaPrincipal;
     Label marcadorPuntaje;
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
@@ -58,11 +61,16 @@ public class JugadorVista {
         this.ponerFotoVehiculo();
         this.marcadorPuntaje = marcadorPuntaje;
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
-		this.musicaPrincipal = new AudioClip("file:src/main/java/edu/fiuba/algo3/sonidos/mario.mp3");
+		// this.musicaPrincipal = new AudioClip("file:src/main/java/edu/fiuba/algo3/sonidos/mario.mp3");
+		String pathRelativoMusica = "src/main/java/edu/fiuba/algo3/sonidos/mario.mp3";
+		String pathAbsMusica = new File(pathRelativoMusica).toURI().toString();
+		Media media = new Media(pathAbsMusica);
+		this.musicaPrincipal = new MediaPlayer(media);
 		this.musicaPrincipal.setCycleCount(-1); // reproduce en loop
-		this.musicaPrincipal.setVolume(0.25);
+		this.musicaPrincipal.setVolume(0.5);
 		this.musicaPrincipal.play();
-    }
+
+	}
 
     public Rectangle getDibujo(){
         return jugadorFigura;
@@ -115,19 +123,24 @@ public class JugadorVista {
 		Posicion posVehiculo = this.juego.obtenerPosicionVehiculo();
 		Posicion posMeta = this.juego.obtenerPosicionMeta();
 		ArrayList<ElementoMapa> efectos = this.juego.obtenerElementos(posVehiculo);
-		String sonidoGanador = "file:src/main/java/edu/fiuba/algo3/sonidos/ganador2.mp3";
-		String sonidoObstaculo = "file:src/main/java/edu/fiuba/algo3/sonidos/obstaculo.mp3";
+		
+		String pathRelativoMeta = "src/main/java/edu/fiuba/algo3/sonidos/ganador2.mp3";
+		String sonidoMeta = new File(pathRelativoMeta).toURI().toString();
+		
+		String pathRelativoObstaculo = "src/main/java/edu/fiuba/algo3/sonidos/obstaculo.mp3";
+		String sonidoObstaculo = new File(pathRelativoObstaculo).toURI().toString();
 		
 		if (posVehiculo.equals(posMeta)) {
-			//reproducir ganador
+			//reproducir sonido meta
 			musicaPrincipal.stop();
-			this.musicaPrincipal = new AudioClip(sonidoGanador);
+			Media media = new Media(sonidoMeta);
+			this.musicaPrincipal = new MediaPlayer(media);
 			this.musicaPrincipal.play();
 		}
 		else if (efectos.size() > 0) {
 			//reproducir efecto
-			AudioClip sonido = new AudioClip(sonidoObstaculo);
-			sonido.play();
+			Media obstaculo = new Media(sonidoObstaculo);
+			new MediaPlayer(obstaculo).play();
 		}
 
 	
@@ -200,11 +213,11 @@ public class JugadorVista {
     }
 
     public void silenciarMusica() {
-        this.musicaPrincipal.stop();
+        this.musicaPrincipal.setMute(true);
     }
 
     public void encenderMusica() {
-        this.musicaPrincipal.play();
+        this.musicaPrincipal.setMute(false);
     }
 }
 

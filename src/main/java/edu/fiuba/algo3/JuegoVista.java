@@ -180,7 +180,7 @@ public class JuegoVista extends BorderPane {
 
         stackSonidos.setAlignment(Pos.TOP_RIGHT);
         stackSonidos.setAlignment(Pos.TOP_CENTER);
-        this.setTop(stackSonidos);
+        // this.setTop(stackSonidos);
 
         MoverseALaDerechaEventHandler moverseDerechaHandler = new MoverseALaDerechaEventHandler(jugadorVista);
         moverseDerecha.setOnAction(moverseDerechaHandler);
