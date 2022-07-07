@@ -154,13 +154,21 @@ public class JuegoVista extends BorderPane {
         HBox sonidos = new HBox();
         BotonMusica apagarMusica = new BotonMusica("Silenciar",jugadorVista);
         apagarMusica.setOnAction(((BotonMusica) apagarMusica).silenciar());
+        apagarMusica.setStyle(botonNormal);
+        apagarMusica.setFont(Font.font("Impact", 35));
+        apagarMusica.setOnMouseEntered(e -> apagarMusica.setStyle(botonAntesDeSerPresionado));
+        apagarMusica.setOnMouseExited(e -> apagarMusica.setStyle(botonNormal));
         sonidos.getChildren().add(apagarMusica);
-        sonidos.setAlignment(Pos.TOP_RIGHT);
+        sonidos.setAlignment(Pos.TOP_CENTER);
 
         BotonMusica encenderMusica = new BotonMusica("Encender",jugadorVista);
         encenderMusica.setOnAction(encenderMusica.reproducir());
+        encenderMusica.setStyle(botonNormal);
+        encenderMusica.setFont(Font.font("Impact", 35));
+        encenderMusica.setOnMouseEntered(e -> encenderMusica.setStyle(botonAntesDeSerPresionado));
+        encenderMusica.setOnMouseExited(e -> encenderMusica.setStyle(botonNormal));
         sonidos.getChildren().add(encenderMusica);
-        this.setTop(sonidos);
+        //this.setTop(sonidos);
 
         MoverseALaDerechaEventHandler moverseDerechaHandler = new MoverseALaDerechaEventHandler(jugadorVista);
         moverseDerecha.setOnAction(moverseDerechaHandler);
@@ -174,7 +182,6 @@ public class JuegoVista extends BorderPane {
         MoverseArribaEventHandler moverseArribaHandler = new MoverseArribaEventHandler(jugadorVista);
         moverseArriba.setOnAction(moverseArribaHandler);
         
-        botonesMovimiento.getChildren().add(moverseArriba);
         
         HBox botonesID = new HBox();
         botonesID.getChildren().add(moverseIzquierda);
@@ -182,8 +189,12 @@ public class JuegoVista extends BorderPane {
         botonesID.setAlignment(Pos.CENTER);
         botonesID.setSpacing(5);
         
+        moverseArriba.setAlignment(Pos.CENTER);
+        botonesMovimiento.getChildren().add(moverseArriba);
         botonesMovimiento.getChildren().add(botonesID);
+        moverseAbajo.setAlignment(Pos.CENTER);
         botonesMovimiento.getChildren().add(moverseAbajo);
+        botonesMovimiento.setAlignment(Pos.CENTER);
 
         //BORDE IZQUIERDO
         VBox bordeIzquierdo = new VBox();
@@ -226,7 +237,8 @@ public class JuegoVista extends BorderPane {
         VBox contenedorConsola = new VBox();
         contenedorConsola.setSpacing(10);
         contenedorConsola.setPadding(new Insets(15));
-        contenedorConsola.setStyle("-fx-background-color: black;");
+        //contenedorConsola.setStyle("-fx-background-color: black;");
+        contenedorConsola.getChildren().add(sonidos);
 
         this.setAlignment(contenedorConsola, Pos.TOP_LEFT);
         this.setBottom(contenedorConsola);
