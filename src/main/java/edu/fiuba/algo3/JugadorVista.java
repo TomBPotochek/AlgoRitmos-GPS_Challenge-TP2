@@ -113,9 +113,10 @@ public class JugadorVista {
             // this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
             actualizarPosicion();
         } catch(JuegoFinalizadoException e) {
-            //this.terminarJuego();
-            //this.terminarJuego();
-            //this.terminarJuego();
+        }
+        if(juego.estaFinalizado()){
+            this.update();
+            this.terminarJuego();
         }
     }
 
