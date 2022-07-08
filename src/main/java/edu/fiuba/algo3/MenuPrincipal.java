@@ -7,6 +7,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
@@ -17,21 +18,24 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.io.File;
+
 public class MenuPrincipal extends FlowPane{
     static Scene pantallaDeInicio;
     static String respuesta;
-
+    MediaPlayer musicaMenu;
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
-
 
     public MenuPrincipal (Stage stage) {
         this.setMenu(stage);
@@ -41,7 +45,19 @@ public class MenuPrincipal extends FlowPane{
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-2.png");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
+        this.setMusica();
     }
+
+    private void setMusica() {
+        String pathRelativoMusica = "src/main/java/edu/fiuba/algo3/sonidos/nivelx.mp3";
+        String pathAbsMusica = new File(pathRelativoMusica).toURI().toString();
+        Media media = new Media(pathAbsMusica);
+        this.musicaMenu = new MediaPlayer(media);
+        this.musicaMenu.setCycleCount(-1); // reproduce en loop
+        this.musicaMenu.setVolume(0.5);
+        this.musicaMenu.play();
+    }
+
     private void setMenu(Stage stage){
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
 
