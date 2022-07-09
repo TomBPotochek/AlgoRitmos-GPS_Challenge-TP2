@@ -65,7 +65,7 @@ public class JuegoVista extends BorderPane {
         juego.setDimensionesMapa(ancho, alto);
 
         //Puntuacion
-        Label puntajeActual = new Label("Puntaje");
+        Label puntajeActual = new Label("Puntaje\n");
         puntajeActual.setFont(Font.font("Impact", 40));
         puntajeActual.setStyle(formatoTexto);
 
@@ -75,7 +75,7 @@ public class JuegoVista extends BorderPane {
         this.setCenter(grilla.getContenedor());
 
         Canvas canvasCentral = new Canvas(900, 650);
-        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage,pantallaDeInicio,puntajeActual);
+        JugadorVista jugadorVista = new JugadorVista(juego, canvasCentral, grilla, stage, pantallaDeInicio, puntajeActual);
 
 
 		// Menu bar
