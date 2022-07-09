@@ -40,7 +40,6 @@ public class JugadorVista {
     int posicionY;
 	int offsetX;
 	int offsetY;
-	MediaPlayer musicaPrincipal;
     Label marcadorPuntaje;
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
@@ -61,15 +60,12 @@ public class JugadorVista {
         this.ponerFotoVehiculo();
         this.marcadorPuntaje = marcadorPuntaje;
         canvas.getGraphicsContext2D().fillOval(posicionX, posicionY, 20, 20);
-		// this.musicaPrincipal = new AudioClip("file:src/main/java/edu/fiuba/algo3/sonidos/mario.mp3");
-		String pathRelativoMusica = "src/main/java/edu/fiuba/algo3/sonidos/mario.mp3";
-		String pathAbsMusica = new File(pathRelativoMusica).toURI().toString();
-		Media media = new Media(pathAbsMusica);
-		this.musicaPrincipal = new MediaPlayer(media);
-		this.musicaPrincipal.setCycleCount(-1); // reproduce en loop
-		this.musicaPrincipal.setVolume(0.5);
-		this.musicaPrincipal.play();
-
+		//Para La musica del menu.
+		ReproductorMusica.getReproductor().getMusicaMenu().stop();	
+		MediaPlayer musicaPrincipal = ReproductorMusica.getReproductor().getMusicaJugando();
+		musicaPrincipal.setCycleCount(-1); // reproduce en loop
+		musicaPrincipal.setVolume(0.5);
+		musicaPrincipal.play();
 	}
 
     public Rectangle getDibujo(){
@@ -125,23 +121,15 @@ public class JugadorVista {
 		Posicion posMeta = this.juego.obtenerPosicionMeta();
 		ArrayList<ElementoMapa> efectos = this.juego.obtenerElementos(posVehiculo);
 		
-		String pathRelativoMeta = "src/main/java/edu/fiuba/algo3/sonidos/ganador2.mp3";
-		String sonidoMeta = new File(pathRelativoMeta).toURI().toString();
-		
-		String pathRelativoObstaculo = "src/main/java/edu/fiuba/algo3/sonidos/obstaculo.mp3";
-		String sonidoObstaculo = new File(pathRelativoObstaculo).toURI().toString();
-		
 		if (posVehiculo.equals(posMeta)) {
 			//reproducir sonido meta
-			musicaPrincipal.stop();
-			Media media = new Media(sonidoMeta);
-			this.musicaPrincipal = new MediaPlayer(media);
-			this.musicaPrincipal.play();
+			ReproductorMusica.getReproductor().getMusicaJugando().stop();
+			ReproductorMusica.getReproductor().getMusicaMeta().play();
 		}
 		else if (efectos.size() > 0) {
 			//reproducir efecto
-			Media obstaculo = new Media(sonidoObstaculo);
-			new MediaPlayer(obstaculo).play();
+			ReproductorMusica.getReproductor().getMusicaObstaculo().stop();
+			ReproductorMusica.getReproductor().getMusicaObstaculo().play();
 		}
 
 	
@@ -164,7 +152,9 @@ public class JugadorVista {
     }
 
 	public void salirDelJuego() {
-		this.musicaPrincipal.stop();
+		ReproductorMusica.getReproductor().getMusicaJugando().stop();	
+		ReproductorMusica.getReproductor().getMusicaMeta().stop();	
+		ReproductorMusica.getReproductor().getMusicaMenu().play();	
 		stage.setScene(pantallaInicio);
 	}
 
@@ -200,9 +190,8 @@ public class JugadorVista {
         menuVolver.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
 
         botonVolver.setOnAction(e -> {
-            this.musicaPrincipal.stop();
-			stage.setScene(pantallaInicio);
-            ventanaVolver.close();
+			this.salirDelJuego();
+			ventanaVolver.close();
         });
 
         Scene escenaVolver = new Scene(menuVolver , 580 , 300);
@@ -214,11 +203,11 @@ public class JugadorVista {
     }
 
     public void silenciarMusica() {
-        this.musicaPrincipal.setMute(true);
+        ReproductorMusica.getReproductor().getMusicaJugando().setMute(true);
     }
-
+	
     public void encenderMusica() {
-        this.musicaPrincipal.setMute(false);
+		ReproductorMusica.getReproductor().getMusicaJugando().setMute(false);
     }
 }
 
