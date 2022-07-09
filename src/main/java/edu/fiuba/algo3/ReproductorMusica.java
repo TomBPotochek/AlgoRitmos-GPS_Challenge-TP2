@@ -19,6 +19,7 @@ public class ReproductorMusica {
 		listaCanciones.add("jugando");
 		listaCanciones.add("obstaculo");
 		listaCanciones.add("meta");
+		listaCanciones.add("meta_alt");
 	
 		for (String cancion : listaCanciones) {
 			String pathRelativoCancion = "src/main/java/edu/fiuba/algo3/sonidos/" + cancion + ".mp3";
@@ -50,7 +51,9 @@ public class ReproductorMusica {
 	}
 	
 	public MediaPlayer getMusicaMeta() {
-		return canciones.get("meta");
+		// Descomentar una linea para elegir entre los sonidos de meta.
+		// return canciones.get("meta");
+		return canciones.get("meta_alt");
 	}
 	
 }
