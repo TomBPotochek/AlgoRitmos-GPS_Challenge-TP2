@@ -36,4 +36,12 @@ public class Ranking {
     public int obtenerPuntajeJugador(String nombre){
         return this.jugadores.get(nombre);
     }
+
+    public boolean estaEnElRanking(String nombre){
+        return jugadores.containsKey(nombre);
+    }
+
+    public void limpiarRanking(){
+        this.jugadores.clear();
+    }
 }

@@ -18,6 +18,7 @@ public class RankingTest {
 
 
         Ranking ranking = Ranking.getRanking();
+        ranking.limpiarRanking();
         ranking.registrarJugador("Ricardo", 10);
         ranking.registrarJugador("Roberto", 20);
         ranking.registrarJugador("Raul", 30);

@@ -7,8 +7,8 @@ import static org.mockito.Mockito.*;
 
 import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import org.junit.jupiter.api.Test;
-import java.util.ArrayList;
-import java.util.Arrays;
+
+import java.util.*;
 
 import edu.fiuba.algo3.modelo.casillero.CasilleroCalle;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
@@ -48,7 +48,11 @@ public class JuegoTest {
 
         //assert del ganador
         assertEquals(6, juego.obtenerPuntaje());
-
+        Ranking ranking = Ranking.getRanking();
+        ranking.limpiarRanking();
+        ranking.registrarJugador(juego.obtenerNombre(), juego.obtenerPuntaje());
+        assertTrue(ranking.estaEnElRanking(juego.obtenerNombre()));
+        assertEquals(juego.obtenerPuntaje(), 6);
         //assert no se puede seguir jugando
         //assertThrows(JuegoFinalizadoException.class,
           //           () -> {juego.mover(new MovArriba());}
@@ -74,15 +78,19 @@ public class JuegoTest {
 		// Bob tendra Auto y Alice CuatroPorCuatro; empiezan el la posicion (1, 1).
 		Juego juegoBob = new Juego("Bob", azarMock);
 		Juego juegoAlice = new Juego("Alice", azarMock);
+        Ranking ranking = Ranking.getRanking();
+        ranking.limpiarRanking();
 
 		// Ambos atraviezan el mapa en linea recta y cruzan un Pozo.
         juegoBob.mover(Direccion.derecha());  	// Bob esta en: (1, 2) - suma 1 + 3 movimientos (Pozo).
         juegoBob.mover(Direccion.derecha());	// Bob esta en: (1, 3) - suma 1 movimiento.
         juegoBob.mover(Direccion.derecha());	// Bob esta en: (1, 4) - suma 1 movimiento; meta.
-        
+        ranking.registrarJugador(juegoBob.obtenerNombre(), juegoBob.obtenerPuntaje());
+
 		juegoAlice.mover(Direccion.derecha());	// Alice esta en: (1, 2) - suma 1 movimientos (Pozo).
         juegoAlice.mover(Direccion.derecha());	// Alice esta en: (1, 3) - suma 1 movimiento.
         juegoAlice.mover(Direccion.derecha());	// Alice esta en: (1, 4) - suma 1 movimiento; meta.
+        ranking.registrarJugador(juegoAlice.obtenerNombre(), juegoAlice.obtenerPuntaje());
 
 		assertTrue(juegoBob.estaFinalizado());
 		assertTrue(juegoAlice.estaFinalizado());
@@ -91,6 +99,18 @@ public class JuegoTest {
         assertEquals("Alice", juegoAlice.obtenerNombre());
         assertEquals("Bob", juegoBob.obtenerNombre());
         assertTrue(juegoAlice.obtenerPuntaje() < juegoBob.obtenerPuntaje());
+
+        //assert ranking
+
+        assertTrue(ranking.estaEnElRanking("Alice"));
+        assertTrue(ranking.estaEnElRanking("Bob"));
+
+        List<Map.Entry<String,Integer>> lista = ranking.obtenerRanking();
+        Iterator<Map.Entry<String,Integer>> it = lista.iterator();
+
+        assertEquals("Alice", it.next().getKey());
+        assertEquals("Bob", it.next().getKey());
+
 
         //assert no se puede seguir jugando
         assertThrows(JuegoFinalizadoException.class,
