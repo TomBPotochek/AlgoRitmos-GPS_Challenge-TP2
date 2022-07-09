@@ -25,16 +25,14 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
+import edu.fiuba.algo3.ReproductorMusica;
 import java.io.File;
 
 public class MenuPrincipal extends FlowPane{
     static Scene pantallaDeInicio;
     static String respuesta;
-    MediaPlayer musicaMenu;
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
-
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     public MenuPrincipal (Stage stage) {
@@ -45,18 +43,9 @@ public class MenuPrincipal extends FlowPane{
         Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-2.png");
         BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
-        this.setMusica();
-    }
+		ReproductorMusica.getReproductor().getMusicaMenu().play();
+	}
 
-    private void setMusica() {
-        String pathRelativoMusica = "src/main/java/edu/fiuba/algo3/sonidos/nivelx.mp3";
-        String pathAbsMusica = new File(pathRelativoMusica).toURI().toString();
-        Media media = new Media(pathAbsMusica);
-        this.musicaMenu = new MediaPlayer(media);
-        this.musicaMenu.setCycleCount(-1); // reproduce en loop
-        this.musicaMenu.setVolume(0.5);
-        this.musicaMenu.play();
-    }
 
     private void setMenu(Stage stage){
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
@@ -135,7 +124,6 @@ public class MenuPrincipal extends FlowPane{
 
         
         pantallaDeInicio = new Scene(this, screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
-        
         //BOTON DE TABLA DE POSICIONES FUNCION
         TablaDePosiciones tablaDePosiciones = new TablaDePosiciones(stage, pantallaDeInicio);
         tablaPosiciones.setOnAction(e-> {

@@ -21,22 +21,22 @@ import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import java.lang.Runnable;
 
 public class MenuPreguntas extends BorderPane{
 
     static Scene preguntaDatos;
     static String respuesta;
     Boolean confirmacionDatos;
-
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
-    public MenuPreguntas(Stage stage, Scene pantallaDeInicio){
+    public MenuPreguntas(Stage stage, Scene pantallaDeInicio) {
         this.setMenuPreguntas(stage, pantallaDeInicio);
         stage.setMaximized(true);
-    }
+	}
 
     public Scene getMenuPreguntas(){
         return preguntaDatos;
@@ -111,12 +111,12 @@ public class MenuPreguntas extends BorderPane{
                 if(seleccionVehiculo.getValue() != null && !(nombreDelJugador.getText().isBlank())){
                     JuegoVista juegoVista = new JuegoVista(stage, pantallaDeInicio,20, 14, nombreDelJugador.getText(), seleccionVehiculo.getValue());
                     stage.setScene(juegoVista.getJuegoVista());
-                }else{
+				} else{
                     datosIncorrectos();
                 }
             }
         });
-    
+		
         //MAPA DEL JUEGO
         
         preguntas.getChildren().add(preguntaNombre);
