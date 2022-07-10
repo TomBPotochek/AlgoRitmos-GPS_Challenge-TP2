@@ -110,7 +110,7 @@ public class JugadorVista {
 		this.actualizarPosicion();
 		
 		if(juego.estaFinalizado()){
-            // this.update();
+            this.update();
             this.terminarJuego();
 		}
 	}
@@ -137,7 +137,7 @@ public class JugadorVista {
 
     private void dibujarFormas() {
         int puntaje = juego.getCantMovimientosJugadorActual();
-        this.marcadorPuntaje.setText(String.format("Puntaje : \n%d",puntaje));
+        this.marcadorPuntaje.setText(String.format("Puntaje: \n%d",puntaje));
         tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
     }
 

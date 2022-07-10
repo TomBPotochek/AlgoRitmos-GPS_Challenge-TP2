@@ -126,7 +126,7 @@ public class JuegoVista extends BorderPane {
         juego.setDimensionesMapa(ancho, alto);
 
         //Puntuacion
-        Label puntajeActual = new Label("Puntaje\n");
+        Label puntajeActual = new Label("Puntaje:\n 0");
         puntajeActual.setFont(Font.font("Impact", 40));
         puntajeActual.setStyle(formatoTexto);
 
