@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo.jugador;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.*;
 import edu.fiuba.algo3.modelo.movimientos.*;
 import org.junit.jupiter.api.Test;
 

@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.casillero;
 
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ControlPolicial;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ElementoMapa;
 import org.junit.jupiter.api.Test;
 
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;

@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo.juego;
 
-import edu.fiuba.algo3.modelo.Logging.Logger;
-import edu.fiuba.algo3.modelo.Logging.LoggerConsola;
-import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
-import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.movimientos.Movimiento;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
