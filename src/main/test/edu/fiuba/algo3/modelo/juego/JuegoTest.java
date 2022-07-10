@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
+import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculos.Moto;
+import edu.fiuba.algo3.modelo.vehiculos.Auto;
 import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import org.junit.jupiter.api.Test;
 
@@ -21,7 +24,7 @@ import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class JuegoTest {
     @Test
-    public void testJugadorFinalizaLaPartidaPasandoPorUnPozoConMoto(){
+    public void testUnJugadorFinalizaLaPartidaPasandoPorUnPozoConMoto(){
         //armamos el mapa de 4x4 con un pozo en (2,1) y meta en (2,3)
         Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
@@ -35,7 +38,7 @@ public class JuegoTest {
         ProveedorDatosAzar azarMock = mock(ProveedorDatosAzar.class);
         when(azarMock.enteroAzarEnRango(1, 3)).thenReturn(1);
 
-        Juego juego = new Juego("juan", azarMock);
+        Juego juego = new Juego("juan", new Moto());
         
         //comenzamos a mover a los jugadores por el mapa
         //movemos la moto atravez del piquete y el auto no
@@ -60,7 +63,7 @@ public class JuegoTest {
     }
 
 	@Test
-	public void testJugadoresConDiferenteVehiculoFinalizanPartidaYSeObtienePuntajeDelGanador() {
+	public void testDosJugadoresConDiferenteVehiculoFinalizanPartidaYSeObtienePuntajeDelGanador() {
 	
 		Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
@@ -76,8 +79,8 @@ public class JuegoTest {
         when(azarMock.enteroAzarEnRango(1, 3)).thenReturn(2, 3);
 		
 		// Bob tendra Auto y Alice CuatroPorCuatro; empiezan el la posicion (1, 1).
-		Juego juegoBob = new Juego("Bob", azarMock);
-		Juego juegoAlice = new Juego("Alice", azarMock);
+		Juego juegoBob = new Juego("Bob", new Auto());
+		Juego juegoAlice = new Juego("Alice", new CuatroPorCuatro());
         Ranking ranking = Ranking.getRanking();
         ranking.limpiarRanking();
 
@@ -121,7 +124,16 @@ public class JuegoTest {
 		);
 	}
 
+	@Test
     public void testJugadorTerminaElJuegoYQuedaRegistradoEnElRanking(){
+		Mapa mapa = Mapa.getMapa();
+		mapa.limpiar();
+        mapa.generarGrillaVacia(4, 4);
+        mapa.asignarPosicionMeta(new Posicion(1,4));
+
+		CasilleroCalle casilleroConPozo = new CasilleroCalle();
+        casilleroConPozo.agregarElemento(new Pozo());
+        mapa.asignarCasillero(casilleroConPozo, new Posicion(1,2));
 
     }
 }

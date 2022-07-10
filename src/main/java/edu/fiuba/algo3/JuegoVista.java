@@ -27,6 +27,9 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
 import edu.fiuba.algo3.modelo.juego.Juego;
+import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
+import edu.fiuba.algo3.modelo.vehiculos.Moto;
+import edu.fiuba.algo3.modelo.vehiculos.Auto;
 
 public class JuegoVista extends BorderPane {
     static String respuesta;
@@ -112,8 +115,14 @@ public class JuegoVista extends BorderPane {
         nombreDelJugador.setFont(Font.font("Impact", 40));
         nombreDelJugador.setStyle(formatoTexto);
 
-        juego = new Juego(nombreJugador, new Azar());
-        juego.setVehiculo(eleccionVehiculo);
+		switch (eleccionVehiculo) {
+			case "Moto":
+				juego = new Juego(nombreJugador, new Moto());
+			case "Auto":
+				juego = new Juego(nombreJugador, new Auto());
+			case "4x4":
+				juego = new Juego(nombreJugador, new CuatroPorCuatro());
+		}
         juego.setDimensionesMapa(ancho, alto);
 
         //Puntuacion
