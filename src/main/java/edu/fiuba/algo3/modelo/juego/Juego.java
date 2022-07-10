@@ -5,13 +5,9 @@ import edu.fiuba.algo3.modelo.Logging.LoggerConsola;
 import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.azar.Azar;
-import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.movimientos.Movimiento;
 import edu.fiuba.algo3.modelo.movimientos.Posicion;
-import edu.fiuba.algo3.modelo.vehiculos.Auto;
-import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 
 import java.util.ArrayList;
@@ -22,8 +18,6 @@ public class Juego {
 	private Vehiculo vehiculoJugador;
 
 	public Juego(String nombreJugador, Vehiculo vehiculo){
-
-        Logger.setLogger(new LoggerConsola());
         // Logger.enableLogging(true);
         this.jugador = new Jugador(nombreJugador, vehiculo);
 		this.vehiculoJugador = this.jugador.getVehiculo();
@@ -38,9 +32,9 @@ public class Juego {
 		mapa.generarGrillaConElementosAlAzar(new Azar());
     }
     
-    public void mover(Movimiento movimiento) throws JuegoFinalizadoException {
+    public void mover(Movimiento movimiento) {
 		if (this.estaFinalizado()) {
-			throw new JuegoFinalizadoException();
+			return;
 		}
         this.jugador.mover(movimiento);
 		this.vehiculoJugador = this.jugador.getVehiculo();

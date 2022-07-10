@@ -13,9 +13,12 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.CasilleroCalle;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.Pozo;
+import edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo;
+import edu.fiuba.algo3.modelo.casillero.SorpresaFavorable;
 import edu.fiuba.algo3.modelo.casillero.Piquete;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
@@ -25,6 +28,7 @@ import edu.fiuba.algo3.modelo.movimientos.Posicion;
 public class JuegoTest {
     @Test
     public void testUnJugadorFinalizaLaPartidaPasandoPorUnPozoConMoto(){
+		Logger.enableLogging(true);
         //armamos el mapa de 4x4 con un pozo en (2,1) y meta en (2,3)
         Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
@@ -34,9 +38,6 @@ public class JuegoTest {
 		CasilleroCalle casilleroConPozo = new CasilleroCalle();
         casilleroConPozo.agregarElemento(new Pozo());
         mapa.asignarCasillero(casilleroConPozo, new Posicion(2,1));
-
-        ProveedorDatosAzar azarMock = mock(ProveedorDatosAzar.class);
-        when(azarMock.enteroAzarEnRango(1, 3)).thenReturn(1);
 
         Juego juego = new Juego("juan", new Moto());
         
@@ -60,11 +61,13 @@ public class JuegoTest {
         //assertThrows(JuegoFinalizadoException.class,
           //           () -> {juego.mover(new MovArriba());}
             //         );
-    }
+		Logger.enableLogging(false);
+    
+	}
 
 	@Test
 	public void testDosJugadoresConDiferenteVehiculoFinalizanPartidaYSeObtienePuntajeDelGanador() {
-	
+		Logger.enableLogging(true);
 		Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
         mapa.generarGrillaVacia(4, 4);
@@ -74,9 +77,6 @@ public class JuegoTest {
 		CasilleroCalle casilleroConPozo = new CasilleroCalle();
         casilleroConPozo.agregarElemento(new Pozo());
         mapa.asignarCasillero(casilleroConPozo, new Posicion(1,2));
-
-		ProveedorDatosAzar azarMock = mock(ProveedorDatosAzar.class);
-        when(azarMock.enteroAzarEnRango(1, 3)).thenReturn(2, 3);
 		
 		// Bob tendra Auto y Alice CuatroPorCuatro; empiezan el la posicion (1, 1).
 		Juego juegoBob = new Juego("Bob", new Auto());
@@ -114,26 +114,51 @@ public class JuegoTest {
         assertEquals("Alice", it.next().getKey());
         assertEquals("Bob", it.next().getKey());
 
-
-        //assert no se puede seguir jugando
-        assertThrows(JuegoFinalizadoException.class,
-		() -> {juegoBob.mover(Direccion.izquierda());} );
-        
-		assertThrows(JuegoFinalizadoException.class,
-		() -> {juegoAlice.mover(Direccion.izquierda());}
-		);
+		Logger.enableLogging(false);
 	}
 
 	@Test
-    public void testJugadorTerminaElJuegoYQuedaRegistradoEnElRanking(){
+    public void testJugadorAtraviezaElMapaYAlLlegarALaMetaQuedaRegistradoEnElRanking(){
+		Logger.enableLogging(true);
 		Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
         mapa.generarGrillaVacia(4, 4);
-        mapa.asignarPosicionMeta(new Posicion(1,4));
+        mapa.asignarPosicionMeta(new Posicion(4,1));
 
-		CasilleroCalle casilleroConPozo = new CasilleroCalle();
-        casilleroConPozo.agregarElemento(new Pozo());
-        mapa.asignarCasillero(casilleroConPozo, new Posicion(1,2));
+		CasilleroCalle casilleroConEfectos = new CasilleroCalle();
+        casilleroConEfectos.agregarElemento(new Pozo());
+        casilleroConEfectos.agregarElemento(new Piquete());
+        casilleroConEfectos.agregarElemento(new SorpresaFavorable());
+		mapa.asignarCasillero(casilleroConEfectos, new Posicion(2,1));
+		mapa.asignarCasillero(casilleroConEfectos, new Posicion(3,1));
+		
+		Juego juego = new Juego("Jeronimo", new Moto());
+        Ranking ranking = Ranking.getRanking();
+        ranking.limpiarRanking();
 
+		assertEquals(0, juego.getCantMovimientosJugadorActual());
+		juego.mover(Direccion.abajo()); // += 1
+		assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(2, 1)));
+		
+		assertEquals(5, juego.getCantMovimientosJugadorActual());
+		juego.mover(Direccion.abajo()); // -> round (total + 1 + (3 + 2)) * (1 - 20/100) = 5
+		assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(3, 1)));
+		
+		assertEquals(9, juego.getCantMovimientosJugadorActual());
+		juego.mover(Direccion.abajo());	// -> round (total + 1 + (3 + 2)) * (1 - 20/100)) = 9
+		assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(4, 1)));
+		
+		assertEquals(10, juego.getCantMovimientosJugadorActual());
+		juego.mover(Direccion.abajo()); // -> total + 1 ==> 10 movimientos
+		assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(4, 1)));
+		
+		// Muevo una vez mas y el jugador no se mueve ni se incrementa el puntaje. 
+		assertEquals(10, juego.getCantMovimientosJugadorActual());
+		ranking.registrarJugador(juego.obtenerNombre(), juego.getCantMovimientosJugadorActual());
+		
+		assertTrue(juego.estaFinalizado());
+		assertEquals(10, ranking.obtenerPuntajeJugador(juego.obtenerNombre()));
+		
+		Logger.enableLogging(false);
     }
 }

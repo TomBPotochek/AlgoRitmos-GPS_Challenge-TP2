@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo.Logging;
 
 public class Logger {
     
-    private static LoggingI logger;
+    private static LoggingI logger = new LoggerConsola(); // default logger
     private static boolean loggear = false;
 
 

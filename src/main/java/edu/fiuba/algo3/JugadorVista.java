@@ -105,18 +105,15 @@ public class JugadorVista {
     }
 
     public void mover(Movimiento movimiento){
-        try {
-            this.juego.mover(movimiento);
-            this.reproducirEfectoSonido();
-            // this.posicionX = this.offsetX + (this.juego.obtenerPosicionVehiculo().getColumna() - 1) * 50;
-            actualizarPosicion();
-        } catch(JuegoFinalizadoException e) {
-        }
-        if(juego.estaFinalizado()){
-            this.update();
+		this.juego.mover(movimiento);
+		this.reproducirEfectoSonido();
+		this.actualizarPosicion();
+		
+		if(juego.estaFinalizado()){
+            // this.update();
             this.terminarJuego();
-        }
-    }
+		}
+	}
 
 	private void reproducirEfectoSonido() {
 		Posicion posVehiculo = this.juego.obtenerPosicionVehiculo();
