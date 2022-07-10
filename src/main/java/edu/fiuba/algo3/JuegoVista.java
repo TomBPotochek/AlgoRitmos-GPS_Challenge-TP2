@@ -275,7 +275,7 @@ public class JuegoVista extends BorderPane {
         //BORDE IZQUIERDO
         VBox bordeIzquierdo = new VBox();
         bordeIzquierdo.getChildren().addAll(nombreDelJugador, puntajeActual,botonesMovimiento);
-        bordeIzquierdo.setSpacing(100);
+        bordeIzquierdo.setSpacing(70);
         bordeIzquierdo.setPadding(new Insets(50, 0, 50, 80));
         this.setAlignment(bordeIzquierdo, Pos.CENTER_LEFT);
         this.setLeft(bordeIzquierdo);
