@@ -77,6 +77,16 @@
     </profiles>
     <build>
         <testSourceDirectory>src/main/test</testSourceDirectory>
+		<resources>
+			<resource>
+				<targetPath>imagenes</targetPath>
+				<directory>src/main/resources/imagenes</directory>
+			</resource>
+		<resource>
+			<targetPath>sonidos</targetPath>
+			<directory>src/main/resources/sonidos</directory>
+		</resource>
+		</resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

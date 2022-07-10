@@ -25,7 +25,7 @@ public class Juego {
 	public Juego(String nombreJugador, ProveedorDatosAzar proveedorDatosAzar){
 
         Logger.setLogger(new LoggerConsola());
-        Logger.enableLogging(true);
+        // Logger.enableLogging(true);
 
 		switch (proveedorDatosAzar.enteroAzarEnRango(1, 3)){
             case 1:

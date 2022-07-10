@@ -29,15 +29,24 @@ public class Tablero {
     private Circle visionJugador;
     private Circle visionMeta;
     
+	private Image casillaEsquina;
+	private Image iconoMeta;
+	private Image iconoPozo;
+	private Image iconoPiquete;
+	private Image iconoControlPolicial;
+	private Image iconoSorpresa;
+
+
     public Tablero(int alto, int ancho, Juego juego){
         this.altoTablero = alto;
-        Image imagen = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/unknown.png");
+        this.cargarImagenes();
         this.grilla = new GridPane();
-        for (int i = 0; i < ancho; i++) {
+        
+		for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 Group grupoCasilla = new Group();
                 Rectangle casilla = new Rectangle(tamanioCelda, tamanioCelda, Color.BLUE);
-                ImagePattern imagePattern = new ImagePattern(imagen);
+                ImagePattern imagePattern = new ImagePattern(this.casillaEsquina);
                 casilla.setFill(imagePattern);
                 StackPane stack = new StackPane();
                 stack.setMinSize(tamanioCelda, tamanioCelda);
@@ -69,8 +78,7 @@ public class Tablero {
         sp = obtenerPaneCelda(meta.getFila()-1, meta.getColumna()-1);
         HBox elementos = (HBox) sp.getChildren().get(0);
         Rectangle metaForma = new Rectangle(20, 20, Color.BLUEVIOLET);
-        Image fotoMeta = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-salida.png");
-        metaForma.setFill(new ImagePattern(fotoMeta));
+        metaForma.setFill(new ImagePattern(this.iconoMeta));
         elementos.getChildren().add(metaForma);
 
         this.mapaOculto = new Rectangle(800, 560, Color.BLACK);
@@ -94,6 +102,27 @@ public class Tablero {
         return this.contenedor;
     }
 
+	private void cargarImagenes() {
+		String pathCasillaEsquina = this.getClass().getResource("/imagenes/casilla-esquina.png").toString();
+		this.casillaEsquina = new Image(pathCasillaEsquina);
+		
+		String pathIconoMeta = this.getClass().getResource("/imagenes/icono-meta.png").toString();
+		this.iconoMeta = new Image(pathIconoMeta);
+		
+		String pathIconoPozo = this.getClass().getResource("/imagenes/icono-pozo.png").toString();
+		this.iconoPozo = new Image(pathIconoPozo);
+		
+		String pathIconoPiquete = this.getClass().getResource("/imagenes/icono-piquete.png").toString();
+		this.iconoPiquete = new Image(pathIconoPiquete);
+		
+		String pathIconoControl = this.getClass().getResource("/imagenes/icono-control-policial.png").toString();
+		this.iconoControlPolicial = new Image(pathIconoControl);
+		
+		String pathIconoSorpresa = this.getClass().getResource("/imagenes/icono-sorpresa.png").toString();
+		this.iconoSorpresa = new Image(pathIconoSorpresa);
+
+	}
+
     private void moverVision(int x, int y){
         this.contenedor.getChildren().remove(1);
         this.visionJugador.relocate(tamanioCelda*(y+0.5-2), tamanioCelda*(x+0.5-2));
@@ -111,33 +140,27 @@ public class Tablero {
         switch (elemento.getClass().getSimpleName()) {
             case "Pozo":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.BROWN);
-                Image fondoPozo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png");
-                vistaElemento.setFill(new ImagePattern(fondoPozo));
+                vistaElemento.setFill(new ImagePattern(this.iconoPozo));
                 break;
             case "Piquete":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.RED);
-                Image fondoPiquete = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-piquete.png");
-                vistaElemento.setFill(new ImagePattern(fondoPiquete));
+                vistaElemento.setFill(new ImagePattern(this.iconoPiquete));
                 break;
             case "ControlPolicial":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.BLUE);
-                Image fondoControlPolicial = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-control-policial.png");
-                vistaElemento.setFill(new ImagePattern(fondoControlPolicial));
+                vistaElemento.setFill(new ImagePattern(this.iconoControlPolicial));
                 break;
             case "SorpresaFavorable":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                Image fondoSorpresaFavorable = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
-                vistaElemento.setFill(new ImagePattern(fondoSorpresaFavorable));
+                vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
                 break;
             case "SorpresaDesfavorable":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                Image fondoSorpresaDesfavorable = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
-                vistaElemento.setFill(new ImagePattern(fondoSorpresaDesfavorable));
+                vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
                 break;
             case "SorpresaCambioVehiculo":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                Image fondoCambioVehiculo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png");
-                vistaElemento.setFill(new ImagePattern(fondoCambioVehiculo));
+                vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
                 break;
             default:
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);

@@ -74,20 +74,22 @@ public class JugadorVista {
 
     private void ponerFotoVehiculo(){
         switch(this.juego.obtenerTipoVehiculo().getSimpleName()){
-            case "Auto":
+			case "Auto":
                 this.jugadorFigura = new Rectangle(30, 30, Color.YELLOW);
-                Image fotoAuto = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-auto.png");
-                jugadorFigura.setFill(new ImagePattern(fotoAuto));
+                String pathImagenAuto = this.getClass().getResource("/imagenes/icono-auto.png").toString();
+                jugadorFigura.setFill(new ImagePattern(new Image(pathImagenAuto)));
                 break;
-            case "Moto":
+            
+			case "Moto":
                 this.jugadorFigura = new Rectangle(30, 30, Color.GREEN);
-                Image fotoMoto = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-moto.png");
-                jugadorFigura.setFill(new ImagePattern(fotoMoto));
+                String pathImagenMoto = this.getClass().getResource("/imagenes/icono-moto.png").toString();
+                jugadorFigura.setFill(new ImagePattern(new Image(pathImagenMoto)));
                 break;
+
             default:
                 this.jugadorFigura = new Rectangle(30, 30, Color.WHITE);
-                Image fotoCuatroPorCuatro = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-cuatro-por-cuatro.png");
-                jugadorFigura.setFill(new ImagePattern(fotoCuatroPorCuatro));
+                String pathImagen4x4 = this.getClass().getResource("/imagenes/icono-cuatro-por-cuatro.png").toString();
+                jugadorFigura.setFill(new ImagePattern(new Image(pathImagen4x4)));
         }
 
         tablero.moverJugadorA(0, 0, this.getDibujo());
@@ -138,7 +140,7 @@ public class JugadorVista {
 
     private void dibujarFormas() {
         int puntaje = juego.getCantMovimientosJugadorActual();
-        this.marcadorPuntaje.setText(String.format("Puntaje : %d",puntaje));
+        this.marcadorPuntaje.setText(String.format("Puntaje : \n%d",puntaje));
         tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
     }
 
@@ -195,8 +197,8 @@ public class JugadorVista {
         });
 
         Scene escenaVolver = new Scene(menuVolver , 580 , 300);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaVolver.getIcons().add(logo);
+		String pathLogoGpsChallenge = this.getClass().getResource("/imagenes/logo-gps-challenge.png").toString();
+        ventanaVolver.getIcons().add(new Image(pathLogoGpsChallenge));
         ventanaVolver.setScene(escenaVolver);
         ventanaVolver.showAndWait();
 

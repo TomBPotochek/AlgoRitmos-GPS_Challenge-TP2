@@ -40,18 +40,70 @@ public class JuegoVista extends BorderPane {
 
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
+	private Image logoGpsChallenge;
+	private Image logoFondo;
+	private Image iconoControlPolicial;
+	private Image iconoPozo;
+	private Image iconoPiquete;
+	private Image iconoSorpresa;
+	private Image iconoBotonArriba;
+	private Image iconoBotonAbajo;
+	private Image iconoBotonIzquierda;
+	private Image iconoBotonDerecha;
+	private Image iconoNotaMusical;
+	private Image iconoNotaMusicalTachada;
+
+
 
     public JuegoVista(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
-        this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador, eleccionVehiculo);
+        this.cargarImagenes();
+		this.setJuego(stage, pantallaDeInicio, ancho, alto, nombreJugador, eleccionVehiculo);
         stage.setMaximized(true);
-        Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
-        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(this.logoFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     }
 
     public Scene getJuegoVista(){
         return juegoVista;
     }
+
+	private void cargarImagenes() {
+		String pathLogoGpsChallenge = this.getClass().getResource("/imagenes/logo-gps-challenge.png").toString();
+        this.logoGpsChallenge = new Image(pathLogoGpsChallenge);
+        
+		String pathLogoFondo = this.getClass().getResource("/imagenes/fondo-gps-3.png").toString();
+		this.logoFondo = new Image(pathLogoFondo);
+		
+		String pathIconoBotonArriba = this.getClass().getResource("/imagenes/icono-boton-arriba.png").toString();
+		this.iconoBotonArriba = new Image(pathIconoBotonArriba);
+		
+		String pathIconoBotonAbajo = this.getClass().getResource("/imagenes/icono-boton-abajo.png").toString();
+		this.iconoBotonAbajo = new Image(pathIconoBotonAbajo);
+		
+		String pathIconoBotonIzquierda = this.getClass().getResource("/imagenes/icono-boton-izquierda.png").toString();
+		this.iconoBotonIzquierda = new Image(pathIconoBotonIzquierda);
+		
+		String pathIconoBotonDerecha = this.getClass().getResource("/imagenes/icono-boton-derecha.png").toString();
+		this.iconoBotonDerecha = new Image(pathIconoBotonDerecha);
+		
+		String pathNotaMusical = this.getClass().getResource("/imagenes/nota-musical.png").toString();
+		this.iconoNotaMusical = new Image(pathNotaMusical);
+		
+		String pathNotaMusicalTachada = this.getClass().getResource("/imagenes/nota-musical-tachada.png").toString();
+		this.iconoNotaMusicalTachada = new Image(pathNotaMusicalTachada);
+
+		String pathIconoPiquete = this.getClass().getResource("/imagenes/icono-piquete.png").toString();
+		this.iconoPiquete = new Image(pathIconoPiquete);
+
+		String pathIconoPozo = this.getClass().getResource("/imagenes/icono-pozo.png").toString();
+		this.iconoPozo = new Image(pathIconoPozo);
+
+		String pathIconoControl = this.getClass().getResource("/imagenes/icono-control-policial.png").toString();
+		this.iconoControlPolicial = new Image(pathIconoControl);
+		
+		String pathIconoSorpresa = this.getClass().getResource("/imagenes/icono-sorpresa.png").toString();
+		this.iconoSorpresa = new Image(pathIconoSorpresa);
+	}
 
     private void setJuego(Stage stage, Scene pantallaDeInicio, int ancho, int alto, String nombreJugador, String eleccionVehiculo){
 
@@ -119,28 +171,28 @@ public class JuegoVista extends BorderPane {
         //Boton DERECHA
         Button moverseDerecha = new Button("");
         moverseDerecha.setFont(Font.font("Impact", 35));
-        moverseDerecha.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-derecha.png")));
+        moverseDerecha.setGraphic(new ImageView(this.iconoBotonDerecha));
         moverseDerecha.setStyle(formatoTexto);
         moverseDerecha.setOnMouseEntered(e -> moverseDerecha.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseDerecha.setOnMouseExited(e -> moverseDerecha.setStyle(formatoTexto));
         
         Button moverseAbajo = new Button("");
         moverseAbajo.setFont(Font.font("Impact", 35));
-        moverseAbajo.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-abajo.png")));
+        moverseAbajo.setGraphic(new ImageView(this.iconoBotonAbajo));
         moverseAbajo.setStyle(formatoTexto);
         moverseAbajo.setOnMouseEntered(e -> moverseAbajo.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseAbajo.setOnMouseExited(e -> moverseAbajo.setStyle(formatoTexto));
         
         Button moverseIzquierda = new Button("");
         moverseIzquierda.setFont(Font.font("Impact", 35));
-        moverseIzquierda.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-izqueirda.png")));
+        moverseIzquierda.setGraphic(new ImageView(this.iconoBotonIzquierda));
         moverseIzquierda.setStyle(formatoTexto);
         moverseIzquierda.setOnMouseEntered(e -> moverseIzquierda.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseIzquierda.setOnMouseExited(e -> moverseIzquierda.setStyle(formatoTexto));
         
         Button moverseArriba = new Button("");
         moverseArriba.setFont(Font.font("Impact", 35));
-        moverseArriba.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-boton-arriba.png")));
+        moverseArriba.setGraphic(new ImageView(this.iconoBotonArriba));
         moverseArriba.setStyle(formatoTexto);
         moverseArriba.setOnMouseEntered(e -> moverseArriba.setStyle("-fx-background-color: #717D8C; -fx-text-fill: #BDB69C"));
         moverseArriba.setOnMouseExited(e -> moverseArriba.setStyle(formatoTexto));
@@ -154,7 +206,7 @@ public class JuegoVista extends BorderPane {
         apagarMusica.setStyle(botonNormal);
         apagarMusica.setOnMouseEntered(e -> apagarMusica.setStyle(botonAntesDeSerPresionado));
         apagarMusica.setOnMouseExited(e -> apagarMusica.setStyle(botonNormal));
-        apagarMusica.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/notamusical.png")));
+        apagarMusica.setGraphic(new ImageView(this.iconoNotaMusical));
         apagarMusica.setPrefSize(60, 60);
         stackSonidos.setAlignment(Pos.TOP_CENTER);
 
@@ -162,7 +214,7 @@ public class JuegoVista extends BorderPane {
         encenderMusica.setStyle(botonNormal);
         encenderMusica.setOnMouseEntered(e -> encenderMusica.setStyle(botonAntesDeSerPresionado));
         encenderMusica.setOnMouseExited(e -> encenderMusica.setStyle(botonNormal));
-        encenderMusica.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/notamusicaltachada.png")));
+        encenderMusica.setGraphic(new ImageView(this.iconoNotaMusicalTachada));
         stackSonidos.getChildren().add(encenderMusica);
         stackSonidos.getChildren().add(apagarMusica);
 
@@ -220,22 +272,22 @@ public class JuegoVista extends BorderPane {
         Label controlPolical = new Label(": Control Policial");
         controlPolical.setFont(Font.font("Impact", 30));
         controlPolical.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-        controlPolical.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-control-policial.png")));
+        controlPolical.setGraphic(new ImageView(this.iconoControlPolicial));
 
         Label pozo = new Label(": Pozo");
         pozo.setFont(Font.font("Impact", 30));
         pozo.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-        pozo.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-pozo.png")));
+        pozo.setGraphic(new ImageView(this.iconoPozo));
 
         Label piquete = new Label(": Piquete");
         piquete.setFont(Font.font("Impact", 30));
         piquete.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-        piquete.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-piquete.png")));
+        piquete.setGraphic(new ImageView(this.iconoPiquete));
 
         Label sorpresaFavorable = new Label(": Sorpresa");
         sorpresaFavorable.setFont(Font.font("Impact", 30));
         sorpresaFavorable.setStyle("-fx-border-width: 0px; -fx-border-color: transparent; -fx-background-color: transparent; -fx-text-fill: #BDB69C");
-        sorpresaFavorable.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-sorpresa.png")));
+        sorpresaFavorable.setGraphic(new ImageView(this.iconoSorpresa));
 
         VBox bordeDerecho = new VBox();
         bordeDerecho.getChildren().addAll(controlPolical, pozo, piquete, sorpresaFavorable);
@@ -291,8 +343,7 @@ public class JuegoVista extends BorderPane {
         });
 
         Scene  escenaSalir = new Scene(menuSalir , 800 , 400);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaAcercaDe.getIcons().add(logo);
+        ventanaAcercaDe.getIcons().add(this.logoGpsChallenge);
         ventanaAcercaDe.setScene(escenaSalir);
         ventanaAcercaDe.showAndWait();
     }
@@ -342,8 +393,7 @@ public class JuegoVista extends BorderPane {
         });
 
         Scene  escenaSalir = new Scene(menuSalir , 800 , 700);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaComoSalir.getIcons().add(logo);
+        ventanaComoSalir.getIcons().add(this.logoGpsChallenge);
         ventanaComoSalir.setScene(escenaSalir);
         ventanaComoSalir.showAndWait();
     }
@@ -393,8 +443,7 @@ public class JuegoVista extends BorderPane {
         });
 
         Scene  escenaVolver = new Scene(menuVolver , 580 , 300);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaVolver.getIcons().add(logo);
+        ventanaVolver.getIcons().add(this.logoGpsChallenge);
         ventanaVolver.setScene(escenaVolver);
         ventanaVolver.showAndWait();
         return(respuesta);

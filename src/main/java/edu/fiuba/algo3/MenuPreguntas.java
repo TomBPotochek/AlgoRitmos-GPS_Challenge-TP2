@@ -30,11 +30,16 @@ public class MenuPreguntas extends BorderPane{
     Boolean confirmacionDatos;
     String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
-
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
+	private Image logoFondo;
+	private Image logoGpsChallenge;
+	private Image iconoVolver;
+
+
     public MenuPreguntas(Stage stage, Scene pantallaDeInicio) {
-        this.setMenuPreguntas(stage, pantallaDeInicio);
+        this.cargarImagenes();
+		this.setMenuPreguntas(stage, pantallaDeInicio);
         stage.setMaximized(true);
 	}
 
@@ -42,17 +47,27 @@ public class MenuPreguntas extends BorderPane{
         return preguntaDatos;
     }
 
+	private void cargarImagenes() {
+		String pathLogoFondo = this.getClass().getResource("/imagenes/fondo-gps-3.png").toString();
+		this.logoFondo = new Image(pathLogoFondo); 
+		
+		String pathLogoGpsChallenge = this.getClass().getResource("/imagenes/fondo-gps-2.png").toString();
+		this.logoGpsChallenge = new Image(pathLogoGpsChallenge); 
+		
+		String pathIconoVolver = this.getClass().getResource("/imagenes/icono-volver.png").toString();
+		this.iconoVolver = new Image(pathIconoVolver); 
+	}
+
     private void setMenuPreguntas(Stage stage, Scene pantallaDeInicio) {
         //ESCENA PREGUNTAR DATOS DEL JUGADOR Y LA PARTIDA
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
         preguntaDatos = new Scene(this,screenSize.getWidth(), screenSize.getHeight(), Color.rgb(47, 52, 58));
-        Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-3.png");
-        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(this.logoFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     
         //BOTON DE VOLVER A LA PANTALLA DE INICIO
         Button volverPantallaInicial = new Button("Volver al Menu");
-        volverPantallaInicial.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-volver.png")));
+        volverPantallaInicial.setGraphic(new ImageView(this.iconoVolver));
         volverPantallaInicial.setFont(Font.font("Impact", 40));
         volverPantallaInicial.setStyle(botonNormal);
         volverPantallaInicial.setOnMouseEntered(e -> volverPantallaInicial.setStyle(botonAntesDeSerPresionado));
@@ -168,62 +183,9 @@ public class MenuPreguntas extends BorderPane{
         });
 
         Scene  escenaDatosIngresados = new Scene(menuDatosIngresados , 650 , 400, Color.rgb(47, 52, 58));
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaDatosIncorrectos.getIcons().add(logo);
+        ventanaDatosIncorrectos.getIcons().add(this.logoGpsChallenge);
         ventanaDatosIncorrectos.setScene(escenaDatosIngresados);
         ventanaDatosIncorrectos.showAndWait();
-    }
-
-    private String volverAlMenu(Stage stage){
-        Stage ventanaVolver = new Stage();
-        ventanaVolver.setResizable(false);
-        ventanaVolver.setTitle("Volver al Menu");
-        
-        Button botonVolver = new Button("Volver al Menu Principal");
-        botonVolver.setFont(Font.font("Impact", 25));
-        botonVolver.setStyle(botonNormal);
-        botonVolver.setOnMouseEntered(e -> botonVolver.setStyle(botonAntesDeSerPresionado));
-        botonVolver.setOnMouseExited(e -> botonVolver.setStyle(botonNormal));
-        
-        Button botonQuedarse = new Button("Quedarse");
-        botonQuedarse.setFont(Font.font("Impact", 25));
-        botonQuedarse.setStyle(botonNormal);
-        botonQuedarse.setOnMouseEntered(e -> botonQuedarse.setStyle(botonAntesDeSerPresionado));
-        botonQuedarse.setOnMouseExited(e -> botonQuedarse.setStyle(botonNormal));
-
-        VBox menuVolver = new VBox(20);
-        
-        Label preguntaVolver = new Label("¿Estás seguro que querés ir al Menu Principal?");
-        preguntaVolver.setFont(Font.font("Impact", 30));
-        preguntaVolver.setStyle(formatoTexto);
-        
-        Label advertenciaDatos = new Label("Todo tu progreso se perdera");
-        advertenciaDatos.setFont(Font.font("Impact", 30));
-        advertenciaDatos.setStyle(formatoTexto);
-        
-        ventanaVolver.setMinWidth(280);
-        ventanaVolver.initModality(Modality.APPLICATION_MODAL);
-        
-        menuVolver.getChildren().addAll(preguntaVolver, advertenciaDatos, botonVolver, botonQuedarse);
-        menuVolver.setAlignment(Pos.CENTER);
-        menuVolver.setStyle("-fx-border-color: #2F343A; -fx-background-color: #2F343A");
-        
-        botonVolver.setOnAction(e-> {
-            respuesta = "Volver";
-            ventanaVolver.close();
-        });
-        
-        botonQuedarse.setOnAction(e->{
-            respuesta  = "Quedarse";
-            ventanaVolver.close();
-        });
-
-        Scene  escenaVolver = new Scene(menuVolver , 580 , 300);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaVolver.getIcons().add(logo);
-        ventanaVolver.setScene(escenaVolver);
-        ventanaVolver.showAndWait();
-        return(respuesta);
     }
 
 
@@ -276,8 +238,7 @@ public class MenuPreguntas extends BorderPane{
         });
 
         Scene  escenaDatosIngresados = new Scene(menuDatosIngresados , 480 , 400, Color.rgb(47, 52, 58));
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaPreguntaDatos.getIcons().add(logo);
+        ventanaPreguntaDatos.getIcons().add(this.logoGpsChallenge);
         ventanaPreguntaDatos.setScene(escenaDatosIngresados);
         ventanaPreguntaDatos.showAndWait();
         return(confirmacionDatos);

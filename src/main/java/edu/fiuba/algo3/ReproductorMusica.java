@@ -3,29 +3,33 @@ package edu.fiuba.algo3;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.io.File;
-
 
 public class ReproductorMusica {
 	static ReproductorMusica unReproductor = null;
-	private HashMap<String, MediaPlayer> canciones;
+	private ArrayList<MediaPlayer> canciones;
+	private final Integer indiceMenu = 0;
+	private final Integer indiceJugando = 1;
+	private final Integer indiceObstaculo = 2;
+
+	private final Integer indiceMeta = 3;
+	private final Integer indiceMetaAlternativa = 4;
 
 	private ReproductorMusica() {
-		this.canciones = new HashMap<String, MediaPlayer>();
-	
+
+		this.canciones = new ArrayList<MediaPlayer>();
 		ArrayList<String> listaCanciones = new ArrayList<String>();
-		listaCanciones.add("menu");
-		listaCanciones.add("jugando");
-		listaCanciones.add("obstaculo");
-		listaCanciones.add("meta");
-		listaCanciones.add("meta_alt");
-	
+		// Inserto las canciones en orden segun sus indices.
+		listaCanciones.add("/sonidos/menu.mp3");
+		listaCanciones.add("/sonidos/jugando.mp3");
+		listaCanciones.add("/sonidos/obstaculo.mp3");
+		listaCanciones.add("/sonidos/meta.mp3");
+		listaCanciones.add("/sonidos/meta_alt.mp3");
+		
+		// Creo un reproductor por cada cancion de la lista.
 		for (String cancion : listaCanciones) {
-			String pathRelativoCancion = "src/main/java/edu/fiuba/algo3/sonidos/" + cancion + ".mp3";
-			String pathAbsCancion = new File(pathRelativoCancion).toURI().toString();
-			Media media = new Media(pathAbsCancion);
-			canciones.put(cancion, new MediaPlayer(media));
+			String pathCancion = this.getClass().getResource(cancion).toString();
+			Media media = new Media(pathCancion);
+			canciones.add(new MediaPlayer(media));
 		}
 	}
 
@@ -37,23 +41,20 @@ public class ReproductorMusica {
 		return unReproductor;
 	}
 
-	
 	public MediaPlayer getMusicaMenu() {
-		return canciones.get("menu");
+		return canciones.get(this.indiceMenu);
 	}
 	
 	public MediaPlayer getMusicaObstaculo() {
-		return canciones.get("obstaculo");
+		return canciones.get(this.indiceObstaculo);
 	}
 
 	public MediaPlayer getMusicaJugando() {
-		return canciones.get("jugando");
+		return canciones.get(this.indiceJugando);
 	}
 	
 	public MediaPlayer getMusicaMeta() {
-		// Descomentar una linea para elegir entre los sonidos de meta.
-		// return canciones.get("meta");
-		return canciones.get("meta_alt");
+		return canciones.get(this.indiceMetaAlternativa);
 	}
 	
 }

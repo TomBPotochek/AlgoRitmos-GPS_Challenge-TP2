@@ -23,19 +23,21 @@ public class App extends Application {
     Scene preguntaDatos;
     Scene mapaDelJuego;
     Scene tablaDePosicionesHistorial;
+	
+	private Image logoGpsChallenge;
+	private String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
+    private String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
-    String botonAntesDeSerPresionado = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: #717D8C; -fx-text-fill: #BDB69C";
-    String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
-
-    String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
+    private String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
     @Override
     public void start(Stage stage) {
         stage.setTitle("GPS Challenge");
         stage.setResizable(true);
 
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        stage.getIcons().add(logo);
+		String pathLogo = this.getClass().getResource("/imagenes/logo-gps-challenge.png").toString();
+		this.logoGpsChallenge = new Image(pathLogo);
+        stage.getIcons().add(this.logoGpsChallenge);
 
         MenuPrincipal menuPrincipal = new MenuPrincipal(stage);
 
@@ -92,9 +94,9 @@ public class App extends Application {
             ventanaSalir.close();
         });
 
-        Scene  escenaSalir = new Scene(menuSalir , 370 , 200);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaSalir.getIcons().add(logo);
+        Scene escenaSalir = new Scene(menuSalir , 370 , 200);
+        
+        ventanaSalir.getIcons().add(this.logoGpsChallenge);
         ventanaSalir.setScene(escenaSalir);
         ventanaSalir.showAndWait();
         return(respuesta);

@@ -26,7 +26,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import edu.fiuba.algo3.ReproductorMusica;
-import java.io.File;
+import java.net.URL;
 
 public class MenuPrincipal extends FlowPane{
     static Scene pantallaDeInicio;
@@ -35,29 +35,59 @@ public class MenuPrincipal extends FlowPane{
     String botonNormal = "-fx-border-width: 2px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
     String formatoTexto = "-fx-border-width: 0px; -fx-border-color: #80CEB9; -fx-background-color: transparent; -fx-text-fill: #80CEB9";
 
+	private Image logoGpsChallenge;
+	private Image logoTitulo;
+	private Image logoJugar;
+	private Image logoSalir;
+	private Image logoTabla;
+	private Image logoFondo;
+
+
     public MenuPrincipal (Stage stage) {
+		this.cargarImagenes();
         this.setMenu(stage);
         stage.setMaximized(true);
         this.setOrientation(Orientation.VERTICAL);
         this.setStyle(" -fx-padding: 70 100 20 70");
-        Image fondoLogo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/fondo-gps-2.png");
-        BackgroundImage imagenDeFondo = new BackgroundImage(fondoLogo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        
+        BackgroundImage imagenDeFondo = new BackgroundImage(this.logoFondo, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 		ReproductorMusica.getReproductor().getMusicaMenu().play();
 	}
 
 
+	private void cargarImagenes() {
+		String pathFondoLogo = this.getClass().getResource("/imagenes/fondo-gps-2.png").toString();
+		this.logoFondo = new Image(pathFondoLogo); 
+		
+		String pathTituloFoto = this.getClass().getResource("/imagenes/titulo-gps.png").toString();
+		this.logoTitulo = new Image(pathTituloFoto); 
+		
+		String pathIconoJugar = this.getClass().getResource("/imagenes/icono-jugar.png").toString();
+		this.logoJugar = new Image(pathIconoJugar); 
+		
+		String pathIconoSalir = this.getClass().getResource("/imagenes/icono-salir.png").toString();
+		this.logoSalir = new Image(pathIconoSalir); 
+		
+		String pathIconoTabla = this.getClass().getResource("/imagenes/icono-tabla.png").toString();
+		this.logoTabla = new Image(pathIconoTabla);
+
+		String pathLogoGpsChallenge = this.getClass().getResource("/imagenes/logo-gps-challenge.png").toString();
+		this.logoGpsChallenge = new Image(pathLogoGpsChallenge); 
+	}
+
+
     private void setMenu(Stage stage){
         Rectangle2D screenSize = Screen.getPrimary().getVisualBounds();
-
-        Image tituloFoto = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/titulo-gps.png");
-        ImageView nombreDelJuego = new ImageView(tituloFoto);
+		
+        ImageView nombreDelJuego = new ImageView(this.logoTitulo);
         nombreDelJuego.setFitHeight(210);
         nombreDelJuego.setFitWidth(400);
 
         //BOTON DE JUGAR
         Button jugar = new Button(" Jugar");
-        jugar.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-jugar.png")));
+		
+        jugar.setGraphic(new ImageView(this.logoJugar));
         jugar.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 55));
         jugar.setStyle(botonNormal);
         jugar.setOnMouseEntered(e -> jugar.setStyle(botonAntesDeSerPresionado));
@@ -70,7 +100,7 @@ public class MenuPrincipal extends FlowPane{
         salir.setStyle(botonNormal);
         salir.setOnMouseEntered(e -> salir.setStyle(botonAntesDeSerPresionado));
         salir.setOnMouseExited(e -> salir.setStyle(botonNormal));
-        salir.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-salir.png")));
+        salir.setGraphic(new ImageView(this.logoSalir));
 
         salir.setOnAction(e-> {
             String a = cerrarJuego(stage);
@@ -83,7 +113,7 @@ public class MenuPrincipal extends FlowPane{
         Button tablaPosiciones = new Button(" Tabla de Posiciones");
         tablaPosiciones.setFont(Font.font("Impact", FontWeight.SEMI_BOLD, 55));
         tablaPosiciones.setStyle(botonNormal);
-        tablaPosiciones.setGraphic(new ImageView(new Image("file:src/main/java/edu/fiuba/algo3/imagenes/icono-tabla.png")));
+        tablaPosiciones.setGraphic(new ImageView(this.logoTabla));
         tablaPosiciones.setOnMouseEntered(e -> tablaPosiciones.setStyle(botonAntesDeSerPresionado));
         tablaPosiciones.setOnMouseExited(e -> tablaPosiciones.setStyle(botonNormal));
 
@@ -170,8 +200,8 @@ public class MenuPrincipal extends FlowPane{
         });
 
         Scene  escenaSalir = new Scene(menuSalir , 800 , 400);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaAcercaDe.getIcons().add(logo);
+		
+        ventanaAcercaDe.getIcons().add(this.logoGpsChallenge);
         ventanaAcercaDe.setScene(escenaSalir);
         ventanaAcercaDe.showAndWait();
     }
@@ -221,8 +251,7 @@ public class MenuPrincipal extends FlowPane{
         });
 
         Scene  escenaSalir = new Scene(menuSalir , 800 , 700);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaComoSalir.getIcons().add(logo);
+        ventanaComoSalir.getIcons().add(this.logoGpsChallenge);
         ventanaComoSalir.setScene(escenaSalir);
         ventanaComoSalir.showAndWait();
     }
@@ -265,8 +294,7 @@ public class MenuPrincipal extends FlowPane{
         });
 
         Scene  escenaSalir = new Scene(menuSalir , 370 , 200);
-        Image logo = new Image("file:src/main/java/edu/fiuba/algo3/imagenes/logo-gps-challenge.png");
-        ventanaSalir.getIcons().add(logo);
+        ventanaSalir.getIcons().add(this.logoGpsChallenge);
         ventanaSalir.setScene(escenaSalir);
         ventanaSalir.showAndWait();
         return(respuesta);
