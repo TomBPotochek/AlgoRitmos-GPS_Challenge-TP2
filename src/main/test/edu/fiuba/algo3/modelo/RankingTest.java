@@ -33,4 +33,20 @@ public class RankingTest {
         assertEquals("Raul",it.next().getKey());
         assertEquals(3, lista.size());
     }
+    @Test
+    public void unJugadorSeRegistraVariasVecesYSoloQuedaSuMejorPuntaje(){
+        Ranking ranking = Ranking.getRanking();
+        ranking.limpiarRanking();
+        ranking.registrarJugador("Raul", 100);
+        ranking.registrarJugador("Raul", 200);
+        ranking.registrarJugador("Raul", 150);
+        ranking.registrarJugador("Raul", 1000);
+        ranking.registrarJugador("Raul", 80);
+
+        List<Map.Entry<String,Integer>> lista = ranking.obtenerRanking();
+        Iterator<Map.Entry<String,Integer>> it = lista.iterator();
+
+        assertEquals(1, lista.size());
+        assertEquals("Raul", it.next().getKey());
+    }
 }
