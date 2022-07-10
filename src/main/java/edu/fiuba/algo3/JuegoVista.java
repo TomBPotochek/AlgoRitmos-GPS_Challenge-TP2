@@ -124,6 +124,7 @@ public class JuegoVista extends BorderPane {
                 break;
 			default:
 				juego = new Juego(nombreJugador, new CuatroPorCuatro());
+				break;
 		}
         juego.setDimensionesMapa(ancho, alto);
 
