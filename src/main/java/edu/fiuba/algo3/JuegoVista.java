@@ -118,10 +118,13 @@ public class JuegoVista extends BorderPane {
 		switch (eleccionVehiculo) {
 			case "Moto":
 				juego = new Juego(nombreJugador, new Moto());
+				break;
 			case "Auto":
 				juego = new Juego(nombreJugador, new Auto());
+				break;
 			case "4x4":
 				juego = new Juego(nombreJugador, new CuatroPorCuatro());
+				break;
 		}
         juego.setDimensionesMapa(ancho, alto);
 
