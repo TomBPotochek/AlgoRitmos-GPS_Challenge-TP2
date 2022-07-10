@@ -14,6 +14,7 @@ import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
 import edu.fiuba.algo3.modelo.juego.Juego;
+import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.ElementoMapa;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
@@ -95,6 +96,28 @@ public class JugadorVista {
         tablero.moverJugadorA(0, 0, this.getDibujo());
     }
 
+    private void actualizarFotoVehiculo(){
+        Logger.log(String.format("\ntipo de vehiculo: %s \n", this.juego.obtenerTipoVehiculo().getSimpleName()));
+        switch(this.juego.obtenerTipoVehiculo().getSimpleName()){
+            case "Auto":
+                this.jugadorFigura = new Rectangle(30, 30, Color.YELLOW);
+                String pathImagenAuto = this.getClass().getResource("/imagenes/icono-auto.png").toString();
+                this.jugadorFigura.setFill(new ImagePattern(new Image(pathImagenAuto)));
+                break;
+            case "Moto":
+                this.jugadorFigura = new Rectangle(30, 30, Color.GREEN);
+                String pathImagenMoto = this.getClass().getResource("/imagenes/icono-moto.png").toString();
+                this.jugadorFigura.setFill(new ImagePattern(new Image(pathImagenMoto)));
+                break;
+            default:
+                this.jugadorFigura = new Rectangle(30, 30, Color.WHITE);
+                String pathImagen4x4 = this.getClass().getResource("/imagenes/icono-cuatro-por-cuatro.png").toString();
+                this.jugadorFigura.setFill(new ImagePattern(new Image(pathImagen4x4)));
+        }
+
+        tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
+    }
+
     public void dibujar() {
         this.dibujarFormas();
     }
@@ -138,6 +161,7 @@ public class JugadorVista {
     private void dibujarFormas() {
         int puntaje = juego.getCantMovimientosJugadorActual();
         this.marcadorPuntaje.setText(String.format("Puntaje: \n%d",puntaje));
+        this.actualizarFotoVehiculo();
         tablero.moverJugadorA(posicionX, posicionY, this.getDibujo());
     }
 

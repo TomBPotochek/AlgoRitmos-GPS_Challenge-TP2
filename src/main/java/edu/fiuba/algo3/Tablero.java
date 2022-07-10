@@ -159,8 +159,8 @@ public class Tablero {
                 vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
                 break;
             case "SorpresaCambioVehiculo":
-                vistaElemento = new Rectangle(tamanio, tamanio, Color.YELLOW);
-                vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
+                vistaElemento = new Rectangle(tamanio, tamanio, Color.RED);
+                //vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
                 break;
             default:
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);
