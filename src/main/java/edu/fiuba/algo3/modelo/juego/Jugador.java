@@ -48,11 +48,11 @@ public class Jugador {
 		this.incrementarMovimientos();
 		aplicarEfecto(this.vehiculo.mover(movimiento));
 	}
-
-	public void setVehiculo(Vehiculo vehiculoDado){
-		this.vehiculo = vehiculoDado;
-	}
 	
+	public Vehiculo getVehiculo() {
+		return this.vehiculo;
+	}
+
     public void marcarFinalizado() {
 		this.alcanzoMeta = true;
         Logger.log("jugador cruzo la meta");

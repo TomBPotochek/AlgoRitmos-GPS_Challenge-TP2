@@ -44,7 +44,7 @@ public class Mapa {
 		}
 		
 		// Decoro la casilla con una meta
-		Casillero casilleroMeta = new CasilleroDecoratorMeta(this.grilla.get(pos));
+		Casillero casilleroMeta = new CasilleroDecoratorMeta(new CasilleroCalle());
 		this.posicionMeta = pos;
 		this.grilla.put(posicionMeta, casilleroMeta);
 
@@ -98,7 +98,7 @@ public class Mapa {
                 obstaculoControl = azar.eventoConProbabilidad(0.02);
                 sorpresaFavorable = azar.eventoConProbabilidad(0.08);
                 sorpresaDesfavorable = azar.eventoConProbabilidad(0.06);
-                sorpresaCambioVehiculo = azar.eventoConProbabilidad(0.001);
+                sorpresaCambioVehiculo = azar.eventoConProbabilidad(0.01);
                 
                 CasilleroCalle casillero = new CasilleroCalle();
                 if (obstaculoPozo) casillero.agregarElemento(new Pozo());

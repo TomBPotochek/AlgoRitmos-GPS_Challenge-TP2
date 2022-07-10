@@ -2,59 +2,55 @@ package edu.fiuba.algo3;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
-import java.util.ArrayList;
 
 public class ReproductorMusica {
-	static ReproductorMusica unReproductor = null;
-	private ArrayList<MediaPlayer> canciones;
-	private final Integer indiceMenu = 0;
-	private final Integer indiceJugando = 1;
-	private final Integer indiceObstaculo = 2;
-
-	private final Integer indiceMeta = 3;
-	private final Integer indiceMetaAlternativa = 4;
-
+	static ReproductorMusica reproductorMusica = null;
+	
+	private MediaPlayer musicaMenu;
+	private MediaPlayer musicaJugando;
+	private MediaPlayer musicaObstaculo;
+	private MediaPlayer musicaMeta;
+	private MediaPlayer musicaMetaAlternativa;
+	
 	private ReproductorMusica() {
-
-		this.canciones = new ArrayList<MediaPlayer>();
-		ArrayList<String> listaCanciones = new ArrayList<String>();
-		// Inserto las canciones en orden segun sus indices.
-		listaCanciones.add("/sonidos/menu.mp3");
-		listaCanciones.add("/sonidos/jugando.mp3");
-		listaCanciones.add("/sonidos/obstaculo.mp3");
-		listaCanciones.add("/sonidos/meta.mp3");
-		listaCanciones.add("/sonidos/meta_alt.mp3");
+		final String pathCancionMenu = this.getClass().getResource("/sonidos/menu.mp3").toString();
+		this.musicaMenu = new MediaPlayer(new Media(pathCancionMenu));
 		
-		// Creo un reproductor por cada cancion de la lista.
-		for (String cancion : listaCanciones) {
-			String pathCancion = this.getClass().getResource(cancion).toString();
-			Media media = new Media(pathCancion);
-			canciones.add(new MediaPlayer(media));
-		}
+		final String pathCancionJugando = this.getClass().getResource("/sonidos/jugando.mp3").toString();
+		this.musicaJugando = new MediaPlayer(new Media(pathCancionJugando));
+		
+		final String pathCancionObstaculo = this.getClass().getResource("/sonidos/obstaculo.mp3").toString();
+		this.musicaObstaculo = new MediaPlayer(new Media(pathCancionObstaculo));
+		
+		final String pathCancionMeta = this.getClass().getResource("/sonidos/meta.mp3").toString();
+		this.musicaMeta = new MediaPlayer(new Media(pathCancionMeta));
+		
+		final String pathCancionMetaAlt = this.getClass().getResource("/sonidos/meta_alt.mp3").toString();
+		this.musicaMetaAlternativa = new MediaPlayer(new Media(pathCancionMetaAlt));	
 	}
 
 	public static ReproductorMusica getReproductor() {
-		if (unReproductor == null) {
-			unReproductor = new ReproductorMusica();
+		if (reproductorMusica == null) {
+			reproductorMusica = new ReproductorMusica();
 		}
 
-		return unReproductor;
+		return reproductorMusica;
 	}
 
 	public MediaPlayer getMusicaMenu() {
-		return canciones.get(this.indiceMenu);
+		return this.musicaMenu;
 	}
 	
 	public MediaPlayer getMusicaObstaculo() {
-		return canciones.get(this.indiceObstaculo);
+		return this.musicaObstaculo;
 	}
 
 	public MediaPlayer getMusicaJugando() {
-		return canciones.get(this.indiceJugando);
+		return this.musicaJugando;
 	}
 	
 	public MediaPlayer getMusicaMeta() {
-		return canciones.get(this.indiceMetaAlternativa);
+		return this.musicaMetaAlternativa;
 	}
 	
 }

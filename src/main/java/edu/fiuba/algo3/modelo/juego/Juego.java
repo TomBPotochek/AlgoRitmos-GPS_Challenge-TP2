@@ -20,49 +20,22 @@ public class Juego {
     
 	private Jugador jugador;
 	private Vehiculo vehiculoJugador;
-    private Ranking ranking;
 
-	public Juego(String nombreJugador, ProveedorDatosAzar proveedorDatosAzar){
+	public Juego(String nombreJugador, Vehiculo vehiculo){
 
         Logger.setLogger(new LoggerConsola());
         // Logger.enableLogging(true);
-
-		switch (proveedorDatosAzar.enteroAzarEnRango(1, 3)){
-            case 1:
-                this.vehiculoJugador = new Moto();
-                break;
-            case 2:
-				this.vehiculoJugador = new Auto();
-                break;
-            default:
-				this.vehiculoJugador = new CuatroPorCuatro();
-        }
-
-        this.jugador = new Jugador(nombreJugador, this.vehiculoJugador);
+        this.jugador = new Jugador(nombreJugador, vehiculo);
+		this.vehiculoJugador = this.jugador.getVehiculo();
     }
-
+	
     //setters innecesarios?
     public void setDimensionesMapa(int ancho, int alto){
-        Mapa mapa = Mapa.getMapa();
+		Mapa mapa = Mapa.getMapa();
 		mapa.limpiar();
         mapa.setAncho(ancho);
         mapa.setAlto(alto);
 		mapa.generarGrillaConElementosAlAzar(new Azar());
-    }
-
-    public void setVehiculo(String eleccionVehiculo){
-        switch (eleccionVehiculo){
-            case "Moto":
-                this.vehiculoJugador = new Moto();
-                break;
-            case "Auto":
-				this.vehiculoJugador = new Auto();
-                break;
-            default:
-				this.vehiculoJugador = new CuatroPorCuatro();
-        }
-
-        this.jugador.setVehiculo(this.vehiculoJugador);
     }
     
     public void mover(Movimiento movimiento) throws JuegoFinalizadoException {
@@ -70,6 +43,7 @@ public class Juego {
 			throw new JuegoFinalizadoException();
 		}
         this.jugador.mover(movimiento);
+		this.vehiculoJugador = this.jugador.getVehiculo();
     }
 
     public boolean estaFinalizado(){
