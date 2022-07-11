@@ -51,7 +51,7 @@ public class MenuPreguntas extends BorderPane{
 		String pathLogoFondo = this.getClass().getResource("/imagenes/fondo-gps-3.png").toString();
 		this.logoFondo = new Image(pathLogoFondo); 
 		
-		String pathLogoGpsChallenge = this.getClass().getResource("/imagenes/fondo-gps-2.png").toString();
+		String pathLogoGpsChallenge = this.getClass().getResource("/imagenes/logo-gps-challenge.png").toString();
 		this.logoGpsChallenge = new Image(pathLogoGpsChallenge); 
 		
 		String pathIconoVolver = this.getClass().getResource("/imagenes/icono-volver.png").toString();

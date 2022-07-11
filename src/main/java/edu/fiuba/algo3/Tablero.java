@@ -1,9 +1,10 @@
 package edu.fiuba.algo3;
 
 import java.util.ArrayList;
-import edu.fiuba.algo3.modelo.casillero.*;
+
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ElementoMapa;
 import edu.fiuba.algo3.modelo.juego.Juego;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -160,7 +161,7 @@ public class Tablero {
                 break;
             case "SorpresaCambioVehiculo":
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.RED);
-                //vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
+                vistaElemento.setFill(new ImagePattern(this.iconoSorpresa));
                 break;
             default:
                 vistaElemento = new Rectangle(tamanio, tamanio, Color.ANTIQUEWHITE);

@@ -3,12 +3,11 @@ package edu.fiuba.algo3.modelo.juego;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.*;
 
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
-import edu.fiuba.algo3.modelo.vehiculos.Direccion;
+import edu.fiuba.algo3.modelo.movimientos.Direccion;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -16,14 +15,10 @@ import java.util.*;
 import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.CasilleroCalle;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
-import edu.fiuba.algo3.modelo.casillero.Pozo;
-import edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo;
-import edu.fiuba.algo3.modelo.casillero.SorpresaFavorable;
-import edu.fiuba.algo3.modelo.casillero.Piquete;
-import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
-import edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException;
-import edu.fiuba.algo3.modelo.movimientos.*;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Pozo;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.SorpresaFavorable;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Piquete;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 
 public class JuegoTest {
     @Test

@@ -1,18 +1,18 @@
 package edu.fiuba.algo3.Vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.*;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Piquete;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Pozo;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
-import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
-import edu.fiuba.algo3.modelo.vehiculos.Direccion;
+import edu.fiuba.algo3.modelo.movimientos.Direccion;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.mock;
 
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 
 public class CuatroPorCuatroTest {
     @Test

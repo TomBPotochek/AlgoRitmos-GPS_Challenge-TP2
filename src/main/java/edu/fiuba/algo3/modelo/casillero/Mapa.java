@@ -1,9 +1,10 @@
 package edu.fiuba.algo3.modelo.casillero;
 
 import edu.fiuba.algo3.modelo.Logging.Logger;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.*;
 import edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 
 import java.util.HashMap;
 

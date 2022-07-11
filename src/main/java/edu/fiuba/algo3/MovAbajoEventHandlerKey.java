@@ -1,6 +1,6 @@
 package edu.fiuba.algo3;
 
-import edu.fiuba.algo3.modelo.vehiculos.Direccion;
+import edu.fiuba.algo3.modelo.movimientos.Direccion;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 

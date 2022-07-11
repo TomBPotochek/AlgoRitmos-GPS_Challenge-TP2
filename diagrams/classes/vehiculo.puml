@@ -34,27 +34,12 @@ class Jugador{
 }
 
 class Juego{
-    - nombre : Nombre
     + mover(Movimiento movimiento)
     + estaFinalizado()
     + obtenerNombre()
     + obtenerPuntaje()
 }
-
-class Turno{
-        - juegoFinalizado : bool
-        - jugadores : Jugador
-        - colaJugadores : Jugador
-        - turnoSiguiente()
-        - jugadorActual()
-        + mover((Movimiento movimiento)
-        + todosfinalizados()
-        + finalizarTurnosJugador()
-        + obtenerPuntajeGanador()
-}
-
-
-
+Juego --> Vehiculo
 
 class Moto extends Vehiculo{
     +aceptar(ElementoMapa elemento)
@@ -70,8 +55,8 @@ class Ranking{
     obtenerPuntajeJugador(String : nombre)
 }
 
-Juego --> Ranking
-Juego --> Turno
+Juego ..> Ranking : Utiliza
+Juego --> Jugador
 
 CuatroPorCuatro --|> Vehiculo
 
@@ -79,6 +64,5 @@ Vehiculo *--Posicion
 
 Jugador *--"1" Vehiculo
 
-Turno "tiene"--> Jugador
 
 @enduml

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.vehiculos;
+package edu.fiuba.algo3.modelo.movimientos;
 
 import edu.fiuba.algo3.modelo.movimientos.*;
 
