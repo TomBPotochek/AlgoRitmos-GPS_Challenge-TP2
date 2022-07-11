@@ -43,12 +43,28 @@ public class JuegoTest {
         
         //comenzamos a mover a los jugadores por el mapa
         //movemos la moto atravez del piquete y el auto no
-        juego.mover(Direccion.abajo());  //moto +1
-        juego.mover(Direccion.derecha());//moto +1. pozo +3.
-        juego.mover(Direccion.derecha());//moto +1. llego a la meta.
-
+        assertEquals(juego.obtenerPuntaje(), 0);
+        assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(1, 1)));
+        
+		juego.mover(Direccion.abajo());  //moto +1. pozo +3.
+        assertEquals(juego.obtenerPuntaje(),4);
+        assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(2, 1)));
+		
+        juego.mover(Direccion.derecha()); // moto + 1
+		assertEquals(juego.obtenerPuntaje(), 5);
+        assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(2, 2)));
+        
+        juego.mover(Direccion.derecha()); //moto +1. llego a la meta.
+		assertEquals(juego.obtenerPuntaje(), 6);
+        assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(2, 3)));
+		
+		// compruebo que mover no afecta en la posicion ni la cantidad de movimientos.
+        juego.mover(Direccion.derecha()); //no se mueve.
+		assertEquals(juego.obtenerPuntaje(), 6);
+        assertTrue(juego.obtenerPosicionVehiculo().equals(new Posicion(2, 3)));
+		
         //assert juego se finalizo
-        //assertTrue(juego.estaFinalizado());
+        assertTrue(juego.estaFinalizado());
 
         //assert del ganador
         assertEquals(6, juego.obtenerPuntaje());
@@ -57,10 +73,7 @@ public class JuegoTest {
         ranking.registrarJugador(juego.obtenerNombre(), juego.obtenerPuntaje());
         assertTrue(ranking.estaEnElRanking(juego.obtenerNombre()));
         assertEquals(juego.obtenerPuntaje(), 6);
-        //assert no se puede seguir jugando
-        //assertThrows(JuegoFinalizadoException.class,
-          //           () -> {juego.mover(new MovArriba());}
-            //         );
+
 		Logger.enableLogging(false);
     
 	}
