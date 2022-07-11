@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Logging.Logger;
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ElementoMapa;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
 
 public class CasilleroCalle implements Casillero {

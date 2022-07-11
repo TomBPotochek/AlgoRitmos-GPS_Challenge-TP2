@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.casillero;
+package edu.fiuba.algo3.modelo.casillero.ElementosMapa;
 
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
 import edu.fiuba.algo3.modelo.vehiculos.*;

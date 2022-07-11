@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.Vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.*;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Piquete;
+import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Pozo;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.movimientos.MovAbajo;
-import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Direccion;
 import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;

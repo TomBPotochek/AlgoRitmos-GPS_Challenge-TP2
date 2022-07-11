@@ -1,0 +1,69 @@
+@startuml
+left to right direction
+package Modelo{
+package juego{
+
+   class Jugador{}
+   class Juego{}
+   class Ranking{}
+   Juego --> Jugador
+}
+juego ..> casillero
+juego ..> Vehiculos
+package casillero{
+    interface Casillero
+    class Mapa
+    class CasilleroCalle implements Casillero
+    class CasilleroDecorator implements Casillero
+    package Efectos{
+        interface Efecto
+        class BaseEfectoDecorador implements Efecto
+        class EfectoNulo implements Efecto
+        class EfectoCruzarMeta implements Efecto
+        class EfectoCambioDeVehiculo implements Efecto
+        class EfectoSuma implements Efecto
+        class EfectoMultiplica implements Efecto
+    }
+    package ElementoMapa{
+        interface ElementoMapa
+        class Pozo implements ElementoMapa
+        class Piquete implements ElementoMapa
+        class ControlPolicial implements ElementoMapa
+        class SorpresaCambioDeVehiculo implements ElementoMapa
+        class SorpresaFavorable implements ElementoMapa
+        class SorpresaDesfavorable implements ElementoMapa
+    }
+
+    package Azar{
+        class Azar implements ProveedorDatosAzar
+
+    }
+    Mapa ..> Azar
+    ElementoMapa ..> Efectos
+    Mapa ..> CasilleroCalle
+    CasilleroCalle ..> ElementoMapa
+
+}
+
+
+package Vehiculos{
+    abstract class Vehiculo
+    class Auto extends Vehiculo
+    class CuatroPorCuatro extends Vehiculo
+    class Moto extends Vehiculo
+    class Posicion
+    Vehiculo --> Posicion
+}
+    Vehiculos ..> Movimientos
+
+package Movimientos{
+
+    interface Movimiento
+    class MovArriba implements Movimiento
+    class MovAbajo implements Movimiento
+    class MovDerecha implements Movimiento
+    class MovIzquierda implements Movimiento
+}
+
+}
+@enduml

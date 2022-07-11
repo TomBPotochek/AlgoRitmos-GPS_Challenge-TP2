@@ -1,0 +1,113 @@
+@startuml
+left to right direction
+
+class edu.fiuba.algo3.modelo.juego.Ranking {
+}
+class edu.fiuba.algo3.modelo.vehiculos.Auto {
+}
+class edu.fiuba.algo3.modelo.Logging.Logger {
+}
+interface edu.fiuba.algo3.modelo.casillero.Efecto.Efecto {
+}
+class edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma {
+}
+class edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo {
+}
+class edu.fiuba.algo3.modelo.casillero.CasilleroDecoratorMeta {
+}
+class edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCambioDeVehiculo {
+}
+interface edu.fiuba.algo3.modelo.movimientos.Movimiento {
+}
+class edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador {
+}
+class edu.fiuba.algo3.modelo.vehiculos.Direccion {
+}
+class edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException {
+}
+class edu.fiuba.algo3.modelo.casillero.SorpresaDesfavorable {
+}
+class edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo {
+}
+class edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError {
+}
+class edu.fiuba.algo3.modelo.vehiculos.Posicion {
+}
+class edu.fiuba.algo3.modelo.casillero.Piquete {
+}
+interface edu.fiuba.algo3.modelo.casillero.ElementoMapa {
+}
+class edu.fiuba.algo3.modelo.casillero.Efecto.EfectoMultiplica {
+}
+class edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro {
+}
+class edu.fiuba.algo3.modelo.juego.Juego {
+}
+class edu.fiuba.algo3.modelo.casillero.CasilleroCalle {
+}
+class edu.fiuba.algo3.modelo.vehiculos.Moto {
+}
+class edu.fiuba.algo3.modelo.movimientos.MovIzquierda {
+}
+class edu.fiuba.algo3.modelo.Logging.LoggerConsola {
+}
+class edu.fiuba.algo3.modelo.casillero.Pozo {
+}
+interface edu.fiuba.algo3.modelo.Logging.LoggingI {
+}
+class edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError {
+}
+class edu.fiuba.algo3.modelo.movimientos.MovDerecha {
+}
+class edu.fiuba.algo3.modelo.movimientos.MovAbajo {
+}
+class edu.fiuba.algo3.modelo.casillero.ControlPolicial {
+}
+class edu.fiuba.algo3.modelo.casillero.Mapa {
+}
+abstract class edu.fiuba.algo3.modelo.vehiculos.Vehiculo {
+}
+class edu.fiuba.algo3.modelo.casillero.azar.Azar {
+}
+class edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCruzarMeta {
+}
+interface edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar {
+}
+interface edu.fiuba.algo3.modelo.casillero.Casillero {
+}
+class edu.fiuba.algo3.modelo.juego.Jugador {
+}
+class edu.fiuba.algo3.modelo.casillero.SorpresaFavorable {
+}
+class edu.fiuba.algo3.modelo.movimientos.MovArriba {
+}
+
+
+edu.fiuba.algo3.modelo.vehiculos.Vehiculo <|-- edu.fiuba.algo3.modelo.vehiculos.Auto
+edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador <|-- edu.fiuba.algo3.modelo.casillero.Efecto.EfectoSuma
+edu.fiuba.algo3.modelo.casillero.Efecto.Efecto <|.. edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo
+edu.fiuba.algo3.modelo.casillero.Casillero <|.. edu.fiuba.algo3.modelo.casillero.CasilleroDecoratorMeta
+edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador <|-- edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCambioDeVehiculo
+edu.fiuba.algo3.modelo.casillero.Efecto.Efecto <|.. edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador
+edu.fiuba.algo3.modelo.excepciones.RuntimeException <|-- edu.fiuba.algo3.modelo.excepciones.JuegoFinalizadoException
+edu.fiuba.algo3.modelo.casillero.ElementoMapa <|.. edu.fiuba.algo3.modelo.casillero.SorpresaDesfavorable
+edu.fiuba.algo3.modelo.casillero.ElementoMapa <|.. edu.fiuba.algo3.modelo.casillero.SorpresaCambioVehiculo
+edu.fiuba.algo3.modelo.excepciones.RuntimeException <|-- edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError
+edu.fiuba.algo3.modelo.casillero.ElementoMapa <|.. edu.fiuba.algo3.modelo.casillero.Piquete
+edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador <|-- edu.fiuba.algo3.modelo.casillero.Efecto.EfectoMultiplica
+edu.fiuba.algo3.modelo.vehiculos.Vehiculo <|-- edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro
+edu.fiuba.algo3.modelo.casillero.Casillero <|.. edu.fiuba.algo3.modelo.casillero.CasilleroCalle
+edu.fiuba.algo3.modelo.vehiculos.Vehiculo <|-- edu.fiuba.algo3.modelo.vehiculos.Moto
+edu.fiuba.algo3.modelo.movimientos.Movimiento <|.. edu.fiuba.algo3.modelo.movimientos.MovIzquierda
+edu.fiuba.algo3.modelo.Logging.LoggingI <|.. edu.fiuba.algo3.modelo.Logging.LoggerConsola
+edu.fiuba.algo3.modelo.casillero.ElementoMapa <|.. edu.fiuba.algo3.modelo.casillero.Pozo
+edu.fiuba.algo3.modelo.excepciones.RuntimeException <|-- edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError
+edu.fiuba.algo3.modelo.movimientos.Movimiento <|.. edu.fiuba.algo3.modelo.movimientos.MovDerecha
+edu.fiuba.algo3.modelo.movimientos.Movimiento <|.. edu.fiuba.algo3.modelo.movimientos.MovAbajo
+edu.fiuba.algo3.modelo.casillero.ElementoMapa <|.. edu.fiuba.algo3.modelo.casillero.ControlPolicial
+edu.fiuba.algo3.modelo.casillero.azar.ProveedorDatosAzar <|.. edu.fiuba.algo3.modelo.casillero.azar.Azar
+edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador <|-- edu.fiuba.algo3.modelo.casillero.Efecto.EfectoCruzarMeta
+edu.fiuba.algo3.modelo.casillero.ElementoMapa <|.. edu.fiuba.algo3.modelo.casillero.SorpresaFavorable
+edu.fiuba.algo3.modelo.movimientos.Movimiento <|.. edu.fiuba.algo3.modelo.movimientos.MovArriba
+
+@enduml
