@@ -5,13 +5,13 @@
 
 Trabajo Práctico número 2 de la materia Algoritmos y Programación III de FIUBA
 
+# Link al informe https://www.overleaf.com/read/ydbhwcgkpmjk
 ## Grupo 19
 
-* **Integrante 1** - [Franco Pomi](https://github.com/FPomi)
-* **Integrante 2** - [LucasFranciulli](https://github.com/Chuleeta)
-* **Integrante 3** - [Tomas Benitez Potochek](https://github.com/TomBPotochek)
-* **Integrante 4** - [Mario Santiago Adris](https://github.com/marioax)
-* **Integrante 5** - [Agustín Cáceres](https://github.com/agustin28-oss)
+* **Integrante 1** - [LucasFranciulli](https://github.com/Chuleeta)
+* **Integrante 2** - [Tomas Benitez Potochek](https://github.com/TomBPotochek)
+* **Integrante 3** - [Mario Santiago Adris](https://github.com/marioax)
+* **Integrante 4** - [Agustín Cáceres](https://github.com/agustin28-oss)
 
 Corrector: **{Corrector}**
 
