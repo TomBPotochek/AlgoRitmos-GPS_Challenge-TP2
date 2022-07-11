@@ -1,0 +1,28 @@
+@startuml
+title resolución de llamada por Double Dispatch de Obtaculos/Vehiculos
+
+participant "c:Casillero" as casillero
+participant "moto:Moto" as moto
+participant "pozo:Pozo" as pozo
+
+-> casillero: atravesar(moto: Vehiculo)
+activate casillero
+
+casillero -> moto: aceptar(pozo: ElementoMapa)
+activate moto
+
+moto -> pozo: interactuar(this: Moto)
+activate pozo
+note over  pozo: ElementoMapa sabe el tipo de `moto`
+
+moto <-- pozo: efecto: BaseEfectoDecorador
+note over pozo: Pozo decide el efecto a generar con Moto 
+deactivate pozo
+
+casillero <-- moto: efecto: BaseEfectoDecorador
+deactivate moto
+
+<-- casillero: efecto: Efecto
+deactivate casillero
+
+@enduml
