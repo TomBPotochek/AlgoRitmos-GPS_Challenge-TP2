@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo.vehiculos;
 
 import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ElementoMapa;
 import edu.fiuba.algo3.modelo.casillero.Efecto.BaseEfectoDecorador;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 public class Moto extends Vehiculo {
 

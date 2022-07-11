@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import edu.fiuba.algo3.modelo.casillero.ElementosMapa.ElementoMapa;
 import edu.fiuba.algo3.modelo.juego.Juego;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 import javafx.beans.binding.Bindings;
 import javafx.geometry.Pos;
 import javafx.scene.Group;

@@ -1,15 +1,7 @@
 package edu.fiuba.algo3.Vehiculos;
 
-import edu.fiuba.algo3.modelo.casillero.*;
-import edu.fiuba.algo3.modelo.vehiculos.Moto;
-import edu.fiuba.algo3.modelo.vehiculos.Vehiculo;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
-import edu.fiuba.algo3.modelo.movimientos.MovDerecha;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
 
 // public class MotoTest {
 //     @Test

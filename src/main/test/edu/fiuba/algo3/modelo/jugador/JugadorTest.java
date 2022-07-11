@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 import edu.fiuba.algo3.modelo.casillero.*;
 import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.juego.Jugador;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 import edu.fiuba.algo3.modelo.vehiculos.*;
 
 public class JugadorTest {

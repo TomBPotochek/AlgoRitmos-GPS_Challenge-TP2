@@ -9,7 +9,6 @@ import edu.fiuba.algo3.modelo.casillero.Efecto.Efecto;
 import edu.fiuba.algo3.modelo.casillero.Efecto.EfectoNulo;
 import edu.fiuba.algo3.modelo.excepciones.NoPuedeAtravesarObstaculoError;
 import edu.fiuba.algo3.modelo.excepciones.PosicionInvalidaError;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
 import edu.fiuba.algo3.modelo.movimientos.Movimiento;
 
 public abstract class Vehiculo {

@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import edu.fiuba.algo3.modelo.vehiculos.CuatroPorCuatro;
 import edu.fiuba.algo3.modelo.vehiculos.Moto;
 import edu.fiuba.algo3.modelo.vehiculos.Auto;
-import edu.fiuba.algo3.modelo.vehiculos.Direccion;
+import edu.fiuba.algo3.modelo.movimientos.Direccion;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
@@ -18,7 +18,7 @@ import edu.fiuba.algo3.modelo.casillero.Mapa;
 import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Pozo;
 import edu.fiuba.algo3.modelo.casillero.ElementosMapa.SorpresaFavorable;
 import edu.fiuba.algo3.modelo.casillero.ElementosMapa.Piquete;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 
 public class JuegoTest {
     @Test

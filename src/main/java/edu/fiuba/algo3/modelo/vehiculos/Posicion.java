@@ -1,6 +1,8 @@
-package edu.fiuba.algo3.modelo.movimientos;
+package edu.fiuba.algo3.modelo.vehiculos;
 
 // Para el hash
+import edu.fiuba.algo3.modelo.movimientos.Movimiento;
+
 import java.util.Objects;
 
 public class Posicion {

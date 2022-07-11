@@ -2,6 +2,7 @@ package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.juego.Ranking;
 import edu.fiuba.algo3.modelo.movimientos.*;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;

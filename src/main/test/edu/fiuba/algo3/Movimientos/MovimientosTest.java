@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 
 import edu.fiuba.algo3.modelo.vehiculos.*;
-import edu.fiuba.algo3.modelo.movimientos.Posicion;
+import edu.fiuba.algo3.modelo.vehiculos.Posicion;
 
 
 public class MovimientosTest {
